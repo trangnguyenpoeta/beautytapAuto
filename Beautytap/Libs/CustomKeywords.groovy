@@ -202,6 +202,14 @@ def static "beautytap.ShopAction.checkoutViaCreditCard"(
          , 	cvv)
 }
 
+def static "beautytap.ShopAction.checkoutViaPaypal"(
+    	String paypalEmail	
+     , 	String paypalPassword	) {
+    (new beautytap.ShopAction()).checkoutViaPaypal(
+        	paypalEmail
+         , 	paypalPassword)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

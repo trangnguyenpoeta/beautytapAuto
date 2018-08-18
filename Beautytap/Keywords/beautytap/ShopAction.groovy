@@ -313,4 +313,20 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL);
 				
 	}
+	
+	//Checkout via Paypal
+	@Keyword
+	def checkoutViaPaypal(String paypalEmail,String paypalPassword){
+		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_paypal'));
+		WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
+		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Paypal/txt_email'), GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Paypal/txt_email'), paypalEmail);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Paypal/txt_password'), paypalPassword);
+		WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_login'));
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Paypal/btn_payNow'), GlobalVariable.LONG_TIMEOUT);
+		WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_payNow'));
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
+		
+	}
 }
