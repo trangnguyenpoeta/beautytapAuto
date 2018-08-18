@@ -1,0 +1,79 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+TS1,Chrome 68.0.3440.106,,2018-08-17 11:29:33,2018-08-17 11:40:26,10m - 53.012s,PASSED
+,,,,,,
+Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email,Chrome 68.0.3440.106,,2018-08-17 11:29:33,2018-08-17 11:34:18,4m - 44.105s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.017s,PASSED
+"Statement - username = ""auto"" + r_string",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.003s,PASSED
+"Statement - email = username + ""@mailinator.com""",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.001s,PASSED
+"Statement - password = ""123456""",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.004s,PASSED
+"Statement - newpassword = ""test123""",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.002s,PASSED
+"Statement - name = ""Auto User "" + r_string",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.003s,PASSED
+"Statement - birthday = ""01/01/1990""",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.007s,PASSED
+"Statement - activation_subject = SITE_TITLE + "" Activate your account""",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.056s,PASSED
+"Statement - resetpass_subject = SITE_TITLE + "" Password Reset""",Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:29:34,0.005s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-08-17 11:29:34,2018-08-17 11:30:05,30.752s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:30:05,2018-08-17 11:30:14,9.208s,PASSED
+beautytap.GeneralAction.signup,Chrome 68.0.3440.106,,2018-08-17 11:30:14,2018-08-17 11:30:15,1.269s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP1: Verify message displays: Registration successful. A verification email has been sent to you. Please check your inbox.,2018-08-17 11:30:15,2018-08-17 11:30:22,6.877s,PASSED
+beautytap.GeneralAction.openMailBox,Chrome 68.0.3440.106,,2018-08-17 11:30:22,2018-08-17 11:30:29,6.583s,PASSED
+beautytap.GeneralAction.verifyEmailExist,Chrome 68.0.3440.106,VP2: Verify activation email exist,2018-08-17 11:30:29,2018-08-17 11:30:29,0.555s,PASSED
+beautytap.GeneralAction.openEmail,Chrome 68.0.3440.106,,2018-08-17 11:30:29,2018-08-17 11:30:30,0.116s,PASSED
+beautytap.GeneralAction.clickEmailLink,Chrome 68.0.3440.106,,2018-08-17 11:30:30,2018-08-17 11:30:49,19.592s,PASSED
+waitForPageLoad,Chrome 68.0.3440.106,,2018-08-17 11:30:49,2018-08-17 11:30:49,0.015s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP3: Verify message display: Your account is now active!,2018-08-17 11:30:49,2018-08-17 11:30:49,0.099s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:30:49,2018-08-17 11:30:59,9.382s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,Login with username and password,2018-08-17 11:30:59,2018-08-17 11:30:59,0.643s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP4: Verify avatar icon displays,2018-08-17 11:30:59,2018-08-17 11:31:14,15.089s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:31:14,2018-08-17 11:31:15,0.421s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:31:15,2018-08-17 11:31:34,19.504s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,Login with email and password,2018-08-17 11:31:34,2018-08-17 11:31:35,0.660s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP5: Verify avatar icon displays,2018-08-17 11:31:35,2018-08-17 11:31:50,14.951s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:31:50,2018-08-17 11:31:51,0.622s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,RESET PASSWORD,2018-08-17 11:31:51,2018-08-17 11:32:10,19.296s,PASSED
+click,Chrome 68.0.3440.106,,2018-08-17 11:32:10,2018-08-17 11:32:19,9.262s,PASSED
+sendKeys,Chrome 68.0.3440.106,,2018-08-17 11:32:19,2018-08-17 11:32:19,0.144s,PASSED
+click,Chrome 68.0.3440.106,,2018-08-17 11:32:19,2018-08-17 11:32:19,0.160s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP6:Verify message display: Your password has been reset! Please check your email for the confirmation link.,2018-08-17 11:32:19,2018-08-17 11:32:25,5.297s,PASSED
+beautytap.GeneralAction.openMailBox,Chrome 68.0.3440.106,,2018-08-17 11:32:25,2018-08-17 11:32:29,4.443s,PASSED
+beautytap.GeneralAction.verifyEmailExist,Chrome 68.0.3440.106,VP7: Verify reset password email exist,2018-08-17 11:32:29,2018-08-17 11:32:31,1.604s,PASSED
+beautytap.GeneralAction.openEmail,Chrome 68.0.3440.106,,2018-08-17 11:32:31,2018-08-17 11:32:31,0.117s,PASSED
+beautytap.GeneralAction.clickEmailLink,Chrome 68.0.3440.106,,2018-08-17 11:32:31,2018-08-17 11:32:42,11.095s,PASSED
+delay,Chrome 68.0.3440.106,,2018-08-17 11:32:42,2018-08-17 11:33:02,20.038s,PASSED
+clearText,Chrome 68.0.3440.106,,2018-08-17 11:33:02,2018-08-17 11:33:02,0.094s,PASSED
+sendKeys,Chrome 68.0.3440.106,,2018-08-17 11:33:02,2018-08-17 11:33:02,0.164s,PASSED
+click,Chrome 68.0.3440.106,,2018-08-17 11:33:02,2018-08-17 11:33:13,10.408s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP8: Verify message displays: Your password has been reset.,2018-08-17 11:33:13,2018-08-17 11:33:13,0.047s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:33:13,2018-08-17 11:33:22,9.454s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,,2018-08-17 11:33:22,2018-08-17 11:33:23,0.637s,PASSED
+verifyElementText,Chrome 68.0.3440.106,VP9: Verify message displays: Wrong Password when logging in with old password,2018-08-17 11:33:23,2018-08-17 11:33:25,2.219s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,,2018-08-17 11:33:25,2018-08-17 11:33:25,0.450s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP10: User can login successfully with username and new password,2018-08-17 11:33:25,2018-08-17 11:33:40,14.836s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:33:40,2018-08-17 11:33:41,0.655s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:33:41,2018-08-17 11:34:00,19.383s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,,2018-08-17 11:34:00,2018-08-17 11:34:01,0.738s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP11: Verify user can login with email and new password,2018-08-17 11:34:01,2018-08-17 11:34:16,15.086s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:34:16,2018-08-17 11:34:18,1.339s,PASSED
+,,,,,,
+Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser,Chrome 68.0.3440.106,,2018-08-17 11:34:18,2018-08-17 11:40:26,6m - 8.279s,PASSED
+beautytap.AdminAction.deleteUser,Chrome 68.0.3440.106,,2018-08-17 11:34:18,2018-08-17 11:35:23,1m - 4.827s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-08-17 11:35:23,2018-08-17 11:35:52,29.009s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,SIGNUP VIA FACEBOOK NOT EXIST IN SYSTEM,2018-08-17 11:35:52,2018-08-17 11:36:01,9.196s,PASSED
+beautytap.GeneralAction.signupViaFacebook,Chrome 68.0.3440.106,,2018-08-17 11:36:01,2018-08-17 11:36:34,33.219s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP1: Verify user is logged in after Signup via Facebook,2018-08-17 11:36:34,2018-08-17 11:36:34,0.035s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:36:34,2018-08-17 11:36:35,1.096s,PASSED
+beautytap.AdminAction.deleteUser,Chrome 68.0.3440.106,LOGIN VIA FACEBOOK NOT EXIST IN SYSTEM,2018-08-17 11:36:35,2018-08-17 11:37:28,52.269s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-08-17 11:37:28,2018-08-17 11:37:57,28.981s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:37:57,2018-08-17 11:38:06,9.292s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,,2018-08-17 11:38:06,2018-08-17 11:38:09,2.881s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP2: Verify user is logged in via Facebook ,2018-08-17 11:38:09,2018-08-17 11:38:37,28.369s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:38:37,2018-08-17 11:38:38,1.021s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,SIGNUP VIA FACEBOOK ALREADY EXIST IN SYSTEM,2018-08-17 11:38:38,2018-08-17 11:39:05,26.795s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:39:05,2018-08-17 11:39:14,9.165s,PASSED
+beautytap.GeneralAction.signupViaFacebook,Chrome 68.0.3440.106,,2018-08-17 11:39:14,2018-08-17 11:39:34,19.971s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP3: Verify user is logged in after Signup via Facebook,2018-08-17 11:39:34,2018-08-17 11:39:34,0.034s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:39:34,2018-08-17 11:39:35,0.997s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,LOGIN VIA FACEBOOK ALREADY EXIST IN SYSTEM,2018-08-17 11:39:35,2018-08-17 11:39:58,22.953s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 68.0.3440.106,,2018-08-17 11:39:58,2018-08-17 11:40:07,9.302s,PASSED
+beautytap.GeneralAction.login,Chrome 68.0.3440.106,,2018-08-17 11:40:07,2018-08-17 11:40:11,3.329s,PASSED
+verifyElementPresent,Chrome 68.0.3440.106,VP4: Verify user is logged in via Facebook,2018-08-17 11:40:11,2018-08-17 11:40:25,14.141s,PASSED
+beautytap.GeneralAction.logout,Chrome 68.0.3440.106,,2018-08-17 11:40:25,2018-08-17 11:40:26,1.020s,PASSED

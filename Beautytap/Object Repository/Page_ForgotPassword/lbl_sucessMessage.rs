@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>lbl_sucessMessage</name>
+   <tag></tag>
+   <elementGuidId>a1c69d55-4784-4c37-bfba-5a308ce6ea50</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//p[@class='text-message' and text()='Your password has been reset! Please check your email for the confirmation link.']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>css=p.text-message</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>p.text-message</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>css</name>
+      <type>Main</type>
+      <value>p.text-message</value>
+   </webElementProperties>
+</WebElementEntity>

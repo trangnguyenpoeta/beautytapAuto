@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>7057723c-ce32-4875-881f-0ef94ae7e748</testCaseGuid>
+</TestCaseEntity>

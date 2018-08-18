@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>lbl_sucessMessage</name>
+   <tag></tag>
+   <elementGuidId>ad3e4a6b-6e1f-4e81-bc66-de69a707e2e8</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//p[@class='text-message' and text()='Registration successful. A verification email has been sent to you. Please check your inbox.']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>css=p.text-message</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>p.text-message</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>css</name>
+      <type>Main</type>
+      <value>p.text-message</value>
+   </webElementProperties>
+</WebElementEntity>
