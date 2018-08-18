@@ -49,13 +49,17 @@ CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 
 CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variation)
+int currentItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
+println currentItemInCart
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(3)
+CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentItemInCart+quantity)
+println currentItemInCart+quantity
 CustomKeywords.'beautytap.ShopAction.goToCart'()
 //CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName,'$30.00',"grey",'$18.00',"pink")
 //println CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
 //WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), "Australia", false)
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, price, quantity, total)
-CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('checkout', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
+//CustomKeywords.'beautytap.ShopAction.processToCheckout'()
+CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
 
 

@@ -190,7 +190,7 @@ public class ShopAction {
 		}else{
 			return numberItem= 0;
 		}
-
+		println "Number item in cart: " + numberItem;
 	}
 
 	//Verify number item in cart
@@ -201,6 +201,7 @@ public class ShopAction {
 		obj_cartnumber.addProperty("xpath",ConditionType.EQUALS,"//div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']");
 		if(WebUI.verifyElementPresent(obj_cartnumber, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
 			int currentNumber = Integer.parseInt(WebUI.getText(obj_cartnumber));
+			println "Current item in cart: " + currentNumber;
 			if( currentNumber==numberItem ){
 				KeywordUtil.markPassed("Number item in cart is "+ currentNumber.toString()+ ", expected is " + numberItem);
 			}else{

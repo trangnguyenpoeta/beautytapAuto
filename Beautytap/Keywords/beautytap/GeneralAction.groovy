@@ -175,7 +175,7 @@ public class GeneralAction {
 	@Keyword
 	def openBeautytap(String url ) {
 		WebUI.openBrowser(url);
-		WebUI.maximizeWindow();
+		WebUI.maximizeWindow(FailureHandling.OPTIONAL);
 		WebUI.refresh();
 		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 	}
