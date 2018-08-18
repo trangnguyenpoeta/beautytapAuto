@@ -299,4 +299,18 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
 	}
 
+	//Checkout via Credit card
+	@Keyword
+	def checkoutViaCreditCard(String cardNumber,String cardType,String expirationMonth,String expirationYear, String cvv){
+		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_cardNumber'), cardNumber);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_cardType'), cardType, false);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_expirationMonth'), expirationMonth, false);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_expirationYear'), expirationYear, false);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_cardCVV'), 	cvv);
+		WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
+		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL);
+				
+	}
 }

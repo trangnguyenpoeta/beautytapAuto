@@ -188,6 +188,20 @@ def static "beautytap.ShopAction.checkoutViaAmazonPay"(
          , 	amazonPassword)
 }
 
+def static "beautytap.ShopAction.checkoutViaCreditCard"(
+    	String cardNumber	
+     , 	String cardType	
+     , 	String expirationMonth	
+     , 	String expirationYear	
+     , 	String cvv	) {
+    (new beautytap.ShopAction()).checkoutViaCreditCard(
+        	cardNumber
+         , 	cardType
+         , 	expirationMonth
+         , 	expirationYear
+         , 	cvv)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
