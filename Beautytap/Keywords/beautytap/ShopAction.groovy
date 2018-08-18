@@ -9,6 +9,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import org.supercsv.cellprocessor.ParseInt
 import org.testng.Assert
 
+import com.google.gson.JsonObject
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -32,10 +33,15 @@ import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.util.KeywordUtil
 import java.lang.Object
 import beautytap.GeneralAction as GeneralAction
+import groovy.json.JsonParser
+
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Clipboard;
-import org.openqa.selenium.Keys as Keys
+import org.openqa.selenium.Keys as Keys;
+
+import org.json.JSONObject
+
 
 public class ShopAction {
 
@@ -311,9 +317,9 @@ public class ShopAction {
 		WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
 		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL);
-				
+
 	}
-	
+
 	//Checkout via Paypal
 	@Keyword
 	def checkoutViaPaypal(String paypalEmail,String paypalPassword){
@@ -327,6 +333,22 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Paypal/btn_payNow'), GlobalVariable.LONG_TIMEOUT);
 		WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_payNow'));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
-		
+
+	}
+
+	//Fill customer information
+	//billingInformation: {"firstname"="FIRSTNAME","lastname"="LASTNAME","country"="COUNTRY","address"="ADDRESS","city"="CITY","state"="STATE","zip"="ZIP","email"="EMAIL"}
+	//shippingInformation: {"firstname"="FIRSTNAME","lastname"="LASTNAME","country"="COUNTRY","address"="ADDRESS","city"="CITY","state"="STATE","zip"="ZIP"}
+	@Keyword
+	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String shipToDifferentAddess,JSONObject shippingInformation,String orderNote){
+		String billingFirstName = billingInformation.get("firstname");
+		String billingLastName = billingInformation.get("lastname");
+		String billingCountry = billingInformation.get("country");
+		String billingAddress = billingInformation.get("address");
+		String billingCity = billingInformation.get("city");
+		String billingState = billingInformation.get("state");
+		String billingZip = billingInformation.get("zip");
+		String billingEmail = billingInformation.get("email");
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 	}
 }

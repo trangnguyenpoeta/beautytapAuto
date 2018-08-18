@@ -7,6 +7,8 @@ import java.lang.String
 
 import com.kms.katalon.core.testobject.TestObject
 
+import org.json.JSONObject
+
 
 def static "beautytap.GeneralAction.login"(
     	String type	
@@ -208,6 +210,20 @@ def static "beautytap.ShopAction.checkoutViaPaypal"(
     (new beautytap.ShopAction()).checkoutViaPaypal(
         	paypalEmail
          , 	paypalPassword)
+}
+
+def static "beautytap.ShopAction.fillCustomerInformation"(
+    	JSONObject billingInformation	
+     , 	String createAccount	
+     , 	String shipToDifferentAddess	
+     , 	JSONObject shippingInformation	
+     , 	String orderNote	) {
+    (new beautytap.ShopAction()).fillCustomerInformation(
+        	billingInformation
+         , 	createAccount
+         , 	shipToDifferentAddess
+         , 	shippingInformation
+         , 	orderNote)
 }
 
 def static "beautytap.AdminAction.deleteUser"(

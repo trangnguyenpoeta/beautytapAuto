@@ -5,5 +5,5 @@
    <tag></tag>
    <UUID>5235f664-a449-4911-9b4a-5a4ea4630581</UUID>
    <migratedVersion>5.4.0</migratedVersion>
-   <pageLoadTimeout>60</pageLoadTimeout>
+   <pageLoadTimeout>0</pageLoadTimeout>
 </Project>
