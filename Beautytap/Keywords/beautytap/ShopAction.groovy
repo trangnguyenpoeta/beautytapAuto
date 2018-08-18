@@ -32,16 +32,25 @@ import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.util.KeywordUtil
 import java.lang.Object
 import beautytap.GeneralAction as GeneralAction
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Clipboard;
+import org.openqa.selenium.Keys as Keys
 
 public class ShopAction {
 
 	//Search product or article by clicking Search icon in Header
 	@Keyword
 	def globalSearch(String keyword) {
+		//Set Clipboard
+		StringSelection selection = new StringSelection(keyword);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(selection, selection);
+		//End clipboard
 		WebUI.click(findTestObject('Object Repository/Page_General/icon_search'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.clearText(findTestObject('Object Repository/Page_General/txt_search'));
-		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), keyword);
+		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), Keys.chord(Keys.CONTROL, 'v'));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/div_searchResult'), GlobalVariable.LONG_TIMEOUT);
 
 
@@ -266,7 +275,7 @@ public class ShopAction {
 	}
 
 	//Checkout via AmazonPay
-	//page:cart,checkout 
+	//page:cart,checkout
 	@Keyword
 	def checkoutViaAmazonPay(String page,String amazonEmail,String amazonPassword) {
 		if(page=='cart'){
