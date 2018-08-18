@@ -158,6 +158,7 @@ public class ShopAction {
 		}
 		WebUI.click(findTestObject('Object Repository/Page_Shop/btn_addToCart'));
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Shop/lbl_message'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
 
 	}
 
