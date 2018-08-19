@@ -308,6 +308,7 @@ public class ShopAction {
 	//Checkout via Credit card
 	@Keyword
 	def checkoutViaCreditCard(String cardNumber,String cardType,String expirationMonth,String expirationYear, String cvv){
+		
 		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_cardNumber'), cardNumber);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_cardType'), cardType, false);
@@ -337,10 +338,12 @@ public class ShopAction {
 	}
 
 	//Fill customer information
-	//billingInformation: {"firstname"="FIRSTNAME","lastname"="LASTNAME","country"="COUNTRY","address"="ADDRESS","city"="CITY","state"="STATE","zip"="ZIP","email"="EMAIL"}
-	//shippingInformation: {"firstname"="FIRSTNAME","lastname"="LASTNAME","country"="COUNTRY","address"="ADDRESS","city"="CITY","state"="STATE","zip"="ZIP"}
+	//billingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}
+	//shippingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP"}
+	//createAccount: yes,no
+	//shipToDifferentAddess: yes,no
 	@Keyword
-	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String shipToDifferentAddess,JSONObject shippingInformation,String orderNote){
+	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String accountUsername,String accountPassword,String shipToDifferentAddess,JSONObject shippingInformation,String orderNote){
 		String billingFirstName = billingInformation.get("firstname");
 		String billingLastName = billingInformation.get("lastname");
 		String billingCountry = billingInformation.get("country");
@@ -350,5 +353,37 @@ public class ShopAction {
 		String billingZip = billingInformation.get("zip");
 		String billingEmail = billingInformation.get("email");
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingZip'), billingZip);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
+		if(createAccount=='yes'){
+			WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_createAccount'));
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountUserName'), accountUsername);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountPassword'), accountPassword);
+		}
+		if(shipToDifferentAddess=='yes'){
+			String shippingFirstName = shippingInformation.get("firstname");
+			String shippingLastName = shippingInformation.get("lastname");
+			String shippingCountry = shippingInformation.get("country");
+			String shippingAddress = shippingInformation.get("address");
+			String shippingCity = shippingInformation.get("city");
+			String shippingState = shippingInformation.get("state");
+			String shippingZip = shippingInformation.get("zip");
+			WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_shipToDifferentAddress'));
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingFirstName'), shippingFirstName);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingLastName'), shippingLastName);
+			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingCountry'), shippingCountry);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingAddress'), shippingAddress);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingCity'), shippingCity);
+			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingState'), shippingState);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingZip'), shippingZip);
+		}
+		if(orderNote!=''){
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
+		}
 	}
 }

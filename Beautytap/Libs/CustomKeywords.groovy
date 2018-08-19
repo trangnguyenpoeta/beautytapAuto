@@ -215,12 +215,16 @@ def static "beautytap.ShopAction.checkoutViaPaypal"(
 def static "beautytap.ShopAction.fillCustomerInformation"(
     	JSONObject billingInformation	
      , 	String createAccount	
+     , 	String accountUsername	
+     , 	String accountPassword	
      , 	String shipToDifferentAddess	
      , 	JSONObject shippingInformation	
      , 	String orderNote	) {
     (new beautytap.ShopAction()).fillCustomerInformation(
         	billingInformation
          , 	createAccount
+         , 	accountUsername
+         , 	accountPassword
          , 	shipToDifferentAddess
          , 	shippingInformation
          , 	orderNote)
