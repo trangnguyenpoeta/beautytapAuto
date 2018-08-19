@@ -386,4 +386,153 @@ public class ShopAction {
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 		}
 	}
+	
+	//Verify product details
+	//color: pink,grey
+	@Keyword
+	def VerifyProductDetails(String productName,String variation,String regularPrice,String regularPriceColor,String salePrice,String salePriceColor){
+		if(variation==null){
+			variation ='';
+		}
+		if(regularPrice==null){
+			regularPrice='';
+		}
+		if(regularPriceColor==null){
+			regularPriceColor='';
+		}
+		if(salePrice==null){
+			salePrice='';
+		}
+		if(salePriceColor==null){
+			salePriceColor='';
+		}
+		String result='true';
+		if(regularPriceColor!=null && regularPriceColor=="pink"){
+			regularPriceColor = "rgba(255, 35, 134, 1)";
+		}
+		if(regularPriceColor!=null && regularPriceColor=="grey"){
+			regularPriceColor = "rgba(195, 195, 195, 1)";
+		}
+		if(salePriceColor!=null && salePriceColor=="pink"){
+			salePriceColor = "rgba(255, 35, 134, 1)";
+		}
+		if(salePriceColor!=null && salePriceColor=="grey"){
+			salePriceColor = "rgba(195, 195, 195, 1)";
+		}
+		TestObject obj_productname =new TestObject();
+		obj_productname.addProperty("xpath",ConditionType.EQUALS,"//h1");
+		String currentProductName = WebUI.getText(obj_productname).trim();
+		println "Current product name: "+currentProductName;
+		if(currentProductName!=productName){
+			result = 'false';
+		}
+		//Simple product
+		if(variation ==''){
+			//Simple not sale
+			if(salePrice==''){
+				TestObject obj_regularPrice=new TestObject();
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/span");
+				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				println "Current regular price: " + currentResularPrice;
+				if(currentResularPrice!=regularPrice){
+					result = 'false';
+				}
+				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
+				println "Current regular price color" + currentColor;
+				if(currentColor!=regularPriceColor){
+					result = 'false';
+				}
+				
+			//Simple sale		
+			}else{
+			//Regular price
+				TestObject obj_regularPrice=new TestObject();
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/del/span");
+				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				println "Current regular price: " + currentResularPrice;
+				if(currentResularPrice!=regularPrice){
+					result = 'false';
+				}
+				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
+				println "Current regular price color" + currentColor;
+				if(currentColor!=regularPriceColor){
+					result = 'false';
+				}
+			//Sale price
+				TestObject obj_salePrice=new TestObject();
+				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/ins/span");
+				String currentSalePrice= WebUI.getText(obj_salePrice).trim().replace('$', '');
+				println "Current salse price: " + currentSalePrice;
+				if(currentSalePrice!=salePrice){
+					result = 'false';
+				}
+				String currentSaleColor = WebUI.getCSSValue(obj_salePrice, "color");
+				println "Current sale price color" + currentSaleColor;
+				if(currentSaleColor!=salePriceColor){
+					result = 'false';
+				}
+			}
+							
+		//Variation product		
+		}else{
+			if(WebUI.verifyOptionSelectedByLabel(findTestObject('Object Repository/Page_Shop/drop_chooseOption'), variation, false, GlobalVariable.TIMEOUT)==false){
+				result = 'false';
+			}
+			
+			//Variation not sale
+			if(salePrice==''){
+				TestObject obj_regularPrice=new TestObject();
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
+				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				println "Current regular price: " + currentResularPrice;
+				if(currentResularPrice!=regularPrice){
+					result = 'false';
+				}
+				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
+				println "Current regular price color" + currentColor;
+				if(currentColor!=regularPriceColor){
+					result = 'false';
+				}
+				
+			//Variation sale
+			}else{
+			//Regular price
+				TestObject obj_regularPrice=new TestObject();
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='old-price']/span");
+				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				println "Current regular price: " + currentResularPrice;
+				if(currentResularPrice!=regularPrice){
+					result = 'false';
+				}
+				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
+				println "Current regular price color" + currentColor;
+				if(currentColor!=regularPriceColor){
+					result = 'false';
+				}
+			//Sale price
+				TestObject obj_salePrice=new TestObject();
+				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
+				String currentSalePrice= WebUI.getText(obj_salePrice).trim().replace('$', '');
+				println "Current salse price: " + currentSalePrice;
+				if(currentSalePrice!=salePrice){
+					result = 'false';
+				}
+				String currentSaleColor = WebUI.getCSSValue(obj_salePrice, "color");
+				println "Current sale price color" + currentSaleColor;
+				if(currentSaleColor!=salePriceColor){
+					result = 'false';
+				}
+			}
+			
+		}
+		//Verify result
+		if(result=='true'){
+			KeywordUtil.markPassed("Keyword VerifyProductDetails is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyProductDetails is Failed");
+		}
+		
+	} 
+	
+	//Next keyword
 }

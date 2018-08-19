@@ -230,6 +230,22 @@ def static "beautytap.ShopAction.fillCustomerInformation"(
          , 	orderNote)
 }
 
+def static "beautytap.ShopAction.VerifyProductDetails"(
+    	String productName	
+     , 	String variation	
+     , 	String regularPrice	
+     , 	String regularPriceColor	
+     , 	String salePrice	
+     , 	String salePriceColor	) {
+    (new beautytap.ShopAction()).VerifyProductDetails(
+        	productName
+         , 	variation
+         , 	regularPrice
+         , 	regularPriceColor
+         , 	salePrice
+         , 	salePriceColor)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
