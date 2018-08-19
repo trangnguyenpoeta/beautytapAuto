@@ -246,6 +246,20 @@ def static "beautytap.ShopAction.VerifyProductDetails"(
          , 	salePriceColor)
 }
 
+def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
+    	JSONObject products	
+     , 	float subtotal	
+     , 	String shippingLable	
+     , 	float shippingPrice	
+     , 	float total	) {
+    (new beautytap.ShopAction()).VerifyOrderDetailsOnCheckout(
+        	products
+         , 	subtotal
+         , 	shippingLable
+         , 	shippingPrice
+         , 	total)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

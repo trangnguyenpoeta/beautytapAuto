@@ -534,5 +534,10 @@ public class ShopAction {
 		
 	} 
 	
-	//Next keyword
+	//Verify Check Out Order Details
+	//products: {"PRODUCTNAME1":["QUANTITY","PRICE"],"PRODUCTNAME2":["QUANTITY","PRICE"]}
+	@Keyword
+	def VerifyOrderDetailsOnCheckout(JSONObject products,float subtotal,String shippingLable,float shippingPrice,float total){
+		
+	}
 }
