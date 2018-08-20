@@ -2,6 +2,9 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import org.json.JSONObject
+
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -19,40 +22,33 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-String r_string = '842256'
+String productName = GlobalVariable.SIMPLE_PRODUCT
+float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
+String r_string = new Math().random().toString().substring(2, 8)
+String email = 'auto' + r_string + '@mailinator.com'
+String orderNote = 'auto' + r_string + 'Order'
+int currentNumberItemInCart
+int quantity = 3
+float total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
+String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
+JSONObject billingInformation =new JSONObject(json)
+//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+//CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
+'VP1: Verify product display in search result panel with regular price'
+//CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, price, "pink", 0, null)
+//CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+'VP2: Verify product detail page display with regular price'
+CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price.toString(), "pink", null, null)
+'VP3:Verify message display: “PRODUCT_NAME” has been added to your cart.'
+//currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
+//CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
+//CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemInCart+quantity)
+//CustomKeywords.'beautytap.ShopAction.goToCart'()
+'VP4:Verify product is added to cart with the correct price and quantity'
+//CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, total)
+//CustomKeywords.'beautytap.ShopAction.processToCheckout'()
+//CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', '', '', orderNote)
+'VP5: Verify order details: product, quantity,subtotal,shipping,total'
+//CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
+'VP6: Verify order recieive with correct information: Date,Total,Payment method'
 
-String username = 'auto' + r_string
-
-String email = username + '@mailinator.com'
-
-String password = '123456'
-
-String newpassword = 'test123'
-
-String name = 'Auto User ' + r_string
-
-String birthday = '01/01/1990'
-
-String activation_subject = GlobalVariable.SITE_TITLE + ' Activate your account'
-
-String resetpass_subject = GlobalVariable.SITE_TITLE + ' Password Reset'
-
-String productName = 'Papa Recipe Bombee Black Honey Mask Pack 2 Choices'
-String variation="1 set (10ea)";
-float price = 35;
-int quantity = 3;
-float total= 105;
-
-
-CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
-CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variation)
-CustomKeywords.'beautytap.ShopAction.addProductToCart'(3)
-CustomKeywords.'beautytap.ShopAction.goToCart'()
-//CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName,'$30.00',"grey",'$18.00',"pink")
-//println CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
-//WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), "Australia", false)
-CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, price, quantity, total)
-CustomKeywords.'beautytap.ShopAction.processToCheckout'()

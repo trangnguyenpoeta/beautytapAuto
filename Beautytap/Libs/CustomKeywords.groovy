@@ -9,6 +9,8 @@ import com.kms.katalon.core.testobject.TestObject
 
 import org.json.JSONObject
 
+import org.json.JSONArray
+
 
 def static "beautytap.GeneralAction.login"(
     	String type	
@@ -122,9 +124,9 @@ def static "beautytap.ShopAction.selectProductVariation"(
 
 def static "beautytap.ShopAction.VerifyProductOnSearchResult"(
     	String productName	
-     , 	String regularPrice	
+     , 	float regularPrice	
      , 	String regularPriceColor	
-     , 	String salePrice	
+     , 	float salePrice	
      , 	String salePriceColor	) {
     (new beautytap.ShopAction()).VerifyProductOnSearchResult(
         	productName
@@ -247,7 +249,7 @@ def static "beautytap.ShopAction.VerifyProductDetails"(
 }
 
 def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
-    	JSONObject products	
+    	JSONArray products	
      , 	float subtotal	
      , 	String shippingLable	
      , 	float shippingPrice	
@@ -258,6 +260,14 @@ def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
          , 	shippingLable
          , 	shippingPrice
          , 	total)
+}
+
+def static "beautytap.ShopAction.calculateTotal"(
+    	int quantity	
+     , 	float price	) {
+    (new beautytap.ShopAction()).calculateTotal(
+        	quantity
+         , 	price)
 }
 
 def static "beautytap.AdminAction.deleteUser"(

@@ -39,7 +39,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Clipboard;
 import org.openqa.selenium.Keys as Keys;
-
+import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -86,7 +86,14 @@ public class ShopAction {
 	//Select product on search result
 	//color= pink,grey
 	@Keyword
-	def VerifyProductOnSearchResult(String productName,String regularPrice,String regularPriceColor,String salePrice,String salePriceColor) {
+	def VerifyProductOnSearchResult(String productName,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor) {
+		if(regularPrice==null){
+			regularPrice= 0;
+		}
+		if(salePrice==null){
+			salePrice = 0;
+		}
+		
 		if(regularPriceColor!=null && regularPriceColor=="pink"){
 			regularPriceColor = "rgba(255, 35, 134, 1)";
 		}
@@ -105,12 +112,13 @@ public class ShopAction {
 		try {
 			if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
 				//Check Regular Price
-				if(regularPrice!=null){
+				if(regularPrice!= 0){
 					TestObject obj_regularPrice = new TestObject();
 					obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][1]");
-					println "regular price "+ WebUI.getText(obj_regularPrice).trim();
+					float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
+					println "Regular price "+ currentRegularPrice;
 					println regularPrice;
-					if(WebUI.getText(obj_regularPrice).trim()!=regularPrice){
+					if(currentRegularPrice!=regularPrice){
 						result = "false" ;
 					}
 					if(regularPriceColor!=null){
@@ -122,12 +130,13 @@ public class ShopAction {
 					}
 				}
 				//Check Sale Price
-				if(salePrice!=null){
+				if(salePrice!=0){
 					TestObject obj_salePrice = new TestObject();
 					obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][2]");
-					println "sale price "+ WebUI.getText(obj_salePrice).trim();
+					float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
+					println "Sale price "+ currentSalePrice;
 					println salePrice;
-					if(WebUI.getText(obj_salePrice).trim()!=salePrice){
+					if(currentSalePrice!=salePrice){
 						result = "false";
 					}
 					if(salePriceColor!=null){
@@ -209,15 +218,15 @@ public class ShopAction {
 			int currentNumber = Integer.parseInt(WebUI.getText(obj_cartnumber));
 			println "Current item in cart: " + currentNumber;
 			if( currentNumber==numberItem ){
-				KeywordUtil.markPassed("Number item in cart is "+ currentNumber.toString()+ ", expected is " + numberItem);
+				KeywordUtil.markPassed("Keyword VerifyNumberItemInCart is Passed, Number item in cart is "+ currentNumber.toString()+ ", expected is " + numberItem);
 			}else{
-				KeywordUtil.markFailed("Number item in cart is "+ currentNumber.toString()+ ", expected is " + numberItem);
+				KeywordUtil.markFailed("Keyword VerifyNumberItemInCart is Failed, Number item in cart is "+ currentNumber.toString()+ ", expected is " + numberItem);
 			}
 		}else{
 			if(numberItem==0){
-				KeywordUtil.markPassed("Number item in cart is 0 ,expected is " + numberItem);
+				KeywordUtil.markPassed("Keyword VerifyNumberItemInCart is Passed, Number item in cart is 0 ,expected is " + numberItem);
 			}else{
-				KeywordUtil.markFailed("Number item in cart is 0 ,expected is " + numberItem);
+				KeywordUtil.markFailed("Keyword VerifyNumberItemInCart is Failed, Number item in cart is 0 ,expected is " + numberItem);
 			}
 		}
 
@@ -308,7 +317,7 @@ public class ShopAction {
 	//Checkout via Credit card
 	@Keyword
 	def checkoutViaCreditCard(String cardNumber,String cardType,String expirationMonth,String expirationYear, String cvv){
-		
+
 		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_cardNumber'), cardNumber);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_cardType'), cardType, false);
@@ -386,7 +395,7 @@ public class ShopAction {
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 		}
 	}
-	
+
 	//Verify product details
 	//color: pink,grey
 	@Keyword
@@ -395,7 +404,7 @@ public class ShopAction {
 			variation ='';
 		}
 		if(regularPrice==null){
-			regularPrice='';
+			regularPrice=0;
 		}
 		if(regularPriceColor==null){
 			regularPriceColor='';
@@ -423,6 +432,7 @@ public class ShopAction {
 		obj_productname.addProperty("xpath",ConditionType.EQUALS,"//h1");
 		String currentProductName = WebUI.getText(obj_productname).trim();
 		println "Current product name: "+currentProductName;
+		println productName;
 		if(currentProductName!=productName){
 			result = 'false';
 		}
@@ -434,96 +444,108 @@ public class ShopAction {
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/span");
 				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
 				println "Current regular price: " + currentResularPrice;
+				println regularPrice;
 				if(currentResularPrice!=regularPrice){
 					result = 'false';
 				}
 				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
 				println "Current regular price color" + currentColor;
+				println regularPriceColor;
 				if(currentColor!=regularPriceColor){
 					result = 'false';
 				}
-				
-			//Simple sale		
+
+				//Simple sale
 			}else{
-			//Regular price
+				//Regular price
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/del/span");
 				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
 				println "Current regular price: " + currentResularPrice;
+				println regularPrice;
 				if(currentResularPrice!=regularPrice){
 					result = 'false';
 				}
 				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
 				println "Current regular price color" + currentColor;
+				println regularPriceColor;
 				if(currentColor!=regularPriceColor){
 					result = 'false';
 				}
-			//Sale price
+				//Sale price
 				TestObject obj_salePrice=new TestObject();
 				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/ins/span");
 				String currentSalePrice= WebUI.getText(obj_salePrice).trim().replace('$', '');
 				println "Current salse price: " + currentSalePrice;
+				println salePrice;
 				if(currentSalePrice!=salePrice){
 					result = 'false';
 				}
 				String currentSaleColor = WebUI.getCSSValue(obj_salePrice, "color");
 				println "Current sale price color" + currentSaleColor;
+				println salePriceColor
 				if(currentSaleColor!=salePriceColor){
 					result = 'false';
 				}
 			}
-							
-		//Variation product		
+
+			//Variation product
 		}else{
 			if(WebUI.verifyOptionSelectedByLabel(findTestObject('Object Repository/Page_Shop/drop_chooseOption'), variation, false, GlobalVariable.TIMEOUT)==false){
 				result = 'false';
 			}
-			
+
 			//Variation not sale
 			if(salePrice==''){
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
 				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
 				println "Current regular price: " + currentResularPrice;
+				println regularPrice;
 				if(currentResularPrice!=regularPrice){
 					result = 'false';
 				}
 				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
 				println "Current regular price color" + currentColor;
+				println regularPriceColor;
 				if(currentColor!=regularPriceColor){
 					result = 'false';
 				}
-				
-			//Variation sale
+
+				//Variation sale
 			}else{
-			//Regular price
+				//Regular price
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='old-price']/span");
 				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
 				println "Current regular price: " + currentResularPrice;
+				println regularPrice;
 				if(currentResularPrice!=regularPrice){
 					result = 'false';
 				}
 				String currentColor = WebUI.getCSSValue(obj_regularPrice, "color");
 				println "Current regular price color" + currentColor;
+				println regularPriceColor;
 				if(currentColor!=regularPriceColor){
 					result = 'false';
 				}
-			//Sale price
+				//Sale price
 				TestObject obj_salePrice=new TestObject();
 				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
 				String currentSalePrice= WebUI.getText(obj_salePrice).trim().replace('$', '');
 				println "Current salse price: " + currentSalePrice;
+				println salePrice;
 				if(currentSalePrice!=salePrice){
 					result = 'false';
 				}
 				String currentSaleColor = WebUI.getCSSValue(obj_salePrice, "color");
 				println "Current sale price color" + currentSaleColor;
+				println salePriceColor;
 				if(currentSaleColor!=salePriceColor){
 					result = 'false';
 				}
 			}
-			
+
 		}
 		//Verify result
 		if(result=='true'){
@@ -531,13 +553,21 @@ public class ShopAction {
 		}else{
 			KeywordUtil.markFailed("Keyword VerifyProductDetails is Failed");
 		}
-		
-	} 
-	
+
+	}
+
 	//Verify Check Out Order Details
-	//products: {"PRODUCTNAME1":["QUANTITY","PRICE"],"PRODUCTNAME2":["QUANTITY","PRICE"]}
+	//products: [{"productname":"PRODUCTNAME","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","quantity":"QUANTITY","price":"PRICE"}]
 	@Keyword
-	def VerifyOrderDetailsOnCheckout(JSONObject products,float subtotal,String shippingLable,float shippingPrice,float total){
+	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippingLable,float shippingPrice,float total){
 		
+		
+
+	}
+	
+	//Calculate total
+	@Keyword
+	def calculateTotal(int quantity,float price){
+		return Float.parseFloat(String.format("%.2f", price*quantity));
 	}
 }
