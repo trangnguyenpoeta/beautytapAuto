@@ -286,6 +286,22 @@ def static "beautytap.ShopAction.calculateTotal"(
          , 	price)
 }
 
+def static "beautytap.ShopAction.VerifyOrderReceivedDetails"(
+    	JSONArray products	
+     , 	float subtotal	
+     , 	float shippingPrice	
+     , 	String shippingLabel	
+     , 	String paymentMethod	
+     , 	float total	) {
+    (new beautytap.ShopAction()).VerifyOrderReceivedDetails(
+        	products
+         , 	subtotal
+         , 	shippingPrice
+         , 	shippingLabel
+         , 	paymentMethod
+         , 	total)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
