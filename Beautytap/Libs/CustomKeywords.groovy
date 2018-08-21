@@ -265,12 +265,14 @@ def static "beautytap.ShopAction.VerifyProductDetails"(
 def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
     	JSONArray products	
      , 	float subtotal	
+     , 	String shippingType	
      , 	String shippingLable	
      , 	float shippingPrice	
      , 	float total	) {
     (new beautytap.ShopAction()).VerifyOrderDetailsOnCheckout(
         	products
          , 	subtotal
+         , 	shippingType
          , 	shippingLable
          , 	shippingPrice
          , 	total)

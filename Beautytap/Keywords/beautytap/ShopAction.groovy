@@ -33,6 +33,7 @@ import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.util.KeywordUtil
 import java.lang.Object
 import beautytap.GeneralAction as GeneralAction
+import beautytap.ShopAction as ShopAction
 import groovy.json.JsonParser
 
 import java.awt.Toolkit;
@@ -41,6 +42,7 @@ import java.awt.datatransfer.Clipboard;
 import org.openqa.selenium.Keys as Keys;
 import org.json.JSONArray
 import org.json.JSONObject
+import org.apache.commons.lang.StringUtils
 
 
 public class ShopAction {
@@ -397,10 +399,10 @@ public class ShopAction {
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 		}
 	}
-	
+
 	//Fill customer information without shipping other address
 	//billingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}
-	
+
 	@Keyword
 	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String accountUsername,String accountPassword,String orderNote){
 		println billingInformation;
@@ -431,7 +433,7 @@ public class ShopAction {
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 		}
 	}
-	
+
 	//Verify product details
 	//color: pink,grey
 	@Keyword
@@ -593,17 +595,114 @@ public class ShopAction {
 	}
 
 	//Verify Check Out Order Details
-	//products: [{"productname":"PRODUCTNAME","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","quantity":"QUANTITY","price":"PRICE"}]
+	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
+	//free shipping price=0
+	//shippingType:normal,EMS,free,freeEMS
 	@Keyword
-	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippingLable,float shippingPrice,float total){
+	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippingType,String shippingLable,float shippingPrice,float total){
+		String result = 'true';
+		float orderSubtotal = 0;
+		
+		//Check product line
+		for(int i;i<products.length();i++){
+			JSONObject obj_product = (JSONObject) products.get(i);
+			String productName = obj_product.get('productname');
+			String variation = obj_product.get('variation');
+			if(variation!=''){
+				productName = productName + ' – ' + variation;
+			}
+			int quantity = Integer.parseInt(obj_product.get('quantity'));
+			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
+			float productTotal = ShopAction.calculateTotal(quantity, price);
+			orderSubtotal = orderSubtotal + productTotal;
+			String xpath = "//td[@class='product-name' and contains(text(),'"+productName+"')]/strong[@class='product-quantity' and text()='× "+ quantity+ "']/ancestor::tr/td[@class='product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			TestObject obj_productLine = new TestObject();
+			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
+			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
+				result = 'false';
+				println "Product "+ i +" in array does not exist";
+			}else{
+				println "Product "+ i +" in array exist";
+			}
+			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
 
-
+		}
+		//Check subtotal
+		TestObject obj_subtotal =new TestObject()
+		obj_subtotal.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='cart-subtotal']/td/span")
+		float currentSubtotal = Float.parseFloat(WebUI.getText(obj_subtotal).trim().replace('$', ''));
+		if(orderSubtotal==currentSubtotal && orderSubtotal==subtotal){
+			println "Subtotal is correct: "+ currentSubtotal;
+		}else{			
+			result = 'false'
+			println "Subtotal product line: "+ orderSubtotal;
+			println "Subtotal sum line: "+ currentSubtotal;
+			println "Subtotal input: "+ subtotal;
+		}
+		//Check shipping
+		//Free shipping/Free EMS shipping
+		if(shippingType=='free' || shippingType=='freeEMS'){
+			TestObject obj_shippingLable = new TestObject();
+			obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='Shipping']");
+			String getShippingText=WebUI.getText(obj_shippingLable);
+			if(StringUtils.containsIgnoreCase(getShippingText, shippingLable)==true){
+				println "Shipping label is: "+shippingLable;
+			}else{
+				result = 'false';
+				println "Shipping label does not contains: "+shippingLable;
+			}
+		//Normal shipping	
+		}else {
+			TestObject obj_shippingSelection,obj_shippingLable,obj_shippingPrice=new TestObject();
+			if(shippingType=='normal'){
+				obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/input");
+				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label");
+				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label/span");
+				
+			}else if(shippingType=='EMS'){
+				obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/input");
+				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label");
+				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label/span");
+			}
+			boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT);
+			String currentLabel =WebUI.getText(obj_shippingLable).trim();
+			float currentShipPrice = WebUI.getText(obj_shippingPrice).trim().replace('$', '');
+			if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
+				println "Expected status: " +radioIsChecked;
+				println "Expected lable: " +currentLabel;
+				println "Expected shipping price: " +currentShipPrice;
+			}else{
+				println "Current status: " +radioIsChecked;
+				println "Expected status: true" ;
+				println "Current lable: " +currentLabel;
+				println "Expected lable: " +shippingLable;
+				println "Current shipping price: " +currentShipPrice;
+				println "Expected shipping price: " + shippingPrice;
+				result = 'false';
+			}
+		}
+		//Check total
+		float currentTotal = currentSubtotal + shippingPrice;
+		TestObject obj_total=new TestObject();
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='order-total']/td/span");
+		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
+		if(currentTotal!=expectedTotal){
+			result = 'false';
+			println "Current total: " +currentTotal;
+			println "Expected total:" +expectedTotal ;
+		}
+		//Check result
+		if(result=='true'){
+			KeywordUtil.markPassed("Keyword VerifyOrderDetailsOnCheckout is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyOrderDetailsOnCheckout is Failed");
+		}
 
 	}
 
 	//Calculate total
 	@Keyword
-	def calculateTotal(int quantity,float price){
+	def public static calculateTotal(int quantity,float price){
 		return Float.parseFloat(String.format("%.2f", price*quantity));
 	}
 }

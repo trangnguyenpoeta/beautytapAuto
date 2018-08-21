@@ -18,8 +18,12 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.testobject.TestObject
 
+import org.json.JSONArray
 import org.json.JSONObject
+import com.kms.katalon.core.testobject.ConditionType
+import org.apache.commons.lang.StringUtils
 
 
 
@@ -47,7 +51,7 @@ float price = 35
 int quantity = 3
 float total= 105
 String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
-
+JSONArray products= new JSONArray('[{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"2","price":"35.00"},{"productname":"Variation product not sale 2 new variation product2","variation":"#001","quantity":"1","price":"77.77"}]')
 JSONObject billingInfo = new JSONObject(json)
 println billingInfo
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
@@ -67,5 +71,6 @@ println billingInfo
 //CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, price, quantity, total)
 //CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 //CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, ''	, '',  '','test')
+//CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, ''	, '',  '','test')
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 147.77, 'free', 'US. Est. 5 working days to ship (after processing)', 0, 147.77)
 

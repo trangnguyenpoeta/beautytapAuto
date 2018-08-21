@@ -22,6 +22,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
+//Set variable
 String productName = GlobalVariable.SIMPLE_PRODUCT
 float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
 String r_string = new Math().random().toString().substring(2, 8)
@@ -32,6 +33,7 @@ int quantity = 3
 float total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
 String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
 JSONObject billingInformation =new JSONObject(json)
+//---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 'VP1: Verify product display in search result panel with regular price'
