@@ -51,7 +51,7 @@ float price = 35
 int quantity = 3
 float total= 105
 String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
-JSONArray products= new JSONArray('[{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"2","price":"35.00"},{"productname":"Variation product not sale 2 new variation product2","variation":"#001","quantity":"1","price":"77.77"}]')
+JSONArray products= new JSONArray('[{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"1","price":"35.00"}]')
 JSONObject billingInfo = new JSONObject(json)
 println billingInfo
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
@@ -72,5 +72,5 @@ println billingInfo
 //CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 //CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
 //CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, ''	, '',  '','test')
-CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 147.77, 'free', 'US. Est. 5 working days to ship (after processing)', 0, 147.77)
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 35.0, 'EMS', '($25) - EMS Express shipping (est. 10-14 working days delivery including processing): $25.00', 25.00, 60)
 

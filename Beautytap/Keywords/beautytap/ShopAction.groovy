@@ -628,8 +628,8 @@ public class ShopAction {
 
 		}
 		//Check subtotal
-		TestObject obj_subtotal =new TestObject()
-		obj_subtotal.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='cart-subtotal']/td/span")
+		TestObject obj_subtotal =new TestObject();
+		obj_subtotal.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='cart-subtotal']/td/span");
 		float currentSubtotal = Float.parseFloat(WebUI.getText(obj_subtotal).trim().replace('$', ''));
 		if(orderSubtotal==currentSubtotal && orderSubtotal==subtotal){
 			println "Subtotal is correct: "+ currentSubtotal;
@@ -644,7 +644,7 @@ public class ShopAction {
 		if(shippingType=='free' || shippingType=='freeEMS'){
 			TestObject obj_shippingLable = new TestObject();
 			obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='Shipping']");
-			String getShippingText=WebUI.getText(obj_shippingLable);
+			String getShippingText = WebUI.getText(obj_shippingLable);
 			if(StringUtils.containsIgnoreCase(getShippingText, shippingLable)==true){
 				println "Shipping label is: "+shippingLable;
 			}else{
@@ -653,33 +653,56 @@ public class ShopAction {
 			}
 		//Normal shipping	
 		}else {
-			TestObject obj_shippingSelection,obj_shippingLable,obj_shippingPrice=new TestObject();
+			
 			if(shippingType=='normal'){
+				TestObject obj_shippingSelection=new TestObject();
+				TestObject obj_shippingLable=new TestObject();
+				TestObject  obj_shippingPrice =new TestObject();
 				obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/input");
 				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label");
 				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label/span");
+				boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
+				String currentLabel =WebUI.getText(obj_shippingLable).trim();
+				float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+				if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
+					println "Expected status: " +radioIsChecked;
+					println "Expected lable: " +currentLabel;
+					println "Expected shipping price: " +currentShipPrice;
+				}else{
+					println "Current status: " +radioIsChecked;
+					println "Expected status: true" ;
+					println "Current lable: " +currentLabel;
+					println "Expected lable: " +shippingLable;
+					println "Current shipping price: " +currentShipPrice;
+					println "Expected shipping price: " + shippingPrice;
+					result = 'false';
+				}
 				
 			}else if(shippingType=='EMS'){
+				TestObject obj_shippingSelection=new TestObject();
+				TestObject obj_shippingLable=new TestObject();
+				TestObject  obj_shippingPrice =new TestObject();
 				obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/input");
 				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label");
 				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label/span");
+				boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
+				String currentLabel =WebUI.getText(obj_shippingLable).trim();
+				float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+				if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
+					println "Expected status: " +radioIsChecked;
+					println "Expected lable: " +currentLabel;
+					println "Expected shipping price: " +currentShipPrice;
+				}else{
+					println "Current status: " +radioIsChecked;
+					println "Expected status: true" ;
+					println "Current lable: " +currentLabel;
+					println "Expected lable: " +shippingLable;
+					println "Current shipping price: " +currentShipPrice;
+					println "Expected shipping price: " + shippingPrice;
+					result = 'false';
+				}
 			}
-			boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT);
-			String currentLabel =WebUI.getText(obj_shippingLable).trim();
-			float currentShipPrice = WebUI.getText(obj_shippingPrice).trim().replace('$', '');
-			if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
-				println "Expected status: " +radioIsChecked;
-				println "Expected lable: " +currentLabel;
-				println "Expected shipping price: " +currentShipPrice;
-			}else{
-				println "Current status: " +radioIsChecked;
-				println "Expected status: true" ;
-				println "Current lable: " +currentLabel;
-				println "Expected lable: " +shippingLable;
-				println "Current shipping price: " +currentShipPrice;
-				println "Expected shipping price: " + shippingPrice;
-				result = 'false';
-			}
+			
 		}
 		//Check total
 		float currentTotal = currentSubtotal + shippingPrice;
