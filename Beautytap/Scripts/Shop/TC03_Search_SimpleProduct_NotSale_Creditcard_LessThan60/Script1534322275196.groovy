@@ -31,11 +31,13 @@ String email = 'auto' + r_string + '@mailinator.com'
 String orderNote = 'auto' + r_string + 'Order'
 int currentNumberItemInCart
 int quantity = 3
-float total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
+float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
+float total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, subtotal+GlobalVariable.SHIPPING_PRICE)
 JSONArray products = new JSONArray('[{"productname":"'+ GlobalVariable.SIMPLE_PRODUCT +'","variation":"","quantity":"'+ quantity +'","price":"'+ GlobalVariable.SIMPLE_PRODUCT_PRICE +'"}]')
 JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
 String shippingLabel = GlobalVariable.SHIPPING_LABEL
 float shippingPrice = GlobalVariable.SHIPPING_PRICE
+String shippingType = 'normal'
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
@@ -53,6 +55,9 @@ CustomKeywords.'beautytap.ShopAction.goToCart'()
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, total)
 CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', orderNote)
+'VP5: Verify order details on checkout page'
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
+
 'VP5: Verify order details: product, quantity,subtotal,shipping,total'
 CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
 'VP6: Verify order recieive with correct information: Date,Total,Payment method'
