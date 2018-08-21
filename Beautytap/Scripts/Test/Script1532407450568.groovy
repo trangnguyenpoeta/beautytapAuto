@@ -73,4 +73,5 @@ println billingInfo
 //CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
 //CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, ''	, '',  '','test')
 //CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 35.0, 'EMS', '($25) - EMS Express shipping (est. 10-14 working days delivery including processing): $25.00', 25.00, 60)
-CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, 35, 12.5, '($12.50) Pantos (est. 14-25 working days including processing)', 'Credit Card Payment', 47.5)
+//CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, 35, 12.5, '($12.50) Pantos (est. 14-25 working days including processing)', 'Credit Card Payment', 47.5)
+println  CustomKeywords.'beautytap.ShopAction.getOrderNumberOnOrderReceived'()

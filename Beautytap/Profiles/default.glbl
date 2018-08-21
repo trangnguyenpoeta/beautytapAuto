@@ -161,12 +161,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'($12.50) Pantos (est. 14-25 working days including processing)'</initValue>
       <name>SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>12.50</initValue>
       <name>SHIPPING_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

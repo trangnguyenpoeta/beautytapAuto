@@ -3,6 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import org.json.JSONArray
 import org.json.JSONObject
 
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
@@ -31,8 +32,10 @@ String orderNote = 'auto' + r_string + 'Order'
 int currentNumberItemInCart
 int quantity = 3
 float total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
-String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
-JSONObject billingInformation =new JSONObject(json)
+JSONArray products = new JSONArray('[{"productname":"'+ GlobalVariable.SIMPLE_PRODUCT +'","variation":"","quantity":"'+ quantity +'","price":"'+ GlobalVariable.SIMPLE_PRODUCT_PRICE +'"}]')
+JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
+String shippingLabel = GlobalVariable.SHIPPING_LABEL
+float shippingPrice = GlobalVariable.SHIPPING_PRICE
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)

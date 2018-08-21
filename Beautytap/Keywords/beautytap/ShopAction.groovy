@@ -1,4 +1,3 @@
-
 package beautytap
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
@@ -44,10 +43,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.apache.commons.lang.StringUtils
 
-
-public class ShopAction {
-
-	//Search product or article by clicking Search icon in Header
+//Search product or article by clicking Search icon in Header
 	@Keyword
 	def globalSearch(String keyword) {
 		//Set Clipboard
@@ -664,6 +660,7 @@ public class ShopAction {
 				boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
 				String currentLabel =WebUI.getText(obj_shippingLable).trim();
 				float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+				shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
 				if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
 					println "Expected status: " +radioIsChecked;
 					println "Expected lable: " +currentLabel;
@@ -830,4 +827,11 @@ public class ShopAction {
 
 	}
 	
-}
+	//Get order number on Order received
+	@Keyword
+	def getOrderNumberOnOrderReceived(){
+		TestObject obj_orderNumber=new TestObject();
+		obj_orderNumber.addProperty("xpath",ConditionType.EQUALS,"//li[contains(text(),'Order number:')]/strong");
+		return WebUI.getText(obj_orderNumber).trim();
+	}
+	
