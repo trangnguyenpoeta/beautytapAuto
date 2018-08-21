@@ -93,7 +93,7 @@ public class ShopAction {
 		if(salePrice==null){
 			salePrice = 0;
 		}
-		
+
 		if(regularPriceColor!=null && regularPriceColor=="pink"){
 			regularPriceColor = "rgba(255, 35, 134, 1)";
 		}
@@ -363,10 +363,11 @@ public class ShopAction {
 		String billingEmail = billingInformation.get("email");
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
-		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
-		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingZip'), billingZip);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
 		if(createAccount=='yes'){
@@ -385,21 +386,56 @@ public class ShopAction {
 			WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_shipToDifferentAddress'));
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingFirstName'), shippingFirstName);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingLastName'), shippingLastName);
-			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingCountry'), shippingCountry);
+			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingCountry'), shippingCountry,false);
+			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingAddress'), shippingAddress);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingCity'), shippingCity);
-			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingState'), shippingState);
+			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingState'), shippingState,false);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingZip'), shippingZip);
 		}
 		if(orderNote!=''){
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 		}
 	}
-
+	
+	//Fill customer information without shipping other address
+	//billingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}
+	
+	@Keyword
+	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String accountUsername,String accountPassword,String orderNote){
+		println billingInformation;
+		String billingFirstName = billingInformation.get("firstname");
+		String billingLastName = billingInformation.get("lastname");
+		String billingCountry = billingInformation.get("country");
+		String billingAddress = billingInformation.get("address");
+		String billingCity = billingInformation.get("city");
+		String billingState = billingInformation.get("state");
+		String billingZip = billingInformation.get("zip");
+		String billingEmail = billingInformation.get("email");
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingZip'), billingZip);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
+		if(createAccount=='yes'){
+			WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_createAccount'));
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountUserName'), accountUsername);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountPassword'), accountPassword);
+		}
+		WebUI.uncheck(findTestObject('Object Repository/Page_Checkout/chk_shipToDifferentAddress'));
+		if(orderNote!=''){
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
+		}
+	}
+	
 	//Verify product details
 	//color: pink,grey
 	@Keyword
-	def VerifyProductDetails(String productName,String variation,String regularPrice,String regularPriceColor,String salePrice,String salePriceColor){
+	def VerifyProductDetails(String productName,String variation,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor){
 		if(variation==null){
 			variation ='';
 		}
@@ -410,7 +446,7 @@ public class ShopAction {
 			regularPriceColor='';
 		}
 		if(salePrice==null){
-			salePrice='';
+			salePrice=0;
 		}
 		if(salePriceColor==null){
 			salePriceColor='';
@@ -439,10 +475,10 @@ public class ShopAction {
 		//Simple product
 		if(variation ==''){
 			//Simple not sale
-			if(salePrice==''){
+			if(salePrice==0){
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/span");
-				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				float currentResularPrice= Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price: " + currentResularPrice;
 				println regularPrice;
 				if(currentResularPrice!=regularPrice){
@@ -460,7 +496,7 @@ public class ShopAction {
 				//Regular price
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/del/span");
-				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				float currentResularPrice= Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price: " + currentResularPrice;
 				println regularPrice;
 				if(currentResularPrice!=regularPrice){
@@ -475,7 +511,7 @@ public class ShopAction {
 				//Sale price
 				TestObject obj_salePrice=new TestObject();
 				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//h4[@class='price']/ins/span");
-				String currentSalePrice= WebUI.getText(obj_salePrice).trim().replace('$', '');
+				float currentSalePrice= Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$', ''));
 				println "Current salse price: " + currentSalePrice;
 				println salePrice;
 				if(currentSalePrice!=salePrice){
@@ -496,10 +532,10 @@ public class ShopAction {
 			}
 
 			//Variation not sale
-			if(salePrice==''){
+			if(salePrice==0){
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
-				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				float currentResularPrice= Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price: " + currentResularPrice;
 				println regularPrice;
 				if(currentResularPrice!=regularPrice){
@@ -517,7 +553,7 @@ public class ShopAction {
 				//Regular price
 				TestObject obj_regularPrice=new TestObject();
 				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='old-price']/span");
-				String currentResularPrice= WebUI.getText(obj_regularPrice).trim().replace('$', '');
+				float currentResularPrice= Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price: " + currentResularPrice;
 				println regularPrice;
 				if(currentResularPrice!=regularPrice){
@@ -532,7 +568,7 @@ public class ShopAction {
 				//Sale price
 				TestObject obj_salePrice=new TestObject();
 				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
-				String currentSalePrice= WebUI.getText(obj_salePrice).trim().replace('$', '');
+				float currentSalePrice= Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$', ''));
 				println "Current salse price: " + currentSalePrice;
 				println salePrice;
 				if(currentSalePrice!=salePrice){
@@ -560,11 +596,11 @@ public class ShopAction {
 	//products: [{"productname":"PRODUCTNAME","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","quantity":"QUANTITY","price":"PRICE"}]
 	@Keyword
 	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippingLable,float shippingPrice,float total){
-		
-		
+
+
 
 	}
-	
+
 	//Calculate total
 	@Keyword
 	def calculateTotal(int quantity,float price){

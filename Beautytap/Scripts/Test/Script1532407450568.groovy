@@ -46,7 +46,7 @@ String variation="1 set (10ea)"
 float price = 35
 int quantity = 3
 float total= 105
-String json = '{"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}'
+String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
 
 JSONObject billingInfo = new JSONObject(json)
 println billingInfo
@@ -67,5 +67,5 @@ println billingInfo
 //CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, price, quantity, total)
 //CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 //CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, resetpass_subject, email, null, username)
+CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, ''	, '',  '','test')
 

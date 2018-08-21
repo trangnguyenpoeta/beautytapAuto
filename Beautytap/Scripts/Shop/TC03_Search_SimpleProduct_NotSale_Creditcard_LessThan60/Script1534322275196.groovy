@@ -32,23 +32,23 @@ int quantity = 3
 float total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
 String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
 JSONObject billingInformation =new JSONObject(json)
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-//CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 'VP1: Verify product display in search result panel with regular price'
-//CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, price, "pink", 0, null)
-//CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, price, "pink", 0, null)
+CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
 'VP2: Verify product detail page display with regular price'
-CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price.toString(), "pink", null, null)
+CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price, "pink", 0, null)
 'VP3:Verify message display: “PRODUCT_NAME” has been added to your cart.'
-//currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
-//CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
-//CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemInCart+quantity)
-//CustomKeywords.'beautytap.ShopAction.goToCart'()
+currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
+CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
+CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemInCart+quantity)
+CustomKeywords.'beautytap.ShopAction.goToCart'()
 'VP4:Verify product is added to cart with the correct price and quantity'
-//CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, total)
-//CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-//CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', '', '', orderNote)
+CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, total)
+CustomKeywords.'beautytap.ShopAction.processToCheckout'()
+CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', orderNote)
 'VP5: Verify order details: product, quantity,subtotal,shipping,total'
-//CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
+CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
 'VP6: Verify order recieive with correct information: Date,Total,Payment method'
 

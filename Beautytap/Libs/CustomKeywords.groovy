@@ -232,12 +232,26 @@ def static "beautytap.ShopAction.fillCustomerInformation"(
          , 	orderNote)
 }
 
+def static "beautytap.ShopAction.fillCustomerInformation"(
+    	JSONObject billingInformation	
+     , 	String createAccount	
+     , 	String accountUsername	
+     , 	String accountPassword	
+     , 	String orderNote	) {
+    (new beautytap.ShopAction()).fillCustomerInformation(
+        	billingInformation
+         , 	createAccount
+         , 	accountUsername
+         , 	accountPassword
+         , 	orderNote)
+}
+
 def static "beautytap.ShopAction.VerifyProductDetails"(
     	String productName	
      , 	String variation	
-     , 	String regularPrice	
+     , 	float regularPrice	
      , 	String regularPriceColor	
-     , 	String salePrice	
+     , 	float salePrice	
      , 	String salePriceColor	) {
     (new beautytap.ShopAction()).VerifyProductDetails(
         	productName
