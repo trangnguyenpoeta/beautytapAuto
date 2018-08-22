@@ -315,8 +315,8 @@ def checkoutViaAmazonPay(String page,String amazonEmail,String amazonPassword) {
 	GeneralAction.enterText(findTestObject('Object Repository/Popup_Amazon/txt_password'), amazonPassword);
 	WebUI.click(findTestObject('Object Repository/Popup_Amazon/btn_signin'));
 	WebUI.switchToWindowIndex(0);
-	WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
-	WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
+	WebUI.delay(GlobalVariable.TIMEOUT);
+	WebUI.waitForElementClickable(findTestObject('Object Repository/Page_Checkout/chk_terms'), GlobalVariable.TIMEOUT);
 	WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
 	WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
 	WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
@@ -430,7 +430,7 @@ def fillCustomerInformation(JSONObject billingInformation,String createAccount,S
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
-	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);	
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);

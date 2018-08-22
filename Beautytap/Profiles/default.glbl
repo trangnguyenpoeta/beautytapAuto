@@ -171,12 +171,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'US. Est. 5 working days to ship (after processing)'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'Free EMS shipping (over $200)'</initValue>
       <name>FREE_EMS_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

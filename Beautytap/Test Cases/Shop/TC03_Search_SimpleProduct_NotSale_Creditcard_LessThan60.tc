@@ -3,6 +3,6 @@
    <description></description>
    <name>TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60</name>
    <tag></tag>
-   <comment>VP6: Verify order recieive with correct information: Date,Total,Payment method</comment>
+   <comment></comment>
    <testCaseGuid>a233b773-f251-4038-8251-c5720124d7b5</testCaseGuid>
 </TestCaseEntity>

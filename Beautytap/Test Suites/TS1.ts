@@ -4,7 +4,7 @@
    <name>TS1</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-08-17T11:29:30</lastRun>
+   <lastRun>2018-08-22T14:34:05</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -28,5 +28,11 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>da50105a-9f2a-4138-a193-0775a1a4a5d0</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Shop/TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

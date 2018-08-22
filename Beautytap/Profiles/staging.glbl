@@ -161,22 +161,22 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'($12.50) Pantos (est. 14-25 working days including processing)'</initValue>
       <name>SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>12.50</initValue>
       <name>SHIPPING_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'Free shipping (over $60)'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'Free EMS shipping (over $200)'</initValue>
       <name>FREE_EMS_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

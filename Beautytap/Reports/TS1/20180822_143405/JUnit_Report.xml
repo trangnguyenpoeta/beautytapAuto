@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="TS1" time="479" tests="2" failures="1" errors="0">
+   <testsuite name="TS1" tests="2" failures="1" errors="0" time="479" timestamp="2018-08-22 14:34:07" hostname="Trang Nguyen - DESKTOP-G1UHP65" id="Test Suites/TS1">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405"/>
+         <property name="logFiles" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\execution0.log"/>
+         <property name="attachments" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\1534923542615.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\1534923623555.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\1534923667075.png"/>
+         <property name="hostName" value="Trang Nguyen - DESKTOP-G1UHP65"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="5.5.0.1"/>
+         <property name="browser" value="Chrome 68.0.3440.106"/>
+         <property name="hostAddress" value="10.0.0.151"/>
+         <property name="sessionId" value="4ae17ecc15b99fa91b152a2b2d59a22e"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email" classname="Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email" status="PASSED">
+         <system-out><![CDATA[2018-08-22 14:34:08 - [TEST_CASE][PASSED] - Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email: Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - username = "auto" + r_string: null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - email = username + "@mailinator.com": null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - password = "123456": null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - newpassword = "test123": null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - name = "Auto User " + r_string: null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - birthday = "01/01/1990": null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - activation_subject = SITE_TITLE + " Activate your account": null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - Statement - resetpass_subject = SITE_TITLE + " Password Reset": null
+
+2018-08-22 14:34:08 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-08-22 14:34:37 - [MESSAGE][PASSED] - Browser is opened with url: 'https://staging.beautytap.com'
+
+2018-08-22 14:34:38 - [MESSAGE][PASSED] - Current window maximized
+
+2018-08-22 14:34:51 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-08-22 14:34:51 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:34:51 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-08-22 14:34:51 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:34:56 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_signup' is clicked on
+
+2018-08-22 14:34:56 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:34:56 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:34:56 - [TEST_STEP][PASSED] - beautytap.GeneralAction.signup: beautytap.GeneralAction.signup is PASSED
+
+2018-08-22 14:34:56 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_Signup/txt_username'
+
+2018-08-22 14:34:56 - [MESSAGE][PASSED] - Keys 'auto107389@mailinator.com' sent to object: 'Object Repository/Page_Signup/txt_email'
+
+2018-08-22 14:34:57 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Page_Signup/txt_password'
+
+2018-08-22 14:34:57 - [MESSAGE][PASSED] - Keys 'Auto User 107389' sent to object: 'Object Repository/Page_Signup/txt_name'
+
+2018-08-22 14:34:57 - [MESSAGE][PASSED] - Keys '01/01/1990' sent to object: 'Object Repository/Page_Signup/txt_birthday'
+
+2018-08-22 14:34:58 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Signup/btn_signup' is clicked on
+
+2018-08-22 14:34:58 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:34:58 - [MESSAGE][PASSED] - beautytap.GeneralAction.signup is PASSED
+
+2018-08-22 14:34:58 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_Signup/lbl_sucessMessage' is present
+
+2018-08-22 14:35:02 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Signup/lbl_sucessMessage' is present
+
+2018-08-22 14:35:02 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openMailBox: beautytap.GeneralAction.openMailBox is PASSED
+
+2018-08-22 14:35:05 - [MESSAGE][PASSED] - Navigate to 'https://www.mailinator.com' successfully
+
+2018-08-22 14:35:05 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:05 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_mailinator/txt_email'
+
+2018-08-22 14:35:07 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_mailinator/btn_go' is clicked on
+
+2018-08-22 14:35:07 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:09 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-08-22 14:35:09 - [MESSAGE][PASSED] - beautytap.GeneralAction.openMailBox is PASSED
+
+2018-08-22 14:35:09 - [TEST_STEP][PASSED] - beautytap.GeneralAction.verifyEmailExist: beautytap.GeneralAction.verifyEmailExist is PASSED
+
+2018-08-22 14:35:09 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:35:09 - [MESSAGE][PASSED] - beautytap.GeneralAction.verifyEmailExist is PASSED
+
+2018-08-22 14:35:09 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openEmail: beautytap.GeneralAction.openEmail is PASSED
+
+2018-08-22 14:35:09 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-08-22 14:35:09 - [MESSAGE][PASSED] - beautytap.GeneralAction.openEmail is PASSED
+
+2018-08-22 14:35:09 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickEmailLink: beautytap.GeneralAction.clickEmailLink is PASSED
+
+2018-08-22 14:35:10 - [MESSAGE][PASSED] - Text of object '' is: 'https://staging.beautytap.com/activate/iLh3BaWixaX4z20ZsAihatnUIVPSn6GS/'
+
+2018-08-22 14:35:18 - [MESSAGE][PASSED] - Navigate to 'https://staging.beautytap.com/activate/iLh3BaWixaX4z20ZsAihatnUIVPSn6GS/' successfully
+
+2018-08-22 14:35:18 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickEmailLink is PASSED
+
+2018-08-22 14:35:18 - [TEST_STEP][PASSED] - waitForPageLoad: Wait for page load successfully
+
+2018-08-22 14:35:18 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:18 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_General/lbl_activeSuccessMessage' is present
+
+2018-08-22 14:35:18 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/lbl_activeSuccessMessage' is present
+
+2018-08-22 14:35:18 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_login' is clicked on
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:35:22 - [TEST_STEP][PASSED] - beautytap.GeneralAction.login: beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_username' is cleared
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_login/txt_username'
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_password' is cleared
+
+2018-08-22 14:35:22 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Page_login/txt_password'
+
+2018-08-22 14:35:23 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_login/btn_login' is clicked on
+
+2018-08-22 14:35:23 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:23 - [MESSAGE][PASSED] - beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:35:23 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:35:38 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:35:38 - [TEST_STEP][PASSED] - beautytap.GeneralAction.logout: beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:35:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_avatar' is clicked on
+
+2018-08-22 14:35:39 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/menu_logout' is present
+
+2018-08-22 14:35:39 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/menu_logout' is clicked on
+
+2018-08-22 14:35:39 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:39 - [MESSAGE][PASSED] - beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:35:39 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:35:55 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_login' is clicked on
+
+2018-08-22 14:35:55 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:55 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:35:55 - [TEST_STEP][PASSED] - beautytap.GeneralAction.login: beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:35:55 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_username' is cleared
+
+2018-08-22 14:35:55 - [MESSAGE][PASSED] - Keys 'auto107389@mailinator.com' sent to object: 'Object Repository/Page_login/txt_username'
+
+2018-08-22 14:35:55 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_password' is cleared
+
+2018-08-22 14:35:56 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Page_login/txt_password'
+
+2018-08-22 14:35:56 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_login/btn_login' is clicked on
+
+2018-08-22 14:35:56 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:35:56 - [MESSAGE][PASSED] - beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:35:56 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:36:12 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:36:12 - [TEST_STEP][PASSED] - beautytap.GeneralAction.logout: beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:36:12 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_avatar' is clicked on
+
+2018-08-22 14:36:13 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/menu_logout' is present
+
+2018-08-22 14:36:13 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/menu_logout' is clicked on
+
+2018-08-22 14:36:13 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:36:13 - [MESSAGE][PASSED] - beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:36:13 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:36:29 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_login' is clicked on
+
+2018-08-22 14:36:29 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:36:29 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:36:29 - [TEST_STEP][PASSED] - click: Object: 'Object Repository/Page_Login/link_forgotPassword' is clicked on
+
+2018-08-22 14:36:33 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Login/link_forgotPassword' is clicked on
+
+2018-08-22 14:36:33 - [TEST_STEP][PASSED] - sendKeys: Keys 'auto107389' sent to object: 'Object Repository/Page_ForgotPassword/txt_usernameOrEmail'
+
+2018-08-22 14:36:34 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_ForgotPassword/txt_usernameOrEmail'
+
+2018-08-22 14:36:34 - [TEST_STEP][PASSED] - click: Object: 'Object Repository/Page_ForgotPassword/btn_forgotPassword' is clicked on
+
+2018-08-22 14:36:34 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_ForgotPassword/btn_forgotPassword' is clicked on
+
+2018-08-22 14:36:34 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_ForgotPassword/lbl_sucessMessage' is present
+
+2018-08-22 14:36:38 - [MESSAGE][PASSED] - Object 'Object Repository/Page_ForgotPassword/lbl_sucessMessage' is present
+
+2018-08-22 14:36:38 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openMailBox: beautytap.GeneralAction.openMailBox is PASSED
+
+2018-08-22 14:36:39 - [MESSAGE][PASSED] - Navigate to 'https://www.mailinator.com' successfully
+
+2018-08-22 14:36:39 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:36:40 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_mailinator/txt_email'
+
+2018-08-22 14:36:41 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_mailinator/btn_go' is clicked on
+
+2018-08-22 14:36:41 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:36:41 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-08-22 14:36:41 - [MESSAGE][PASSED] - beautytap.GeneralAction.openMailBox is PASSED
+
+2018-08-22 14:36:41 - [TEST_STEP][PASSED] - beautytap.GeneralAction.verifyEmailExist: beautytap.GeneralAction.verifyEmailExist is PASSED
+
+2018-08-22 14:36:42 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:36:42 - [MESSAGE][PASSED] - beautytap.GeneralAction.verifyEmailExist is PASSED
+
+2018-08-22 14:36:42 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openEmail: beautytap.GeneralAction.openEmail is PASSED
+
+2018-08-22 14:36:42 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-08-22 14:36:42 - [MESSAGE][PASSED] - beautytap.GeneralAction.openEmail is PASSED
+
+2018-08-22 14:36:42 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickEmailLink: beautytap.GeneralAction.clickEmailLink is PASSED
+
+2018-08-22 14:36:43 - [MESSAGE][PASSED] - Text of object '' is: 'https://staging.beautytap.com/wp-login.php?action=rp&key=DKbOeOcqfX6i1sHAQnaa&login=auto107389'
+
+2018-08-22 14:36:51 - [MESSAGE][PASSED] - Navigate to 'https://staging.beautytap.com/wp-login.php?action=rp&key=DKbOeOcqfX6i1sHAQnaa&login=auto107389' successfully
+
+2018-08-22 14:36:51 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickEmailLink is PASSED
+
+2018-08-22 14:36:51 - [TEST_STEP][PASSED] - delay: Delayed 20 second(s)
+
+2018-08-22 14:37:11 - [MESSAGE][PASSED] - Delayed 20 second(s)
+
+2018-08-22 14:37:11 - [TEST_STEP][PASSED] - clearText: Text of object 'Object Repository/Page_ForgotPassword/txt_newPassword' is cleared
+
+2018-08-22 14:37:12 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_ForgotPassword/txt_newPassword' is cleared
+
+2018-08-22 14:37:12 - [TEST_STEP][PASSED] - sendKeys: Keys 'test123' sent to object: 'Object Repository/Page_ForgotPassword/txt_newPassword'
+
+2018-08-22 14:37:12 - [MESSAGE][PASSED] - Keys 'test123' sent to object: 'Object Repository/Page_ForgotPassword/txt_newPassword'
+
+2018-08-22 14:37:12 - [TEST_STEP][PASSED] - click: Object: 'Object Repository/Page_ForgotPassword/btn_resetPassword' is clicked on
+
+2018-08-22 14:37:17 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_ForgotPassword/btn_resetPassword' is clicked on
+
+2018-08-22 14:37:17 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_ForgotPassword/lbl_resetPasswordMessage' is present
+
+2018-08-22 14:37:17 - [MESSAGE][PASSED] - Object 'Object Repository/Page_ForgotPassword/lbl_resetPasswordMessage' is present
+
+2018-08-22 14:37:17 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:37:21 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_login' is clicked on
+
+2018-08-22 14:37:21 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:37:21 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:37:21 - [TEST_STEP][PASSED] - beautytap.GeneralAction.login: beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:37:21 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_username' is cleared
+
+2018-08-22 14:37:21 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_login/txt_username'
+
+2018-08-22 14:37:21 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_password' is cleared
+
+2018-08-22 14:37:22 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Page_login/txt_password'
+
+2018-08-22 14:37:22 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_login/btn_login' is clicked on
+
+2018-08-22 14:37:22 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:37:22 - [MESSAGE][PASSED] - beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:37:22 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/Page_Login/lbl_errorMessage' are matched.
+
+2018-08-22 14:37:23 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/Page_Login/lbl_errorMessage' are matched.
+
+2018-08-22 14:37:23 - [TEST_STEP][PASSED] - beautytap.GeneralAction.login: beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:37:23 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_username' is cleared
+
+2018-08-22 14:37:24 - [MESSAGE][PASSED] - Keys 'auto107389' sent to object: 'Object Repository/Page_login/txt_username'
+
+2018-08-22 14:37:24 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_password' is cleared
+
+2018-08-22 14:37:24 - [MESSAGE][PASSED] - Keys 'test123' sent to object: 'Object Repository/Page_login/txt_password'
+
+2018-08-22 14:37:24 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_login/btn_login' is clicked on
+
+2018-08-22 14:37:24 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:37:24 - [MESSAGE][PASSED] - beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:37:24 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:37:38 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:37:38 - [TEST_STEP][PASSED] - beautytap.GeneralAction.logout: beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:37:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_avatar' is clicked on
+
+2018-08-22 14:37:39 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/menu_logout' is present
+
+2018-08-22 14:37:39 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/menu_logout' is clicked on
+
+2018-08-22 14:37:39 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:37:39 - [MESSAGE][PASSED] - beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:37:39 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:37:54 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_login' is clicked on
+
+2018-08-22 14:37:54 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:37:54 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-08-22 14:37:54 - [TEST_STEP][PASSED] - beautytap.GeneralAction.login: beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:37:54 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_username' is cleared
+
+2018-08-22 14:37:54 - [MESSAGE][PASSED] - Keys 'auto107389@mailinator.com' sent to object: 'Object Repository/Page_login/txt_username'
+
+2018-08-22 14:37:55 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_password' is cleared
+
+2018-08-22 14:37:55 - [MESSAGE][PASSED] - Keys 'test123' sent to object: 'Object Repository/Page_login/txt_password'
+
+2018-08-22 14:37:55 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_login/btn_login' is clicked on
+
+2018-08-22 14:37:55 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:37:55 - [MESSAGE][PASSED] - beautytap.GeneralAction.login is PASSED
+
+2018-08-22 14:37:55 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:38:09 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/link_avatar' is present
+
+2018-08-22 14:38:09 - [TEST_STEP][PASSED] - beautytap.GeneralAction.logout: beautytap.GeneralAction.logout is PASSED
+
+2018-08-22 14:38:09 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_avatar' is clicked on
+
+2018-08-22 14:38:10 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/menu_logout' is present
+
+2018-08-22 14:38:10 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/menu_logout' is clicked on
+
+2018-08-22 14:38:10 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:38:11 - [MESSAGE][PASSED] - Browser is closed
+
+2018-08-22 14:38:11 - [MESSAGE][PASSED] - beautytap.GeneralAction.logout is PASSED]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser" classname="Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser" status="FAILED">
+         <failure type="FAILED" message="Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)"/>
+         <system-out><![CDATA[2018-08-22 14:38:11 - [TEST_CASE][FAILED] - Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser: Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser FAILED because (of) Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)
+
+2018-08-22 14:38:11 - [TEST_STEP][FAILED] - beautytap.AdminAction.deleteUser: Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)
+
+2018-08-22 14:38:21 - [MESSAGE][PASSED] - Browser is opened with url: 'https://staging.beautytap.com/login'
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Current window maximized
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_username' is cleared
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Keys 'mrwhite' sent to object: 'Object Repository/Page_login/txt_username'
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_login/txt_password' is cleared
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Keys 'kgySM$Im' sent to object: 'Object Repository/Page_login/txt_password'
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_login/btn_login' is clicked on
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:38:22 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:38:31 - [MESSAGE][PASSED] - Navigate to 'https://staging.beautytap.com/admin' successfully
+
+2018-08-22 14:38:31 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:39:02 - [MESSAGE][FAILED] - Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\1534923542615.png]]
+
+2018-08-22 14:39:02 - [MESSAGE][FAILED] - Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)]]></system-out>
+         <system-err><![CDATA[2018-08-22 14:38:11 - [TEST_CASE][FAILED] - Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser: Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser FAILED because (of) Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Shop/TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60" classname="Test Cases/Shop/TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60" status="PASSED">
+         <system-out><![CDATA[2018-08-22 14:39:02 - [TEST_CASE][PASSED] - Test Cases/Shop/TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60: Test Cases/Shop/TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - productName = SIMPLE_PRODUCT: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - price = SIMPLE_PRODUCT_PRICE: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - email = "auto" + r_string + "@mailinator.com": null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - orderNote = "auto" + r_string + "Order": null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - quantity = 1: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-08-22 14:39:03 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - total = subtotal + SHIPPING_PRICE: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-08-22 14:39:03 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - products = new org.json.JSONArray((((((([{"productname":" + internal.GlobalVariable.SIMPLE_PRODUCT) + ","variation":"","quantity":") + quantity) + ","price":") + internal.GlobalVariable.SIMPLE_PRODUCT_PRICE) + "}])): null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "})): null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - shippingLabel = SHIPPING_LABEL: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - shippingPrice = SHIPPING_PRICE: null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - shippingType = "normal": null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - Statement - paymentMethod = "Credit Card Payment": null
+
+2018-08-22 14:39:03 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-08-22 14:39:03 - [MESSAGE][WARNING] - A browser is already opened. Closing browser and opening a new one
+
+2018-08-22 14:39:22 - [MESSAGE][PASSED] - Browser is opened with url: 'https://staging.beautytap.com'
+
+2018-08-22 14:39:23 - [MESSAGE][PASSED] - Current window maximized
+
+2018-08-22 14:39:32 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-08-22 14:39:32 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:39:32 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-08-22 14:39:32 - [TEST_STEP][PASSED] - beautytap.ShopAction.globalSearch: beautytap.ShopAction.globalSearch is PASSED
+
+2018-08-22 14:39:32 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_search' is clicked on
+
+2018-08-22 14:39:37 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-08-22 14:39:37 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_General/txt_search' is cleared
+
+2018-08-22 14:39:37 - [MESSAGE][PASSED] - Keys 'CONTROL + v' sent to object: 'Object Repository/Page_General/txt_search'
+
+2018-08-22 14:39:39 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/div_searchResult' is present
+
+2018-08-22 14:39:39 - [MESSAGE][PASSED] - beautytap.ShopAction.globalSearch is PASSED
+
+2018-08-22 14:39:39 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductOnSearchResult: Keyword VerifyProductOnSearchResult is Passed
+
+2018-08-22 14:39:39 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:39:40 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-08-22 14:39:40 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-08-22 14:39:40 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-08-22 14:39:40 - [MESSAGE][PASSED] - Keyword VerifyProductOnSearchResult is Passed
+
+2018-08-22 14:39:40 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductOnSearchResult: beautytap.ShopAction.selectProductOnSearchResult is PASSED
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductOnSearchResult is PASSED
+
+2018-08-22 14:39:52 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductDetails: Keyword VerifyProductDetails is Passed
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - Text of object '' is: 'La Muse Correct Care Complete Cushion SPF50+/PA+++'
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-08-22 14:39:52 - [MESSAGE][PASSED] - Keyword VerifyProductDetails is Passed
+
+2018-08-22 14:39:52 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(): beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-08-22 14:40:23 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\1534923623555.png]]
+
+2018-08-22 14:40:23 - [MESSAGE][PASSED] - beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-08-22 14:40:23 - [TEST_STEP][PASSED] - beautytap.ShopAction.addProductToCart: beautytap.ShopAction.addProductToCart is PASSED
+
+2018-08-22 14:40:24 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Shop/txt_quantity' is cleared
+
+2018-08-22 14:40:24 - [MESSAGE][PASSED] - Keys '1' sent to object: 'Object Repository/Page_Shop/txt_quantity'
+
+2018-08-22 14:40:24 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/btn_addToCart' is clicked on
+
+2018-08-22 14:40:24 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:40:35 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Shop/lbl_message' is present
+
+2018-08-22 14:40:35 - [MESSAGE][PASSED] - beautytap.ShopAction.addProductToCart is PASSED
+
+2018-08-22 14:40:35 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyNumberItemInCart: Keyword VerifyNumberItemInCart is Passed, Number item in cart is 1, expected is 1
+
+2018-08-22 14:40:35 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:40:35 - [MESSAGE][PASSED] - Text of object '' is: '1'
+
+2018-08-22 14:40:35 - [MESSAGE][PASSED] - Keyword VerifyNumberItemInCart is Passed, Number item in cart is 1, expected is 1
+
+2018-08-22 14:40:35 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart: beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-08-22 14:41:07 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='woocommerce-message' and contains(text(),'La Muse Correct Care Complete Cushion SPF50+/PA+++” have been added to your cart.')]' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\TS1\\20180822_143405\\1534923667075.png]]
+
+2018-08-22 14:41:07 - [MESSAGE][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-08-22 14:41:07 - [TEST_STEP][PASSED] - beautytap.ShopAction.goToCart: beautytap.ShopAction.goToCart is PASSED
+
+2018-08-22 14:41:13 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_cart' is clicked on
+
+2018-08-22 14:41:13 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:41:13 - [MESSAGE][PASSED] - beautytap.ShopAction.goToCart is PASSED
+
+2018-08-22 14:41:13 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductInCart: Keyword VerifyProductInCart is Passed
+
+2018-08-22 14:41:13 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:41:14 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-08-22 14:41:14 - [MESSAGE][PASSED] - Attribute 'value' of object '' is: '1'
+
+2018-08-22 14:41:14 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-08-22 14:41:14 - [MESSAGE][PASSED] - Keyword VerifyProductInCart is Passed
+
+2018-08-22 14:41:14 - [TEST_STEP][PASSED] - beautytap.ShopAction.processToCheckout: beautytap.ShopAction.processToCheckout is PASSED
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Cart/btn_checkout' is clicked on
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - beautytap.ShopAction.processToCheckout is PASSED
+
+2018-08-22 14:41:20 - [TEST_STEP][PASSED] - beautytap.ShopAction.fillCustomerInformation: beautytap.ShopAction.fillCustomerInformation is PASSED
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingFirstName' is cleared
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - Keys 'Test' sent to object: 'Object Repository/Page_Checkout/txt_billingFirstName'
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingLastName' is cleared
+
+2018-08-22 14:41:20 - [MESSAGE][PASSED] - Keys 'Automation' sent to object: 'Object Repository/Page_Checkout/txt_billingLastName'
+
+2018-08-22 14:41:21 - [MESSAGE][PASSED] - All options with label 'United States (US)' are selected in object 'Object Repository/Page_Checkout/drop_billingCountry' 
+
+2018-08-22 14:41:26 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-08-22 14:41:26 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingAddress' is cleared
+
+2018-08-22 14:41:26 - [MESSAGE][PASSED] - Keys '123 Testing' sent to object: 'Object Repository/Page_Checkout/txt_billingAddress'
+
+2018-08-22 14:41:26 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingCity' is cleared
+
+2018-08-22 14:41:26 - [MESSAGE][PASSED] - Keys 'New York' sent to object: 'Object Repository/Page_Checkout/txt_billingCity'
+
+2018-08-22 14:41:27 - [MESSAGE][PASSED] - All options with label 'New York' are selected in object 'Object Repository/Page_Checkout/drop_billingState' 
+
+2018-08-22 14:41:27 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingZip' is cleared
+
+2018-08-22 14:41:27 - [MESSAGE][PASSED] - Keys '90012' sent to object: 'Object Repository/Page_Checkout/txt_billingZip'
+
+2018-08-22 14:41:27 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingEmail' is cleared
+
+2018-08-22 14:41:27 - [MESSAGE][PASSED] - Keys 'auto290122@mailinator.com' sent to object: 'Object Repository/Page_Checkout/txt_billingEmail'
+
+2018-08-22 14:41:28 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_shipToDifferentAddress' is un-checked
+
+2018-08-22 14:41:28 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_orderNote' is cleared
+
+2018-08-22 14:41:28 - [MESSAGE][PASSED] - Keys 'auto290122Order' sent to object: 'Object Repository/Page_Checkout/txt_orderNote'
+
+2018-08-22 14:41:28 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/radio_creditCard' is checked
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - beautytap.ShopAction.fillCustomerInformation is PASSED
+
+2018-08-22 14:41:33 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderDetailsOnCheckout: Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Object '' has attribute 'checked'
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Text of object '' is: '($12.50) Pantos (est. 14-25 working days including processing): $12.50'
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Text of object '' is: '$12.50'
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Text of object '' is: '$44.30'
+
+2018-08-22 14:41:33 - [MESSAGE][PASSED] - Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-08-22 14:41:33 - [TEST_STEP][PASSED] - beautytap.ShopAction.checkoutViaCreditCard: beautytap.ShopAction.checkoutViaCreditCard is PASSED
+
+2018-08-22 14:41:34 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/radio_creditCard' is checked
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - Delayed 10 second(s)
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_cardNumber' is cleared
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - Keys '4032036248443549' sent to object: 'Object Repository/Page_Checkout/txt_cardNumber'
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - All options with label 'Visa' are selected in object 'Object Repository/Page_Checkout/drop_cardType' 
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - All options with label '07' are selected in object 'Object Repository/Page_Checkout/drop_expirationMonth' 
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - All options with label '2023' are selected in object 'Object Repository/Page_Checkout/drop_expirationYear' 
+
+2018-08-22 14:41:44 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_cardCVV' is cleared
+
+2018-08-22 14:41:45 - [MESSAGE][PASSED] - Keys '123' sent to object: 'Object Repository/Page_Checkout/txt_cardCVV'
+
+2018-08-22 14:41:45 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is checked
+
+2018-08-22 14:41:45 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Checkout/btn_placeOrder' is clicked on
+
+2018-08-22 14:42:05 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/lbl_orderReceived' is present
+
+2018-08-22 14:42:05 - [MESSAGE][PASSED] - beautytap.ShopAction.checkoutViaCreditCard is PASSED
+
+2018-08-22 14:42:05 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderReceivedDetails: Keyword VerifyOrderReceivedDetails is Passed
+
+2018-08-22 14:42:05 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:42:05 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-08-22 14:42:05 - [MESSAGE][PASSED] - Text of object '' is: '$12.50 via ($12.50) Pantos (est. 14-25 working days including processing)'
+
+2018-08-22 14:42:05 - [MESSAGE][PASSED] - Object '' is present
+
+2018-08-22 14:42:06 - [MESSAGE][PASSED] - Text of object '' is: '$12.50'
+
+2018-08-22 14:42:06 - [MESSAGE][PASSED] - Text of object '' is: 'Credit Card Payment'
+
+2018-08-22 14:42:06 - [MESSAGE][PASSED] - Text of object '' is: '$44.30'
+
+2018-08-22 14:42:06 - [MESSAGE][PASSED] - Keyword VerifyOrderReceivedDetails is Passed
+
+2018-08-22 14:42:06 - [TEST_STEP][PASSED] - closeBrowser: Browser is closed
+
+2018-08-22 14:42:06 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-08-22 14:34:07 - [TEST_SUITE][FAILED] - TS1: Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser FAILED because (of) Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)]]></system-out>
+      <system-err><![CDATA[2018-08-22 14:34:07 - [TEST_SUITE][FAILED] - TS1: Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser FAILED because (of) Unable to click on object 'Object Repository/Page_Admin/menu_users' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: 'Object Repository/Page_Admin/menu_users' located by 'By.xpath: //li[@id='menu-users']' not found)]]></system-err>
+   </testsuite>
+</testsuites>
