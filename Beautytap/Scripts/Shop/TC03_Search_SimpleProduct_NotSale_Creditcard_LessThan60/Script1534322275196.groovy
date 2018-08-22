@@ -50,7 +50,7 @@ CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price, "pink", 0, null)
 currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
-'VP3:Verify message display: “PRODUCT_NAME” has been added to your cart.'
+'VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.'
 CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemInCart+quantity)
 CustomKeywords.'beautytap.ShopAction.VerifyProductIsAddedToCart'(productName)
 CustomKeywords.'beautytap.ShopAction.goToCart'()
@@ -64,4 +64,5 @@ CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, sub
 CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
 'VP6: Verify order details on order received Page'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
+WebUI.closeBrowser()
 

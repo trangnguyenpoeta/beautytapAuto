@@ -27,51 +27,43 @@ import org.apache.commons.lang.StringUtils
 
 
 
-String r_string = '842256'
-
-String username = 'auto' + r_string
-
-String email = username + '@mailinator.com'
-
-String password = '123456'
-
-String newpassword = 'test123'
-
-String name = 'Auto User ' + r_string
-
-String birthday = '01/01/1990'
-
-String activation_subject = GlobalVariable.SITE_TITLE + ' Activate your account'
-
-String resetpass_subject = GlobalVariable.SITE_TITLE + ' Password Reset'
-
-String productName = 'Papa Recipe Bombee Black Honey Mask Pack 2 Choices'
-String variation="1 set (10ea)"
-float price = 35
-int quantity = 3
-float total= 105
-String json = '{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}'
-JSONArray products= new JSONArray('[{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"1","price":"35.00"}]')
-JSONObject billingInfo = new JSONObject(json)
-println billingInfo
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-//CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-
-//CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
-//CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variation)
-//int currentItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
-//println currentItemInCart
-//CustomKeywords.'beautytap.ShopAction.addProductToCart'(3)
-//CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentItemInCart+quantity)
-//println currentItemInCart+quantity
-//CustomKeywords.'beautytap.ShopAction.goToCart'()
-//CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName,'$30.00',"grey",'$18.00',"pink")
-//println CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
-//WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), "Australia", false)
-//CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, price, quantity, total)
-//CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-//CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-//CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInfo, ''	, '',  '','test')
-//CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 35.0, 'EMS', '($25) - EMS Express shipping (est. 10-14 working days delivery including processing): $25.00', 25.00, 60)
-//CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, 35, 12.5, '($12.50) Pantos (est. 14-25 working days including processing)', 'Credit Card Payment', 47.5)
-println  CustomKeywords.'beautytap.ShopAction.getOrderNumberOnOrderReceived'()
+String productName = GlobalVariable.SIMPLE_PRODUCT
+float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
+String r_string = new Math().random().toString().substring(2, 8)
+String email = 'auto' + r_string + '@mailinator.com'
+String orderNote = 'auto' + r_string + 'Order'
+int currentNumberItemInCart
+int quantity = 1
+float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
+float total=subtotal+GlobalVariable.SHIPPING_PRICE
+total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
+JSONArray products = new JSONArray('[{"productname":"'+ GlobalVariable.SIMPLE_PRODUCT +'","variation":"","quantity":"'+ quantity +'","price":"'+ GlobalVariable.SIMPLE_PRODUCT_PRICE +'"}]')
+JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
+String shippingLabel = GlobalVariable.SHIPPING_LABEL
+float shippingPrice = GlobalVariable.SHIPPING_PRICE
+String shippingType = 'normal'
+String paymentMethod ='Credit Card Payment'
+//---------------------------------------------------------
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
+'VP1: Verify product display in search result panel with regular price'
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, price, "pink", 0, null)
+CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+'VP2: Verify product detail page display with regular price'
+CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price, "pink", 0, null)
+currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
+CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
+'VP3:Verify message display: “PRODUCT_NAME” has been added to your cart.'
+CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemInCart+quantity)
+CustomKeywords.'beautytap.ShopAction.VerifyProductIsAddedToCart'(productName)
+CustomKeywords.'beautytap.ShopAction.goToCart'()
+'VP4:Verify product is added to cart with correct price and quantity'
+CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, subtotal)
+CustomKeywords.'beautytap.ShopAction.processToCheckout'()
+CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', orderNote)
+'VP5: Verify order details on checkout page'
+//CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
+'Checkout by credit card'
+//CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
+'VP6: Verify order details on order received Page'
+//CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)

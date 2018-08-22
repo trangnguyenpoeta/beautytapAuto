@@ -328,6 +328,7 @@ def checkoutViaAmazonPay(String page,String amazonEmail,String amazonPassword) {
 def checkoutViaCreditCard(String cardNumber,String cardType,String expirationMonth,String expirationYear, String cvv){
 	println "START KEYWORD checkoutViaCreditCard";
 	WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_cardNumber'), cardNumber);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_cardType'), cardType, false);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_expirationMonth'), expirationMonth, false);
@@ -375,10 +376,11 @@ def fillCustomerInformation(JSONObject billingInformation,String createAccount,S
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
-	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingZip'), billingZip);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
 	if(createAccount=='yes'){
@@ -398,10 +400,11 @@ def fillCustomerInformation(JSONObject billingInformation,String createAccount,S
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingFirstName'), shippingFirstName);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingLastName'), shippingLastName);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingCountry'), shippingCountry,false);
-		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingAddress'), shippingAddress);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingCity'), shippingCity);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_shippingState'), shippingState,false);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingZip'), shippingZip);
 	}
 	if(orderNote!=''){
@@ -427,7 +430,7 @@ def fillCustomerInformation(JSONObject billingInformation,String createAccount,S
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
-	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);	
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
 	WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
@@ -442,6 +445,9 @@ def fillCustomerInformation(JSONObject billingInformation,String createAccount,S
 	if(orderNote!=''){
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 	}
+	//Check credit card radio button to trigger calculate shipping
+	WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 	println "END KEYWORD fillCustomerInformation";
 }
 
@@ -675,8 +681,10 @@ def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippi
 			obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label/span");
 			boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
 			String currentLabel =WebUI.getText(obj_shippingLable).trim();
+			println "Current ship label:"+currentLabel;
 			float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
 			shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
+			println "Expected ship label:" +shippingLable;
 			if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
 				println "Expected status: " +radioIsChecked;
 				println "Expected lable: " +currentLabel;
