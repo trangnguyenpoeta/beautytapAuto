@@ -3,10 +3,6 @@
    <description></description>
    <name>TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60</name>
    <tag></tag>
-   <comment>VP1: Verify product display in search result panel with regular price
-VP3:Verify message display: “PRODUCT_NAME” has been added to your cart.
-VP4:Verify product is added to cart with the correct price and quantity
-VP5: Verify order details: product, quantity,subtotal,shipping,total
-VP6: Verify order recieive with correct information: Date,Total,Payment method</comment>
+   <comment>VP6: Verify order recieive with correct information: Date,Total,Payment method</comment>
    <testCaseGuid>a233b773-f251-4038-8251-c5720124d7b5</testCaseGuid>
 </TestCaseEntity>
