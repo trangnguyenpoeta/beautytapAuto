@@ -310,6 +310,14 @@ def static "beautytap.ShopAction.getOrderNumberOnOrderReceived"() {
     (new beautytap.ShopAction()).getOrderNumberOnOrderReceived()
 }
 
+def static "beautytap.ShopAction.selectCategory"(
+    	String category	
+     , 	String subCategory	) {
+    (new beautytap.ShopAction()).selectCategory(
+        	category
+         , 	subCategory)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

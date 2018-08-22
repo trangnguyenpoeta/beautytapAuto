@@ -4,7 +4,7 @@
    <name>TS1</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-08-22T14:34:05</lastRun>
+   <lastRun>2018-08-22T16:07:31</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -34,5 +34,11 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Shop/TC03_Search_SimpleProduct_NotSale_Creditcard_LessThan60</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>19a422ca-3bf5-462e-83e6-91213504a2c0</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

@@ -43,27 +43,10 @@ String shippingLabel = GlobalVariable.SHIPPING_LABEL
 float shippingPrice = GlobalVariable.SHIPPING_PRICE
 String shippingType = 'normal'
 String paymentMethod ='Credit Card Payment'
+String category ="Makeup"
+String subcategory ='Blush'
 //---------------------------------------------------------
-CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-'VP1: Verify product display in search result panel with regular price'
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, price, "pink", 0, null)
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
-'VP2: Verify product detail page display with regular price'
-CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price, "pink", 0, null)
-currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
-CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
-'VP3:Verify message display: “PRODUCT_NAME” has been added to your cart.'
-CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemInCart+quantity)
-CustomKeywords.'beautytap.ShopAction.VerifyProductIsAddedToCart'(productName)
-CustomKeywords.'beautytap.ShopAction.goToCart'()
-'VP4:Verify product is added to cart with correct price and quantity'
-CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, subtotal)
-CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', orderNote)
-'VP5: Verify order details on checkout page'
-//CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
-'Checkout by credit card'
-//CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
-'VP6: Verify order details on order received Page'
+
+//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.ShopAction.selectCategory'(category, subcategory)
 //CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)

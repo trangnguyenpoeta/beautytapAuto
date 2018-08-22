@@ -868,3 +868,24 @@ def getOrderNumberOnOrderReceived(){
 	println "END KEYWORD getOrderNumberOnOrderReceived";
 }
 
+//Select category
+@Keyword
+def selectCategory(String category,String subCategory ){
+	println "START KEYWORD selectCategory";
+	if(subCategory==null){
+		subCategory='';
+	}
+	TestObject obj_category= new TestObject();
+	obj_category.addProperty("xpath",ConditionType.EQUALS,'//div[@class="tabs-inner border-none"]/ul/li/a[text()="'+ category +'"]');
+	WebUI.click(obj_category);
+	if(subCategory!=''){
+		WebUI.delay(2);
+		TestObject obj_subcategory= new TestObject();
+		obj_subcategory.addProperty("xpath",ConditionType.EQUALS,"//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/h4/a[text()='"+ subCategory +"']|//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/ul/li/a[text()='"+ subCategory +"']");
+		WebUI.click(obj_subcategory);
+		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+	}else{
+	WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+	}
+	println "END KEYWORD selectCategory";
+}

@@ -3,6 +3,8 @@
    <description></description>
    <name>Test</name>
    <tag></tag>
-   <comment></comment>
+   <comment>VP5: Verify order details on checkout page
+Checkout by credit card
+VP6: Verify order details on order received Page</comment>
    <testCaseGuid>4ccc79a4-4670-400e-ad81-9db4043fea41</testCaseGuid>
 </TestCaseEntity>
