@@ -48,5 +48,5 @@ String subcategory ='Blush'
 //---------------------------------------------------------
 
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.selectCategory'(category, subcategory)
+CustomKeywords.'beautytap.ShopAction.findProductOnProductList'('Hera Face Designing Blusher No4 Dusty Mauve 10g')
 //CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)

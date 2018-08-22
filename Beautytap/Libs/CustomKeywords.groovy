@@ -318,6 +318,12 @@ def static "beautytap.ShopAction.selectCategory"(
          , 	subCategory)
 }
 
+def static "beautytap.ShopAction.findProductOnProductList"(
+    	String productName	) {
+    (new beautytap.ShopAction()).findProductOnProductList(
+        	productName)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

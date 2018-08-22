@@ -39,6 +39,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Clipboard;
 import org.openqa.selenium.Keys as Keys;
+import org.stringtemplate.v4.compiler.STParser.list_return
 import org.json.JSONArray
 import org.json.JSONObject
 import org.apache.commons.lang.StringUtils
@@ -888,4 +889,30 @@ def selectCategory(String category,String subCategory ){
 	WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 	}
 	println "END KEYWORD selectCategory";
+}
+
+//Find product on product list
+@Keyword
+def findProductOnProductList(String productName){
+	println "START KEYWORD findProductOnProductList";
+	TestObject obj_lastpage = new TestObject();
+	TestObject obj_product = new TestObject();
+	obj_lastpage.addProperty("xpath",ConditionType.EQUALS,"//a[@class='next page-numbers' and text()='Next']/preceding::a[1]");
+	obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']");
+	int totalPage = Integer.parseInt(WebUI.getText(obj_lastpage).trim());
+	println "Total page "+totalPage;
+	for(int i=1;i<=totalPage;i++){
+		if(WebUI.verifyElementPresent(obj_product, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==false){
+			println "Product not found on page "+i;
+			int nextpage = i+1;
+			TestObject obj_clickpage = new TestObject();
+			obj_clickpage.addProperty("xpath",ConditionType.EQUALS,"//a[@class='page-numbers' and text()='"+ nextpage+"']");
+			WebUI.click(obj_clickpage);
+			WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		}else{
+		println "Product found on page "+i;
+		break;
+		}
+	}
+	println "END KEYWORD findProductOnProductList";
 }
