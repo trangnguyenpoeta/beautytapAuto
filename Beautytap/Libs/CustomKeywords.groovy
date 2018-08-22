@@ -182,14 +182,18 @@ def static "beautytap.ShopAction.processToCheckout"() {
     (new beautytap.ShopAction()).processToCheckout()
 }
 
-def static "beautytap.ShopAction.checkoutViaAmazonPay"(
+def static "beautytap.ShopAction.loginAmazonPay"(
     	String page	
      , 	String amazonEmail	
      , 	String amazonPassword	) {
-    (new beautytap.ShopAction()).checkoutViaAmazonPay(
+    (new beautytap.ShopAction()).loginAmazonPay(
         	page
          , 	amazonEmail
          , 	amazonPassword)
+}
+
+def static "beautytap.ShopAction.checkoutViaAmazonPay"() {
+    (new beautytap.ShopAction()).checkoutViaAmazonPay()
 }
 
 def static "beautytap.ShopAction.checkoutViaCreditCard"(

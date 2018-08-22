@@ -57,8 +57,12 @@ CustomKeywords.'beautytap.ShopAction.goToCart'()
 'VP4:Verify product is added to cart with correct price and quantity'
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, price, quantity, subtotal)
 CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-'Checkout by Amazon Pay'
-CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'('checkout', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-'VP5: Verify order details on order received Page'
+'Login amazonPay'
+CustomKeywords.'beautytap.ShopAction.loginAmazonPay'('checkout', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
+'VP5: Verify order details on checkout page'
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
+'Checkout via amazonPay'
+CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
+'VP6: Verify order details on order received Page'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
 WebUI.closeBrowser()

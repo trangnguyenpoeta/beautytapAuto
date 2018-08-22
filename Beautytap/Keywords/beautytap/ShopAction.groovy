@@ -298,11 +298,11 @@ def processToCheckout() {
 
 }
 
-//Checkout via AmazonPay
+//Login AmazonPay
 //page:cart,checkout
 @Keyword
-def checkoutViaAmazonPay(String page,String amazonEmail,String amazonPassword) {
-	println "START KEYWORD checkoutViaAmazonPay";
+def loginAmazonPay(String page,String amazonEmail,String amazonPassword) {
+	println "START KEYWORD loginAmazonPay";
 	if(page=='cart'){
 		WebUI.click(findTestObject('Object Repository/Page_Cart/btn_payWithAmazon'));
 	}
@@ -316,6 +316,13 @@ def checkoutViaAmazonPay(String page,String amazonEmail,String amazonPassword) {
 	WebUI.click(findTestObject('Object Repository/Popup_Amazon/btn_signin'));
 	WebUI.switchToWindowIndex(0);
 	WebUI.delay(GlobalVariable.TIMEOUT);
+	println "END KEYWORD loginAmazonPay";
+}
+
+//Checkout via amazonPay
+@Keyword
+def checkoutViaAmazonPay(){
+	println "START KEYWORD checkoutViaAmazonPay";
 	WebUI.waitForElementClickable(findTestObject('Object Repository/Page_Checkout/chk_terms'), GlobalVariable.TIMEOUT);
 	WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
 	WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
