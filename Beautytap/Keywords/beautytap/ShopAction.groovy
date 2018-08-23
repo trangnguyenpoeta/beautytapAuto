@@ -718,6 +718,7 @@ def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippi
 			boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
 			String currentLabel =WebUI.getText(obj_shippingLable).trim();
 			float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+			shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
 			if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
 				println "Expected status: " +radioIsChecked;
 				println "Expected lable: " +currentLabel;
@@ -883,7 +884,7 @@ def selectCategory(String category,String subCategory ){
 	if(subCategory!=''){
 		WebUI.delay(2);
 		TestObject obj_subcategory= new TestObject();
-		obj_subcategory.addProperty("xpath",ConditionType.EQUALS,"//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/h4/a[text()='"+ subCategory +"']|//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/ul/li/a[text()='"+ subCategory +"']");
+		obj_subcategory.addProperty("xpath",ConditionType.EQUALS,"//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/h4/a[text()='"+ subCategory +"']|//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/following::a[text()='"+ subCategory +"']");
 		WebUI.click(obj_subcategory);
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 	}else{
@@ -1013,6 +1014,7 @@ def VerifyProductOnProductList(String productName,float regularPrice,String regu
 //shipping: normal,EMS
 @Keyword
 def selectShipping(String shipping){
+	println "START KEYWORD selectShipping";
 	String xpath ;
 	if(shipping=='normal'){
 		xpath = "//ul[@id='shipping_method']/li[1]/input";
@@ -1023,4 +1025,5 @@ def selectShipping(String shipping){
 	obj_shipping.addProperty("xpath",ConditionType.EQUALS,xpath);
 	WebUI.check(obj_shipping);
 	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+	println "END KEYWORD selectShipping";
 }

@@ -40,10 +40,11 @@ JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variati
 JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
 String shippingType = 'EMS'
 String paymentMethod ='Amazon Pay'
-String category = "What's New"
+String category = "Brands"
+String subcategory = "Innisfree"
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.selectCategory'(paymentMethod, email)
+CustomKeywords.'beautytap.ShopAction.selectCategory'(category, subcategory)
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
 'VP1: Verify product display in Product List'
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, saleprice, "pink", redularprice, "pink")
