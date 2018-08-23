@@ -886,7 +886,7 @@ def selectCategory(String category,String subCategory ){
 		WebUI.click(obj_subcategory);
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 	}else{
-	WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 	}
 	println "END KEYWORD selectCategory";
 }
@@ -910,9 +910,20 @@ def findProductOnProductList(String productName){
 			WebUI.click(obj_clickpage);
 			WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		}else{
-		println "Product found on page "+i;
-		break;
+			println "Product found on page "+i;
+			break;
 		}
 	}
 	println "END KEYWORD findProductOnProductList";
+}
+
+//Select product on product list
+@Keyword
+def selectProductOnProductList(String productName){
+	println "START KEYWORD selectProductOnProductList";
+	TestObject obj_product = new TestObject();
+	obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']");
+	WebUI.click(obj_product);
+	WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+	println "END KEYWORD selectProductOnProductList";
 }
