@@ -184,4 +184,14 @@
       <initValue>'2023'</initValue>
       <name>CARD_EXPIRATION_YEAR</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'($25) - EMS Express shipping (est. 10-14 working days delivery including processing)'</initValue>
+      <name>EMS_SHIPPING_LABEL</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>25</initValue>
+      <name>EMS_SHIPPING_PRICE</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

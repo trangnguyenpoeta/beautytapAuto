@@ -22,32 +22,35 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
 //Set variable
-String productName = GlobalVariable.SIMPLE_PRODUCT
-float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
+String productName = GlobalVariable.VARIATION_SALE_PRODUCT
+float saleprice = GlobalVariable.VARIATION_SALE_PRICE1
+float redularprice = GlobalVariable.VARIATION_SALE_REGULAR_PRICE1
+String variation = GlobalVariable.VARIATION_SALE_NAME1
 String r_string = new Math().random().toString().substring(2, 8)
 String email = 'auto' + r_string + '@mailinator.com'
 String orderNote = 'auto' + r_string + 'Order'
 int currentNumberItemInCart
-int quantity = 3
-float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
-float total=subtotal
+int quantity = 5
+String shippingLabel = GlobalVariable.EMS_SHIPPING_LABEL
+float shippingPrice = GlobalVariable.EMS_SHIPPING_PRICE
+float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, saleprice)
+float total=subtotal+shippingPrice
 total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
-JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"","quantity":"'+ quantity +'","price":"'+ price +'"}]')
+JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"'+variation+'","quantity":"'+ quantity +'","price":"'+ saleprice +'"}]')
 JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
-String shippingLabel = GlobalVariable.FREE_SHIPPING_LABEL
-float shippingPrice = 0
-String shippingType = 'free'
-String paymentMethod ='PayPal'
+String shippingType = 'EMS'
+String paymentMethod ='Amazon Pay'
 String category = "What's New"
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.selectCategory'(category, null)
+CustomKeywords.'beautytap.ShopAction.selectCategory'(paymentMethod, email)
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
-'VP1: Verify product display on product list'
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, price, "pink", 0, null)
+'VP1: Verify product display in Product List'
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, saleprice, "pink", redularprice, "pink")
 CustomKeywords.'beautytap.ShopAction.selectProductOnProductList'(productName)
-'VP2: Verify product detail page display with regular price'
-CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", price, "pink", 0, null)
+CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variation)
+'VP2: Verify product detail page display'
+CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, variation, redularprice, "grey", saleprice, "pink")
 currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
 'VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.'
@@ -55,13 +58,14 @@ CustomKeywords.'beautytap.ShopAction.VerifyNumberItemInCart'(currentNumberItemIn
 CustomKeywords.'beautytap.ShopAction.VerifyProductIsAddedToCart'(productName)
 CustomKeywords.'beautytap.ShopAction.goToCart'()
 'VP4:Verify product is added to cart with correct price and quantity'
-CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,'', price, quantity, subtotal)
-CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, 'no', '', '', orderNote)
+CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, saleprice, quantity, subtotal)
+'Login amazonPay'
+CustomKeywords.'beautytap.ShopAction.loginAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
+CustomKeywords.'beautytap.ShopAction.selectShipping'(shippingType)
 'VP5: Verify order details on checkout page'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
-'Checkout by credit card'
-CustomKeywords.'beautytap.ShopAction.checkoutViaPaypal'(GlobalVariable.PAYPAL_EMAIL, GlobalVariable.PAYPAL_PASSWORD)
+'Checkout via amazonPay'
+CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
 'VP6: Verify order details on order received Page'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
 WebUI.closeBrowser()

@@ -33,7 +33,7 @@
       <guid>da50105a-9f2a-4138-a193-0775a1a4a5d0</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60</testCaseId>
+      <testCaseId>Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>19a422ca-3bf5-462e-83e6-91213504a2c0</guid>

@@ -1008,3 +1008,19 @@ def VerifyProductOnProductList(String productName,float regularPrice,String regu
 	}
 	println "END KEYWORD VerifyProductOnProductList";
 }
+
+//Select shipping
+//shipping: normal,EMS
+@Keyword
+def selectShipping(String shipping){
+	String xpath ;
+	if(shipping=='normal'){
+		xpath = "//ul[@id='shipping_method']/li[1]/input";
+	}else{
+		xpath = "//ul[@id='shipping_method']/li[2]/input";
+	}
+	TestObject obj_shipping = new TestObject();
+	obj_shipping.addProperty("xpath",ConditionType.EQUALS,xpath);
+	WebUI.check(obj_shipping);
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+}

@@ -344,6 +344,12 @@ def static "beautytap.ShopAction.VerifyProductOnProductList"(
          , 	salePriceColor)
 }
 
+def static "beautytap.ShopAction.selectShipping"(
+    	String shipping	) {
+    (new beautytap.ShopAction()).selectShipping(
+        	shipping)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
