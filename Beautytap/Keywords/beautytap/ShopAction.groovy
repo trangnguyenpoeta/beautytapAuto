@@ -927,3 +927,83 @@ def selectProductOnProductList(String productName){
 	WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 	println "END KEYWORD selectProductOnProductList";
 }
+//Verify product on product list
+@Keyword
+def VerifyProductOnProductList(String productName,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor){
+	println "START KEYWORD VerifyProductOnProductList";
+	if(regularPrice==null){
+		regularPrice= 0;
+	}
+	if(salePrice==null){
+		salePrice = 0;
+	}
+
+	if(regularPriceColor!=null && regularPriceColor=="pink"){
+		regularPriceColor = "rgba(255, 35, 134, 1)";
+	}
+	if(regularPriceColor!=null && regularPriceColor=="grey"){
+		regularPriceColor = "rgba(195, 195, 195, 1)";
+	}
+	if(salePriceColor!=null && salePriceColor=="pink"){
+		salePriceColor = "rgba(255, 35, 134, 1)";
+	}
+	if(salePriceColor!=null && salePriceColor=="grey"){
+		salePriceColor = "rgba(195, 195, 195, 1)";
+	}
+	String result = "true";
+	TestObject obj_product =new TestObject();
+	obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']");
+	try {
+		if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
+			//Check Regular Price
+			if(regularPrice!= 0){
+				TestObject obj_regularPrice = new TestObject();
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/parent::div/descendant::div[@class='links-user links-user-custom']/span[1]/span");
+				float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
+				println "Current regular price "+ currentRegularPrice;
+				println "Expected regular price "+ regularPrice;
+				if(currentRegularPrice!=regularPrice){
+					result = "false" ;
+				}
+				if(regularPriceColor!=null){
+					println "regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
+					println regularPriceColor;
+					if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
+						result = "false" ;
+					}
+				}
+			}
+			//Check Sale Price
+			if(salePrice!=0){
+				TestObject obj_salePrice = new TestObject();
+				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/parent::div/descendant::div[@class='links-user links-user-custom']/span[2]/span");
+				float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
+				println "Current Sale price "+ currentSalePrice;
+				println "Expected Sale price "+salePrice;
+				if(currentSalePrice!=salePrice){
+					result = "false";
+				}
+				if(salePriceColor!=null){
+					println "regular color " + WebUI.getCSSValue(obj_salePrice, "color");
+					println salePriceColor;
+					if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
+						result = "false";
+					}
+				}
+			}
+
+		} else{
+			result = "false";
+		}
+
+		if(result=="true"){
+			KeywordUtil.markPassed("Keyword VerifyProductOnProductList is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyProductOnProductList is Failed");
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace()
+	}
+	println "END KEYWORD VerifyProductOnProductList";
+}

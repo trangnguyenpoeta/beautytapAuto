@@ -330,6 +330,20 @@ def static "beautytap.ShopAction.selectProductOnProductList"(
         	productName)
 }
 
+def static "beautytap.ShopAction.VerifyProductOnProductList"(
+    	String productName	
+     , 	float regularPrice	
+     , 	String regularPriceColor	
+     , 	float salePrice	
+     , 	String salePriceColor	) {
+    (new beautytap.ShopAction()).VerifyProductOnProductList(
+        	productName
+         , 	regularPrice
+         , 	regularPriceColor
+         , 	salePrice
+         , 	salePriceColor)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
