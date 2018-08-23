@@ -360,6 +360,7 @@ def checkoutViaPaypal(String paypalEmail,String paypalPassword){
 	GeneralAction.enterText(findTestObject('Object Repository/Page_Paypal/txt_password'), paypalPassword);
 	WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_login'));
 	WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Paypal/btn_payNow'), GlobalVariable.LONG_TIMEOUT);
+	WebUI.delay(GlobalVariable.SHORT_TIMEOUT)
 	WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_payNow'));
 	WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
 	println "END KEYWORD checkoutViaPaypal";
