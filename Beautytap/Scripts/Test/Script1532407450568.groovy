@@ -47,6 +47,8 @@ String category ="Makeup"
 String subcategory ='Blush'
 //---------------------------------------------------------
 
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.findProductOnProductList'('Etude House All Caring Eraser Pad 60p')
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", null)
+CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, 'simple',price, 'pink', 0, null)
 //CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)

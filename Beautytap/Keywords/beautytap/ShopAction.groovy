@@ -928,6 +928,7 @@ def selectProductOnProductList(String productName){
 	println "END KEYWORD selectProductOnProductList";
 }
 //Verify product on product list
+//productType: simple,variation
 @Keyword
 def VerifyProductOnProductList(String productName,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor){
 	println "START KEYWORD VerifyProductOnProductList";
@@ -937,7 +938,6 @@ def VerifyProductOnProductList(String productName,float regularPrice,String regu
 	if(salePrice==null){
 		salePrice = 0;
 	}
-
 	if(regularPriceColor!=null && regularPriceColor=="pink"){
 		regularPriceColor = "rgba(255, 35, 134, 1)";
 	}
@@ -958,7 +958,7 @@ def VerifyProductOnProductList(String productName,float regularPrice,String regu
 			//Check Regular Price
 			if(regularPrice!= 0){
 				TestObject obj_regularPrice = new TestObject();
-				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/parent::div/descendant::div[@class='links-user links-user-custom']/span[1]/span");
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/parent::div/descendant::span[@class='woocommerce-Price-amount amount'][1]");
 				float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price "+ currentRegularPrice;
 				println "Expected regular price "+ regularPrice;
@@ -976,7 +976,7 @@ def VerifyProductOnProductList(String productName,float regularPrice,String regu
 			//Check Sale Price
 			if(salePrice!=0){
 				TestObject obj_salePrice = new TestObject();
-				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/parent::div/descendant::div[@class='links-user links-user-custom']/span[2]/span");
+				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/parent::div/descendant::span[@class='woocommerce-Price-amount amount'][2]");
 				float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
 				println "Current Sale price "+ currentSalePrice;
 				println "Expected Sale price "+salePrice;
