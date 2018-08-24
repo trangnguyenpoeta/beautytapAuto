@@ -29,4 +29,4 @@ import org.apache.commons.lang.StringUtils
 
 //SIGNUP
 
-CustomKeywords.'beautytap.ShopAction.VerifyRewardPoints'(84.50, 40392.53, 84.50, 2)
+println String.format("%.1f", 1235)

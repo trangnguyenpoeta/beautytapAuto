@@ -864,12 +864,19 @@ public class ShopAction {
 	}
 
 	//Get order number on Order received
+	//{"ordernumber":"ORDERNUMBER","date":"DATE"}
 	@Keyword
-	def getOrderNumberOnOrderReceived(){
+	def getOrderInfoOnOrderReceived(){
 		println "START KEYWORD getOrderNumberOnOrderReceived";
 		TestObject obj_orderNumber=new TestObject();
+		TestObject obj_orderDate=new TestObject();
 		obj_orderNumber.addProperty("xpath",ConditionType.EQUALS,"//li[contains(text(),'Order number:')]/strong");
-		return WebUI.getText(obj_orderNumber).trim();
+		obj_orderDate.addProperty("xpath",ConditionType.EQUALS,"//li[contains(text(),'Date')]/strong");
+		String ordernumber = WebUI.getText(obj_orderNumber).trim();
+		String orderdate = WebUI.getText(obj_orderDate).trim();
+		String json='{"ordernumber":"'+ ordernumber +'","date":"'+ orderdate +'"}';
+		JSONObject orderInfo =new JSONObject(json);
+		return orderInfo;
 		println "END KEYWORD getOrderNumberOnOrderReceived";
 	}
 

@@ -312,8 +312,8 @@ def static "beautytap.ShopAction.VerifyOrderReceivedDetails"(
          , 	total)
 }
 
-def static "beautytap.ShopAction.getOrderNumberOnOrderReceived"() {
-    (new beautytap.ShopAction()).getOrderNumberOnOrderReceived()
+def static "beautytap.ShopAction.getOrderInfoOnOrderReceived"() {
+    (new beautytap.ShopAction()).getOrderInfoOnOrderReceived()
 }
 
 def static "beautytap.ShopAction.selectCategory"(
