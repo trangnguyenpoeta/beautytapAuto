@@ -1029,4 +1029,40 @@ public class ShopAction {
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD selectShipping";
 	}
+	
+	//Get reward details
+	//rewardDetails: {"multiplier":"MULTIPLIER","lifetime":"LIFETIME","pending":"PENDING","redeemable":"REDEEMABLE","pointvalue":"POINTVALUE"}
+	@Keyword
+	def getRewardDetails(){
+		println "START KEYWORD getRewardDetails";
+		TestObject obj_multiplier =new TestObject();
+		TestObject obj_lifetime =new TestObject();
+		TestObject obj_pending =new TestObject();
+		TestObject obj_redeemable =new TestObject();
+		TestObject obj_pointvalue =new TestObject();
+		TestObject obj_currentlevel =new TestObject();
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//div[@class='rewards-title' and contains(text(),'Rewards Multiplier')]");
+		obj_lifetime.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Lifetime Loyalty Points']/parent::div/h3");
+		obj_pending.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Pending Loyalty Points']/parent::div/h3");
+		obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Loyalty Points Redeemable']/parent::div/h3");
+		obj_pointvalue.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Points Value']/parent::div/h3");
+		obj_currentlevel.addProperty("xpath",ConditionType.EQUALS,"//div[@class='current-level']/div[@class='level-title']");
+		float multiplier = Float.parseFloat(WebUI.getText(obj_multiplier).substring(0, WebUI.getText(obj_multiplier).indexOf("x")).trim());
+		float lifetime = Float.parseFloat(WebUI.getText(obj_lifetime).trim());
+		float pending = Float.parseFloat(WebUI.getText(obj_pending).trim());
+		float redeemable = Float.parseFloat(WebUI.getText(obj_redeemable).trim());
+		float pointvalue = Float.parseFloat(WebUI.getText(obj_pointvalue).trim().replace('$', ''));
+		String currentlevel =WebUI.getText(obj_currentlevel).trim();
+		println "Multiplier: " + multiplier;
+		println "Lifetime: " +lifetime;
+		println "Pending: " +pending;
+		println "Redeemable: " +redeemable;
+		println "Point value: " +pointvalue;
+		String json = '{"multiplier":"'+ multiplier +'","lifetime":"'+ lifetime +'","pending":"'+ pending +'","redeemable":"'+ redeemable +'","pointvalue":"'+ pointvalue +'","currentlevel":"'+ currentlevel +'"}';
+		JSONObject obj_rewardDetails = new JSONObject(json);
+		return obj_rewardDetails;
+		println "END KEYWORD getRewardDetails";
+	}
+
+//End Class		
 }

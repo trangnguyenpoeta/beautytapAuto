@@ -25,6 +25,7 @@ import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.testobject.ConditionType
+import beautytap.GeneralAction 
 
 public class AdminAction {
 
@@ -74,7 +75,7 @@ public class AdminAction {
 	
 	//Select Admin menu
 	@Keyword
-	def selectAdminMenu(String menu,String submenu){
+	def public static selectAdminMenu(String menu,String submenu){
 		println "START KEYWORD selectAdminMenu";
 		if(submenu==null){
 			submenu='';
@@ -83,9 +84,9 @@ public class AdminAction {
 			TestObject obj_menu=new TestObject();
 			TestObject obj_submenu=new TestObject();
 			obj_menu.addProperty("xpath",ConditionType.EQUALS,"//div[@class='wp-menu-name' and text()='"+ menu +"']");
-			obj_menu.addProperty("xpath",ConditionType.EQUALS,"//li/a[starts-with(text(),'"+ submenu +"')]");
-			WebUI.mouseOver(obj_menu);
-			WebUI.delay(2);
+			obj_submenu.addProperty("xpath",ConditionType.EQUALS,"//li/a[starts-with(text(),'"+ submenu +"')]");
+			WebUI.click(obj_menu);
+			WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 			WebUI.click(obj_submenu);
 			WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 		}else{
@@ -96,6 +97,26 @@ public class AdminAction {
 		}
 		
 		println "END KEYWORD selectAdminMenu";		
+	}
+	
+	//change order status
+	//status: Pending payment,Processing,On hold,Completed,Cancelled,Refunded,Failed
+	@Keyword
+	def changeOrderStatus(String orderNumber, String status){
+		println "START KEYWORD changeOrderStatus";
+		AdminAction.selectAdminMenu("WooCommerce", "Orders");
+		orderNumber =orderNumber.replace('#','');
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_searchOrder'), orderNumber);
+		WebUI.click(findTestObject('Object Repository/Page_Admin/btn_searchOrder'));
+		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		TestObject obj_order = new TestObject();
+		obj_order.addProperty("xpath",ConditionType.EQUALS,"//strong[contains(text(),'"+ orderNumber +"')]");
+		WebUI.click(obj_order);
+		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Admin/drop_orderStatus'), status, false);
+		WebUI.click(findTestObject('Object Repository/Page_Admin/btn_saveOrder'));
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Admin/lbl_orderUpdatedMessage'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
+		println "END KEYWORD changeOrderStatus";
 	}
 	
 //End Class	

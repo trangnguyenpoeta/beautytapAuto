@@ -356,6 +356,10 @@ def static "beautytap.ShopAction.selectShipping"(
         	shipping)
 }
 
+def static "beautytap.ShopAction.getRewardDetails"() {
+    (new beautytap.ShopAction()).getRewardDetails()
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
@@ -368,4 +372,12 @@ def static "beautytap.AdminAction.selectAdminMenu"(
     (new beautytap.AdminAction()).selectAdminMenu(
         	menu
          , 	submenu)
+}
+
+def static "beautytap.AdminAction.changeOrderStatus"(
+    	String orderNumber	
+     , 	String status	) {
+    (new beautytap.AdminAction()).changeOrderStatus(
+        	orderNumber
+         , 	status)
 }

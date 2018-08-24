@@ -28,13 +28,6 @@ import org.apache.commons.lang.StringUtils
 
 
 //SIGNUP
-//CustomKeywords.'beautytap.GeneralAction.login'('email', 'trang2408', '123456')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('view profile')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Comments')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Beauty Wall')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Products I Like')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Orders')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Account Settings')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Notification Settings')
 
+JSONObject a = CustomKeywords.'beautytap.ShopAction.getRewardDetails'()
+println a
