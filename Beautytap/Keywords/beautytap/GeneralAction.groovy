@@ -203,4 +203,18 @@ public class GeneralAction {
 		WebUI.clearText(control);
 		WebUI.sendKeys(control, text);
 	}
+	
+	//selectProfileMenu
+	//menu: view profile,Comments,Beauty Wall,Products I Like,My Orders,My Rewards,Account Settings,Notification Settings,Log Out
+	@Keyword
+	def selectProfileMenu(String menu){
+		TestObject obj_menu= new TestObject();
+		obj_menu.addProperty("xpath",ConditionType.EQUALS,"//ul[@class='dropdown-menu dropdown-menu-custom']/li/a[text()='"+ menu +"']");
+		WebUI.click(findTestObject('Object Repository/Page_General/link_avatar'));
+		WebUI.delay(2);
+		WebUI.click(obj_menu);
+		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
+	}
+	
+//End class	
 }

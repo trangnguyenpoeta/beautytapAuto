@@ -27,28 +27,14 @@ import org.apache.commons.lang.StringUtils
 
 
 
-String productName = GlobalVariable.SIMPLE_PRODUCT
-float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
-String r_string = new Math().random().toString().substring(2, 8)
-String email = 'auto' + r_string + '@mailinator.com'
-String orderNote = 'auto' + r_string + 'Order'
-int currentNumberItemInCart
-int quantity = 1
-float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
-float total=subtotal+GlobalVariable.SHIPPING_PRICE
-total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
-JSONArray products = new JSONArray('[{"productname":"'+ GlobalVariable.SIMPLE_PRODUCT +'","variation":"","quantity":"'+ quantity +'","price":"'+ GlobalVariable.SIMPLE_PRODUCT_PRICE +'"}]')
-JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
-String shippingLabel = GlobalVariable.SHIPPING_LABEL
-float shippingPrice = GlobalVariable.SHIPPING_PRICE
-String shippingType = 'normal'
-String paymentMethod ='Credit Card Payment'
-String category ="Makeup"
-String subcategory ='Blush'
-//---------------------------------------------------------
+//SIGNUP
+//CustomKeywords.'beautytap.GeneralAction.login'('email', 'trang2408', '123456')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('view profile')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Comments')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Beauty Wall')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Products I Like')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Orders')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Account Settings')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('Notification Settings')
 
-CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", null)
-CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, 'simple',price, 'pink', 0, null)
-//CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)

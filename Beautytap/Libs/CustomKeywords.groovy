@@ -104,6 +104,12 @@ def static "beautytap.GeneralAction.enterText"(
          , 	text)
 }
 
+def static "beautytap.GeneralAction.selectProfileMenu"(
+    	String menu	) {
+    (new beautytap.GeneralAction()).selectProfileMenu(
+        	menu)
+}
+
 def static "beautytap.ShopAction.globalSearch"(
     	String keyword	) {
     (new beautytap.ShopAction()).globalSearch(

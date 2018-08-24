@@ -194,4 +194,14 @@
       <initValue>25</initValue>
       <name>EMS_SHIPPING_PRICE</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>USER_EMAIL</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'123456'</initValue>
+      <name>USER_PASSWORD</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

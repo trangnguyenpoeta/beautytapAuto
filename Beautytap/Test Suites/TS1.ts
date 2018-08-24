@@ -4,7 +4,7 @@
    <name>TS1</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-08-22T16:07:31</lastRun>
+   <lastRun>2018-08-23T16:47:52</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -40,5 +40,17 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>a4fb6b08-5dd5-44f9-b41d-2d80274961e6</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>4767e7cb-32da-4c95-9954-17256ce65f2a</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
