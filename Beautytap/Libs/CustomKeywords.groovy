@@ -361,3 +361,11 @@ def static "beautytap.AdminAction.deleteUser"(
     (new beautytap.AdminAction()).deleteUser(
         	email)
 }
+
+def static "beautytap.AdminAction.selectAdminMenu"(
+    	String menu	
+     , 	String submenu	) {
+    (new beautytap.AdminAction()).selectAdminMenu(
+        	menu
+         , 	submenu)
+}

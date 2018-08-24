@@ -62,7 +62,7 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/div_searchResult'), GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD globalSearch";
 	}
-	
+
 	//Select product on search result
 	@Keyword
 	def selectProductOnSearchResult(String productName) {
@@ -73,7 +73,7 @@ public class ShopAction {
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		println "END KEYWORD selectProductOnSearchResult";
 	}
-	
+
 	//Select product variation
 	@Keyword
 	def selectProductVariation(String variation) {
@@ -85,7 +85,7 @@ public class ShopAction {
 		WebUI.click(obj_variation);
 		println "END KEYWORD selectProductVariation";
 	}
-	
+
 	//Select product on search result
 	//color= pink,grey
 	@Keyword
@@ -97,7 +97,7 @@ public class ShopAction {
 		if(salePrice==null){
 			salePrice = 0;
 		}
-	
+
 		if(regularPriceColor!=null && regularPriceColor=="pink"){
 			regularPriceColor = "rgba(255, 35, 134, 1)";
 		}
@@ -151,23 +151,23 @@ public class ShopAction {
 						}
 					}
 				}
-	
+
 			} else{
 				result = "false";
 			}
-	
+
 			if(result=="true"){
 				KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
 			}else{
 				KeywordUtil.markFailed("Keyword VerifyProductOnSearchResult is Failed");
 			}
-	
+
 		} catch (Exception e) {
 			e.printStackTrace()
 		}
 		println "END KEYWORD VerifyProductOnSearchResult";
 	}
-	
+
 	//Add Product to Cart
 	@Keyword
 	def addProductToCart(int quantity) {
@@ -181,7 +181,7 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Shop/lbl_message'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
 		println "END KEYWORD addProductToCart";
 	}
-	
+
 	//Verify product is added to cart successfully
 	@Keyword
 	def VerifyProductIsAddedToCart(String productName) {
@@ -191,7 +191,7 @@ public class ShopAction {
 		WebUI.verifyElementPresent(obj_successMessage, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
 		println "END KEYWORD VerifyProductIsAddedToCart";
 	}
-	
+
 	//Go to cart
 	@Keyword
 	def goToCart(String productName) {
@@ -200,7 +200,7 @@ public class ShopAction {
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		println "END KEYWORD goToCart";
 	}
-	
+
 	//Get number item in cart
 	@Keyword
 	def getNumberItemInCart() {
@@ -216,7 +216,7 @@ public class ShopAction {
 		println "Number item in cart: " + numberItem;
 		println "END KEYWORD getNumberItemInCart";
 	}
-	
+
 	//Verify number item in cart
 	@Keyword
 	def VerifyNumberItemInCart(int numberItem) {
@@ -240,7 +240,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyNumberItemInCart";
 	}
-	
+
 	//Verify product in to cart
 	@Keyword
 	def VerifyProductInCart(String productName, String variation, float price, int quantity, float total ) {
@@ -258,10 +258,10 @@ public class ShopAction {
 		obj_price.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[4]/span") ;
 		obj_quantity.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[5]/div/input") ;
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[6]/span") ;
-	
+
 		if(WebUI.verifyElementPresent(obj_product, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
 			float priceInCart = Float.parseFloat(WebUI.getText(obj_price).trim().toString().replace('$', '')).round(2)  ;
-	
+
 			println "Price in cart " + priceInCart;
 			println  "Price input " + price;
 			if(priceInCart!=price){
@@ -291,16 +291,16 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyProductInCart";
 	}
-	
-	
+
+
 	//Process to Checkout
 	@Keyword
 	def processToCheckout() {
 		WebUI.click(findTestObject('Object Repository/Page_Cart/btn_checkout'));
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
-	
+
 	}
-	
+
 	//Login AmazonPay
 	//page:cart,checkout
 	@Keyword
@@ -321,7 +321,7 @@ public class ShopAction {
 		WebUI.delay(GlobalVariable.TIMEOUT);
 		println "END KEYWORD loginAmazonPay";
 	}
-	
+
 	//Checkout via amazonPay
 	@Keyword
 	def checkoutViaAmazonPay(){
@@ -332,7 +332,7 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD checkoutViaAmazonPay";
 	}
-	
+
 	//Checkout via Credit card
 	@Keyword
 	def checkoutViaCreditCard(String cardNumber,String cardType,String expirationMonth,String expirationYear, String cvv){
@@ -349,7 +349,7 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL);
 		println "END KEYWORD checkoutViaCreditCard";
 	}
-	
+
 	//Checkout via Paypal
 	@Keyword
 	def checkoutViaPaypal(String paypalEmail,String paypalPassword){
@@ -367,7 +367,7 @@ public class ShopAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD checkoutViaPaypal";
 	}
-	
+
 	//Fill customer information
 	//billingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}
 	//shippingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP"}
@@ -423,10 +423,10 @@ public class ShopAction {
 		}
 		println "START KEYWORD fillCustomerInformation";
 	}
-	
+
 	//Fill customer information without shipping other address
 	//billingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}
-	
+
 	@Keyword
 	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String accountUsername,String accountPassword,String orderNote){
 		println "START KEYWORD fillCustomerInformation";
@@ -461,7 +461,7 @@ public class ShopAction {
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD fillCustomerInformation";
 	}
-	
+
 	//Verify product details
 	//color: pink,grey
 	@Keyword
@@ -521,7 +521,7 @@ public class ShopAction {
 				if(currentColor!=regularPriceColor){
 					result = 'false';
 				}
-	
+
 				//Simple sale
 			}else{
 				//Regular price
@@ -555,13 +555,13 @@ public class ShopAction {
 					result = 'false';
 				}
 			}
-	
+
 			//Variation product
 		}else{
 			if(WebUI.verifyOptionSelectedByLabel(findTestObject('Object Repository/Page_Shop/drop_chooseOption'), variation, false, GlobalVariable.TIMEOUT)==false){
 				result = 'false';
 			}
-	
+
 			//Variation not sale
 			if(salePrice==0){
 				TestObject obj_regularPrice=new TestObject();
@@ -578,7 +578,7 @@ public class ShopAction {
 				if(currentColor!=regularPriceColor){
 					result = 'false';
 				}
-	
+
 				//Variation sale
 			}else{
 				//Regular price
@@ -612,7 +612,7 @@ public class ShopAction {
 					result = 'false';
 				}
 			}
-	
+
 		}
 		//Verify result
 		if(result=='true'){
@@ -622,7 +622,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyProductDetails";
 	}
-	
+
 	//Verify Check Out Order Details
 	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
 	//free shipping price=0
@@ -654,7 +654,7 @@ public class ShopAction {
 				println "Product "+ i +" in array exist";
 			}
 			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
-	
+
 		}
 		//Check subtotal
 		TestObject obj_subtotal =new TestObject();
@@ -682,7 +682,7 @@ public class ShopAction {
 			}
 			//Normal shipping
 		}else {
-	
+
 			if(shippingType=='normal'){
 				TestObject obj_shippingSelection=new TestObject();
 				TestObject obj_shippingLable=new TestObject();
@@ -709,7 +709,7 @@ public class ShopAction {
 					println "Expected shipping price: " + shippingPrice;
 					result = 'false';
 				}
-	
+
 			}else if(shippingType=='EMS'){
 				TestObject obj_shippingSelection=new TestObject();
 				TestObject obj_shippingLable=new TestObject();
@@ -735,7 +735,7 @@ public class ShopAction {
 					result = 'false';
 				}
 			}
-	
+
 		}
 		//Check total
 		float currentTotal = currentSubtotal + shippingPrice;
@@ -755,13 +755,13 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderDetailsOnCheckout";
 	}
-	
+
 	//Calculate total
 	@Keyword
 	def public static calculateTotal(int quantity,float price){
 		return Float.parseFloat(String.format("%.2f", price*quantity));
 	}
-	
+
 	//Verify Order received Details
 	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
 	//free shipping price=0
@@ -793,7 +793,7 @@ public class ShopAction {
 				println "Product "+ i +" in array exist";
 			}
 			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
-	
+
 		}
 		//Check subtotal
 		TestObject obj_subtotal =new TestObject();
@@ -808,7 +808,7 @@ public class ShopAction {
 			println "Subtotal input: "+ subtotal;
 		}
 		//Check shipping
-	
+
 		TestObject obj_shippingLable=new TestObject();
 		TestObject  obj_shippingPrice =new TestObject();
 		obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td|//th[text()='Shipping:']/parent::tr/td/small");
@@ -843,7 +843,7 @@ public class ShopAction {
 			println "Current method: "+currentMethod;
 			println "Expected method:" + paymentMethod;
 		}
-	
+
 		//Check total
 		float currentTotal = currentSubtotal + shippingPrice;
 		TestObject obj_total=new TestObject();
@@ -862,7 +862,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderReceivedDetails";
 	}
-	
+
 	//Get order number on Order received
 	@Keyword
 	def getOrderNumberOnOrderReceived(){
@@ -872,7 +872,7 @@ public class ShopAction {
 		return WebUI.getText(obj_orderNumber).trim();
 		println "END KEYWORD getOrderNumberOnOrderReceived";
 	}
-	
+
 	//Select category
 	@Keyword
 	def selectCategory(String category,String subCategory ){
@@ -894,7 +894,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD selectCategory";
 	}
-	
+
 	//Find product on product list
 	@Keyword
 	def findProductOnProductList(String productName){
@@ -920,7 +920,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD findProductOnProductList";
 	}
-	
+
 	//Select product on product list
 	@Keyword
 	def selectProductOnProductList(String productName){
@@ -995,23 +995,23 @@ public class ShopAction {
 						}
 					}
 				}
-	
+
 			} else{
 				result = "false";
 			}
-	
+
 			if(result=="true"){
 				KeywordUtil.markPassed("Keyword VerifyProductOnProductList is Passed");
 			}else{
 				KeywordUtil.markFailed("Keyword VerifyProductOnProductList is Failed");
 			}
-	
+
 		} catch (Exception e) {
 			e.printStackTrace()
 		}
 		println "END KEYWORD VerifyProductOnProductList";
 	}
-	
+
 	//Select shipping
 	//shipping: normal,EMS
 	@Keyword

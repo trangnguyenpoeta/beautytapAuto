@@ -30,6 +30,7 @@ public class AdminAction {
 
 	@Keyword
 	def deleteUser(String email) {
+		println "START KEYWORD deleteUser";
 		WebUI.openBrowser(GlobalVariable.SITE_URL+"/login");
 		WebUI.maximizeWindow();
 		WebUI.clearText(findTestObject("Page_login/txt_username"));
@@ -68,5 +69,34 @@ public class AdminAction {
 			e.printStackTrace()
 		}
 		WebUI.closeBrowser();
+		println "END KEYWORD deleteUser";
 	}
+	
+	//Select Admin menu
+	@Keyword
+	def selectAdminMenu(String menu,String submenu){
+		println "START KEYWORD selectAdminMenu";
+		if(submenu==null){
+			submenu='';
+		}
+		if(submenu!=''){
+			TestObject obj_menu=new TestObject();
+			TestObject obj_submenu=new TestObject();
+			obj_menu.addProperty("xpath",ConditionType.EQUALS,"//div[@class='wp-menu-name' and text()='"+ menu +"']");
+			obj_menu.addProperty("xpath",ConditionType.EQUALS,"//li/a[starts-with(text(),'"+ submenu +"')]");
+			WebUI.mouseOver(obj_menu);
+			WebUI.delay(2);
+			WebUI.click(obj_submenu);
+			WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
+		}else{
+			TestObject obj_menu=new TestObject();
+			obj_menu.addProperty("xpath",ConditionType.EQUALS,"//div[@class='wp-menu-name' and text()='"+ menu +"']");
+			WebUI.click(obj_menu);
+			WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
+		}
+		
+		println "END KEYWORD selectAdminMenu";		
+	}
+	
+//End Class	
 }
