@@ -1064,5 +1064,42 @@ public class ShopAction {
 		println "END KEYWORD getRewardDetails";
 	}
 
+	//Verify Reward Point
+	@Keyword
+	def VerifyRewardPoints(float lifetime,float pending,float redeemable,float pointvalue){
+		println "START KEYWORD VerifyRewardPoints";
+		TestObject obj_lifetime =new TestObject();
+		TestObject obj_pending =new TestObject();
+		TestObject obj_redeemable =new TestObject();
+		TestObject obj_pointvalue =new TestObject();
+		String result = "true";
+		obj_lifetime.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Lifetime Loyalty Points']/parent::div/h3");
+		obj_pending.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Pending Loyalty Points']/parent::div/h3");
+		obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Loyalty Points Redeemable']/parent::div/h3");
+		obj_pointvalue.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Points Value']/parent::div/h3");
+		float currentlifetime = Float.parseFloat(WebUI.getText(obj_lifetime).trim());
+		float currentpending = Float.parseFloat(WebUI.getText(obj_pending).trim());
+		float currentredeemable = Float.parseFloat(WebUI.getText(obj_redeemable).trim());
+		float currentpointvalue = Float.parseFloat(WebUI.getText(obj_pointvalue).trim().replace('$', ''));
+		if(currentlifetime!=lifetime||currentpending!=pending||currentpointvalue!=pointvalue||currentredeemable!=redeemable){
+			result="false";
+			println "Current lifetime: " + currentlifetime;
+			println "Expected Lifetime: " +lifetime;
+			println "Current Pending: " +currentpending;
+			println "Expected Pending: " +pending;
+			println "Current Redeemable: " +currentredeemable;
+			println "Expected Redeemable: " +redeemable;
+			println "Current Point value: " +currentpointvalue;			
+			println "Expected Point value: " +pointvalue;
+		}
+		if(result=="true"){
+			KeywordUtil.markPassed("Keyword VerifyRewardPoints is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyRewardPoints is Failed");
+		}
+		println "END KEYWORD VerifyRewardPoints";
+	}
+	
+	
 //End Class		
 }

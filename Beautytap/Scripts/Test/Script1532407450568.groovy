@@ -29,5 +29,4 @@ import org.apache.commons.lang.StringUtils
 
 //SIGNUP
 
-JSONObject a = CustomKeywords.'beautytap.ShopAction.getRewardDetails'()
-println a
+CustomKeywords.'beautytap.ShopAction.VerifyRewardPoints'(84.50, 40392.53, 84.50, 2)

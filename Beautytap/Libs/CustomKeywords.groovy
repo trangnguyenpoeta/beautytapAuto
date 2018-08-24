@@ -360,6 +360,18 @@ def static "beautytap.ShopAction.getRewardDetails"() {
     (new beautytap.ShopAction()).getRewardDetails()
 }
 
+def static "beautytap.ShopAction.VerifyRewardPoints"(
+    	float lifetime	
+     , 	float pending	
+     , 	float redeemable	
+     , 	float pointvalue	) {
+    (new beautytap.ShopAction()).VerifyRewardPoints(
+        	lifetime
+         , 	pending
+         , 	redeemable
+         , 	pointvalue)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
