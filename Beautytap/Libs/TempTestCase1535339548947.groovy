@@ -13,9 +13,9 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.w
 DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.mobile.contribution.MobileDriverCleaner())
 
 
-RunConfiguration.setExecutionSettingFile('C:\\Users\\TRANGN~1\\AppData\\Local\\Temp\\Katalon\\Test Cases\\Test\\20180824_135416\\execution.properties')
+RunConfiguration.setExecutionSettingFile('C:\\Users\\TRANGN~1\\AppData\\Local\\Temp\\Katalon\\Test Cases\\SignUp_Login_ResetPass\\TC01_SignUp_Login_ResetPassword_Via_Email\\20180827_101228\\execution.properties')
 
 TestCaseMain.beforeStart()
 
-        TestCaseMain.runTestCase('Test Cases/Test', new TestCaseBinding('Test Cases/Test',[:]), FailureHandling.STOP_ON_FAILURE , false)
+        TestCaseMain.runTestCase('Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email', new TestCaseBinding('Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email',[:]), FailureHandling.STOP_ON_FAILURE , false)
     

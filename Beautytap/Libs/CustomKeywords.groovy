@@ -372,6 +372,14 @@ def static "beautytap.ShopAction.VerifyRewardPoints"(
          , 	pointvalue)
 }
 
+def static "beautytap.ShopAction.getRewardHistory"(
+    	String orderNumber	
+     , 	String status	) {
+    (new beautytap.ShopAction()).getRewardHistory(
+        	orderNumber
+         , 	status)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

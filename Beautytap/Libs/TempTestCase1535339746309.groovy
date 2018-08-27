@@ -13,9 +13,9 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.w
 DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.mobile.contribution.MobileDriverCleaner())
 
 
-RunConfiguration.setExecutionSettingFile('C:\\Users\\TRANGN~1\\AppData\\Local\\Temp\\Katalon\\Test Cases\\Test\\20180824_143243\\execution.properties')
+RunConfiguration.setExecutionSettingFile('C:\\Users\\TRANGN~1\\AppData\\Local\\Temp\\Katalon\\Test Cases\\Shop\\TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200\\20180827_101546\\execution.properties')
 
 TestCaseMain.beforeStart()
 
-        TestCaseMain.runTestCase('Test Cases/Test', new TestCaseBinding('Test Cases/Test',[:]), FailureHandling.STOP_ON_FAILURE , false)
+        TestCaseMain.runTestCase('Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200', new TestCaseBinding('Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200',[:]), FailureHandling.STOP_ON_FAILURE , false)
     

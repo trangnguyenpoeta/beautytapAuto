@@ -1036,7 +1036,7 @@ public class ShopAction {
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD selectShipping";
 	}
-	
+
 	//Get reward details
 	//rewardDetails: {"multiplier":"MULTIPLIER","lifetime":"LIFETIME","pending":"PENDING","redeemable":"REDEEMABLE","pointvalue":"POINTVALUE"}
 	@Keyword
@@ -1096,7 +1096,7 @@ public class ShopAction {
 			println "Expected Pending: " +pending;
 			println "Current Redeemable: " +currentredeemable;
 			println "Expected Redeemable: " +redeemable;
-			println "Current Point value: " +currentpointvalue;			
+			println "Current Point value: " +currentpointvalue;
 			println "Expected Point value: " +pointvalue;
 		}
 		if(result=="true"){
@@ -1106,7 +1106,38 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyRewardPoints";
 	}
-	
-	
-//End Class		
+
+	//Get reward history
+	//status: pending,processing,completed,cancelled,on-hold,refunded
+	//rewardHistory json object: {"date":"DATE","pointredeemed":"POINTREDEEMED","total":"TOTAL","multiplier":"MULTIPLIER","loyaltypoint":"LOYALTYPOINT","totalpoint":"TOTALPOINT"}
+	@Keyword
+	def getRewardHistory(String orderNumber, String status){
+		println "SART KEYWORD getRewardHistory";
+		orderNumber =orderNumber.replace('#','');
+		TestObject obj_date = new TestObject();
+		TestObject obj_pointRedeemed = new TestObject();
+		TestObject obj_total = new TestObject();
+		TestObject obj_multiplier = new TestObject();
+		TestObject obj_loyaltyPoint = new TestObject();
+		TestObject obj_totalPoint = new TestObject();
+		obj_date.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[2]")
+		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
+		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
+		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
+		String currentDate =WebUI.getText(obj_date).trim();
+		String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
+		String currentTotal=WebUI.getText(obj_total).trim();
+		String currentMultiplier = WebUI.getText(obj_multiplier).trim()
+		String currentLoyaltyPoint = WebUI.getText(obj_loyaltyPoint).trim();
+		String currentTotalPoint = WebUI.getText(obj_totalPoint).trim();
+		String json='{"date":"'+ currentDate +'","pointredeemed":"'+ currentPointRedeemed +'","total":"'+ currentTotal +'","multiplier":"'+ currentMultiplier +'","loyaltypoint":"'+ currentLoyaltyPoint +'","totalpoint":"'+ currentTotalPoint +'"}';
+		JSONObject rewardHistory =new JSONObject(json);
+		println rewardHistory;
+		return rewardHistory;
+		println "END KEYWORD getRewardHistory";
+	}
+
+	//End Class
 }

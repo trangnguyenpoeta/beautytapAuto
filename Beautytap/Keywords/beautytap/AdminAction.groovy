@@ -25,7 +25,7 @@ import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.testobject.ConditionType
-import beautytap.GeneralAction 
+import beautytap.GeneralAction
 
 public class AdminAction {
 
@@ -72,7 +72,7 @@ public class AdminAction {
 		WebUI.closeBrowser();
 		println "END KEYWORD deleteUser";
 	}
-	
+
 	//Select Admin menu
 	@Keyword
 	def public static selectAdminMenu(String menu,String submenu){
@@ -95,10 +95,10 @@ public class AdminAction {
 			WebUI.click(obj_menu);
 			WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 		}
-		
-		println "END KEYWORD selectAdminMenu";		
+
+		println "END KEYWORD selectAdminMenu";
 	}
-	
+
 	//change order status
 	//status: Pending payment,Processing,On hold,Completed,Cancelled,Refunded,Failed
 	@Keyword
@@ -118,6 +118,6 @@ public class AdminAction {
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Admin/lbl_orderUpdatedMessage'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
 		println "END KEYWORD changeOrderStatus";
 	}
-	
-//End Class	
+
+	//End Class
 }
