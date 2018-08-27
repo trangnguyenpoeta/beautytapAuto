@@ -27,11 +27,12 @@ import com.kms.katalon.core.testobject.ConditionType
 import org.apache.commons.lang.StringUtils
 
 
-
+JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","variation":"","quantity":"1","price":"30.99"}]')
 //SIGNUP
-CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
-CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
-CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
+//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+//CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
+///CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
+//CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
 //CustomKeywords.'beautytap.ShopAction.getRewardHistory'('136120', 'completed')
-CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136127", "August 24, 2018","pending", "", "35.00", "1.3", "0.00", "84.50")
+//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136127", "August 24, 2018","pending", "", "35.00", "1.3", "0.00", "84.50")
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 30.99, 60, 2, "normal",'($10.00) - Pantos (est. 10-20 working days delivery including processing)', 10, 38.99)

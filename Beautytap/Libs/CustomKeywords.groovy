@@ -288,6 +288,26 @@ def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
          , 	total)
 }
 
+def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
+    	JSONArray products	
+     , 	float subtotal	
+     , 	int pointUsed	
+     , 	float moneyDiscount	
+     , 	String shippingType	
+     , 	String shippingLable	
+     , 	float shippingPrice	
+     , 	float total	) {
+    (new beautytap.ShopAction()).VerifyOrderDetailsOnCheckout(
+        	products
+         , 	subtotal
+         , 	pointUsed
+         , 	moneyDiscount
+         , 	shippingType
+         , 	shippingLable
+         , 	shippingPrice
+         , 	total)
+}
+
 def static "beautytap.ShopAction.calculateTotal"(
     	int quantity	
      , 	float price	) {
@@ -306,6 +326,26 @@ def static "beautytap.ShopAction.VerifyOrderReceivedDetails"(
     (new beautytap.ShopAction()).VerifyOrderReceivedDetails(
         	products
          , 	subtotal
+         , 	shippingPrice
+         , 	shippingLabel
+         , 	paymentMethod
+         , 	total)
+}
+
+def static "beautytap.ShopAction.VerifyOrderReceivedDetails"(
+    	JSONArray products	
+     , 	float subtotal	
+     , 	int pointUsed	
+     , 	float moneyDiscount	
+     , 	float shippingPrice	
+     , 	String shippingLabel	
+     , 	String paymentMethod	
+     , 	float total	) {
+    (new beautytap.ShopAction()).VerifyOrderReceivedDetails(
+        	products
+         , 	subtotal
+         , 	pointUsed
+         , 	moneyDiscount
          , 	shippingPrice
          , 	shippingLabel
          , 	paymentMethod

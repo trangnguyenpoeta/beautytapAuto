@@ -739,6 +739,7 @@ public class ShopAction {
 		}
 		//Check total
 		float currentTotal = currentSubtotal + shippingPrice;
+		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
 		TestObject obj_total=new TestObject();
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='order-total']/td/span");
 		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
@@ -756,6 +757,164 @@ public class ShopAction {
 		println "END KEYWORD VerifyOrderDetailsOnCheckout";
 	}
 
+	//Verify Check Out Order Details with discount by coupon or reward
+	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
+	//free shipping price=0
+	//shippingType:normal,EMS,free,freeEMS
+	@Keyword
+	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,int pointUsed,float moneyDiscount,String shippingType,String shippingLable,float shippingPrice,float total){
+		println "START KEYWORD VerifyOrderDetailsOnCheckout";
+		String result = 'true';
+		float orderSubtotal = 0;
+		//Check product line
+		for(int i;i<products.length();i++){
+			JSONObject obj_product = (JSONObject) products.get(i);
+			String productName = obj_product.get('productname');
+			String variation = obj_product.get('variation');
+			if(variation!=''){
+				productName = productName + ' – ' + variation;
+			}
+			int quantity = Integer.parseInt(obj_product.get('quantity'));
+			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
+			float productTotal = ShopAction.calculateTotal(quantity, price);
+			orderSubtotal = orderSubtotal + productTotal;
+			String xpath = "//td[@class='product-name' and contains(text(),'"+productName+"')]/strong[@class='product-quantity' and text()='× "+ quantity+ "']/ancestor::tr/td[@class='product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			TestObject obj_productLine = new TestObject();
+			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
+			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
+				result = 'false';
+				println "Product "+ i +" in array does not exist";
+			}else{
+				println "Product "+ i +" in array exist";
+			}
+			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
+
+		}
+		//Check subtotal
+		TestObject obj_subtotal =new TestObject();
+		obj_subtotal.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='cart-subtotal']/td/span");
+		float currentSubtotal = Float.parseFloat(WebUI.getText(obj_subtotal).trim().replace('$', ''));
+		if(orderSubtotal==currentSubtotal && orderSubtotal==subtotal){
+			println "Subtotal is correct: "+ currentSubtotal;
+		}else{
+			result = 'false'
+			println "Subtotal product line: "+ orderSubtotal;
+			println "Subtotal sum line: "+ currentSubtotal;
+			println "Subtotal input: "+ subtotal;
+		}
+		//Check reward point
+		if(pointUsed!=0){
+			TestObject obj_pointUsed =new TestObject();
+			obj_pointUsed.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Rewards']/parent::tr/td/span");
+			int currentPointUsed = Integer.parseInt(WebUI.getText(obj_pointUsed).trim().substring(0, WebUI.getText(obj_pointUsed).trim().length()-12));
+			println "Current point used:"+currentPointUsed;
+			println "Expected point used:" +pointUsed;
+			if(currentPointUsed!=pointUsed){
+				result ="false";
+				println "Point used is not correct!" ;
+			}
+		}
+		//Check discount
+		if(moneyDiscount!=0){
+			TestObject obj_discount =new TestObject();
+			obj_discount.addProperty("xpath",ConditionType.EQUALS,"//th[starts-with(text(),'Coupon:')]/parent::tr/td/span|//th[starts-with(text(),'Rewards')]/parent::tr/td/span[@class='woocommerce-Price-amount amount']");
+			float currentDiscount = Float.parseFloat(WebUI.getText(obj_discount).trim().replace('$', ''));
+			println "Current discount:"+currentDiscount;
+			println "Expected discount:" +moneyDiscount;
+			if(currentDiscount!=moneyDiscount){
+				result ="false";
+				println "Money discount is not correct!" ;
+			}
+		}
+		//Check shipping
+		//Free shipping/Free EMS shipping
+		if(shippingType=='free' || shippingType=='freeEMS'){
+			TestObject obj_shippingLable = new TestObject();
+			obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='Shipping']");
+			String getShippingText = WebUI.getText(obj_shippingLable);
+			if(StringUtils.containsIgnoreCase(getShippingText, shippingLable)==true){
+				println "Shipping label is: "+shippingLable;
+			}else{
+				result = 'false';
+				println "Shipping label does not contains: "+shippingLable;
+			}
+			//Normal shipping
+		}else {
+
+			if(shippingType=='normal'){
+				TestObject obj_shippingSelection=new TestObject();
+				TestObject obj_shippingLable=new TestObject();
+				TestObject  obj_shippingPrice =new TestObject();
+				obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/input");
+				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label");
+				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/label/span");
+				boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
+				String currentLabel =WebUI.getText(obj_shippingLable).trim();
+				println "Current ship label:"+currentLabel;
+				float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+				shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
+				println "Expected ship label:" +shippingLable;
+				if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
+					println "Expected status: " +radioIsChecked;
+					println "Expected lable: " +currentLabel;
+					println "Expected shipping price: " +currentShipPrice;
+				}else{
+					println "Current status: " +radioIsChecked;
+					println "Expected status: true" ;
+					println "Current lable: " +currentLabel;
+					println "Expected lable: " +shippingLable;
+					println "Current shipping price: " +currentShipPrice;
+					println "Expected shipping price: " + shippingPrice;
+					result = 'false';
+				}
+
+			}else if(shippingType=='EMS'){
+				TestObject obj_shippingSelection=new TestObject();
+				TestObject obj_shippingLable=new TestObject();
+				TestObject  obj_shippingPrice =new TestObject();
+				obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/input");
+				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label");
+				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label/span");
+				boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
+				String currentLabel =WebUI.getText(obj_shippingLable).trim();
+				float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+				shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
+				if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
+					println "Expected status: " +radioIsChecked;
+					println "Expected lable: " +currentLabel;
+					println "Expected shipping price: " +currentShipPrice;
+				}else{
+					println "Current status: " +radioIsChecked;
+					println "Expected status: true" ;
+					println "Current lable: " +currentLabel;
+					println "Expected lable: " +shippingLable;
+					println "Current shipping price: " +currentShipPrice;
+					println "Expected shipping price: " + shippingPrice;
+					result = 'false';
+				}
+			}
+
+		}
+		//Check total
+		float currentTotal = currentSubtotal + shippingPrice-moneyDiscount;
+		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
+		TestObject obj_total=new TestObject();
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='order-total']/td/span");
+		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
+		if(currentTotal!=expectedTotal){
+			result = 'false';
+			println "Current total: " +currentTotal;
+			println "Expected total:" +expectedTotal ;
+		}
+		//Check result
+		if(result=='true'){
+			KeywordUtil.markPassed("Keyword VerifyOrderDetailsOnCheckout is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyOrderDetailsOnCheckout is Failed");
+		}
+		println "END KEYWORD VerifyOrderDetailsOnCheckout";
+	}
+	
 	//Calculate total
 	@Keyword
 	def public static calculateTotal(int quantity,float price){
@@ -846,6 +1005,7 @@ public class ShopAction {
 
 		//Check total
 		float currentTotal = currentSubtotal + shippingPrice;
+		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
 		TestObject obj_total=new TestObject();
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Total:']/parent::tr/td/span");
 		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
@@ -862,6 +1022,134 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderReceivedDetails";
 	}
+	
+	//Verify Order received Details with reward/coupon
+	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
+	//free shipping price=0
+	//shippingType:normal,EMS,free,freeEMS
+	@Keyword
+	def VerifyOrderReceivedDetails(JSONArray products,float subtotal,int pointUsed,float moneyDiscount ,float shippingPrice,String shippingLabel,String paymentMethod,float total){
+		println "START KEYWORD VerifyOrderReceivedDetails";
+		String result = 'true';
+		float orderSubtotal = 0;
+		//Check product line
+		for(int i;i<products.length();i++){
+			JSONObject obj_product = (JSONObject) products.get(i);
+			String productName = obj_product.get('productname');
+			String variation = obj_product.get('variation');
+			if(variation!=''){
+				productName = productName + ' – ' + variation;
+			}
+			int quantity = Integer.parseInt(obj_product.get('quantity'));
+			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
+			float productTotal = ShopAction.calculateTotal(quantity, price);
+			orderSubtotal = orderSubtotal + productTotal;
+			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='× "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			TestObject obj_productLine = new TestObject();
+			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
+			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
+				result = 'false';
+				println "Product "+ i +" in array does not exist";
+			}else{
+				println "Product "+ i +" in array exist";
+			}
+			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
+
+		}
+		//Check subtotal
+		TestObject obj_subtotal =new TestObject();
+		obj_subtotal.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Subtotal:']/parent::tr/td/span");
+		float currentSubtotal = Float.parseFloat(WebUI.getText(obj_subtotal).trim().replace('$', ''));
+		if(orderSubtotal==currentSubtotal && orderSubtotal==subtotal){
+			println "Subtotal is correct: "+ currentSubtotal;
+		}else{
+			result = 'false'
+			println "Subtotal product line: "+ orderSubtotal;
+			println "Subtotal sum line: "+ currentSubtotal;
+			println "Subtotal input: "+ subtotal;
+		}
+		//Check reward point
+		if(pointUsed!=0){
+			TestObject obj_pointUsed =new TestObject();
+			obj_pointUsed.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Rewards']/parent::tr/td/span");
+			int currentPointUsed = Integer.parseInt(WebUI.getText(obj_pointUsed).trim().substring(0, WebUI.getText(obj_pointUsed).trim().length()-12));
+			println "Current point used:"+currentPointUsed;
+			println "Expected point used:" +pointUsed;
+			if(currentPointUsed!=pointUsed){
+				result ="false";
+				println "Point used is not correct!" ;
+			}
+		}
+		//Check discount
+		if(moneyDiscount!=0){
+			TestObject obj_discount =new TestObject();
+			obj_discount.addProperty("xpath",ConditionType.EQUALS,"//th[starts-with(text(),'Coupon:')]/parent::tr/td/span|//th[starts-with(text(),'Rewards')]/parent::tr/td/span[@class='woocommerce-Price-amount amount']");
+			float currentDiscount = Float.parseFloat(WebUI.getText(obj_discount).trim().replace('$', ''));
+			println "Current discount:"+currentDiscount;
+			println "Expected discount:" +moneyDiscount;
+			if(currentDiscount!=moneyDiscount){
+				result ="false";
+				println "Money discount is not correct!" ;
+			}
+		}
+		
+		//Check shipping
+
+		TestObject obj_shippingLable=new TestObject();
+		TestObject  obj_shippingPrice =new TestObject();
+		obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td|//th[text()='Shipping:']/parent::tr/td/small");
+		obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td/span");
+		String currentLabel =WebUI.getText(obj_shippingLable).trim();
+		if(WebUI.verifyElementPresent(obj_shippingPrice, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
+			float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+			shippingLabel = "via "+ shippingLabel;
+			if(currentLabel!=shippingLabel && currentShipPrice!=shippingPrice){
+				println "Current ship label: "+currentLabel;
+				println "Expected ship label:" + shippingLabel;
+				println "Current ship price: "+currentShipPrice;
+				println "Expected ship price:" + shippingPrice;
+				result = 'false'
+			}
+		}else{
+			float currentShipPrice =0;
+			if(currentLabel!=shippingLabel && currentShipPrice!=shippingPrice){
+				println "Current ship label: "+currentLabel;
+				println "Expected ship label:" + shippingLabel;
+				println "Current ship price: "+currentShipPrice;
+				println "Expected ship price:" + shippingPrice;
+				result = 'false'
+			}
+		}
+		//Check Payment method
+		TestObject obj_paymentMethod=new TestObject();
+		obj_paymentMethod.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Payment method:']/parent::tr/td");
+		String currentMethod = WebUI.getText(obj_paymentMethod).trim();
+		if(currentMethod != paymentMethod){
+			result = 'false'
+			println "Current method: "+currentMethod;
+			println "Expected method:" + paymentMethod;
+		}
+
+		//Check total
+		float currentTotal = currentSubtotal + shippingPrice -moneyDiscount;
+		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
+		TestObject obj_total=new TestObject();
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Total:']/parent::tr/td/span");
+		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
+		if(currentTotal!=expectedTotal){
+			result = 'false';
+			println "Current total: " +currentTotal;
+			println "Expected total:" +expectedTotal ;
+		}
+		//Check result
+		if(result=='true'){
+			KeywordUtil.markPassed("Keyword VerifyOrderReceivedDetails is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyOrderReceivedDetails is Failed");
+		}
+		println "END KEYWORD VerifyOrderReceivedDetails";
+	}
+	
 
 	//Get order number on Order received
 	//{"ordernumber":"ORDERNUMBER","date":"DATE"}
