@@ -380,6 +380,26 @@ def static "beautytap.ShopAction.getRewardHistory"(
          , 	status)
 }
 
+def static "beautytap.ShopAction.VerifyRewardHistory"(
+    	String orderNumber	
+     , 	String date	
+     , 	String status	
+     , 	String pointRedeemed	
+     , 	String total	
+     , 	String multiplier	
+     , 	String loyaltyPoint	
+     , 	String totalPoint	) {
+    (new beautytap.ShopAction()).VerifyRewardHistory(
+        	orderNumber
+         , 	date
+         , 	status
+         , 	pointRedeemed
+         , 	total
+         , 	multiplier
+         , 	loyaltyPoint
+         , 	totalPoint)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

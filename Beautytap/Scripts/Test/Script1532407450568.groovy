@@ -16,6 +16,7 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
+import com.sun.corba.se.impl.presentation.rmi.InvocationHandlerFactoryImpl.CustomCompositeInvocationHandlerImpl
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 import com.kms.katalon.core.testobject.TestObject
@@ -28,5 +29,9 @@ import org.apache.commons.lang.StringUtils
 
 
 //SIGNUP
-
-println String.format("%.1f", 1235)
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
+CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
+//CustomKeywords.'beautytap.ShopAction.getRewardHistory'('136120', 'completed')
+CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136127", "August 24, 2018","pending", "", "35.00", "1.3", "0.00", "84.50")

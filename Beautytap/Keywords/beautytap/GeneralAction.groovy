@@ -193,6 +193,7 @@ public class GeneralAction {
 	@Keyword
 	def clickNavigationMenu(String navigationMenu ) {
 		println "START KEYWORD clickNavigationMenu";
+		navigationMenu = navigationMenu.toLowerCase();
 		TestObject obj_menu = new TestObject();
 		switch (navigationMenu){
 			case 'shop': obj_menu = findTestObject('Object Repository/Page_General/link_shop');break;

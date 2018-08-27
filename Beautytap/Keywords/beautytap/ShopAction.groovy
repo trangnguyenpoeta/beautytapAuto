@@ -1128,7 +1128,7 @@ public class ShopAction {
 		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
 		String currentDate =WebUI.getText(obj_date).trim();
 		String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
-		String currentTotal=WebUI.getText(obj_total).trim();
+		String currentTotal=WebUI.getText(obj_total).trim().replace('$', '');
 		String currentMultiplier = WebUI.getText(obj_multiplier).trim()
 		String currentLoyaltyPoint = WebUI.getText(obj_loyaltyPoint).trim();
 		String currentTotalPoint = WebUI.getText(obj_totalPoint).trim();
@@ -1139,5 +1139,63 @@ public class ShopAction {
 		println "END KEYWORD getRewardHistory";
 	}
 
+	//Verify Reward History
+	@Keyword
+	def VerifyRewardHistory(String orderNumber,String date,String status,String pointRedeemed,String total,String multiplier,String loyaltyPoint,String totalPoint){
+		println "SART KEYWORD VerifyRewardHistory";
+		String result="true";		
+		orderNumber =orderNumber.replace('#','');
+		TestObject obj_orderNumber = new TestObject();
+		TestObject obj_date = new TestObject();
+		TestObject obj_status = new TestObject();
+		TestObject obj_pointRedeemed = new TestObject();
+		TestObject obj_total = new TestObject();
+		TestObject obj_multiplier = new TestObject();
+		TestObject obj_loyaltyPoint = new TestObject();
+		TestObject obj_totalPoint = new TestObject();
+		obj_date.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[2]")
+		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
+		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
+		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
+		if (WebUI.verifyElementPresent(obj_date, GlobalVariable.TIMEOUT)==true){
+		String currentDate =WebUI.getText(obj_date).trim();
+		String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
+		String currentTotal=WebUI.getText(obj_total).trim().replace('$', '');
+		String currentMultiplier = WebUI.getText(obj_multiplier).trim()
+		String currentLoyaltyPoint = WebUI.getText(obj_loyaltyPoint).trim();
+		String currentTotalPoint = WebUI.getText(obj_totalPoint).trim();
+			if(currentDate!=date || currentPointRedeemed!=pointRedeemed||currentTotal!=total||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
+				result="false";
+				println "Current date:" +currentDate;
+				println "Expected date:" +date;
+				println "Current Point Redeemed:" +currentPointRedeemed;
+				println "Expected Point Redeemed:" +pointRedeemed;
+				println "Current Total:" +currentTotal;
+				println "Expected Total:" +total;
+				println "Current Multiplier:" +currentMultiplier;
+				println "Expected Multiplier:" +multiplier;
+				println "Current Loyalty Point:" +currentLoyaltyPoint;
+				println "Expected Loyalty Point:" +loyaltyPoint;
+				println "Current Total Point:" +currentTotalPoint;
+				println "Expected Total Point:" +totalPoint;
+			}else{
+			println "Reward History is correct!";
+			}
+		} else{
+			result = "false";
+		}
+		
+		if(result=="true"){
+			KeywordUtil.markPassed("Keyword VerifyRewardHistory is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyRewardHistory is Failed");
+		}
+		println "END KEYWORD VerifyRewardHistory";
+	}
+		
+		
+		
 	//End Class
 }
