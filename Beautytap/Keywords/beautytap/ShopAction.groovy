@@ -914,7 +914,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderDetailsOnCheckout";
 	}
-	
+
 	//Calculate total
 	@Keyword
 	def public static calculateTotal(int quantity,float price){
@@ -1022,7 +1022,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderReceivedDetails";
 	}
-	
+
 	//Verify Order received Details with reward/coupon
 	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
 	//free shipping price=0
@@ -1092,7 +1092,7 @@ public class ShopAction {
 				println "Money discount is not correct!" ;
 			}
 		}
-		
+
 		//Check shipping
 
 		TestObject obj_shippingLable=new TestObject();
@@ -1149,7 +1149,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderReceivedDetails";
 	}
-	
+
 
 	//Get order number on Order received
 	//{"ordernumber":"ORDERNUMBER","date":"DATE"}
@@ -1361,7 +1361,7 @@ public class ShopAction {
 
 	//Verify Reward Point
 	@Keyword
-	def VerifyRewardPoints(float lifetime,float pending,float redeemable,float pointvalue){
+	def VerifyRewardPointsDetails(float lifetime,float pending,float redeemable,float pointvalue){
 		println "START KEYWORD VerifyRewardPoints";
 		TestObject obj_lifetime =new TestObject();
 		TestObject obj_pending =new TestObject();
@@ -1431,7 +1431,7 @@ public class ShopAction {
 	@Keyword
 	def VerifyRewardHistory(String orderNumber,String date,String status,String pointRedeemed,String total,String multiplier,String loyaltyPoint,String totalPoint){
 		println "SART KEYWORD VerifyRewardHistory";
-		String result="true";		
+		String result="true";
 		orderNumber =orderNumber.replace('#','');
 		TestObject obj_orderNumber = new TestObject();
 		TestObject obj_date = new TestObject();
@@ -1448,12 +1448,12 @@ public class ShopAction {
 		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
 		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
 		if (WebUI.verifyElementPresent(obj_date, GlobalVariable.TIMEOUT)==true){
-		String currentDate =WebUI.getText(obj_date).trim();
-		String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
-		String currentTotal=WebUI.getText(obj_total).trim().replace('$', '');
-		String currentMultiplier = WebUI.getText(obj_multiplier).trim()
-		String currentLoyaltyPoint = WebUI.getText(obj_loyaltyPoint).trim();
-		String currentTotalPoint = WebUI.getText(obj_totalPoint).trim();
+			String currentDate =WebUI.getText(obj_date).trim();
+			String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
+			String currentTotal=WebUI.getText(obj_total).trim().replace('$', '');
+			String currentMultiplier = WebUI.getText(obj_multiplier).trim()
+			String currentLoyaltyPoint = WebUI.getText(obj_loyaltyPoint).trim();
+			String currentTotalPoint = WebUI.getText(obj_totalPoint).trim();
 			if(currentDate!=date || currentPointRedeemed!=pointRedeemed||currentTotal!=total||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
 				result="false";
 				println "Current date:" +currentDate;
@@ -1469,12 +1469,12 @@ public class ShopAction {
 				println "Current Total Point:" +currentTotalPoint;
 				println "Expected Total Point:" +totalPoint;
 			}else{
-			println "Reward History is correct!";
+				println "Reward History is correct!";
 			}
 		} else{
 			result = "false";
 		}
-		
+
 		if(result=="true"){
 			KeywordUtil.markPassed("Keyword VerifyRewardHistory is Passed");
 		}else{
@@ -1482,8 +1482,20 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyRewardHistory";
 	}
-		
-		
-		
+
+	//	Verify Reward earn details
+	@Keyword
+	def VerifyRewardEarned(float subtotal, String status, float multiplier,float rewardEarned){
+		TestObject obj_status= new TestObject();
+		TestObject obj_multiplier= new TestObject();
+		TestObject obj_rewardEarned= new TestObject();
+		obj_status.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span");
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Multiplier')]/parent::span");
+		obj_rewardEarned.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Rewards earned')]/parent::span/strong[2]");
+		String test = 'Status: Cushion Cutie ( $28.99 x Rewards Multiplier )';
+
+
+	}
+
 	//End Class
 }

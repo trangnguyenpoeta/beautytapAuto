@@ -35,4 +35,7 @@ JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","v
 //CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
 //CustomKeywords.'beautytap.ShopAction.getRewardHistory'('136120', 'completed')
 //CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136127", "August 24, 2018","pending", "", "35.00", "1.3", "0.00", "84.50")
-CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 30.99, 60, 2, "normal",'($10.00) - Pantos (est. 10-20 working days delivery including processing)', 10, 38.99)
+//CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 30.99, 60, 2, "normal",'($10.00) - Pantos (est. 10-20 working days delivery including processing)', 10, 38.99)
+TestObject obj=new TestObject();
+obj.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span")
+println WebUI.getText(obj)

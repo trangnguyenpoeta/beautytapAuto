@@ -171,7 +171,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'US. Est. 5 working days to ship (after processing)'</initValue>
+      <initValue>'Free shipping for orders over $60'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

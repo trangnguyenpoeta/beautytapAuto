@@ -400,12 +400,12 @@ def static "beautytap.ShopAction.getRewardDetails"() {
     (new beautytap.ShopAction()).getRewardDetails()
 }
 
-def static "beautytap.ShopAction.VerifyRewardPoints"(
+def static "beautytap.ShopAction.VerifyRewardPointsDetails"(
     	float lifetime	
      , 	float pending	
      , 	float redeemable	
      , 	float pointvalue	) {
-    (new beautytap.ShopAction()).VerifyRewardPoints(
+    (new beautytap.ShopAction()).VerifyRewardPointsDetails(
         	lifetime
          , 	pending
          , 	redeemable
@@ -438,6 +438,18 @@ def static "beautytap.ShopAction.VerifyRewardHistory"(
          , 	multiplier
          , 	loyaltyPoint
          , 	totalPoint)
+}
+
+def static "beautytap.ShopAction.VerifyRewardEarned"(
+    	float subtotal	
+     , 	String status	
+     , 	float multiplier	
+     , 	float rewardEarned	) {
+    (new beautytap.ShopAction()).VerifyRewardEarned(
+        	subtotal
+         , 	status
+         , 	multiplier
+         , 	rewardEarned)
 }
 
 def static "beautytap.AdminAction.deleteUser"(
