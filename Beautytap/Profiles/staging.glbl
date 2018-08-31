@@ -86,17 +86,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Innisfree Black Green Tea Cream 60ml'</initValue>
+      <initValue>'Innisfree Perfect UV Protection Cream SPF50+/PA+++ (Long-Lasting For Oily Skin) 50ml'</initValue>
       <name>SIMPLE_SALE_PRODUCT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>31.00</initValue>
+      <initValue>12.5</initValue>
       <name>SIMPLE_SALE_REGULAR_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>28.25</initValue>
+      <initValue>11.99</initValue>
       <name>SIMPLE_SALE_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

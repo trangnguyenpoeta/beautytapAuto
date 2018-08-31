@@ -3,7 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import org.json.JSONObject
-
+import org.json.JSONArray
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -26,18 +26,27 @@ String password = GlobalVariable.USER_PASSWORD
 String productName  = GlobalVariable.SIMPLE_PRODUCT
 float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
 int quantity = 3
-
+String shippingLabel = GlobalVariable.FREE_SHIPPING_LABEL
+float shippingPrice =0
+float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
+float total = subtotal + shippingPrice
+JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"","quantity":"'+ quantity +'","price":"'+ price +'"}]')
+JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+username+'"}')
+String paymentMethod ='Credit Card Payment'
+//=======================================================================
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
 CustomKeywords.'beautytap.GeneralAction.login'("email", username, password)
 CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
 'Get current multiplier, lifetime, pending, redeemable points, point value'
 JSONObject objRewoard = CustomKeywords.'beautytap.ShopAction.getRewardDetails'()
-String multiplier = objRewoard.get("multiplier")
+float multiplier = Float.parseFloat(objRewoard.get("multiplier"))
 String currentlevel = objRewoard.get("currentlevel")
 float lifetime = Float.parseFloat(objRewoard.get("lifetime"))
 float pending = Float.parseFloat(objRewoard.get("pending"))
 float redeemable = Float.parseFloat(objRewoard.get("redeemable"))
 float pointvalue = Float.parseFloat(objRewoard.get("pointvalue"))
+float rewardEarned = Float.parseFloat(String.format("%.2f", multiplier*subtotal))
 'Buy a product'
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
@@ -45,5 +54,14 @@ CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
 CustomKeywords.'beautytap.ShopAction.goToCart'()
 'Process to checkout'
 CustomKeywords.'beautytap.ShopAction.processToCheckout'()
-
+CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation, "no", null, null, "TC07")
+'VP1: Verify order details on checkout'
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, "free", shippingLabel, shippingPrice, total)
+'VP2: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier'
+CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotal, multiplier, rewardEarned)
+CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
+'VP3: Verify order details on Order Recieved'
+CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
+'VP4: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier'
+CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotal, multiplier, rewardEarned)
 

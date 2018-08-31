@@ -1498,13 +1498,14 @@ public class ShopAction {
 		obj_status.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span");
 		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Multiplier')]/parent::span");
 		obj_rewardEarned.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Rewards earned')]/parent::span/strong[2]");
-		String expectedStatus = 'Status: '+ level +' ( $'+ format.format(subtotal) +' x Rewards Multiplier )';
-		String expectedMultiplier = 'Multiplier: $'+ format.format(subtotal) +' x '+multiplier;
-		String expectedRewardEarned = String.format("%.1f", rewardEarned) +' Points!';
-		String currentStatus = WebUI.getText(obj_status).trim();
-		String currentMultiplier = WebUI.getText(obj_multiplier).trim();
-		String currentEarnPoint = WebUI.getText(obj_rewardEarned).trim();
-		if(currentEarnPoint!=expectedRewardEarned || currentMultiplier!=expectedMultiplier || currentStatus!=expectedStatus){
+		String expectedStatus = level;
+		float expectedMultiplier = Float.parseFloat(format.format(multiplier));
+		float expectedRewardEarned = Float.parseFloat(String.format("%.1f", rewardEarned));
+		String currentStatus = WebUI.getText(obj_status).substring(WebUI.getText(obj_status).indexOf(':')+1,WebUI.getText(obj_status).indexOf('(')).trim() ;
+		float currentMultiplier = Float.parseFloat(WebUI.getText(obj_multiplier).substring(WebUI.getText(obj_multiplier).indexOf('x')+1).trim());
+		float currentEarnPoint = Float.parseFloat(WebUI.getText(obj_rewardEarned).substring(0, WebUI.getText(obj_rewardEarned).indexOf("P")).trim());
+		float currentSubtotal = Float.parseFloat(WebUI.getText(obj_multiplier).substring(WebUI.getText(obj_multiplier).indexOf('$')+1,WebUI.getText(obj_multiplier).indexOf('x')).trim());
+		if(currentEarnPoint!=expectedRewardEarned || currentMultiplier!=expectedMultiplier || currentStatus!=expectedStatus||subtotal !=currentSubtotal){
 			result = "false";
 			println "Current status: "+currentStatus;
 			println "Expected status: "+expectedStatus;
@@ -1512,6 +1513,8 @@ public class ShopAction {
 			println "Expected multiplier: "+expectedMultiplier;
 			println "Current Eared Point: "+currentEarnPoint;
 			println "Expected Eared Point: "+expectedRewardEarned;
+			println "Current subtotal: "+currentSubtotal;
+			println "Expected subtotal: "+subtotal;
 		}
 		if(result=="true"){
 			KeywordUtil.markPassed("Keyword VerifyRewardHistory is Passed");
