@@ -154,10 +154,8 @@ def static "beautytap.ShopAction.VerifyProductIsAddedToCart"(
         	productName)
 }
 
-def static "beautytap.ShopAction.goToCart"(
-    	String productName	) {
-    (new beautytap.ShopAction()).goToCart(
-        	productName)
+def static "beautytap.ShopAction.goToCart"() {
+    (new beautytap.ShopAction()).goToCart()
 }
 
 def static "beautytap.ShopAction.getNumberItemInCart"() {
@@ -441,13 +439,13 @@ def static "beautytap.ShopAction.VerifyRewardHistory"(
 }
 
 def static "beautytap.ShopAction.VerifyRewardEarned"(
-    	float subtotal	
-     , 	String status	
+    	String level	
+     , 	float subtotal	
      , 	float multiplier	
      , 	float rewardEarned	) {
     (new beautytap.ShopAction()).VerifyRewardEarned(
-        	subtotal
-         , 	status
+        	level
+         , 	subtotal
          , 	multiplier
          , 	rewardEarned)
 }

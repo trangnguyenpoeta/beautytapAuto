@@ -31,6 +31,8 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.util.KeywordUtil
 import java.lang.Object
+import java.text.DecimalFormat
+
 import beautytap.GeneralAction as GeneralAction
 import beautytap.ShopAction as ShopAction
 import groovy.json.JsonParser
@@ -194,7 +196,7 @@ public class ShopAction {
 
 	//Go to cart
 	@Keyword
-	def goToCart(String productName) {
+	def goToCart() {
 		println "START KEYWORD goToCart";
 		WebUI.click(findTestObject('Object Repository/Page_General/icon_cart'));
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
@@ -355,6 +357,7 @@ public class ShopAction {
 	def checkoutViaPaypal(String paypalEmail,String paypalPassword){
 		println "START KEYWORD checkoutViaPaypal";
 		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_paypal'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
 		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Paypal/txt_email'), GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL);
@@ -362,7 +365,7 @@ public class ShopAction {
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Paypal/txt_password'), paypalPassword);
 		WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_login'));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Paypal/btn_payNow'), GlobalVariable.LONG_TIMEOUT);
-		WebUI.delay(GlobalVariable.SHORT_TIMEOUT)
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.click(findTestObject('Object Repository/Page_Paypal/btn_payNow'));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Checkout/lbl_orderReceived'), GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD checkoutViaPaypal";
@@ -1326,7 +1329,7 @@ public class ShopAction {
 	}
 
 	//Get reward details
-	//rewardDetails: {"multiplier":"MULTIPLIER","lifetime":"LIFETIME","pending":"PENDING","redeemable":"REDEEMABLE","pointvalue":"POINTVALUE"}
+	//rewardDetails: {"multiplier":"MULTIPLIER","lifetime":"LIFETIME","pending":"PENDING","redeemable":"REDEEMABLE","pointvalue":"POINTVALUE","currentlevel":"CURRENTLEVEL"}
 	@Keyword
 	def getRewardDetails(){
 		println "START KEYWORD getRewardDetails";
@@ -1485,14 +1488,37 @@ public class ShopAction {
 
 	//	Verify Reward earn details
 	@Keyword
-	def VerifyRewardEarned(float subtotal, String status, float multiplier,float rewardEarned){
+	def VerifyRewardEarned(String level,float subtotal, float multiplier,float rewardEarned){
+		println "START KEYWORD VerifyRewardEarned";
+		String result = "true";
 		TestObject obj_status= new TestObject();
 		TestObject obj_multiplier= new TestObject();
 		TestObject obj_rewardEarned= new TestObject();
+		DecimalFormat format = new DecimalFormat("0.#");
 		obj_status.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span");
 		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Multiplier')]/parent::span");
 		obj_rewardEarned.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Rewards earned')]/parent::span/strong[2]");
-		String test = 'Status: Cushion Cutie ( $28.99 x Rewards Multiplier )';
+		String expectedStatus = 'Status: '+ level +' ( $'+ format.format(subtotal) +' x Rewards Multiplier )';
+		String expectedMultiplier = 'Multiplier: $'+ format.format(subtotal) +' x '+multiplier;
+		String expectedRewardEarned = String.format("%.1f", rewardEarned) +' Points!';
+		String currentStatus = WebUI.getText(obj_status).trim();
+		String currentMultiplier = WebUI.getText(obj_multiplier).trim();
+		String currentEarnPoint = WebUI.getText(obj_rewardEarned).trim();
+		if(currentEarnPoint!=expectedRewardEarned || currentMultiplier!=expectedMultiplier || currentStatus!=expectedStatus){
+			result = "false";
+			println "Current status: "+currentStatus;
+			println "Expected status: "+expectedStatus;
+			println "Current multiplier: "+currentMultiplier;
+			println "Expected multiplier: "+expectedMultiplier;
+			println "Current Eared Point: "+currentEarnPoint;
+			println "Expected Eared Point: "+expectedRewardEarned;
+		}
+		if(result=="true"){
+			KeywordUtil.markPassed("Keyword VerifyRewardHistory is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyRewardHistory is Failed");
+		}
+		println "END KEYWORD VerifyRewardEarned";
 
 
 	}

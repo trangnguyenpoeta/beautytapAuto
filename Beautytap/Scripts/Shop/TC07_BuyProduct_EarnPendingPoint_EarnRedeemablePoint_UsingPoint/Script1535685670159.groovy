@@ -2,6 +2,8 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import org.json.JSONObject
+
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -16,27 +18,32 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
-import com.sun.corba.se.impl.presentation.rmi.InvocationHandlerFactoryImpl.CustomCompositeInvocationHandlerImpl
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.testobject.TestObject
 
-import org.json.JSONArray
-import org.json.JSONObject
-import com.kms.katalon.core.testobject.ConditionType
-import org.apache.commons.lang.StringUtils
+String username = GlobalVariable.USER_EMAIL
+String password = GlobalVariable.USER_PASSWORD
+String productName  = GlobalVariable.SIMPLE_PRODUCT
+float price = GlobalVariable.SIMPLE_PRODUCT_PRICE
+int quantity = 3
+
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.GeneralAction.login'("email", username, password)
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
+'Get current multiplier, lifetime, pending, redeemable points, point value'
+JSONObject objRewoard = CustomKeywords.'beautytap.ShopAction.getRewardDetails'()
+String multiplier = objRewoard.get("multiplier")
+String currentlevel = objRewoard.get("currentlevel")
+float lifetime = Float.parseFloat(objRewoard.get("lifetime"))
+float pending = Float.parseFloat(objRewoard.get("pending"))
+float redeemable = Float.parseFloat(objRewoard.get("redeemable"))
+float pointvalue = Float.parseFloat(objRewoard.get("pointvalue"))
+'Buy a product'
+CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
+CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
+CustomKeywords.'beautytap.ShopAction.goToCart'()
+'Process to checkout'
+CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 
 
-JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","variation":"","quantity":"1","price":"30.99"}]')
-//SIGNUP
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-//CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
-///CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
-//CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
-//CustomKeywords.'beautytap.ShopAction.getRewardHistory'('136120', 'completed')
-//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136127", "August 24, 2018","pending", "", "35.00", "1.3", "0.00", "84.50")
-//CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 30.99, 60, 2, "normal",'($10.00) - Pantos (est. 10-20 working days delivery including processing)', 10, 38.99)
-//TestObject obj=new TestObject();
-//obj.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span")
-//println WebUI.getText(obj)
-CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'("BB Boss", 14.50, 1.2, 17.40)
