@@ -227,8 +227,7 @@ public class GeneralAction {
 		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD selectProfileMenu";
 	}
-
-
+	
 
 	//End class
 }

@@ -422,17 +422,17 @@ def static "beautytap.ShopAction.VerifyRewardHistory"(
     	String orderNumber	
      , 	String date	
      , 	String status	
-     , 	String pointRedeemed	
-     , 	String total	
-     , 	String multiplier	
-     , 	String loyaltyPoint	
-     , 	String totalPoint	) {
+     , 	float pointRedeemed	
+     , 	float subtotal	
+     , 	float multiplier	
+     , 	float loyaltyPoint	
+     , 	float totalPoint	) {
     (new beautytap.ShopAction()).VerifyRewardHistory(
         	orderNumber
          , 	date
          , 	status
          , 	pointRedeemed
-         , 	total
+         , 	subtotal
          , 	multiplier
          , 	loyaltyPoint
          , 	totalPoint)

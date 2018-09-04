@@ -1,0 +1,124 @@
+1
+00:00:00,251 --> 00:00:00,253
+1. Statement - productName = VARIATION_PRODUCT
+
+2
+00:00:00,280 --> 00:00:00,284
+5. Statement - price = VARIATION_PRICE1
+
+3
+00:00:00,293 --> 00:00:00,295
+9. Statement - variation = VARIATION_NAME1
+
+4
+00:00:00,302 --> 00:00:00,303
+13. Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)
+
+5
+00:00:00,310 --> 00:00:00,311
+17. Statement - email = "auto" + r_string + "@mailinator.com"
+
+6
+00:00:00,316 --> 00:00:00,317
+21. Statement - orderNote = "auto" + r_string + "Order"
+
+7
+00:00:00,322 --> 00:00:00,322
+25. Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>
+
+8
+00:00:00,329 --> 00:00:00,330
+29. Statement - quantity = 8
+
+9
+00:00:00,342 --> 00:00:00,343
+33. Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)
+
+10
+00:00:00,350 --> 00:00:00,352
+37. Statement - total = subtotal
+
+11
+00:00:00,363 --> 00:00:00,364
+41. Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)
+
+12
+00:00:00,372 --> 00:00:00,373
+45. Statement - products = new org.json.JSONArray((((((((([{"productname":" + productName) + ","variation":") + variation) + ","quantity":") + quantity) + ","price":") + price) + "}]))
+
+13
+00:00:00,381 --> 00:00:00,383
+49. Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "}))
+
+14
+00:00:00,395 --> 00:00:00,397
+53. Statement - shippingLabel = FREE_EMS_SHIPPING_LABEL
+
+15
+00:00:00,406 --> 00:00:00,407
+57. Statement - shippingPrice = 0
+
+16
+00:00:00,414 --> 00:00:00,415
+61. Statement - shippingType = "freeEMS"
+
+17
+00:00:00,422 --> 00:00:00,423
+65. Statement - paymentMethod = "Amazon Pay"
+
+18
+00:00:00,432 --> 00:00:00,433
+69. beautytap.GeneralAction.openBeautytap
+
+19
+00:00:12,769 --> 00:00:12,770
+73. beautytap.ShopAction.globalSearch
+
+20
+00:00:19,883 --> 00:00:19,883
+79. VP1: Verify product display in search result panel with regular price
+
+21
+00:00:20,042 --> 00:00:20,043
+83. beautytap.ShopAction.selectProductOnSearchResult
+
+22
+00:00:26,880 --> 00:00:26,881
+87. beautytap.ShopAction.selectProductVariation
+
+23
+00:00:28,290 --> 00:00:28,291
+93. VP2: Verify product detail page display with regular price
+
+24
+00:00:29,147 --> 00:00:29,147
+97. Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart()
+
+25
+00:01:00,495 --> 00:01:00,496
+101. beautytap.ShopAction.addProductToCart
+
+26
+00:01:16,273 --> 00:01:16,273
+107. VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.
+
+27
+00:01:16,349 --> 00:01:16,349
+111. beautytap.ShopAction.VerifyProductIsAddedToCart
+
+28
+00:01:16,379 --> 00:01:16,379
+115. beautytap.ShopAction.goToCart
+
+29
+00:01:21,330 --> 00:01:21,331
+121. VP4:Verify product is added to cart with correct price and quantity
+
+30
+00:01:21,547 --> 00:01:21,548
+125. beautytap.ShopAction.processToCheckout
+
+31
+00:01:25,223 --> 00:01:25,224
+131. Login amazonPay
+

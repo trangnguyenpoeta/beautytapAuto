@@ -64,4 +64,13 @@ CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDI
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
 'VP4: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier'
 CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotal, multiplier, rewardEarned)
-
+JSONObject orderInfo = CustomKeywords.'beautytap.ShopAction.getOrderInfoOnOrderReceived'()
+String orderNumber = orderInfo.get("ordernumber")
+String orderDate = orderInfo.get("date")
+'Go to My Rewards page'
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
+'VP5: Verify reward detail: lifetime=no change,pending=current pending+reward, redeemable=no change,point value: no change'
+float newPending = Float.parseFloat(String.format("%.2f", pending+rewardEarned))
+CustomKeywords.'beautytap.ShopAction.VerifyRewardPointsDetails'(lifetime, newPending, redeemable, pointvalue)
+'VP6: Verify reward history: 1 row with sataut pending,1 row with status processing'
+CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'(orderNumber, orderDate, "pending", 0, subtotal, multiplier, 0, lifetime)

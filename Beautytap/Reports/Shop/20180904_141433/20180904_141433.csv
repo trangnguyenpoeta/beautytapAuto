@@ -1,0 +1,150 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Shop,Chrome 68.0.3440.106,,2018-09-04 14:14:37,2018-09-04 14:24:50,10m - 13.766s,FAILED
+,,,,,,
+Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal,Chrome 68.0.3440.106,,2018-09-04 14:14:37,2018-09-04 14:17:15,2m - 38.263s,PASSED
+Statement - productName = SIMPLE_SALE_PRODUCT,Chrome 68.0.3440.106,,2018-09-04 14:14:38,2018-09-04 14:14:38,0.070s,PASSED
+"Statement - searchName = productName.substring(0, productName.indexOf(""/""))",Chrome 68.0.3440.106,,2018-09-04 14:14:38,2018-09-04 14:14:38,0.037s,PASSED
+Statement - saleprice = SIMPLE_SALE_PRICE,Chrome 68.0.3440.106,,2018-09-04 14:14:38,2018-09-04 14:14:38,0.077s,PASSED
+Statement - regularprice = SIMPLE_SALE_REGULAR_PRICE,Chrome 68.0.3440.106,,2018-09-04 14:14:38,2018-09-04 14:14:39,0.145s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.135s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.018s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.017s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.041s,PASSED
+Statement - quantity = 1,Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.012s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice)",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.068s,PASSED
+Statement - total = subtotal + SHIPPING_PRICE,Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.012s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.010s,PASSED
+"Statement - products = new org.json.JSONArray((((((([{""productname"":"" + productName) + "",""variation"":"""",""quantity"":"") + quantity) + "",""price"":"") + saleprice) + ""}]))",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.019s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.016s,PASSED
+Statement - shippingLabel = SHIPPING_LABEL,Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.009s,PASSED
+Statement - shippingPrice = SHIPPING_PRICE,Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.010s,PASSED
+"Statement - shippingType = ""normal""",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.025s,PASSED
+"Statement - paymentMethod = ""Credit Card Payment""",Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:14:39,0.013s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-09-04 14:14:39,2018-09-04 14:15:00,21.003s,PASSED
+beautytap.ShopAction.globalSearch,Chrome 68.0.3440.106,,2018-09-04 14:15:00,2018-09-04 14:15:08,7.566s,PASSED
+beautytap.ShopAction.VerifyProductOnSearchResult,Chrome 68.0.3440.106,VP1: Verify product display in search result panel with regular price,2018-09-04 14:15:08,2018-09-04 14:15:08,0.523s,PASSED
+beautytap.ShopAction.selectProductOnSearchResult,Chrome 68.0.3440.106,,2018-09-04 14:15:08,2018-09-04 14:15:15,6.644s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 68.0.3440.106,VP2: Verify product detail page display with regular price,2018-09-04 14:15:15,2018-09-04 14:15:15,0.339s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 68.0.3440.106,,2018-09-04 14:15:15,2018-09-04 14:15:46,31.461s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 68.0.3440.106,,2018-09-04 14:15:46,2018-09-04 14:15:53,6.127s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 68.0.3440.106,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-04 14:15:53,2018-09-04 14:15:53,0.091s,PASSED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 68.0.3440.106,,2018-09-04 14:15:53,2018-09-04 14:16:24,31.561s,PASSED
+beautytap.ShopAction.goToCart,Chrome 68.0.3440.106,,2018-09-04 14:16:24,2018-09-04 14:16:29,4.679s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 68.0.3440.106,VP4:Verify product is added to cart with correct price and quantity,2018-09-04 14:16:29,2018-09-04 14:16:29,0.229s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 68.0.3440.106,,2018-09-04 14:16:29,2018-09-04 14:16:32,3.179s,PASSED
+beautytap.ShopAction.fillCustomerInformation,Chrome 68.0.3440.106,,2018-09-04 14:16:32,2018-09-04 14:16:47,14.434s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 68.0.3440.106,VP5: Verify order details on checkout page,2018-09-04 14:16:47,2018-09-04 14:16:47,0.339s,PASSED
+beautytap.ShopAction.checkoutViaCreditCard,Chrome 68.0.3440.106,Checkout by credit card,2018-09-04 14:16:47,2018-09-04 14:17:12,24.813s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 68.0.3440.106,VP6: Verify order details on order received Page,2018-09-04 14:17:12,2018-09-04 14:17:12,0.369s,PASSED
+closeBrowser,Chrome 68.0.3440.106,,2018-09-04 14:17:12,2018-09-04 14:17:13,0.961s,PASSED
+,,,,,,
+Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200,Chrome 68.0.3440.106,,2018-09-04 14:17:15,2018-09-04 14:18:43,1m - 27.966s,FAILED
+Statement - productName = VARIATION_PRODUCT,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.029s,PASSED
+Statement - price = VARIATION_PRICE1,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.011s,PASSED
+Statement - variation = VARIATION_NAME1,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.007s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.007s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.006s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.006s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.007s,PASSED
+Statement - quantity = 8,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.012s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.009s,PASSED
+Statement - total = subtotal,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.012s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.008s,PASSED
+"Statement - products = new org.json.JSONArray((((((((([{""productname"":"" + productName) + "",""variation"":"") + variation) + "",""quantity"":"") + quantity) + "",""price"":"") + price) + ""}]))",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.009s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.014s,PASSED
+Statement - shippingLabel = FREE_EMS_SHIPPING_LABEL,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.010s,PASSED
+Statement - shippingPrice = 0,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.007s,PASSED
+"Statement - shippingType = ""freeEMS""",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.007s,PASSED
+"Statement - paymentMethod = ""Amazon Pay""",Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:16,0.009s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-09-04 14:17:16,2018-09-04 14:17:28,12.336s,PASSED
+beautytap.ShopAction.globalSearch,Chrome 68.0.3440.106,,2018-09-04 14:17:28,2018-09-04 14:17:35,7.114s,PASSED
+beautytap.ShopAction.VerifyProductOnSearchResult,Chrome 68.0.3440.106,VP1: Verify product display in search result panel with regular price,2018-09-04 14:17:35,2018-09-04 14:17:36,0.159s,PASSED
+beautytap.ShopAction.selectProductOnSearchResult,Chrome 68.0.3440.106,,2018-09-04 14:17:36,2018-09-04 14:17:42,6.838s,PASSED
+beautytap.ShopAction.selectProductVariation,Chrome 68.0.3440.106,,2018-09-04 14:17:42,2018-09-04 14:17:44,1.409s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 68.0.3440.106,VP2: Verify product detail page display with regular price,2018-09-04 14:17:44,2018-09-04 14:17:45,0.856s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 68.0.3440.106,,2018-09-04 14:17:45,2018-09-04 14:18:16,31.348s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 68.0.3440.106,,2018-09-04 14:18:16,2018-09-04 14:18:32,15.777s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 68.0.3440.106,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-04 14:18:32,2018-09-04 14:18:32,0.076s,FAILED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 68.0.3440.106,,2018-09-04 14:18:32,2018-09-04 14:18:32,0.030s,PASSED
+beautytap.ShopAction.goToCart,Chrome 68.0.3440.106,,2018-09-04 14:18:32,2018-09-04 14:18:37,4.951s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 68.0.3440.106,VP4:Verify product is added to cart with correct price and quantity,2018-09-04 14:18:37,2018-09-04 14:18:37,0.218s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 68.0.3440.106,,2018-09-04 14:18:37,2018-09-04 14:18:41,3.675s,PASSED
+beautytap.ShopAction.loginAmazonPay,Chrome 68.0.3440.106,Login amazonPay,2018-09-04 14:18:41,2018-09-04 14:18:41,0.652s,FAILED
+,,,,,,
+Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200,Chrome 68.0.3440.106,,2018-09-04 14:18:43,2018-09-04 14:22:13,3m - 29.518s,FAILED
+Statement - productName = SIMPLE_PRODUCT,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.028s,PASSED
+Statement - price = SIMPLE_PRODUCT_PRICE,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.011s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.008s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.008s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.008s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+Statement - quantity = 3,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.010s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.022s,PASSED
+Statement - total = subtotal,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+"Statement - products = new org.json.JSONArray((((((([{""productname"":"" + productName) + "",""variation"":"""",""quantity"":"") + quantity) + "",""price"":"") + price) + ""}]))",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+Statement - shippingLabel = FREE_SHIPPING_LABEL,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.014s,PASSED
+Statement - shippingPrice = 0,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+"Statement - shippingType = ""free""",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.015s,PASSED
+"Statement - paymentMethod = ""PayPal""",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.009s,PASSED
+"Statement - category = ""What's New""",Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:18:44,0.007s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-09-04 14:18:44,2018-09-04 14:19:07,22.819s,PASSED
+beautytap.ShopAction.selectCategory,Chrome 68.0.3440.106,,2018-09-04 14:19:07,2018-09-04 14:19:14,7.114s,PASSED
+beautytap.ShopAction.findProductOnProductList,Chrome 68.0.3440.106,,2018-09-04 14:19:14,2018-09-04 14:19:28,13.870s,PASSED
+beautytap.ShopAction.VerifyProductOnProductList,Chrome 68.0.3440.106,VP1: Verify product display on product list,2018-09-04 14:19:28,2018-09-04 14:19:28,0.165s,PASSED
+beautytap.ShopAction.selectProductOnProductList,Chrome 68.0.3440.106,,2018-09-04 14:19:28,2018-09-04 14:19:34,6.084s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 68.0.3440.106,VP2: Verify product detail page display with regular price,2018-09-04 14:19:34,2018-09-04 14:19:34,0.212s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 68.0.3440.106,,2018-09-04 14:19:34,2018-09-04 14:20:06,31.360s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 68.0.3440.106,,2018-09-04 14:20:06,2018-09-04 14:20:21,15.583s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 68.0.3440.106,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-04 14:20:21,2018-09-04 14:20:21,0.134s,FAILED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 68.0.3440.106,,2018-09-04 14:20:21,2018-09-04 14:20:21,0.056s,PASSED
+beautytap.ShopAction.goToCart,Chrome 68.0.3440.106,,2018-09-04 14:20:21,2018-09-04 14:20:26,4.636s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 68.0.3440.106,VP4:Verify product is added to cart with correct price and quantity,2018-09-04 14:20:26,2018-09-04 14:20:26,0.189s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 68.0.3440.106,,2018-09-04 14:20:26,2018-09-04 14:20:29,3.325s,PASSED
+beautytap.ShopAction.fillCustomerInformation,Chrome 68.0.3440.106,,2018-09-04 14:20:29,2018-09-04 14:20:43,13.949s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 68.0.3440.106,VP5: Verify order details on checkout page,2018-09-04 14:20:43,2018-09-04 14:20:44,0.209s,PASSED
+beautytap.ShopAction.checkoutViaPaypal,Chrome 68.0.3440.106,Checkout by credit card,2018-09-04 14:20:44,2018-09-04 14:21:38,54.548s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 68.0.3440.106,VP6: Verify order details on order received Page,2018-09-04 14:21:38,2018-09-04 14:22:10,31.596s,PASSED
+closeBrowser,Chrome 68.0.3440.106,,2018-09-04 14:22:10,2018-09-04 14:22:11,1.014s,PASSED
+,,,,,,
+Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:24:50,2m - 37.478s,PASSED
+Statement - productName = VARIATION_SALE_PRODUCT,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.040s,PASSED
+Statement - saleprice = VARIATION_SALE_PRICE1,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.047s,PASSED
+Statement - redularprice = VARIATION_SALE_REGULAR_PRICE1,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.009s,PASSED
+Statement - variation = VARIATION_SALE_NAME1,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.013s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.021s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.019s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.044s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.013s,PASSED
+Statement - quantity = 5,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.017s,PASSED
+Statement - shippingLabel = EMS_SHIPPING_LABEL,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:13,0.008s,PASSED
+Statement - shippingPrice = EMS_SHIPPING_PRICE,Chrome 68.0.3440.106,,2018-09-04 14:22:13,2018-09-04 14:22:14,0.008s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice)",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.010s,PASSED
+Statement - total = subtotal + shippingPrice,Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.008s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.010s,PASSED
+"Statement - products = new org.json.JSONArray((((((((([{""productname"":"" + productName) + "",""variation"":"") + variation) + "",""quantity"":"") + quantity) + "",""price"":"") + saleprice) + ""}]))",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.009s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.008s,PASSED
+"Statement - shippingType = ""EMS""",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.009s,PASSED
+"Statement - paymentMethod = ""Amazon Pay""",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.009s,PASSED
+"Statement - category = ""Brands""",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.008s,PASSED
+"Statement - subcategory = ""Innisfree""",Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:14,0.010s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 68.0.3440.106,,2018-09-04 14:22:14,2018-09-04 14:22:33,19.165s,PASSED
+beautytap.ShopAction.selectCategory,Chrome 68.0.3440.106,,2018-09-04 14:22:33,2018-09-04 14:22:43,10.641s,PASSED
+beautytap.ShopAction.findProductOnProductList,Chrome 68.0.3440.106,,2018-09-04 14:22:43,2018-09-04 14:22:57,13.548s,PASSED
+beautytap.ShopAction.VerifyProductOnProductList,Chrome 68.0.3440.106,VP1: Verify product display in Product List,2018-09-04 14:22:57,2018-09-04 14:22:57,0.285s,PASSED
+beautytap.ShopAction.selectProductOnProductList,Chrome 68.0.3440.106,,2018-09-04 14:22:57,2018-09-04 14:23:05,7.942s,PASSED
+beautytap.ShopAction.selectProductVariation,Chrome 68.0.3440.106,,2018-09-04 14:23:05,2018-09-04 14:23:07,1.451s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 68.0.3440.106,VP2: Verify product detail page display,2018-09-04 14:23:07,2018-09-04 14:23:08,1.168s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 68.0.3440.106,,2018-09-04 14:23:08,2018-09-04 14:23:39,31.372s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 68.0.3440.106,,2018-09-04 14:23:39,2018-09-04 14:23:47,7.931s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 68.0.3440.106,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-04 14:23:47,2018-09-04 14:23:47,0.067s,PASSED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 68.0.3440.106,,2018-09-04 14:23:47,2018-09-04 14:23:47,0.037s,PASSED
+beautytap.ShopAction.goToCart,Chrome 68.0.3440.106,,2018-09-04 14:23:47,2018-09-04 14:23:52,4.626s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 68.0.3440.106,VP4:Verify product is added to cart with correct price and quantity,2018-09-04 14:23:52,2018-09-04 14:23:52,0.216s,PASSED
+beautytap.ShopAction.loginAmazonPay,Chrome 68.0.3440.106,Login amazonPay,2018-09-04 14:23:52,2018-09-04 14:24:27,35.419s,PASSED
+beautytap.ShopAction.selectShipping,Chrome 68.0.3440.106,,2018-09-04 14:24:27,2018-09-04 14:24:33,5.205s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 68.0.3440.106,VP5: Verify order details on checkout page,2018-09-04 14:24:33,2018-09-04 14:24:33,0.316s,PASSED
+beautytap.ShopAction.checkoutViaAmazonPay,Chrome 68.0.3440.106,Checkout via amazonPay,2018-09-04 14:24:33,2018-09-04 14:24:47,14.074s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 68.0.3440.106,VP6: Verify order details on order received Page,2018-09-04 14:24:47,2018-09-04 14:24:47,0.339s,PASSED
+closeBrowser,Chrome 68.0.3440.106,,2018-09-04 14:24:47,2018-09-04 14:24:48,0.883s,PASSED

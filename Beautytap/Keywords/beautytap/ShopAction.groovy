@@ -31,6 +31,7 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.util.KeywordUtil
 import java.lang.Object
+import java.text.DateFormat
 import java.text.DecimalFormat
 
 import beautytap.GeneralAction as GeneralAction
@@ -45,6 +46,7 @@ import org.stringtemplate.v4.compiler.STParser.list_return
 import org.json.JSONArray
 import org.json.JSONObject
 import org.apache.commons.lang.StringUtils
+import java.text.SimpleDateFormat
 
 public class ShopAction {
 
@@ -1432,7 +1434,7 @@ public class ShopAction {
 
 	//Verify Reward History
 	@Keyword
-	def VerifyRewardHistory(String orderNumber,String date,String status,String pointRedeemed,String total,String multiplier,String loyaltyPoint,String totalPoint){
+	def VerifyRewardHistory(String orderNumber,String date,String status,float pointRedeemed,float subtotal,float multiplier,float loyaltyPoint,float totalPoint){
 		println "SART KEYWORD VerifyRewardHistory";
 		String result="true";
 		orderNumber =orderNumber.replace('#','');
@@ -1451,20 +1453,26 @@ public class ShopAction {
 		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
 		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
 		if (WebUI.verifyElementPresent(obj_date, GlobalVariable.TIMEOUT)==true){
-			String currentDate =WebUI.getText(obj_date).trim();
-			String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
-			String currentTotal=WebUI.getText(obj_total).trim().replace('$', '');
-			String currentMultiplier = WebUI.getText(obj_multiplier).trim()
-			String currentLoyaltyPoint = WebUI.getText(obj_loyaltyPoint).trim();
-			String currentTotalPoint = WebUI.getText(obj_totalPoint).trim();
-			if(currentDate!=date || currentPointRedeemed!=pointRedeemed||currentTotal!=total||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
+			String currentDate = WebUI.getText(obj_date).trim();
+			SimpleDateFormat datetime = new SimpleDateFormat("MMMM dd, yyyy");
+			currentDate = datetime.parse(currentDate).toString();
+			date = datetime.parse(date).toString();
+			float currentPointRedeemed =0;
+			if(WebUI.getText(obj_pointRedeemed).trim()!=''){
+				currentPointRedeemed = Float.parseFloat(WebUI.getText(obj_pointRedeemed).trim());
+			}
+			float currentTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
+			String currentMultiplier = Float.parseFloat(WebUI.getText(obj_multiplier).trim());
+			String currentLoyaltyPoint = Float.parseFloat(WebUI.getText(obj_loyaltyPoint).trim());
+			String currentTotalPoint = Float.parseFloat(WebUI.getText(obj_totalPoint).trim());
+			if(currentDate!=date || currentPointRedeemed!=pointRedeemed||currentTotal!=subtotal||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
 				result="false";
 				println "Current date:" +currentDate;
 				println "Expected date:" +date;
 				println "Current Point Redeemed:" +currentPointRedeemed;
 				println "Expected Point Redeemed:" +pointRedeemed;
 				println "Current Total:" +currentTotal;
-				println "Expected Total:" +total;
+				println "Expected Total:" +subtotal;
 				println "Current Multiplier:" +currentMultiplier;
 				println "Expected Multiplier:" +multiplier;
 				println "Current Loyalty Point:" +currentLoyaltyPoint;

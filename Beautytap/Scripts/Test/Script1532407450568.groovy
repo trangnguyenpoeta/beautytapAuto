@@ -2,6 +2,9 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import java.text.SimpleDateFormat
+
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -39,4 +42,11 @@ JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","v
 //TestObject obj=new TestObject();
 //obj.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span")
 //println WebUI.getText(obj)
-CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'("BB Boss", 14.50, 1.2, 17.40)
+//CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'("BB Boss", 14.50, 1.2, 17.40)
+String t ="September 04, 2018"
+SimpleDateFormat datetime = new SimpleDateFormat("MMMM d, yyyy")
+Date date = datetime.parse(t);
+System.out.println(date);
+System.out.println(datetime.format(date));
+
+

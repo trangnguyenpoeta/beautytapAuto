@@ -171,7 +171,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Free shipping (over $60)'</initValue>
+      <initValue>'Free shipping for orders over $60'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -196,7 +196,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'trang2408@mailinator.com'</initValue>
       <name>USER_EMAIL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
