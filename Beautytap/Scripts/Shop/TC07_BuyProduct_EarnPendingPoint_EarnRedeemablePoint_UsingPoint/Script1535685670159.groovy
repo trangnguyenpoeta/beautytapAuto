@@ -67,6 +67,8 @@ CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotal,
 JSONObject orderInfo = CustomKeywords.'beautytap.ShopAction.getOrderInfoOnOrderReceived'()
 String orderNumber = orderInfo.get("ordernumber")
 String orderDate = orderInfo.get("date")
+println "orderDate" +orderDate
+String completeOrderSubject = GlobalVariable.SITE_TITLE +" order from "+orderDate+" is complete"
 'Go to My Rewards page'
 CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
 'VP5: Verify reward detail: lifetime=no change,pending=current pending+reward, redeemable=no change,point value: no change'
@@ -74,3 +76,36 @@ float newPending = Float.parseFloat(String.format("%.2f", pending+rewardEarned))
 CustomKeywords.'beautytap.ShopAction.VerifyRewardPointsDetails'(lifetime, newPending, redeemable, pointvalue)
 'VP6: Verify reward history: 1 row with sataut pending,1 row with status processing'
 CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'(orderNumber, orderDate, "pending", 0, subtotal, multiplier, 0, lifetime)
+'Logout'
+CustomKeywords.'beautytap.GeneralAction.logout'()
+'Login As Admin'
+CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
+CustomKeywords.'beautytap.GeneralAction.login'("email", GlobalVariable.ADMIN_USERNAME, GlobalVariable.ADMIN_PASSWORD)
+'Go to Woocommerce > Orders > Change order status to Completed'
+WebUI.navigateToUrl(GlobalVariable.SITE_URL+"/admin")
+CustomKeywords.'beautytap.AdminAction.changeOrderStatus'(orderNumber, "Completed")
+'Logout'
+WebUI.closeBrowser()
+'Login again'
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
+CustomKeywords.'beautytap.GeneralAction.login'("email", username, password)
+'Go to My Rewards page'
+CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
+'VP7: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward,point value: associate with reward'
+println lifetime
+float newLifetime = Float.parseFloat(String.format("%.2f",lifetime + rewardEarned))
+println newLifetime
+newPending = Float.parseFloat(String.format("%.2f", pending-rewardEarned))
+println pending
+println newPending
+
+float newRedeemable = Float.parseFloat(String.format("%.2f", redeemable+rewardEarned))
+println redeemable
+println newRedeemable
+float newPointValue = Float.parseFloat(String.format("%.2f", pointvalue+2))
+println pointvalue
+println newPointValue
+CustomKeywords.'beautytap.ShopAction.VerifyRewardPointsDetails'(newLifetime, pending, newRedeemable, newPointValue)
+'VP8: Verify reward history: 1 row with sataut complete'
+CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'(orderNumber, orderDate, "completed", 0, subtotal, multiplier, rewardEarned, newLifetime)

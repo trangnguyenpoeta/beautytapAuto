@@ -1,0 +1,88 @@
+1
+00:00:00,673 --> 00:00:00,695
+1. Statement - productName = SIMPLE_SALE_PRODUCT
+
+2
+00:00:00,753 --> 00:00:00,761
+5. Statement - searchName = productName.substring(0, productName.indexOf("/"))
+
+3
+00:00:00,800 --> 00:00:00,807
+9. Statement - saleprice = SIMPLE_SALE_PRICE
+
+4
+00:00:00,822 --> 00:00:00,825
+13. Statement - regularprice = SIMPLE_SALE_REGULAR_PRICE
+
+5
+00:00:00,845 --> 00:00:00,849
+17. Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)
+
+6
+00:00:00,911 --> 00:00:00,924
+21. Statement - email = "auto" + r_string + "@mailinator.com"
+
+7
+00:00:00,938 --> 00:00:00,941
+25. Statement - orderNote = "auto" + r_string + "Order"
+
+8
+00:00:00,969 --> 00:00:00,988
+29. Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>
+
+9
+00:00:01,008 --> 00:00:01,012
+33. Statement - quantity = 1
+
+10
+00:00:01,023 --> 00:00:01,026
+37. Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice)
+
+11
+00:00:01,154 --> 00:00:01,157
+41. Statement - total = subtotal + SHIPPING_PRICE
+
+12
+00:00:01,167 --> 00:00:01,170
+45. Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)
+
+13
+00:00:01,215 --> 00:00:01,243
+49. Statement - products = new org.json.JSONArray((((((([{"productname":" + productName) + ","variation":"","quantity":") + quantity) + ","price":") + saleprice) + "}]))
+
+14
+00:00:01,286 --> 00:00:01,293
+53. Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "}))
+
+15
+00:00:01,319 --> 00:00:01,324
+57. Statement - shippingLabel = SHIPPING_LABEL
+
+16
+00:00:01,338 --> 00:00:01,342
+61. Statement - shippingPrice = SHIPPING_PRICE
+
+17
+00:00:01,358 --> 00:00:01,362
+65. Statement - shippingType = "normal"
+
+18
+00:00:01,373 --> 00:00:01,376
+69. Statement - paymentMethod = "Credit Card Payment"
+
+19
+00:00:01,385 --> 00:00:01,387
+73. beautytap.GeneralAction.openBeautytap
+
+20
+00:00:28,619 --> 00:00:28,621
+77. beautytap.ShopAction.globalSearch
+
+21
+00:00:36,908 --> 00:00:36,911
+83. VP1: Verify product display in search result panel with regular price
+
+22
+00:00:37,609 --> 00:00:37,611
+87. beautytap.ShopAction.selectProductOnSearchResult
+

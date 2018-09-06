@@ -3,7 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import java.text.SimpleDateFormat
+import java.util.Date
 
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
@@ -43,10 +43,12 @@ JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","v
 //obj.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span")
 //println WebUI.getText(obj)
 //CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'("BB Boss", 14.50, 1.2, 17.40)
-String t ="September 04, 2018"
-SimpleDateFormat datetime = new SimpleDateFormat("MMMM d, yyyy")
-Date date = datetime.parse(t);
-System.out.println(date);
-System.out.println(datetime.format(date));
+//String t ="September 04, 2018"
+//SimpleDateFormat datetime = new SimpleDateFormat("MMMM d, yyyy")
+//Date date = datetime.parse(t);
+//System.out.println(date);
+//System.out.println(datetime.format(date));
+//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136395", "September 06, 2018", "completed", 0, 95.40, 1, 95.40, 477.00)
+println CustomKeywords.'beautytap.ShopAction.calculateLoyaltyPointValue'(667.8)
 
 

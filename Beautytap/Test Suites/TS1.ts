@@ -4,8 +4,8 @@
    <name>TS1</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-08-30T17:37:26</lastRun>
-   <mailRecipient></mailRecipient>
+   <lastRun>2018-09-05T15:13:59</lastRun>
+   <mailRecipient>trangnt@devblock.net;thutn@devblock.net;</mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>

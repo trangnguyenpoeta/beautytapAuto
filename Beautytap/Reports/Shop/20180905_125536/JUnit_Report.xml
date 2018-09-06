@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Shop" time="701" tests="4" failures="0" errors="0">
+   <testsuite name="Shop" tests="4" failures="0" errors="0" time="701" timestamp="2018-09-05 12:55:38" hostname="Trang Nguyen - DESKTOP-G1UHP65" id="Test Suites/Shop">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536"/>
+         <property name="logFiles" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\execution0.log"/>
+         <property name="attachments" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127006308.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127044581.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127166990.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127265789.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127301321.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127346939.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127470146.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127514807.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127566303.png"/>
+         <property name="hostName" value="Trang Nguyen - DESKTOP-G1UHP65"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="5.5.0.1"/>
+         <property name="browser" value="Chrome 68.0.3440.106"/>
+         <property name="hostAddress" value="10.0.0.64"/>
+         <property name="sessionId" value="22fc1ba4b460b351287c764bc844f72b"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal" classname="Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal" status="PASSED">
+         <system-out><![CDATA[2018-09-05 12:55:39 - [TEST_CASE][PASSED] - Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal: Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - productName = SIMPLE_SALE_PRODUCT: null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - searchName = productName.substring(0, productName.indexOf("/")): null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - saleprice = SIMPLE_SALE_PRICE: null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - regularprice = SIMPLE_SALE_REGULAR_PRICE: null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - email = "auto" + r_string + "@mailinator.com": null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - orderNote = "auto" + r_string + "Order": null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>: null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - quantity = 1: null
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:55:40 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:55:40 - [TEST_STEP][PASSED] - Statement - total = subtotal + SHIPPING_PRICE: null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:55:41 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - products = new org.json.JSONArray((((((([{"productname":" + productName) + ","variation":"","quantity":") + quantity) + ","price":") + saleprice) + "}])): null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "})): null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - shippingLabel = SHIPPING_LABEL: null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - shippingPrice = SHIPPING_PRICE: null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - shippingType = "normal": null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - Statement - paymentMethod = "Credit Card Payment": null
+
+2018-09-05 12:55:41 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 12:55:53 - [MESSAGE][PASSED] - Browser is opened with url: 'https://stage.beautytap.com'
+
+2018-09-05 12:55:54 - [MESSAGE][PASSED] - Current window maximized
+
+2018-09-05 12:55:59 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-09-05 12:55:59 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:55:59 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 12:55:59 - [TEST_STEP][PASSED] - beautytap.ShopAction.globalSearch: beautytap.ShopAction.globalSearch is PASSED
+
+2018-09-05 12:56:00 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_search' is clicked on
+
+2018-09-05 12:56:05 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 12:56:05 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_General/txt_search' is cleared
+
+2018-09-05 12:56:06 - [MESSAGE][PASSED] - Keys 'CONTROL + v' sent to object: 'Object Repository/Page_General/txt_search'
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/div_searchResult' is present
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - beautytap.ShopAction.globalSearch is PASSED
+
+2018-09-05 12:56:08 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductOnSearchResult: Keyword VerifyProductOnSearchResult is Passed
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - Text of object '' is: '$12.50'
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(195, 195, 195, 1)'.
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(195, 195, 195, 1)'.
+
+2018-09-05 12:56:08 - [MESSAGE][PASSED] - Text of object '' is: '$11.99'
+
+2018-09-05 12:56:09 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 12:56:09 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 12:56:09 - [MESSAGE][PASSED] - Keyword VerifyProductOnSearchResult is Passed
+
+2018-09-05 12:56:09 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductOnSearchResult: beautytap.ShopAction.selectProductOnSearchResult is PASSED
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductOnSearchResult is PASSED
+
+2018-09-05 12:56:14 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductDetails: Keyword VerifyProductDetails is Passed
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - Text of object '' is: 'Innisfree Perfect UV Protection Cream SPF50+/PA+++ (Long-Lasting For Oily Skin) 50ml'
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - Text of object '' is: '$12.50'
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(195, 195, 195, 1)'.
+
+2018-09-05 12:56:14 - [MESSAGE][PASSED] - Text of object '' is: '$11.99'
+
+2018-09-05 12:56:15 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 12:56:15 - [MESSAGE][PASSED] - Keyword VerifyProductDetails is Passed
+
+2018-09-05 12:56:15 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(): beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 12:56:46 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127006308.png]]
+
+2018-09-05 12:56:46 - [MESSAGE][PASSED] - beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 12:56:46 - [TEST_STEP][PASSED] - beautytap.ShopAction.addProductToCart: beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 12:56:46 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Shop/txt_quantity' is cleared
+
+2018-09-05 12:56:47 - [MESSAGE][PASSED] - Keys '1' sent to object: 'Object Repository/Page_Shop/txt_quantity'
+
+2018-09-05 12:56:47 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/btn_addToCart' is clicked on
+
+2018-09-05 12:56:47 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:56:53 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Shop/lbl_message' is present
+
+2018-09-05 12:56:53 - [MESSAGE][PASSED] - beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 12:56:53 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyNumberItemInCart: Keyword VerifyNumberItemInCart is Passed, Number item in cart is 1, expected is 1
+
+2018-09-05 12:56:53 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:56:53 - [MESSAGE][PASSED] - Text of object '' is: '1'
+
+2018-09-05 12:56:53 - [MESSAGE][PASSED] - Keyword VerifyNumberItemInCart is Passed, Number item in cart is 1, expected is 1
+
+2018-09-05 12:56:53 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart: beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 12:57:24 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='woocommerce-message' and contains(text(),'Innisfree Perfect UV Protection Cream SPF50+/PA+++ (Long-Lasting For Oily Skin) 50ml” have been added to your cart.')]' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127044581.png]]
+
+2018-09-05 12:57:24 - [MESSAGE][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 12:57:24 - [TEST_STEP][PASSED] - beautytap.ShopAction.goToCart: beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_cart' is clicked on
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 12:57:30 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductInCart: Keyword VerifyProductInCart is Passed
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Text of object '' is: '$11.99'
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Attribute 'value' of object '' is: '1'
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Text of object '' is: '$11.99'
+
+2018-09-05 12:57:30 - [MESSAGE][PASSED] - Keyword VerifyProductInCart is Passed
+
+2018-09-05 12:57:30 - [TEST_STEP][PASSED] - beautytap.ShopAction.processToCheckout: beautytap.ShopAction.processToCheckout is PASSED
+
+2018-09-05 12:57:35 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Cart/btn_checkout' is clicked on
+
+2018-09-05 12:57:35 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:57:35 - [MESSAGE][PASSED] - beautytap.ShopAction.processToCheckout is PASSED
+
+2018-09-05 12:57:35 - [TEST_STEP][PASSED] - beautytap.ShopAction.fillCustomerInformation: beautytap.ShopAction.fillCustomerInformation is PASSED
+
+2018-09-05 12:57:35 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingFirstName' is cleared
+
+2018-09-05 12:57:35 - [MESSAGE][PASSED] - Keys 'Test' sent to object: 'Object Repository/Page_Checkout/txt_billingFirstName'
+
+2018-09-05 12:57:36 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingLastName' is cleared
+
+2018-09-05 12:57:36 - [MESSAGE][PASSED] - Keys 'Automation' sent to object: 'Object Repository/Page_Checkout/txt_billingLastName'
+
+2018-09-05 12:57:37 - [MESSAGE][PASSED] - All options with label 'United States (US)' are selected in object 'Object Repository/Page_Checkout/drop_billingCountry' 
+
+2018-09-05 12:57:42 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 12:57:42 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingAddress' is cleared
+
+2018-09-05 12:57:43 - [MESSAGE][PASSED] - Keys '123 Testing' sent to object: 'Object Repository/Page_Checkout/txt_billingAddress'
+
+2018-09-05 12:57:43 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingCity' is cleared
+
+2018-09-05 12:57:43 - [MESSAGE][PASSED] - Keys 'New York' sent to object: 'Object Repository/Page_Checkout/txt_billingCity'
+
+2018-09-05 12:57:44 - [MESSAGE][PASSED] - All options with label 'New York' are selected in object 'Object Repository/Page_Checkout/drop_billingState' 
+
+2018-09-05 12:57:44 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingZip' is cleared
+
+2018-09-05 12:57:44 - [MESSAGE][PASSED] - Keys '90012' sent to object: 'Object Repository/Page_Checkout/txt_billingZip'
+
+2018-09-05 12:57:44 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingEmail' is cleared
+
+2018-09-05 12:57:45 - [MESSAGE][PASSED] - Keys 'auto224400@mailinator.com' sent to object: 'Object Repository/Page_Checkout/txt_billingEmail'
+
+2018-09-05 12:57:45 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_shipToDifferentAddress' is un-checked
+
+2018-09-05 12:57:46 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_orderNote' is cleared
+
+2018-09-05 12:57:46 - [MESSAGE][PASSED] - Keys 'auto224400Order' sent to object: 'Object Repository/Page_Checkout/txt_orderNote'
+
+2018-09-05 12:57:46 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/radio_creditCard' is checked
+
+2018-09-05 12:57:51 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 12:57:51 - [MESSAGE][PASSED] - beautytap.ShopAction.fillCustomerInformation is PASSED
+
+2018-09-05 12:57:51 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderDetailsOnCheckout: Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 12:57:51 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:57:51 - [MESSAGE][PASSED] - Text of object '' is: '$11.99'
+
+2018-09-05 12:57:51 - [MESSAGE][PASSED] - Object '' has attribute 'checked'
+
+2018-09-05 12:57:51 - [MESSAGE][PASSED] - Text of object '' is: '($12.50) Pantos (est. 14-25 working days including processing): $12.50'
+
+2018-09-05 12:57:52 - [MESSAGE][PASSED] - Text of object '' is: '$12.50'
+
+2018-09-05 12:57:52 - [MESSAGE][PASSED] - Text of object '' is: '$24.49'
+
+2018-09-05 12:57:52 - [MESSAGE][PASSED] - Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 12:57:52 - [TEST_STEP][PASSED] - beautytap.ShopAction.checkoutViaCreditCard: beautytap.ShopAction.checkoutViaCreditCard is PASSED
+
+2018-09-05 12:57:52 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/radio_creditCard' is checked
+
+2018-09-05 12:58:02 - [MESSAGE][PASSED] - Delayed 10 second(s)
+
+2018-09-05 12:58:02 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_cardNumber' is cleared
+
+2018-09-05 12:58:02 - [MESSAGE][PASSED] - Keys '4032036248443549' sent to object: 'Object Repository/Page_Checkout/txt_cardNumber'
+
+2018-09-05 12:58:02 - [MESSAGE][PASSED] - All options with label 'Visa' are selected in object 'Object Repository/Page_Checkout/drop_cardType' 
+
+2018-09-05 12:58:03 - [MESSAGE][PASSED] - All options with label '07' are selected in object 'Object Repository/Page_Checkout/drop_expirationMonth' 
+
+2018-09-05 12:58:03 - [MESSAGE][PASSED] - All options with label '2023' are selected in object 'Object Repository/Page_Checkout/drop_expirationYear' 
+
+2018-09-05 12:58:03 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_cardCVV' is cleared
+
+2018-09-05 12:58:03 - [MESSAGE][PASSED] - Keys '123' sent to object: 'Object Repository/Page_Checkout/txt_cardCVV'
+
+2018-09-05 12:58:03 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is checked
+
+2018-09-05 12:58:03 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Checkout/btn_placeOrder' is clicked on
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/lbl_orderReceived' is present
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - beautytap.ShopAction.checkoutViaCreditCard is PASSED
+
+2018-09-05 12:58:18 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderReceivedDetails: Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Text of object '' is: '$11.99'
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Text of object '' is: '$12.50 via ($12.50) Pantos (est. 14-25 working days including processing)'
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Text of object '' is: '$12.50'
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Text of object '' is: 'Credit Card Payment'
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Text of object '' is: '$24.49'
+
+2018-09-05 12:58:18 - [MESSAGE][PASSED] - Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 12:58:18 - [TEST_STEP][PASSED] - closeBrowser: Browser is closed
+
+2018-09-05 12:58:20 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200" classname="Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200" status="PASSED">
+         <system-out><![CDATA[2018-09-05 12:58:22 - [TEST_CASE][PASSED] - Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200: Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - productName = VARIATION_PRODUCT: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - price = VARIATION_PRICE1: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - variation = VARIATION_NAME1: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - email = "auto" + r_string + "@mailinator.com": null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - orderNote = "auto" + r_string + "Order": null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - quantity = 8: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:58:22 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - total = subtotal: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:58:22 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - products = new org.json.JSONArray((((((((([{"productname":" + productName) + ","variation":") + variation) + ","quantity":") + quantity) + ","price":") + price) + "}])): null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "})): null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - shippingLabel = FREE_EMS_SHIPPING_LABEL: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - shippingPrice = 0: null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - shippingType = "freeEMS": null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - Statement - paymentMethod = "Amazon Pay": null
+
+2018-09-05 12:58:22 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 12:58:34 - [MESSAGE][PASSED] - Browser is opened with url: 'https://stage.beautytap.com'
+
+2018-09-05 12:58:36 - [MESSAGE][PASSED] - Current window maximized
+
+2018-09-05 12:58:40 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-09-05 12:58:40 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:58:40 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 12:58:40 - [TEST_STEP][PASSED] - beautytap.ShopAction.globalSearch: beautytap.ShopAction.globalSearch is PASSED
+
+2018-09-05 12:58:40 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_search' is clicked on
+
+2018-09-05 12:58:45 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 12:58:45 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_General/txt_search' is cleared
+
+2018-09-05 12:58:45 - [MESSAGE][PASSED] - Keys 'CONTROL + v' sent to object: 'Object Repository/Page_General/txt_search'
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - Object 'Object Repository/Page_General/div_searchResult' is present
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - beautytap.ShopAction.globalSearch is PASSED
+
+2018-09-05 12:58:47 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductOnSearchResult: Keyword VerifyProductOnSearchResult is Passed
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - Text of object '' is: '$26.70'
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 12:58:47 - [MESSAGE][PASSED] - Keyword VerifyProductOnSearchResult is Passed
+
+2018-09-05 12:58:47 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductOnSearchResult: beautytap.ShopAction.selectProductOnSearchResult is PASSED
+
+2018-09-05 12:58:53 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 12:58:53 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:58:53 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductOnSearchResult is PASSED
+
+2018-09-05 12:58:53 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductVariation: beautytap.ShopAction.selectProductVariation is PASSED
+
+2018-09-05 12:58:53 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/drop_chooseOption' is clicked on
+
+2018-09-05 12:58:54 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductVariation is PASSED
+
+2018-09-05 12:58:55 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductDetails: Keyword VerifyProductDetails is Passed
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - Text of object '' is: 'MeloMELI Unicorn Heart Lake Cushion — 2 Choices'
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - All options with label 'Vanilla Beige' are selected in object 'Object Repository/Page_Shop/drop_chooseOption' 
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - Text of object '' is: '$26.70'
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 12:58:55 - [MESSAGE][PASSED] - Keyword VerifyProductDetails is Passed
+
+2018-09-05 12:58:55 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(): beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 12:59:27 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127166990.png]]
+
+2018-09-05 12:59:27 - [MESSAGE][PASSED] - beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 12:59:27 - [TEST_STEP][PASSED] - beautytap.ShopAction.addProductToCart: beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 12:59:27 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Shop/txt_quantity' is cleared
+
+2018-09-05 12:59:27 - [MESSAGE][PASSED] - Keys '8' sent to object: 'Object Repository/Page_Shop/txt_quantity'
+
+2018-09-05 12:59:27 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/btn_addToCart' is clicked on
+
+2018-09-05 12:59:28 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Shop/lbl_message' is present
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 12:59:35 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyNumberItemInCart: Keyword VerifyNumberItemInCart is Passed, Number item in cart is 8, expected is 8
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - Text of object '' is: '8'
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - Keyword VerifyNumberItemInCart is Passed, Number item in cart is 8, expected is 8
+
+2018-09-05 12:59:35 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart: beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:59:35 - [MESSAGE][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 12:59:35 - [TEST_STEP][PASSED] - beautytap.ShopAction.goToCart: beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_cart' is clicked on
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 12:59:40 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductInCart: Keyword VerifyProductInCart is Passed
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Text of object '' is: '$26.70'
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Attribute 'value' of object '' is: '8'
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Text of object '' is: '$213.60'
+
+2018-09-05 12:59:40 - [MESSAGE][PASSED] - Keyword VerifyProductInCart is Passed
+
+2018-09-05 12:59:40 - [TEST_STEP][PASSED] - beautytap.ShopAction.processToCheckout: beautytap.ShopAction.processToCheckout is PASSED
+
+2018-09-05 12:59:44 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Cart/btn_checkout' is clicked on
+
+2018-09-05 12:59:44 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 12:59:44 - [MESSAGE][PASSED] - beautytap.ShopAction.processToCheckout is PASSED
+
+2018-09-05 12:59:44 - [TEST_STEP][PASSED] - beautytap.ShopAction.loginAmazonPay: beautytap.ShopAction.loginAmazonPay is PASSED
+
+2018-09-05 12:59:44 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Checkout/btn_amazonPay' is clicked on
+
+2018-09-05 12:59:44 - [MESSAGE][PASSED] - Switched to window with index: '1'
+
+2018-09-05 12:59:46 - [MESSAGE][PASSED] - Object 'Object Repository/Popup_Amazon/txt_email' is present
+
+2018-09-05 12:59:46 - [MESSAGE][PASSED] - Text of object 'Object Repository/Popup_Amazon/txt_email' is cleared
+
+2018-09-05 12:59:46 - [MESSAGE][PASSED] - Keys 'amazontest1503@yopmail.com' sent to object: 'Object Repository/Popup_Amazon/txt_email'
+
+2018-09-05 12:59:47 - [MESSAGE][PASSED] - Text of object 'Object Repository/Popup_Amazon/txt_password' is cleared
+
+2018-09-05 12:59:47 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Popup_Amazon/txt_password'
+
+2018-09-05 12:59:50 - [MESSAGE][PASSED] - Object: 'Object Repository/Popup_Amazon/btn_signin' is clicked on
+
+2018-09-05 12:59:50 - [MESSAGE][PASSED] - Switched to window with index: '0'
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Delayed 30 second(s)
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - beautytap.ShopAction.loginAmazonPay is PASSED
+
+2018-09-05 13:00:20 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderDetailsOnCheckout: Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Text of object '' is: '$213.60'
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Text of object '' is: 'Free EMS shipping (over $200)
+Why does shipping take this long?'
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Text of object '' is: '$213.60'
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 13:00:20 - [TEST_STEP][PASSED] - beautytap.ShopAction.checkoutViaAmazonPay: beautytap.ShopAction.checkoutViaAmazonPay is PASSED
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is clickable
+
+2018-09-05 13:00:20 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is checked
+
+2018-09-05 13:00:21 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Checkout/btn_placeOrder' is clicked on
+
+2018-09-05 13:00:34 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/lbl_orderReceived' is present
+
+2018-09-05 13:00:34 - [MESSAGE][PASSED] - beautytap.ShopAction.checkoutViaAmazonPay is PASSED
+
+2018-09-05 13:00:34 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderReceivedDetails: Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 13:00:34 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:00:34 - [MESSAGE][PASSED] - Text of object '' is: '$213.60'
+
+2018-09-05 13:00:34 - [MESSAGE][PASSED] - Text of object '' is: 'Free EMS shipping (over $200)'
+
+2018-09-05 13:01:06 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //th[text()='Shipping:']/parent::tr/td/span' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127265789.png]]
+
+2018-09-05 13:01:06 - [MESSAGE][PASSED] - Text of object '' is: 'Amazon Pay'
+
+2018-09-05 13:01:06 - [MESSAGE][PASSED] - Text of object '' is: '$213.60'
+
+2018-09-05 13:01:06 - [MESSAGE][PASSED] - Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 13:01:06 - [TEST_STEP][PASSED] - closeBrowser: Browser is closed
+
+2018-09-05 13:01:07 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200" classname="Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200" status="PASSED">
+         <system-out><![CDATA[2018-09-05 13:01:09 - [TEST_CASE][PASSED] - Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200: Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - productName = SIMPLE_PRODUCT: null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - price = SIMPLE_PRODUCT_PRICE: null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - email = "auto" + r_string + "@mailinator.com": null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - orderNote = "auto" + r_string + "Order": null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>: null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - quantity = 3: null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:01:09 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - total = subtotal: null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:01:09 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - products = new org.json.JSONArray((((((([{"productname":" + productName) + ","variation":"","quantity":") + quantity) + ","price":") + price) + "}])): null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "})): null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - shippingLabel = FREE_SHIPPING_LABEL: null
+
+2018-09-05 13:01:09 - [TEST_STEP][PASSED] - Statement - shippingPrice = 0: null
+
+2018-09-05 13:01:10 - [TEST_STEP][PASSED] - Statement - shippingType = "free": null
+
+2018-09-05 13:01:10 - [TEST_STEP][PASSED] - Statement - paymentMethod = "PayPal": null
+
+2018-09-05 13:01:10 - [TEST_STEP][PASSED] - Statement - category = "What's New": null
+
+2018-09-05 13:01:10 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 13:01:23 - [MESSAGE][PASSED] - Browser is opened with url: 'https://stage.beautytap.com'
+
+2018-09-05 13:01:25 - [MESSAGE][PASSED] - Current window maximized
+
+2018-09-05 13:01:29 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-09-05 13:01:29 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:01:29 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 13:01:29 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectCategory: beautytap.ShopAction.selectCategory is PASSED
+
+2018-09-05 13:01:36 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:01:36 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:01:36 - [MESSAGE][PASSED] - beautytap.ShopAction.selectCategory is PASSED
+
+2018-09-05 13:01:36 - [TEST_STEP][PASSED] - beautytap.ShopAction.findProductOnProductList: beautytap.ShopAction.findProductOnProductList is PASSED
+
+2018-09-05 13:01:36 - [MESSAGE][PASSED] - Text of object '' is: '76'
+
+2018-09-05 13:01:41 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //a[text()='La Muse Correct Care Complete Cushion SPF50+']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127301321.png]]
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - beautytap.ShopAction.findProductOnProductList is PASSED
+
+2018-09-05 13:01:49 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductOnProductList: Keyword VerifyProductOnProductList is Passed
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:01:49 - [MESSAGE][PASSED] - Keyword VerifyProductOnProductList is Passed
+
+2018-09-05 13:01:49 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductOnProductList: beautytap.ShopAction.selectProductOnProductList is PASSED
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductOnProductList is PASSED
+
+2018-09-05 13:01:55 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductDetails: Keyword VerifyProductDetails is Passed
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - Text of object '' is: 'La Muse Correct Care Complete Cushion SPF50+'
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:01:55 - [MESSAGE][PASSED] - Keyword VerifyProductDetails is Passed
+
+2018-09-05 13:01:55 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(): beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 13:02:27 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127346939.png]]
+
+2018-09-05 13:02:27 - [MESSAGE][PASSED] - beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 13:02:27 - [TEST_STEP][PASSED] - beautytap.ShopAction.addProductToCart: beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 13:02:27 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Shop/txt_quantity' is cleared
+
+2018-09-05 13:02:27 - [MESSAGE][PASSED] - Keys '3' sent to object: 'Object Repository/Page_Shop/txt_quantity'
+
+2018-09-05 13:02:27 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/btn_addToCart' is clicked on
+
+2018-09-05 13:02:27 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Shop/lbl_message' is present
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 13:02:34 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyNumberItemInCart: Keyword VerifyNumberItemInCart is Passed, Number item in cart is 3, expected is 3
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - Text of object '' is: '3'
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - Keyword VerifyNumberItemInCart is Passed, Number item in cart is 3, expected is 3
+
+2018-09-05 13:02:34 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart: beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:02:34 - [MESSAGE][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 13:02:34 - [TEST_STEP][PASSED] - beautytap.ShopAction.goToCart: beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 13:02:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_cart' is clicked on
+
+2018-09-05 13:02:38 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:02:38 - [MESSAGE][PASSED] - beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 13:02:38 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductInCart: Keyword VerifyProductInCart is Passed
+
+2018-09-05 13:02:38 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:02:39 - [MESSAGE][PASSED] - Text of object '' is: '$31.80'
+
+2018-09-05 13:02:39 - [MESSAGE][PASSED] - Attribute 'value' of object '' is: '3'
+
+2018-09-05 13:02:39 - [MESSAGE][PASSED] - Text of object '' is: '$95.40'
+
+2018-09-05 13:02:39 - [MESSAGE][PASSED] - Keyword VerifyProductInCart is Passed
+
+2018-09-05 13:02:39 - [TEST_STEP][PASSED] - beautytap.ShopAction.processToCheckout: beautytap.ShopAction.processToCheckout is PASSED
+
+2018-09-05 13:02:42 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Cart/btn_checkout' is clicked on
+
+2018-09-05 13:02:42 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:02:42 - [MESSAGE][PASSED] - beautytap.ShopAction.processToCheckout is PASSED
+
+2018-09-05 13:02:42 - [TEST_STEP][PASSED] - beautytap.ShopAction.fillCustomerInformation: beautytap.ShopAction.fillCustomerInformation is PASSED
+
+2018-09-05 13:02:43 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingFirstName' is cleared
+
+2018-09-05 13:02:43 - [MESSAGE][PASSED] - Keys 'Test' sent to object: 'Object Repository/Page_Checkout/txt_billingFirstName'
+
+2018-09-05 13:02:43 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingLastName' is cleared
+
+2018-09-05 13:02:43 - [MESSAGE][PASSED] - Keys 'Automation' sent to object: 'Object Repository/Page_Checkout/txt_billingLastName'
+
+2018-09-05 13:02:44 - [MESSAGE][PASSED] - All options with label 'United States (US)' are selected in object 'Object Repository/Page_Checkout/drop_billingCountry' 
+
+2018-09-05 13:02:49 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 13:02:49 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingAddress' is cleared
+
+2018-09-05 13:02:49 - [MESSAGE][PASSED] - Keys '123 Testing' sent to object: 'Object Repository/Page_Checkout/txt_billingAddress'
+
+2018-09-05 13:02:49 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingCity' is cleared
+
+2018-09-05 13:02:50 - [MESSAGE][PASSED] - Keys 'New York' sent to object: 'Object Repository/Page_Checkout/txt_billingCity'
+
+2018-09-05 13:02:50 - [MESSAGE][PASSED] - All options with label 'New York' are selected in object 'Object Repository/Page_Checkout/drop_billingState' 
+
+2018-09-05 13:02:51 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingZip' is cleared
+
+2018-09-05 13:02:51 - [MESSAGE][PASSED] - Keys '90012' sent to object: 'Object Repository/Page_Checkout/txt_billingZip'
+
+2018-09-05 13:02:51 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_billingEmail' is cleared
+
+2018-09-05 13:02:52 - [MESSAGE][PASSED] - Keys 'auto398248@mailinator.com' sent to object: 'Object Repository/Page_Checkout/txt_billingEmail'
+
+2018-09-05 13:02:53 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_shipToDifferentAddress' is un-checked
+
+2018-09-05 13:02:53 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Checkout/txt_orderNote' is cleared
+
+2018-09-05 13:02:53 - [MESSAGE][PASSED] - Keys 'auto398248Order' sent to object: 'Object Repository/Page_Checkout/txt_orderNote'
+
+2018-09-05 13:02:53 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/radio_creditCard' is checked
+
+2018-09-05 13:02:58 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 13:02:58 - [MESSAGE][PASSED] - beautytap.ShopAction.fillCustomerInformation is PASSED
+
+2018-09-05 13:02:58 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderDetailsOnCheckout: Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 13:02:58 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:02:59 - [MESSAGE][PASSED] - Text of object '' is: '$95.40'
+
+2018-09-05 13:02:59 - [MESSAGE][PASSED] - Text of object '' is: 'Free shipping for orders over $60
+Why does shipping take this long?'
+
+2018-09-05 13:02:59 - [MESSAGE][PASSED] - Text of object '' is: '$95.40'
+
+2018-09-05 13:02:59 - [MESSAGE][PASSED] - Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 13:02:59 - [TEST_STEP][PASSED] - beautytap.ShopAction.checkoutViaPaypal: beautytap.ShopAction.checkoutViaPaypal is PASSED
+
+2018-09-05 13:02:59 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/radio_paypal' is checked
+
+2018-09-05 13:03:04 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 13:03:05 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is checked
+
+2018-09-05 13:03:05 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Checkout/btn_placeOrder' is clicked on
+
+2018-09-05 13:03:13 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Paypal/txt_email' is present
+
+2018-09-05 13:03:13 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Paypal/txt_email' is cleared
+
+2018-09-05 13:03:14 - [MESSAGE][PASSED] - Keys 'g1.posiba@gmail.com' sent to object: 'Object Repository/Page_Paypal/txt_email'
+
+2018-09-05 13:03:14 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Paypal/txt_password' is cleared
+
+2018-09-05 13:03:14 - [MESSAGE][PASSED] - Keys 'Tr@ng99%' sent to object: 'Object Repository/Page_Paypal/txt_password'
+
+2018-09-05 13:03:24 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Paypal/btn_login' is clicked on
+
+2018-09-05 13:03:36 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Paypal/btn_payNow' is present
+
+2018-09-05 13:03:41 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 13:03:41 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Paypal/btn_payNow' is clicked on
+
+2018-09-05 13:03:59 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/lbl_orderReceived' is present
+
+2018-09-05 13:03:59 - [MESSAGE][PASSED] - beautytap.ShopAction.checkoutViaPaypal is PASSED
+
+2018-09-05 13:03:59 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderReceivedDetails: Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 13:03:59 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:03:59 - [MESSAGE][PASSED] - Text of object '' is: '$95.40'
+
+2018-09-05 13:03:59 - [MESSAGE][PASSED] - Text of object '' is: 'Free shipping for orders over $60'
+
+2018-09-05 13:04:30 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //th[text()='Shipping:']/parent::tr/td/span' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127470146.png]]
+
+2018-09-05 13:04:30 - [MESSAGE][PASSED] - Text of object '' is: 'PayPal'
+
+2018-09-05 13:04:30 - [MESSAGE][PASSED] - Text of object '' is: '$95.40'
+
+2018-09-05 13:04:30 - [MESSAGE][PASSED] - Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 13:04:30 - [TEST_STEP][PASSED] - closeBrowser: Browser is closed
+
+2018-09-05 13:04:31 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS" classname="Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS" status="PASSED">
+         <system-out><![CDATA[2018-09-05 13:04:33 - [TEST_CASE][PASSED] - Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS: Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - productName = VARIATION_SALE_PRODUCT: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - saleprice = VARIATION_SALE_PRICE1: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - redularprice = VARIATION_SALE_REGULAR_PRICE1: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - variation = VARIATION_SALE_NAME1: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - email = "auto" + r_string + "@mailinator.com": null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - orderNote = "auto" + r_string + "Order": null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - quantity = 5: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - shippingLabel = EMS_SHIPPING_LABEL: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - shippingPrice = EMS_SHIPPING_PRICE: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:04:34 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - total = subtotal + shippingPrice: null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total): beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:04:34 - [MESSAGE][PASSED] - beautytap.ShopAction.calculateTotal is PASSED
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - products = new org.json.JSONArray((((((((([{"productname":" + productName) + ","variation":") + variation) + ","quantity":") + quantity) + ","price":") + saleprice) + "}])): null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "})): null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - shippingType = "EMS": null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - paymentMethod = "Amazon Pay": null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - category = "Brands": null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - Statement - subcategory = "Innisfree": null
+
+2018-09-05 13:04:34 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 13:04:53 - [MESSAGE][PASSED] - Browser is opened with url: 'https://stage.beautytap.com'
+
+2018-09-05 13:04:54 - [MESSAGE][PASSED] - Current window maximized
+
+2018-09-05 13:04:58 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-09-05 13:04:58 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:04:58 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-09-05 13:04:58 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectCategory: beautytap.ShopAction.selectCategory is PASSED
+
+2018-09-05 13:04:58 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:05:00 - [MESSAGE][PASSED] - Delayed 2 second(s)
+
+2018-09-05 13:05:09 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:05:09 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:05:09 - [MESSAGE][PASSED] - beautytap.ShopAction.selectCategory is PASSED
+
+2018-09-05 13:05:09 - [TEST_STEP][PASSED] - beautytap.ShopAction.findProductOnProductList: beautytap.ShopAction.findProductOnProductList is PASSED
+
+2018-09-05 13:05:09 - [MESSAGE][PASSED] - Text of object '' is: '3'
+
+2018-09-05 13:05:15 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //a[text()='Innisfree Eye Contouring Stick Round Shape 0.7g']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127514807.png]]
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - beautytap.ShopAction.findProductOnProductList is PASSED
+
+2018-09-05 13:05:23 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductOnProductList: Keyword VerifyProductOnProductList is Passed
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - Text of object '' is: '$4.95'
+
+2018-09-05 13:05:23 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:05:24 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:05:24 - [MESSAGE][PASSED] - Text of object '' is: '$6.50'
+
+2018-09-05 13:05:24 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:05:24 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:05:24 - [MESSAGE][PASSED] - Keyword VerifyProductOnProductList is Passed
+
+2018-09-05 13:05:24 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductOnProductList: beautytap.ShopAction.selectProductOnProductList is PASSED
+
+2018-09-05 13:05:32 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:05:32 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:05:32 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductOnProductList is PASSED
+
+2018-09-05 13:05:32 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectProductVariation: beautytap.ShopAction.selectProductVariation is PASSED
+
+2018-09-05 13:05:32 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/drop_chooseOption' is clicked on
+
+2018-09-05 13:05:33 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-09-05 13:05:33 - [MESSAGE][PASSED] - Object: '' is clicked on
+
+2018-09-05 13:05:33 - [MESSAGE][PASSED] - beautytap.ShopAction.selectProductVariation is PASSED
+
+2018-09-05 13:05:33 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductDetails: Keyword VerifyProductDetails is Passed
+
+2018-09-05 13:05:34 - [MESSAGE][PASSED] - Text of object '' is: 'Innisfree Eye Contouring Stick Round Shape 0.7g'
+
+2018-09-05 13:05:35 - [MESSAGE][PASSED] - All options with label '5' are selected in object 'Object Repository/Page_Shop/drop_chooseOption' 
+
+2018-09-05 13:05:35 - [MESSAGE][PASSED] - Text of object '' is: '$6.50'
+
+2018-09-05 13:05:35 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(195, 195, 195, 1)'.
+
+2018-09-05 13:05:35 - [MESSAGE][PASSED] - Text of object '' is: '$4.95'
+
+2018-09-05 13:05:35 - [MESSAGE][PASSED] - Get CSS 'color' value on '' successfully: 'rgba(255, 35, 134, 1)'.
+
+2018-09-05 13:05:35 - [MESSAGE][PASSED] - Keyword VerifyProductDetails is Passed
+
+2018-09-05 13:05:35 - [TEST_STEP][PASSED] - Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(): beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 13:06:06 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Shop\\20180905_125536\\1536127566303.png]]
+
+2018-09-05 13:06:06 - [MESSAGE][PASSED] - beautytap.ShopAction.getNumberItemInCart is PASSED
+
+2018-09-05 13:06:06 - [TEST_STEP][PASSED] - beautytap.ShopAction.addProductToCart: beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 13:06:06 - [MESSAGE][PASSED] - Text of object 'Object Repository/Page_Shop/txt_quantity' is cleared
+
+2018-09-05 13:06:06 - [MESSAGE][PASSED] - Keys '5' sent to object: 'Object Repository/Page_Shop/txt_quantity'
+
+2018-09-05 13:06:07 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Shop/btn_addToCart' is clicked on
+
+2018-09-05 13:06:07 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Shop/lbl_message' is present
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - beautytap.ShopAction.addProductToCart is PASSED
+
+2018-09-05 13:06:15 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyNumberItemInCart: Keyword VerifyNumberItemInCart is Passed, Number item in cart is 5, expected is 5
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - Text of object '' is: '5'
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - Keyword VerifyNumberItemInCart is Passed, Number item in cart is 5, expected is 5
+
+2018-09-05 13:06:15 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart: beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:06:15 - [MESSAGE][PASSED] - beautytap.ShopAction.VerifyProductIsAddedToCart is PASSED
+
+2018-09-05 13:06:15 - [TEST_STEP][PASSED] - beautytap.ShopAction.goToCart: beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/icon_cart' is clicked on
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - beautytap.ShopAction.goToCart is PASSED
+
+2018-09-05 13:06:20 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyProductInCart: Keyword VerifyProductInCart is Passed
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Text of object '' is: '$4.95'
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Attribute 'value' of object '' is: '5'
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Text of object '' is: '$24.75'
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Keyword VerifyProductInCart is Passed
+
+2018-09-05 13:06:20 - [TEST_STEP][PASSED] - beautytap.ShopAction.loginAmazonPay: beautytap.ShopAction.loginAmazonPay is PASSED
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Cart/btn_payWithAmazon' is clicked on
+
+2018-09-05 13:06:20 - [MESSAGE][PASSED] - Switched to window with index: '1'
+
+2018-09-05 13:06:22 - [MESSAGE][PASSED] - Object 'Object Repository/Popup_Amazon/txt_email' is present
+
+2018-09-05 13:06:22 - [MESSAGE][PASSED] - Text of object 'Object Repository/Popup_Amazon/txt_email' is cleared
+
+2018-09-05 13:06:22 - [MESSAGE][PASSED] - Keys 'amazontest1503@yopmail.com' sent to object: 'Object Repository/Popup_Amazon/txt_email'
+
+2018-09-05 13:06:22 - [MESSAGE][PASSED] - Text of object 'Object Repository/Popup_Amazon/txt_password' is cleared
+
+2018-09-05 13:06:22 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Popup_Amazon/txt_password'
+
+2018-09-05 13:06:25 - [MESSAGE][PASSED] - Object: 'Object Repository/Popup_Amazon/btn_signin' is clicked on
+
+2018-09-05 13:06:25 - [MESSAGE][PASSED] - Switched to window with index: '0'
+
+2018-09-05 13:06:55 - [MESSAGE][PASSED] - Delayed 30 second(s)
+
+2018-09-05 13:06:55 - [MESSAGE][PASSED] - beautytap.ShopAction.loginAmazonPay is PASSED
+
+2018-09-05 13:06:55 - [TEST_STEP][PASSED] - beautytap.ShopAction.selectShipping: beautytap.ShopAction.selectShipping is PASSED
+
+2018-09-05 13:06:56 - [MESSAGE][PASSED] - Object '' is checked
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - beautytap.ShopAction.selectShipping is PASSED
+
+2018-09-05 13:07:01 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderDetailsOnCheckout: Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Text of object '' is: '$24.75'
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Object '' has attribute 'checked'
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Text of object '' is: '($25) - EMS Express shipping (est. 10-14 working days delivery including processing): $25.00'
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Text of object '' is: '$25.00'
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Text of object '' is: '$49.75'
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Keyword VerifyOrderDetailsOnCheckout is Passed
+
+2018-09-05 13:07:01 - [TEST_STEP][PASSED] - beautytap.ShopAction.checkoutViaAmazonPay: beautytap.ShopAction.checkoutViaAmazonPay is PASSED
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is clickable
+
+2018-09-05 13:07:01 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/chk_terms' is checked
+
+2018-09-05 13:07:02 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Checkout/btn_placeOrder' is clicked on
+
+2018-09-05 13:07:15 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Checkout/lbl_orderReceived' is present
+
+2018-09-05 13:07:15 - [MESSAGE][PASSED] - beautytap.ShopAction.checkoutViaAmazonPay is PASSED
+
+2018-09-05 13:07:15 - [TEST_STEP][PASSED] - beautytap.ShopAction.VerifyOrderReceivedDetails: Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 13:07:15 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Text of object '' is: '$24.75'
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Text of object '' is: '$25.00 via ($25) - EMS Express shipping (est. 10-14 working days delivery including processing)'
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Object '' is present
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Text of object '' is: '$25.00'
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Text of object '' is: 'Amazon Pay'
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Text of object '' is: '$49.75'
+
+2018-09-05 13:07:16 - [MESSAGE][PASSED] - Keyword VerifyOrderReceivedDetails is Passed
+
+2018-09-05 13:07:16 - [TEST_STEP][PASSED] - closeBrowser: Browser is closed
+
+2018-09-05 13:07:17 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-09-05 12:55:38 - [TEST_SUITE][PASSED] - Shop: Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

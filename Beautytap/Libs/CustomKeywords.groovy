@@ -450,6 +450,12 @@ def static "beautytap.ShopAction.VerifyRewardEarned"(
          , 	rewardEarned)
 }
 
+def static "beautytap.ShopAction.calculateLoyaltyPointValue"(
+    	float redeemablePoint	) {
+    (new beautytap.ShopAction()).calculateLoyaltyPointValue(
+        	redeemablePoint)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

@@ -1433,6 +1433,7 @@ public class ShopAction {
 	}
 
 	//Verify Reward History
+	//status: pending,processing,completed,cancelled,on-hold,refunded
 	@Keyword
 	def VerifyRewardHistory(String orderNumber,String date,String status,float pointRedeemed,float subtotal,float multiplier,float loyaltyPoint,float totalPoint){
 		println "SART KEYWORD VerifyRewardHistory";
@@ -1455,16 +1456,19 @@ public class ShopAction {
 		if (WebUI.verifyElementPresent(obj_date, GlobalVariable.TIMEOUT)==true){
 			String currentDate = WebUI.getText(obj_date).trim();
 			SimpleDateFormat datetime = new SimpleDateFormat("MMMM dd, yyyy");
-			currentDate = datetime.parse(currentDate).toString();
+			TimeZone tz = TimeZone.getTimeZone("America/Los_Angeles");
+			datetime.setTimeZone(tz);
+			Date dateInAmerica=datetime.parse(currentDate);
+			currentDate = dateInAmerica.toString();
 			date = datetime.parse(date).toString();
 			float currentPointRedeemed =0;
 			if(WebUI.getText(obj_pointRedeemed).trim()!=''){
 				currentPointRedeemed = Float.parseFloat(WebUI.getText(obj_pointRedeemed).trim());
 			}
 			float currentTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
-			String currentMultiplier = Float.parseFloat(WebUI.getText(obj_multiplier).trim());
-			String currentLoyaltyPoint = Float.parseFloat(WebUI.getText(obj_loyaltyPoint).trim());
-			String currentTotalPoint = Float.parseFloat(WebUI.getText(obj_totalPoint).trim());
+			float currentMultiplier = Float.parseFloat(WebUI.getText(obj_multiplier).trim());
+			float currentLoyaltyPoint = Float.parseFloat(WebUI.getText(obj_loyaltyPoint).trim());
+			float currentTotalPoint = Float.parseFloat(WebUI.getText(obj_totalPoint).trim());
 			if(currentDate!=date || currentPointRedeemed!=pointRedeemed||currentTotal!=subtotal||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
 				result="false";
 				println "Current date:" +currentDate;
@@ -1525,14 +1529,32 @@ public class ShopAction {
 			println "Expected subtotal: "+subtotal;
 		}
 		if(result=="true"){
-			KeywordUtil.markPassed("Keyword VerifyRewardHistory is Passed");
+			KeywordUtil.markPassed("Keyword VerifyRewardEarned is Passed");
 		}else{
-			KeywordUtil.markFailed("Keyword VerifyRewardHistory is Failed");
+			KeywordUtil.markFailed("Keyword VerifyRewardEarned is Failed");
 		}
 		println "END KEYWORD VerifyRewardEarned";
-
-
 	}
 
+	//calculate loyalty point value
+	@Keyword
+	def calculateLoyaltyPointValue(float redeemablePoint){
+		println "START KEYWORD calculateLoyaltyPointValue";
+		String jsonText ='[{"point":"1000","dollar":"55"},{"point":"750","dollar":"35"},{"point":"500","dollar":"20"},{"point":"300","dollar":"12"},{"point":"150","dollar":"5"},{"point":"60","dollar":"2"}]';
+		float pointValue = 0;
+		JSONArray pointRedeemtion = new JSONArray(jsonText);		
+		for(int i;i< pointRedeemtion.length();i++){
+			JSONObject objPointRedeemtion =(JSONObject) pointRedeemtion.get(i);			
+			float point = Float.parseFloat(objPointRedeemtion.get("point"));
+			float dollar = Float.parseFloat(objPointRedeemtion.get("dollar"));
+			if(redeemablePoint >= point ){
+				pointValue = (int)pointValue + (int)(redeemablePoint/point)*dollar;				
+				redeemablePoint = redeemablePoint - (int)(redeemablePoint/point)*point;				
+			}
+		}
+		println "END KEYWORD calculateLoyaltyPointValue";
+		return pointValue;		
+	}
+	
 	//End Class
 }
