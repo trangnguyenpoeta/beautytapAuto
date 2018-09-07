@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>1. Login as user
+2. Go to My Rewoard get current multiplier, lifetime, pending, redeemable points, point value
+3. By a product then process to checkout
+VP1: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier
+4. Checkout
+VP2: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier
+5. Go to Reward page
+VP3: Verify reward detail: lifetime:notchange,pending=current pending+reward, redeemable:notchange,point value: not change
+VP4: Verify reward history: 1 row with sataut pending,1 row with status processing
+6. Login as Admin
+7. Change order status to complete
+8. Login as user
+VP5: Verify notification order complete
+VP6: Verify email order complete with reward point
+9. Go to reward page
+VP7: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward,point value: associate with reward
+VP8: Verify reward history: 1 row with sataut complete
+</description>
+   <name>TC07_BuyProduct_EarnPendingPoint_EarnRedeemablePoint</name>
+   <tag></tag>
+   <comment>VP7: Verify user recieve notification email with redeemable point
+VP8: Verify notification: You received [#] redeemable points</comment>
+   <testCaseGuid>cce21d6d-0cbe-45c9-b601-059126352b09</testCaseGuid>
+</TestCaseEntity>

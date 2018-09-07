@@ -767,7 +767,7 @@ public class ShopAction {
 	//free shipping price=0
 	//shippingType:normal,EMS,free,freeEMS
 	@Keyword
-	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,int pointUsed,float moneyDiscount,String shippingType,String shippingLable,float shippingPrice,float total){
+	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,float pointUsed,float moneyDiscount,String shippingType,String shippingLable,float shippingPrice,float total){
 		println "START KEYWORD VerifyOrderDetailsOnCheckout";
 		String result = 'true';
 		float orderSubtotal = 0;
@@ -808,13 +808,13 @@ public class ShopAction {
 			println "Subtotal input: "+ subtotal;
 		}
 		//Check reward point
-		if(pointUsed!=0){
+		if((int)pointUsed!=0){
 			TestObject obj_pointUsed =new TestObject();
 			obj_pointUsed.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Rewards']/parent::tr/td/span");
 			int currentPointUsed = Integer.parseInt(WebUI.getText(obj_pointUsed).trim().substring(0, WebUI.getText(obj_pointUsed).trim().length()-12));
 			println "Current point used:"+currentPointUsed;
 			println "Expected point used:" +pointUsed;
-			if(currentPointUsed!=pointUsed){
+			if(currentPointUsed!=(int)pointUsed){
 				result ="false";
 				println "Point used is not correct!" ;
 			}
@@ -1033,7 +1033,7 @@ public class ShopAction {
 	//free shipping price=0
 	//shippingType:normal,EMS,free,freeEMS
 	@Keyword
-	def VerifyOrderReceivedDetails(JSONArray products,float subtotal,int pointUsed,float moneyDiscount ,float shippingPrice,String shippingLabel,String paymentMethod,float total){
+	def VerifyOrderReceivedDetails(JSONArray products,float subtotal,float pointUsed,float moneyDiscount ,float shippingPrice,String shippingLabel,String paymentMethod,float total){
 		println "START KEYWORD VerifyOrderReceivedDetails";
 		String result = 'true';
 		float orderSubtotal = 0;
@@ -1074,13 +1074,13 @@ public class ShopAction {
 			println "Subtotal input: "+ subtotal;
 		}
 		//Check reward point
-		if(pointUsed!=0){
+		if((int)pointUsed!=0){
 			TestObject obj_pointUsed =new TestObject();
 			obj_pointUsed.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Rewards']/parent::tr/td/span");
 			int currentPointUsed = Integer.parseInt(WebUI.getText(obj_pointUsed).trim().substring(0, WebUI.getText(obj_pointUsed).trim().length()-12));
 			println "Current point used:"+currentPointUsed;
 			println "Expected point used:" +pointUsed;
-			if(currentPointUsed!=pointUsed){
+			if(currentPointUsed!=(int)pointUsed){
 				result ="false";
 				println "Point used is not correct!" ;
 			}
@@ -1438,6 +1438,9 @@ public class ShopAction {
 	def VerifyRewardHistory(String orderNumber,String date,String status,float pointRedeemed,float subtotal,float multiplier,float loyaltyPoint,float totalPoint){
 		println "SART KEYWORD VerifyRewardHistory";
 		String result="true";
+		if (date == null){
+			date ='';
+		}
 		orderNumber =orderNumber.replace('#','');
 		TestObject obj_orderNumber = new TestObject();
 		TestObject obj_date = new TestObject();
@@ -1447,20 +1450,26 @@ public class ShopAction {
 		TestObject obj_multiplier = new TestObject();
 		TestObject obj_loyaltyPoint = new TestObject();
 		TestObject obj_totalPoint = new TestObject();
+		obj_orderNumber.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[1]")
 		obj_date.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[2]")
 		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
 		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
 		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
 		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
-		if (WebUI.verifyElementPresent(obj_date, GlobalVariable.TIMEOUT)==true){
-			String currentDate = WebUI.getText(obj_date).trim();
-			SimpleDateFormat datetime = new SimpleDateFormat("MMMM dd, yyyy");
-			TimeZone tz = TimeZone.getTimeZone("America/Los_Angeles");
-			datetime.setTimeZone(tz);
-			Date dateInAmerica=datetime.parse(currentDate);
-			currentDate = dateInAmerica.toString();
-			date = datetime.parse(date).toString();
+		if (WebUI.verifyElementPresent(obj_orderNumber, GlobalVariable.TIMEOUT)==true){
+			if(date!=''){
+				String currentDate = WebUI.getText(obj_date).trim();
+				SimpleDateFormat datetime = new SimpleDateFormat("MMMM dd, yyyy");
+				currentDate = datetime.parse(currentDate).toString();
+				date = datetime.parse(date).toString();
+				// WBEAUT-1604:Order Date in Reward History is disfferent with date in order details
+				if(currentDate!=date){
+					result="false";
+					println "Current date:" +currentDate;
+					println "Expected date:" +date;
+				}
+			}
 			float currentPointRedeemed =0;
 			if(WebUI.getText(obj_pointRedeemed).trim()!=''){
 				currentPointRedeemed = Float.parseFloat(WebUI.getText(obj_pointRedeemed).trim());
@@ -1469,10 +1478,8 @@ public class ShopAction {
 			float currentMultiplier = Float.parseFloat(WebUI.getText(obj_multiplier).trim());
 			float currentLoyaltyPoint = Float.parseFloat(WebUI.getText(obj_loyaltyPoint).trim());
 			float currentTotalPoint = Float.parseFloat(WebUI.getText(obj_totalPoint).trim());
-			if(currentDate!=date || currentPointRedeemed!=pointRedeemed||currentTotal!=subtotal||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
+			if(currentPointRedeemed!=pointRedeemed||currentTotal!=subtotal||currentLoyaltyPoint!=loyaltyPoint||currentMultiplier!=multiplier||currentTotalPoint!=totalPoint){
 				result="false";
-				println "Current date:" +currentDate;
-				println "Expected date:" +date;
 				println "Current Point Redeemed:" +currentPointRedeemed;
 				println "Expected Point Redeemed:" +pointRedeemed;
 				println "Current Total:" +currentTotal;
@@ -1488,6 +1495,7 @@ public class ShopAction {
 			}
 		} else{
 			result = "false";
+			println "Order " + orderNumber + "is not found!";
 		}
 
 		if(result=="true"){
@@ -1542,18 +1550,32 @@ public class ShopAction {
 		println "START KEYWORD calculateLoyaltyPointValue";
 		String jsonText ='[{"point":"1000","dollar":"55"},{"point":"750","dollar":"35"},{"point":"500","dollar":"20"},{"point":"300","dollar":"12"},{"point":"150","dollar":"5"},{"point":"60","dollar":"2"}]';
 		float pointValue = 0;
-		JSONArray pointRedeemtion = new JSONArray(jsonText);		
+		JSONArray pointRedeemtion = new JSONArray(jsonText);
 		for(int i;i< pointRedeemtion.length();i++){
-			JSONObject objPointRedeemtion =(JSONObject) pointRedeemtion.get(i);			
+			JSONObject objPointRedeemtion =(JSONObject) pointRedeemtion.get(i);
 			float point = Float.parseFloat(objPointRedeemtion.get("point"));
 			float dollar = Float.parseFloat(objPointRedeemtion.get("dollar"));
 			if(redeemablePoint >= point ){
-				pointValue = (int)pointValue + (int)(redeemablePoint/point)*dollar;				
-				redeemablePoint = redeemablePoint - (int)(redeemablePoint/point)*point;				
+				pointValue = (int)pointValue + (int)(redeemablePoint/point)*dollar;
+				redeemablePoint = redeemablePoint - (int)(redeemablePoint/point)*point;
 			}
 		}
 		println "END KEYWORD calculateLoyaltyPointValue";
-		return pointValue;		
+		return pointValue;
+	}
+
+	//apply reward
+	//pointUsed: 60,150,300,500,750,1000
+	@Keyword
+	def applyLoyaltyRewardPoint(float pointUsed){
+		TestObject obj_pointRadio =new TestObject();
+		TestObject obj_applyRewardMessage =new TestObject();
+		obj_pointRadio.addProperty("xpath",ConditionType.EQUALS,"//input[@id='rewards_"+ (int)pointUsed +"']");
+		obj_applyRewardMessage.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-message' and text()='Reward applied successfully.']");
+		WebUI.click(findTestObject('Object Repository/Page_Checkout/link_clickToRedeem'));
+		WebUI.check(obj_pointRadio);
+		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_applyReward'));
+		WebUI.waitForElementPresent(obj_applyRewardMessage, GlobalVariable.SHORT_TIMEOUT*2);
 	}
 	
 	//End Class

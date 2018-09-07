@@ -30,9 +30,10 @@ import com.kms.katalon.core.testobject.ConditionType
 import org.apache.commons.lang.StringUtils
 
 
-JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","variation":"","quantity":"1","price":"30.99"}]')
+//JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","variation":"","quantity":"1","price":"30.99"}]')
 //SIGNUP
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+//WebUI.delay(60)
 //CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
 ///CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
 //CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
@@ -48,7 +49,8 @@ JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","v
 //Date date = datetime.parse(t);
 //System.out.println(date);
 //System.out.println(datetime.format(date));
-//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136395", "September 06, 2018", "completed", 0, 95.40, 1, 95.40, 477.00)
-println CustomKeywords.'beautytap.ShopAction.calculateLoyaltyPointValue'(667.8)
-
+float point=60
+CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136449",'', "pending", 60, 93.40, 1, (float)(-1*point), 795.60)
+//println CustomKeywords.'beautytap.ShopAction.calculateLoyaltyPointValue'(667.8)
+//CustomKeywords.'beautytap.ShopAction.applyLoyaltyRewardPoint'(60)
 

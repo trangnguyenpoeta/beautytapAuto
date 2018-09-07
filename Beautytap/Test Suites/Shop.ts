@@ -39,6 +39,6 @@
       <guid>288000da-b8db-4a28-9b3f-43bf4014fc8e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>false</isRun>
-      <testCaseId>Test Cases/Shop/TC07_BuyProduct_EarnPendingPoint_EarnRedeemablePoint_UsingPoint</testCaseId>
+      <testCaseId>Test Cases/Shop/TC07_BuyProduct_EarnPendingPoint_EarnRedeemablePoint</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

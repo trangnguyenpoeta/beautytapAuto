@@ -289,7 +289,7 @@ def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
 def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
     	JSONArray products	
      , 	float subtotal	
-     , 	int pointUsed	
+     , 	float pointUsed	
      , 	float moneyDiscount	
      , 	String shippingType	
      , 	String shippingLable	
@@ -333,7 +333,7 @@ def static "beautytap.ShopAction.VerifyOrderReceivedDetails"(
 def static "beautytap.ShopAction.VerifyOrderReceivedDetails"(
     	JSONArray products	
      , 	float subtotal	
-     , 	int pointUsed	
+     , 	float pointUsed	
      , 	float moneyDiscount	
      , 	float shippingPrice	
      , 	String shippingLabel	
@@ -454,6 +454,12 @@ def static "beautytap.ShopAction.calculateLoyaltyPointValue"(
     	float redeemablePoint	) {
     (new beautytap.ShopAction()).calculateLoyaltyPointValue(
         	redeemablePoint)
+}
+
+def static "beautytap.ShopAction.applyLoyaltyRewardPoint"(
+    	float pointUsed	) {
+    (new beautytap.ShopAction()).applyLoyaltyRewardPoint(
+        	pointUsed)
 }
 
 def static "beautytap.AdminAction.deleteUser"(
