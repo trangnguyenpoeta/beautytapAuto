@@ -978,7 +978,7 @@ public class ShopAction {
 		obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td|//th[text()='Shipping:']/parent::tr/td/small");
 		obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td/span");
 		String currentLabel =WebUI.getText(obj_shippingLable).trim();
-		if(WebUI.verifyElementPresent(obj_shippingPrice, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
+		if(WebUI.verifyElementPresent(obj_shippingPrice, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==true){
 			float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
 			shippingLabel = "via "+ shippingLabel;
 			if(currentLabel!=shippingLabel && currentShipPrice!=shippingPrice){
@@ -1105,7 +1105,7 @@ public class ShopAction {
 		obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td|//th[text()='Shipping:']/parent::tr/td/small");
 		obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td/span");
 		String currentLabel =WebUI.getText(obj_shippingLable).trim();
-		if(WebUI.verifyElementPresent(obj_shippingPrice, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
+		if(WebUI.verifyElementPresent(obj_shippingPrice, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==true){
 			float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
 			shippingLabel = "via "+ shippingLabel;
 			if(currentLabel!=shippingLabel && currentShipPrice!=shippingPrice){
@@ -1568,6 +1568,7 @@ public class ShopAction {
 	//pointUsed: 60,150,300,500,750,1000
 	@Keyword
 	def applyLoyaltyRewardPoint(float pointUsed){
+		println "START KEYWORD applyLoyaltyRewardPoint";
 		TestObject obj_pointRadio =new TestObject();
 		TestObject obj_applyRewardMessage =new TestObject();
 		obj_pointRadio.addProperty("xpath",ConditionType.EQUALS,"//input[@id='rewards_"+ (int)pointUsed +"']");
@@ -1576,7 +1577,109 @@ public class ShopAction {
 		WebUI.check(obj_pointRadio);
 		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_applyReward'));
 		WebUI.waitForElementPresent(obj_applyRewardMessage, GlobalVariable.SHORT_TIMEOUT*2);
+		println "END KEYWORD applyLoyaltyRewardPoint";
 	}
-	
+
+	//Verify Order Complete Email
+	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
+	//free shipping price=0
+	//shippingType:normal,EMS,free,freeEMS
+	@Keyword
+	def VerifyOrderCompleteEmail(JSONArray products,float subtotal,float discount,float shippingPrice,String shippingLabel,String paymentMethod,float total,float redeemablePoint){
+		println "START KEYWORD VerifyOrderCompleteEmail";
+		String result = 'true';
+		float orderSubtotal = 0;
+		//Check product line
+		for(int i;i<products.length();i++){
+			JSONObject obj_product = (JSONObject) products.get(i);
+			String productName = obj_product.get('productname');
+			String variation = obj_product.get('variation');
+			if(variation!=''){
+				productName = productName + ' – ' + variation;
+			}
+			int quantity = Integer.parseInt(obj_product.get('quantity'));
+			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
+			float productTotal = ShopAction.calculateTotal(quantity, price);
+			orderSubtotal = orderSubtotal + productTotal;
+			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='× "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			TestObject obj_productLine = new TestObject();
+			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
+			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
+				result = 'false';
+				println "Product "+ i +" in array does not exist";
+			}else{
+				println "Product "+ i +" in array exist";
+			}
+			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
+
+		}
+		//Check subtotal
+		TestObject obj_subtotal =new TestObject();
+		obj_subtotal.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Subtotal:']/parent::tr/td/span");
+		float currentSubtotal = Float.parseFloat(WebUI.getText(obj_subtotal).trim().replace('$', ''));
+		if(orderSubtotal==currentSubtotal && orderSubtotal==subtotal){
+			println "Subtotal is correct: "+ currentSubtotal;
+		}else{
+			result = 'false'
+			println "Subtotal product line: "+ orderSubtotal;
+			println "Subtotal sum line: "+ currentSubtotal;
+			println "Subtotal input: "+ subtotal;
+		}
+		//Check shipping
+
+		TestObject obj_shippingLable=new TestObject();
+		TestObject  obj_shippingPrice =new TestObject();
+		obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td|//th[text()='Shipping:']/parent::tr/td/small");
+		obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Shipping:']/parent::tr/td/span");
+		String currentLabel =WebUI.getText(obj_shippingLable).trim();
+		if(WebUI.verifyElementPresent(obj_shippingPrice, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==true){
+			float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
+			shippingLabel = "via "+ shippingLabel;
+			if(currentLabel!=shippingLabel && currentShipPrice!=shippingPrice){
+				println "Current ship label: "+currentLabel;
+				println "Expected ship label:" + shippingLabel;
+				println "Current ship price: "+currentShipPrice;
+				println "Expected ship price:" + shippingPrice;
+				result = 'false'
+			}
+		}else{
+			float currentShipPrice =0;
+			if(currentLabel!=shippingLabel && currentShipPrice!=shippingPrice){
+				println "Current ship label: "+currentLabel;
+				println "Expected ship label:" + shippingLabel;
+				println "Current ship price: "+currentShipPrice;
+				println "Expected ship price:" + shippingPrice;
+				result = 'false'
+			}
+		}
+		//Check Payment method
+		TestObject obj_paymentMethod=new TestObject();
+		obj_paymentMethod.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Payment method:']/parent::tr/td");
+		String currentMethod = WebUI.getText(obj_paymentMethod).trim();
+		if(currentMethod != paymentMethod){
+			result = 'false'
+			println "Current method: "+currentMethod;
+			println "Expected method:" + paymentMethod;
+		}
+
+		//Check total
+		float currentTotal = currentSubtotal + shippingPrice;
+		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
+		TestObject obj_total=new TestObject();
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Total:']/parent::tr/td/span");
+		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
+		if(currentTotal!=expectedTotal){
+			result = 'false';
+			println "Current total: " +currentTotal;
+			println "Expected total:" +expectedTotal ;
+		}
+		//Check result
+		if(result=='true'){
+			KeywordUtil.markPassed("Keyword VerifyOrderCompleteEmail is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyOrderCompleteEmail is Failed");
+		}
+		println "END KEYWORD VerifyOrderCompleteEmail";
+	}
 	//End Class
 }

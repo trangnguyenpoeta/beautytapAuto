@@ -110,6 +110,12 @@ def static "beautytap.GeneralAction.selectProfileMenu"(
         	menu)
 }
 
+def static "beautytap.GeneralAction.VerifyNotificationText"(
+    	String notificationText	) {
+    (new beautytap.GeneralAction()).VerifyNotificationText(
+        	notificationText)
+}
+
 def static "beautytap.ShopAction.globalSearch"(
     	String keyword	) {
     (new beautytap.ShopAction()).globalSearch(
@@ -460,6 +466,26 @@ def static "beautytap.ShopAction.applyLoyaltyRewardPoint"(
     	float pointUsed	) {
     (new beautytap.ShopAction()).applyLoyaltyRewardPoint(
         	pointUsed)
+}
+
+def static "beautytap.ShopAction.VerifyOrderCompleteEmail"(
+    	JSONArray products	
+     , 	float subtotal	
+     , 	float discount	
+     , 	float shippingPrice	
+     , 	String shippingLabel	
+     , 	String paymentMethod	
+     , 	float total	
+     , 	float redeemablePoint	) {
+    (new beautytap.ShopAction()).VerifyOrderCompleteEmail(
+        	products
+         , 	subtotal
+         , 	discount
+         , 	shippingPrice
+         , 	shippingLabel
+         , 	paymentMethod
+         , 	total
+         , 	redeemablePoint)
 }
 
 def static "beautytap.AdminAction.deleteUser"(

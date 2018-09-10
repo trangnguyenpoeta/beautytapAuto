@@ -21,7 +21,7 @@ import com.kms.katalon.core.testobject.ObjectRepository
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
-
+import com.kms.katalon.core.util.KeywordUtil
 import internal.GlobalVariable
 
 import MobileBuiltInKeywords as Mobile
@@ -227,7 +227,30 @@ public class GeneralAction {
 		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD selectProfileMenu";
 	}
-	
+
+	//Verify notification
+	@Keyword
+	def VerifyNotificationText(String notificationText){
+		println "START KEYWORD VerifyNotificationText";
+		String result='true';
+		TestObject obj_notification= new TestObject();
+		obj_notification.addProperty("xpath",ConditionType.EQUALS,"//ul[@class='dropdown-menu dropdown-menu-notification']/descendant::div[@class='panel panel-default'][1]/descendant::a[3]");
+		WebUI.click(findTestObject('Object Repository/Page_General/link_notificationIcon'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		String currentText=WebUI.getText(obj_notification).trim();
+		if(currentText!=notificationText){
+			result='false'
+			println "Current notification: " + currentText;
+			println "Expected notification: " + notificationText;
+		}
+		
+		if(result=="true"){
+			KeywordUtil.markPassed("Keyword VerifyNotificationText is Passed");
+		}else{
+			KeywordUtil.markFailed("Keyword VerifyNotificationText is Failed");
+		}
+		println "END KEYWORD VerifyNotificationText";
+	}
 
 	//End class
 }

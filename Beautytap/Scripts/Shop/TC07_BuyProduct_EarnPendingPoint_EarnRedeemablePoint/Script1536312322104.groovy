@@ -93,6 +93,7 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
 CustomKeywords.'beautytap.GeneralAction.login'("email", username, password)
 'VP8: Verify notification: You received [#] redeemable points'
+CustomKeywords.'beautytap.GeneralAction.VerifyNotificationText'(notificationMessage)
 'Go to My Rewards page'
 CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
 'VP9: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward,point value: associate with reward'

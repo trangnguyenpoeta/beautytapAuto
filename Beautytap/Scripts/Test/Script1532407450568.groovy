@@ -32,7 +32,7 @@ import org.apache.commons.lang.StringUtils
 
 //JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","variation":"","quantity":"1","price":"30.99"}]')
 //SIGNUP
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+//CustomKeywords.'beautytap.GeneralAction.openBeautytap'('https://www.mailinator.com/v2/inbox.jsp?zone=public&query=trang2408#/#msgpane')
 //WebUI.delay(60)
 //CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
 ///CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
@@ -49,8 +49,15 @@ import org.apache.commons.lang.StringUtils
 //Date date = datetime.parse(t);
 //System.out.println(date);
 //System.out.println(datetime.format(date));
-float point=60
-CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136449",'', "pending", 60, 93.40, 1, (float)(-1*point), 795.60)
+//float point=60
+//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136449",'', "pending", 60, 93.40, 1, (float)(-1*point), 795.60)
 //println CustomKeywords.'beautytap.ShopAction.calculateLoyaltyPointValue'(667.8)
 //CustomKeywords.'beautytap.ShopAction.applyLoyaltyRewardPoint'(60)
+TestObject fram= new TestObject();
+fram.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='msg_body']")
+WebUI.switchToFrame(fram, GlobalVariable.TIMEOUT);
+TestObject obj_notification= new TestObject();
+obj_notification.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Loyalty Points Redeemable:']/parent::tr/td")
+println WebUI.getText(obj_notification)
+println WebUI.verifyTextPresent('Loyalty Points Redeemable:*102.74', true)
 
