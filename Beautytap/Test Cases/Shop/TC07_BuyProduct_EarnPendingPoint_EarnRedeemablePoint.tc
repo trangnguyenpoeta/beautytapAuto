@@ -20,7 +20,6 @@ VP8: Verify reward history: 1 row with sataut complete
 </description>
    <name>TC07_BuyProduct_EarnPendingPoint_EarnRedeemablePoint</name>
    <tag></tag>
-   <comment>VP7: Verify user recieve notification email with redeemable point
-VP8: Verify notification: You received [#] redeemable points</comment>
+   <comment>VP7: Verify user recieve notification email with redeemable point</comment>
    <testCaseGuid>cce21d6d-0cbe-45c9-b601-059126352b09</testCaseGuid>
 </TestCaseEntity>

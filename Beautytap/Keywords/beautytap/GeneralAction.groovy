@@ -118,9 +118,9 @@ public class GeneralAction {
 			WebUI.click(findTestObject("Page_mailinator/btn_go"));
 			WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
-			TestObject lbl_inbox = new TestObject();
-			lbl_inbox.addProperty("xpath",ConditionType.EQUALS,"//div[@class='lb_all_sub-item_text ng-binding' and contains(text(),'"+ username + "')]")
-			WebUI.click(lbl_inbox);
+			//TestObject lbl_inbox = new TestObject();
+			//lbl_inbox.addProperty("xpath",ConditionType.EQUALS,"//div[@class='lb_all_sub-item_text ng-binding' and contains(text(),'"+ username + "')]")
+			//WebUI.click(lbl_inbox);
 		}
 		println "END KEYWORD openMailBox";
 	}
@@ -133,8 +133,8 @@ public class GeneralAction {
 		println "START KEYWORD verifyEmailExist";
 		if(mailBoxType=='mailinator'){
 			TestObject email = new TestObject();
-			email.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'all_message-min_text') and text()='" + subject + "']")
-			WebUI.verifyElementPresent(email, GlobalVariable.TIMEOUT);
+			email.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'all_message-min_text') and text()='" + subject + "']");
+			WebUI.verifyElementPresent(email, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
 		}
 		println "END KEYWORD verifyEmailExist";
 	}
@@ -243,7 +243,7 @@ public class GeneralAction {
 			println "Current notification: " + currentText;
 			println "Expected notification: " + notificationText;
 		}
-		
+
 		if(result=="true"){
 			KeywordUtil.markPassed("Keyword VerifyNotificationText is Passed");
 		}else{

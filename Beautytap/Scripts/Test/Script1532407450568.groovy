@@ -4,7 +4,9 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import java.util.Date
-
+import java.util.Calendar
+import java.text.SimpleDateFormat
+import java.text.DateFormat
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -26,38 +28,34 @@ import com.kms.katalon.core.testobject.TestObject
 
 import org.json.JSONArray
 import org.json.JSONObject
+import org.junit.After
+
 import com.kms.katalon.core.testobject.ConditionType
 import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.time.DateUtils
 
 
-//JSONArray products = new JSONArray('[{"productname":"Simple product Not Sale","variation":"","quantity":"1","price":"30.99"}]')
-//SIGNUP
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'('https://www.mailinator.com/v2/inbox.jsp?zone=public&query=trang2408#/#msgpane')
-//WebUI.delay(60)
-//CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("login")
-///CustomKeywords.'beautytap.GeneralAction.login'('email', 'mrwhite', 'kgySM$Im')
-//CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'('My Rewards')
-//CustomKeywords.'beautytap.ShopAction.getRewardHistory'('136120', 'completed')
-//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136127", "August 24, 2018","pending", "", "35.00", "1.3", "0.00", "84.50")
-//CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, 30.99, 60, 2, "normal",'($10.00) - Pantos (est. 10-20 working days delivery including processing)', 10, 38.99)
-//TestObject obj=new TestObject();
-//obj.addProperty("xpath",ConditionType.EQUALS,"//strong[starts-with(text(),'Status')]/parent::span")
-//println WebUI.getText(obj)
-//CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'("BB Boss", 14.50, 1.2, 17.40)
-//String t ="September 04, 2018"
-//SimpleDateFormat datetime = new SimpleDateFormat("MMMM d, yyyy")
-//Date date = datetime.parse(t);
-//System.out.println(date);
-//System.out.println(datetime.format(date));
-//float point=60
-//CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'("136449",'', "pending", 60, 93.40, 1, (float)(-1*point), 795.60)
-//println CustomKeywords.'beautytap.ShopAction.calculateLoyaltyPointValue'(667.8)
-//CustomKeywords.'beautytap.ShopAction.applyLoyaltyRewardPoint'(60)
-TestObject fram= new TestObject();
-fram.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='msg_body']")
-WebUI.switchToFrame(fram, GlobalVariable.TIMEOUT);
-TestObject obj_notification= new TestObject();
-obj_notification.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Loyalty Points Redeemable:']/parent::tr/td")
-println WebUI.getText(obj_notification)
-println WebUI.verifyTextPresent('Loyalty Points Redeemable:*102.74', true)
+//JSONArray products = new JSONArray('[{"productname":"107 Oneoseven Core Flex Cream Essence 50ml","variation":"","quantity":"1","price":"73"},{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"1","price":"35"},{"productname":"The Face Shop Coca Cola Lip Tint 5 Choices","variation":"01 Enjoy Sunshine","quantity":"1","price":"10"}]')
+//float subtotal=118
+//float discount=5
+//float shippingPrice
+//String shippingLabel='Free shipping for orders over $60'
+//String paymentMethod='Amazon Pay'
+//float total =113
+//float redeemablePoint= 124.3
+
+//Date date = new Date();
+//DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+
+// Use Madrid's time zone to format the date in
+//df.setTimeZone(TimeZone.getTimeZone("UTC"))
+//String currentdate =df.format(date)
+//Date d=df.parse(currentdate)
+
+//println currentdate
+//print d
+//date = DateUtils.addMinutes(d, 5) 
+//currentdate =df.format(date)
+//rintln currentdate 
+CustomKeywords.'beautytap.ShopAction.generateScheduleDateTime'("America/Los_Angeles", 0, 5)
 

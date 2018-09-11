@@ -47,6 +47,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.apache.commons.lang.StringUtils
 import java.text.SimpleDateFormat
+import org.apache.commons.lang3.time.DateUtils
 
 public class ShopAction {
 
@@ -1589,8 +1590,9 @@ public class ShopAction {
 		println "START KEYWORD VerifyOrderCompleteEmail";
 		String result = 'true';
 		float orderSubtotal = 0;
+		WebUI.switchToFrame(findTestObject("Page_Mailinator/iframe_messageBody"), GlobalVariable.TIMEOUT);
 		//Check product line
-		for(int i;i<products.length();i++){
+		for(int i ;i<products.length();i++){
 			JSONObject obj_product = (JSONObject) products.get(i);
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
@@ -1601,14 +1603,33 @@ public class ShopAction {
 			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
 			float productTotal = ShopAction.calculateTotal(quantity, price);
 			orderSubtotal = orderSubtotal + productTotal;
-			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='× "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
-			TestObject obj_productLine = new TestObject();
-			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
-			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
+			int j= i+1;
+			String xpathProductName = "//tr[@class='order_item']["+ j +"]/td[1]";
+			String xpathProductQuantity = "//tr[@class='order_item']["+ j +"]/td[2]";
+			String xpathProductPrice = "//tr[@class='order_item']["+ j +"]/td[3]/span";
+			TestObject obj_productName = new TestObject();
+			TestObject obj_productQuantity = new TestObject();
+			TestObject obj_productPrice = new TestObject();
+			obj_productName.addProperty("xpath",ConditionType.EQUALS,xpathProductName);
+			obj_productQuantity.addProperty("xpath",ConditionType.EQUALS,xpathProductQuantity);
+			obj_productPrice.addProperty("xpath",ConditionType.EQUALS,xpathProductPrice);	
+			if(WebUI.verifyElementPresent(obj_productName, GlobalVariable.SHORT_TIMEOUT)==false){
 				result = 'false';
 				println "Product "+ i +" in array does not exist";
 			}else{
 				println "Product "+ i +" in array exist";
+				String currentProductName = WebUI.getText(obj_productName).trim().replace("\r\n", "");
+				int currentProductQuantity = Integer.parseInt(WebUI.getText(obj_productQuantity).trim());
+				float currentProductPrice = Float.parseFloat(WebUI.getText(obj_productPrice).replace('$','').trim());
+				if(productName!=currentProductName||ShopAction.calculateTotal(quantity, price)!=currentProductPrice||quantity!=currentProductQuantity){
+					result = 'false';
+					println "Current name: " + currentProductName;
+					println "Expected name: " + productName;
+					println "Current quantity: " + currentProductQuantity;
+					println "Expected quantity: " + quantity;
+					println "Current price: " + currentProductPrice;
+					println "Expected price: " + price;
+				}
 			}
 			orderSubtotal=ShopAction.calculateTotal(1, orderSubtotal);
 
@@ -1621,8 +1642,8 @@ public class ShopAction {
 			println "Subtotal is correct: "+ currentSubtotal;
 		}else{
 			result = 'false'
-			println "Subtotal product line: "+ orderSubtotal;
-			println "Subtotal sum line: "+ currentSubtotal;
+			println "Subtotal sum product line: "+ orderSubtotal;
+			println "Subtotal get in email: "+ currentSubtotal;
 			println "Subtotal input: "+ subtotal;
 		}
 		//Check shipping
@@ -1662,8 +1683,19 @@ public class ShopAction {
 			println "Expected method:" + paymentMethod;
 		}
 
+		//Check Loyalty Points Redeemable
+		if(redeemablePoint!=0){
+			TestObject obj_redeemable=new TestObject();
+			obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Loyalty Points Redeemable:']/parent::tr/td");
+			float currentRedeemable = Float.parseFloat(WebUI.getText(obj_redeemable).trim());
+			if(currentRedeemable != redeemablePoint){
+				result = 'false'
+				println "Current redeemable: "+currentRedeemable;
+				println "Expected redeemable:" + redeemablePoint;
+			}
+		}
 		//Check total
-		float currentTotal = currentSubtotal + shippingPrice;
+		float currentTotal = currentSubtotal + shippingPrice-discount;
 		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
 		TestObject obj_total=new TestObject();
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//th[text()='Total:']/parent::tr/td/span");
@@ -1681,5 +1713,26 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderCompleteEmail";
 	}
+	
+	//Generate Schedule time
+	//Schedule time json object: {"startdate":"yyyy-mm-dd hh:mm:ss","enddate":"yyyy-mm-dd hh:mm:ss"}
+	@Keyword
+	def generateScheduleDateTime(String timezone, int delayMinute,int durationMiniute){
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")		;
+		df.setTimeZone(TimeZone.getTimeZone(timezone));
+		String currentdate =df.format(date);
+		Date dateWithZone = df.parse(currentdate);
+		date = DateUtils.addMinutes(dateWithZone, delayMinute) ;
+		String startDate =df.format(date);
+		date = DateUtils.addMinutes(dateWithZone, delayMinute+durationMiniute);
+		String endDate =df.format(date);
+		String json = '{"startdate":"'+ startDate +'","enddate":"'+ endDate +'"}';
+		JSONObject scheduleDate = new JSONObject(json);
+		return scheduleDate;
+	}
+	
+	
+	
 	//End Class
 }

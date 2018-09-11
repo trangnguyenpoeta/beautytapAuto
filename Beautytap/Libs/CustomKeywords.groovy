@@ -488,6 +488,16 @@ def static "beautytap.ShopAction.VerifyOrderCompleteEmail"(
          , 	redeemablePoint)
 }
 
+def static "beautytap.ShopAction.generateScheduleDateTime"(
+    	String timezone	
+     , 	int delayMinute	
+     , 	int durationMiniute	) {
+    (new beautytap.ShopAction()).generateScheduleDateTime(
+        	timezone
+         , 	delayMinute
+         , 	durationMiniute)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(

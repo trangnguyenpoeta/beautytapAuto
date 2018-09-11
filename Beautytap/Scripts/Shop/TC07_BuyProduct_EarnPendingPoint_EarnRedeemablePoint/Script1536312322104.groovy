@@ -68,8 +68,9 @@ CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotal,
 JSONObject orderInfo = CustomKeywords.'beautytap.ShopAction.getOrderInfoOnOrderReceived'()
 String orderNumber = orderInfo.get("ordernumber")
 String orderDate = orderInfo.get("date")
-String completeOrderSubject = GlobalVariable.SITE_TITLE +" order from "+orderDate+" is complete"
-'Go to My Rewards page'
+String completeOrderSubject = "Your "+ GlobalVariable.SITE_TITLE +" order from "+orderDate+" is complete"
+completeOrderSubject = completeOrderSubject.replace("[", "").replace("]", "")
+'Go to My Rewards page' 
 CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
 'VP5: Verify reward detail: lifetime=no change,pending=current pending+reward, redeemable=no change,point value: no change'
 float newPending = Float.parseFloat(String.format("%.2f", pending+rewardEarned))
@@ -86,6 +87,10 @@ CustomKeywords.'beautytap.GeneralAction.login'("email", GlobalVariable.ADMIN_USE
 WebUI.navigateToUrl(GlobalVariable.SITE_URL+"/admin")
 CustomKeywords.'beautytap.AdminAction.changeOrderStatus'(orderNumber, "Completed")
 'VP7: Verify user recieve notification email with redeemable point'
+CustomKeywords.'beautytap.GeneralAction.openMailBox'("mailinator", username, password)
+CustomKeywords.'beautytap.GeneralAction.verifyEmailExist'("mailinator", completeOrderSubject)
+CustomKeywords.'beautytap.GeneralAction.openEmail'("mailinator", completeOrderSubject)
+CustomKeywords.'beautytap.ShopAction.VerifyOrderCompleteEmail'(products, subtotal, 0, shippingPrice, shippingLabel, paymentMethod, subtotal, rewardEarned)
 'Logout'
 WebUI.closeBrowser()
 'Login again'

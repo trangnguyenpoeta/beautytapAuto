@@ -204,4 +204,9 @@
       <initValue>'123456'</initValue>
       <name>USER_PASSWORD</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>PST: America/Los_Angeles; UTC</description>
+      <initValue>'UTC'</initValue>
+      <name>TIMEZONE</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
