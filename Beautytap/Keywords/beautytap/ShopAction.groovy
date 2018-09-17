@@ -1612,7 +1612,7 @@ public class ShopAction {
 			TestObject obj_productPrice = new TestObject();
 			obj_productName.addProperty("xpath",ConditionType.EQUALS,xpathProductName);
 			obj_productQuantity.addProperty("xpath",ConditionType.EQUALS,xpathProductQuantity);
-			obj_productPrice.addProperty("xpath",ConditionType.EQUALS,xpathProductPrice);	
+			obj_productPrice.addProperty("xpath",ConditionType.EQUALS,xpathProductPrice);
 			if(WebUI.verifyElementPresent(obj_productName, GlobalVariable.SHORT_TIMEOUT)==false){
 				result = 'false';
 				println "Product "+ i +" in array does not exist";
@@ -1713,7 +1713,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyOrderCompleteEmail";
 	}
-	
+
 	//Generate Schedule time
 	//Schedule time json object: {"startdate":"yyyy-mm-dd hh:mm:ss","enddate":"yyyy-mm-dd hh:mm:ss"}
 	@Keyword
@@ -1731,8 +1731,8 @@ public class ShopAction {
 		JSONObject scheduleDate = new JSONObject(json);
 		return scheduleDate;
 	}
-	
-	
-	
+
+
+
 	//End Class
 }

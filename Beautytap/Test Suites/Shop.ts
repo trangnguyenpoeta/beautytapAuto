@@ -4,7 +4,7 @@
    <name>Shop</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-05T12:55:36</lastRun>
+   <lastRun>2018-09-14T15:57:12</lastRun>
    <mailRecipient>trangnt@devblock.net;thutn@devblock.net;</mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -38,7 +38,13 @@
    <testCaseLink>
       <guid>288000da-b8db-4a28-9b3f-43bf4014fc8e</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/Shop/TC07_BuyProduct_EarnPendingPoint_EarnRedeemablePoint</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>74fa7f18-7f6c-4b16-ac44-11183a5bccd9</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Shop/TC08_BuyProduct_UsingRewardPoint</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

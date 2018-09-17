@@ -57,5 +57,10 @@ import org.apache.commons.lang3.time.DateUtils
 //date = DateUtils.addMinutes(d, 5) 
 //currentdate =df.format(date)
 //rintln currentdate 
-CustomKeywords.'beautytap.ShopAction.generateScheduleDateTime'("America/Los_Angeles", 0, 5)
+//CustomKeywords.'beautytap.GeneralAction.openBeautytap'("https://stage.beautytap.com/login")
+//CustomKeywords.'beautytap.GeneralAction.login'("email", "mrwhite", 'kgySM$Im')
+//WebUI.navigateToUrl("https://stage.beautytap.com/admin")
+JSONArray variation =new JSONArray('[{"variation":"#001","price":"8.9"},{"variation":"#002","price":"9.99"}]')
 
+CustomKeywords.'beautytap.AdminAction.selectAdminMenu'('Products', '')
+CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'("test schedule product 2 variation", 0,variation, "2018-09-11 02:17:28", "2018-09-11 02:22:28")

@@ -519,3 +519,17 @@ def static "beautytap.AdminAction.changeOrderStatus"(
         	orderNumber
          , 	status)
 }
+
+def static "beautytap.AdminAction.scheduleSaleProduct"(
+    	String productName	
+     , 	float price	
+     , 	JSONArray variations	
+     , 	String startTime	
+     , 	String endTime	) {
+    (new beautytap.AdminAction()).scheduleSaleProduct(
+        	productName
+         , 	price
+         , 	variations
+         , 	startTime
+         , 	endTime)
+}
