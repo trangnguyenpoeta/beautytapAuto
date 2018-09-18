@@ -4,6 +4,9 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL
+
 import org.json.JSONArray
 import org.json.JSONObject
 import com.kms.katalon.core.annotation.Keyword
@@ -123,7 +126,7 @@ public class AdminAction {
 	//Schedule sale product
 	//variation:[{"variation":"VARIATION","price":"PRICE"},{"variation":"VARIATION","price":"PRICE"}]
 	@Keyword
-	def scheduleSaleProduct(String productName,float price,JSONArray variations,String startTime, String endTime){
+	def scheduleSaleProduct(String productName,float price,JSONArray variations,String startDate, String endDate){
 		println "START KEYWORD scheduleSaleProduct";
 		if(variations==null){
 			variations='';
@@ -141,12 +144,12 @@ public class AdminAction {
 				WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 			}
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePrice'), price.toString());
-			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePriceDateFrom'),startTime);
-			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePriceDateTo'), endTime);
-			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_content'));			
-			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);			
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePriceDateFrom'),startDate);
+			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePriceDateTo'), endDate);
+			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_content'));
+			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		}else{
-		//Variation product
+			//Variation product
 			WebUI.click(findTestObject('Object Repository/Page_Admin/link_variation'));
 			WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 			for(int i;i<variations.length();i++){
@@ -165,12 +168,14 @@ public class AdminAction {
 				endDateTextbox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@name,'variable_sale_price_dates_to')]");
 				WebUI.click(variationHeader);
 				GeneralAction.enterText(salePriceTextBox, variationPrice.toString());
-				WebUI.click(scheduleLink);
-				GeneralAction.enterText(startDateTextbox,startTime );
-				GeneralAction.enterText(endDateTextbox, endTime);
+				if(WebUI.verifyElementPresent(scheduleLink, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==true){
+					WebUI.click(scheduleLink);
+				}
+				GeneralAction.enterText(startDateTextbox,startDate );
+				GeneralAction.enterText(endDateTextbox, endDate);
 			}
 			WebUI.click(findTestObject('Object Repository/Page_Admin/btn_saveChanges'));
-			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_content'));			
+			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_content'));
 			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		}
 		WebUI.click(findTestObject('Object Repository/Page_Admin/btn_updateProduct'));

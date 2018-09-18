@@ -35,8 +35,7 @@ import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang3.time.DateUtils
 
 
-//JSONArray products = new JSONArray('[{"productname":"107 Oneoseven Core Flex Cream Essence 50ml","variation":"","quantity":"1","price":"73"},{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"1","price":"35"},{"productname":"The Face Shop Coca Cola Lip Tint 5 Choices","variation":"01 Enjoy Sunshine","quantity":"1","price":"10"}]')
-//float subtotal=118
+//JSONArray products = new JSONArray('[{"productname":"107 Oneoseven Core Flex Cream Essence 50ml","variation":"","quantity":"1","price":"73"},{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"1","price":"35"},{"productname":"The Face Shop Coca Cola Lip Tint 5 Choices","variation":"01 Enjoy Sunshine","quantity":"1","price":"10"}]')//float subtotal=118
 //float discount=5
 //float shippingPrice
 //String shippingLabel='Free shipping for orders over $60'
@@ -60,7 +59,8 @@ import org.apache.commons.lang3.time.DateUtils
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'("https://stage.beautytap.com/login")
 //CustomKeywords.'beautytap.GeneralAction.login'("email", "mrwhite", 'kgySM$Im')
 //WebUI.navigateToUrl("https://stage.beautytap.com/admin")
-JSONArray variation =new JSONArray('[{"variation":"#001","price":"8.9"},{"variation":"#002","price":"9.99"}]')
+//JSONArray variation =new JSONArray('[{"variation":"#001","price":"8.9"},{"variation":"#002","price":"9.99"}]')
 
-CustomKeywords.'beautytap.AdminAction.selectAdminMenu'('Products', '')
-CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'("test schedule product 2 variation", 0,variation, "2018-09-11 02:17:28", "2018-09-11 02:22:28")
+//CustomKeywords.'beautytap.AdminAction.selectAdminMenu'('Products', '')
+//CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'("test schedule product 2 variation", 0,variation, "2018-09-11 02:17:28", "2018-09-11 02:22:28")
+CustomKeywords.'beautytap.ShopAction.waitForSchedule'("UTC", "2018-09-18 07:40:00",300)

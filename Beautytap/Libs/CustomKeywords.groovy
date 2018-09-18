@@ -498,6 +498,16 @@ def static "beautytap.ShopAction.generateScheduleDateTime"(
          , 	durationMiniute)
 }
 
+def static "beautytap.ShopAction.waitForSchedule"(
+    	String timezone	
+     , 	String scheduleDate	
+     , 	int timeout	) {
+    (new beautytap.ShopAction()).waitForSchedule(
+        	timezone
+         , 	scheduleDate
+         , 	timeout)
+}
+
 def static "beautytap.AdminAction.deleteUser"(
     	String email	) {
     (new beautytap.AdminAction()).deleteUser(
@@ -524,12 +534,12 @@ def static "beautytap.AdminAction.scheduleSaleProduct"(
     	String productName	
      , 	float price	
      , 	JSONArray variations	
-     , 	String startTime	
-     , 	String endTime	) {
+     , 	String startDate	
+     , 	String endDate	) {
     (new beautytap.AdminAction()).scheduleSaleProduct(
         	productName
          , 	price
          , 	variations
-         , 	startTime
-         , 	endTime)
+         , 	startDate
+         , 	endDate)
 }

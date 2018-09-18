@@ -1716,8 +1716,10 @@ public class ShopAction {
 
 	//Generate Schedule time
 	//Schedule time json object: {"startdate":"yyyy-mm-dd hh:mm:ss","enddate":"yyyy-mm-dd hh:mm:ss"}
+	// timezone: America/Los_Angeles , UTC
 	@Keyword
 	def generateScheduleDateTime(String timezone, int delayMinute,int durationMiniute){
+		println "START KEYWORD generateScheduleDateTime";
 		Date date = new Date();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")		;
 		df.setTimeZone(TimeZone.getTimeZone(timezone));
@@ -1730,9 +1732,31 @@ public class ShopAction {
 		String json = '{"startdate":"'+ startDate +'","enddate":"'+ endDate +'"}';
 		JSONObject scheduleDate = new JSONObject(json);
 		return scheduleDate;
+		println "END KEYWORD generateScheduleDateTime";
 	}
 
-
+	//Wait for schedule
+	@Keyword
+	def waitForSchedule(String timezone, String scheduleDate,int timeout){
+		println "START KEYWORD waitForSchedule";
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		df.setTimeZone(TimeZone.getTimeZone(timezone));
+		String currentdate =df.format(date);
+		Date currentdateWithZone = df.parse(currentdate);
+		Date schedule = df.parse(scheduleDate);
+		while(currentdateWithZone < schedule && timeout > 0){
+			WebUI.delay(GlobalVariable.TIMEOUT);
+			date = new Date();
+			currentdate =df.format(date);
+			currentdateWithZone = df.parse(currentdate);
+			timeout = timeout - GlobalVariable.TIMEOUT;
+			println "Current date: " +currentdateWithZone;
+			println "Schedule date: " + schedule;
+			println "Timeout: " + timeout;
+		}
+		println "END KEYWORD waitForSchedule";
+	}
 
 	//End Class
 }
