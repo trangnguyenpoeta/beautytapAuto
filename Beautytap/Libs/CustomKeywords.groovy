@@ -276,6 +276,24 @@ def static "beautytap.ShopAction.VerifyProductDetails"(
          , 	salePriceColor)
 }
 
+def static "beautytap.ShopAction.VerifyProductDetails"(
+    	String productName	
+     , 	String variation	
+     , 	float regularPrice	
+     , 	String regularPriceColor	
+     , 	float salePrice	
+     , 	String salePriceColor	
+     , 	String limitStock	) {
+    (new beautytap.ShopAction()).VerifyProductDetails(
+        	productName
+         , 	variation
+         , 	regularPrice
+         , 	regularPriceColor
+         , 	salePrice
+         , 	salePriceColor
+         , 	limitStock)
+}
+
 def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
     	JSONArray products	
      , 	float subtotal	
@@ -535,11 +553,13 @@ def static "beautytap.AdminAction.scheduleSaleProduct"(
      , 	float price	
      , 	JSONArray variations	
      , 	String startDate	
-     , 	String endDate	) {
+     , 	String endDate	
+     , 	String limitStock	) {
     (new beautytap.AdminAction()).scheduleSaleProduct(
         	productName
          , 	price
          , 	variations
          , 	startDate
-         , 	endDate)
+         , 	endDate
+         , 	limitStock)
 }

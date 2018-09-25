@@ -209,4 +209,29 @@
       <initValue>'UTC'</initValue>
       <name>TIMEZONE</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'PURITO Defence Barrier pH Cleanser 150ml'</initValue>
+      <name>SCHEDULE_SIMPLE_PRODUCT</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>10.8</initValue>
+      <name>SCHEDULE_SALE_PRICE</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>12.8</initValue>
+      <name>SCHEDULE_REGULAR_PRICE</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>[{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;},{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;}]</description>
+      <initValue>''</initValue>
+      <name>SCHEDULE_VARIATION_PRICE</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>SCHEDULE_VARIATION_PRODUCT</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

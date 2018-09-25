@@ -4,8 +4,8 @@
    <name>Shop</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-14T15:57:12</lastRun>
-   <mailRecipient>trangnt@devblock.net;thutn@devblock.net;</mailRecipient>
+   <lastRun>2018-09-21T15:38:02</lastRun>
+   <mailRecipient>trangnt@devblock.net;</mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>

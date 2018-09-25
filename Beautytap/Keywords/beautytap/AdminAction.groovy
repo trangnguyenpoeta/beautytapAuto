@@ -124,9 +124,10 @@ public class AdminAction {
 	}
 
 	//Schedule sale product
-	//variation:[{"variation":"VARIATION","price":"PRICE"},{"variation":"VARIATION","price":"PRICE"}]
+	//variation:[{"variation":"VARIATION","saleprice":"SALEPRICE","regularprice":"REGULARPRICE"},{"variation":"VARIATION","saleprice":"SALEPRICE","regularprice":"REGULARPRICE"}]
+	//limitStock: yes,no
 	@Keyword
-	def scheduleSaleProduct(String productName,float price,JSONArray variations,String startDate, String endDate){
+	def scheduleSaleProduct(String productName,float price,JSONArray variations,String startDate, String endDate,String limitStock){
 		println "START KEYWORD scheduleSaleProduct";
 		if(variations==null){
 			variations='';
@@ -146,8 +147,13 @@ public class AdminAction {
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePrice'), price.toString());
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePriceDateFrom'),startDate);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Admin/txt_salePriceDateTo'), endDate);
-			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_content'));
-			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+			if(limitStock=='yes'){
+				WebUI.check(findTestObject('Object Repository/Page_Admin/chk_soldIndividualScheduled'));
+			}else if (limitStock=='no'){
+					WebUI.uncheck(findTestObject('Object Repository/Page_Admin/chk_soldIndividualScheduled'));
+				}
+			WebUI.focus(findTestObject('Object Repository/Page_Admin/txt_productName'));
+			WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		}else{
 			//Variation product
 			WebUI.click(findTestObject('Object Repository/Page_Admin/link_variation'));
@@ -155,30 +161,42 @@ public class AdminAction {
 			for(int i;i<variations.length();i++){
 				JSONObject obj_variation = (JSONObject) variations.get(i);
 				String variationName = obj_variation.get("variation");
-				float variationPrice = Float.parseFloat(obj_variation.get("price"));
+				float variationPrice = Float.parseFloat(obj_variation.get("saleprice"));
+				float variationRegularPrice = Float.parseFloat(obj_variation.get("regularprice"));
 				TestObject variationHeader = new TestObject();
 				TestObject scheduleLink = new TestObject();
 				TestObject salePriceTextBox = new TestObject();
+				TestObject regularPriceTextBox = new TestObject();
 				TestObject startDateTextbox = new TestObject();
 				TestObject endDateTextbox = new TestObject();
+				TestObject soldIndividual = new TestObject();
 				variationHeader.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce_variation wc-metabox closed']/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3");
 				scheduleLink.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::a[@class='sale_schedule' and text()='Schedule' and not(@style='display: none;')]");
 				salePriceTextBox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@id,'variable_sale_price')]");
+				regularPriceTextBox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@id,'variable_regular_price')]");
 				startDateTextbox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@name,'variable_sale_price_dates_from')]");
 				endDateTextbox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@name,'variable_sale_price_dates_to')]");
+				soldIndividual.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@id,'_sold_individually_scheduled')]");
 				WebUI.click(variationHeader);
+				GeneralAction.enterText(regularPriceTextBox, variationRegularPrice.toString());
 				GeneralAction.enterText(salePriceTextBox, variationPrice.toString());
 				if(WebUI.verifyElementPresent(scheduleLink, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==true){
 					WebUI.click(scheduleLink);
 				}
 				GeneralAction.enterText(startDateTextbox,startDate );
 				GeneralAction.enterText(endDateTextbox, endDate);
+				if(limitStock=='yes'){
+					WebUI.check(soldIndividual);
+				}else if (limitStock=='no'){
+					WebUI.uncheck(soldIndividual);
+				}
 			}
 			WebUI.click(findTestObject('Object Repository/Page_Admin/btn_saveChanges'));
-			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_content'));
-			WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+			WebUI.click(findTestObject('Object Repository/Page_Admin/txt_productName'));
+			WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		}
 		WebUI.click(findTestObject('Object Repository/Page_Admin/btn_updateProduct'));
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Admin/lbl_productUpdatedMessage'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		println "END KEYWORD scheduleSaleProduct";
 	}

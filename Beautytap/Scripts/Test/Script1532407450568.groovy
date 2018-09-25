@@ -63,4 +63,25 @@ import org.apache.commons.lang3.time.DateUtils
 
 //CustomKeywords.'beautytap.AdminAction.selectAdminMenu'('Products', '')
 //CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'("test schedule product 2 variation", 0,variation, "2018-09-11 02:17:28", "2018-09-11 02:22:28")
-CustomKeywords.'beautytap.ShopAction.waitForSchedule'("UTC", "2018-09-18 07:40:00",300)
+//Set variable
+String productName = GlobalVariable.SCHEDULE_SIMPLE_PRODUCT
+float regularPrice = GlobalVariable.SCHEDULE_REGULAR_PRICE
+float salePrice = GlobalVariable.SCHEDULE_SALE_PRICE
+int quantity = 5
+float subtotalRegular = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, regularPrice)
+float subtotalSale = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, salePrice)
+String shippingType = 'free'
+String shippingLabel = GlobalVariable.FREE_SHIPPING_LABEL
+int schedulTimeout = 300
+String limitStockSchedule = 'yes'
+JSONArray variation = new JSONArray()
+//Start Test
+'Login as Admin'
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL+'/wp-admin')
+//CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
+CustomKeywords.'beautytap.GeneralAction.login'("email", GlobalVariable.ADMIN_USERNAME, GlobalVariable.ADMIN_PASSWORD)
+CustomKeywords.'beautytap.AdminAction.selectAdminMenu'("Products", "")
+JSONObject datetime = CustomKeywords.'beautytap.ShopAction.generateScheduleDateTime'(GlobalVariable.TIMEZONE, 8, 5)
+String startDate = datetime.get("startdate")
+String endDate = datetime.get("enddate")
+CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'(productName, salePrice, variation , startDate, endDate,limitStockSchedule)

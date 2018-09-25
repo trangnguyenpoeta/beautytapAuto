@@ -1,0 +1,104 @@
+1
+00:00:00,249 --> 00:00:00,250
+1. Statement - productName = VARIATION_SALE_PRODUCT
+
+2
+00:00:00,268 --> 00:00:00,269
+5. Statement - saleprice = VARIATION_SALE_PRICE1
+
+3
+00:00:00,283 --> 00:00:00,290
+9. Statement - redularprice = VARIATION_SALE_REGULAR_PRICE1
+
+4
+00:00:00,320 --> 00:00:00,321
+13. Statement - variation = VARIATION_SALE_NAME1
+
+5
+00:00:00,331 --> 00:00:00,332
+17. Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)
+
+6
+00:00:00,339 --> 00:00:00,340
+21. Statement - email = "auto" + r_string + "@mailinator.com"
+
+7
+00:00:00,347 --> 00:00:00,348
+25. Statement - orderNote = "auto" + r_string + "Order"
+
+8
+00:00:00,366 --> 00:00:00,368
+29. Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>
+
+9
+00:00:00,377 --> 00:00:00,378
+33. Statement - quantity = 5
+
+10
+00:00:00,385 --> 00:00:00,385
+37. Statement - shippingLabel = EMS_SHIPPING_LABEL
+
+11
+00:00:00,392 --> 00:00:00,394
+41. Statement - shippingPrice = EMS_SHIPPING_PRICE
+
+12
+00:00:00,403 --> 00:00:00,403
+45. Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice)
+
+13
+00:00:00,415 --> 00:00:00,416
+49. Statement - total = subtotal + shippingPrice
+
+14
+00:00:00,433 --> 00:00:00,434
+53. Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)
+
+15
+00:00:00,446 --> 00:00:00,447
+57. Statement - products = new org.json.JSONArray((((((((([{"productname":" + productName) + ","variation":") + variation) + ","quantity":") + quantity) + ","price":") + saleprice) + "}]))
+
+16
+00:00:00,455 --> 00:00:00,455
+61. Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + email) + "}))
+
+17
+00:00:00,466 --> 00:00:00,467
+65. Statement - shippingType = "EMS"
+
+18
+00:00:00,474 --> 00:00:00,475
+69. Statement - paymentMethod = "Amazon Pay"
+
+19
+00:00:00,485 --> 00:00:00,486
+73. Statement - category = "Brands"
+
+20
+00:00:00,503 --> 00:00:00,504
+77. Statement - subcategory = "Innisfree"
+
+21
+00:00:00,512 --> 00:00:00,512
+81. beautytap.GeneralAction.openBeautytap
+
+22
+00:00:18,029 --> 00:00:18,029
+85. beautytap.ShopAction.selectCategory
+
+23
+00:00:29,461 --> 00:00:29,462
+89. beautytap.ShopAction.findProductOnProductList
+
+24
+00:00:44,548 --> 00:00:44,548
+95. VP1: Verify product display in Product List
+
+25
+00:00:44,831 --> 00:00:44,832
+99. beautytap.ShopAction.selectProductOnProductList
+
+26
+00:01:45,204 --> 00:01:45,205
+103. beautytap.ShopAction.selectProductVariation
+

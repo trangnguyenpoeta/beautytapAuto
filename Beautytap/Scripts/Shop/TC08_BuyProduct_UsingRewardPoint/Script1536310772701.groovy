@@ -35,7 +35,7 @@ float subtotalApplyReward =Float.parseFloat(String.format("%.2f",subtotal-pointV
 float total = Float.parseFloat(String.format("%.2f",subtotal-pointValueUsed + shippingPrice))
 JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"","quantity":"'+ quantity +'","price":"'+ price +'"}]')
 JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+username+'"}')
-String paymentMethod ='Credit Card Payment'
+String paymentMethod ='PayPal'
 //==========================================
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
@@ -66,7 +66,8 @@ CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, sub
 'VP2: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier'
 CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotalApplyReward, multiplier, rewardEarned)
 'Checkout via creditcard'
-CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
+CustomKeywords.'beautytap.ShopAction.checkoutViaPaypal'(GlobalVariable.PAYPAL_EMAIL, GlobalVariable.PAYPAL_PASSWORD)
+//CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
 'VP3: Verify order details on Order Recieved'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, pointUsed, pointValueUsed, 0, shippingLabel, paymentMethod, total)
 JSONObject orderInfo = CustomKeywords.'beautytap.ShopAction.getOrderInfoOnOrderReceived'()

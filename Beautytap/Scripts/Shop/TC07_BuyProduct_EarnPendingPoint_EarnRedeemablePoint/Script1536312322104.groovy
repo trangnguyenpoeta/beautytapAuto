@@ -32,20 +32,20 @@ float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, 
 float total = subtotal + shippingPrice
 JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"","quantity":"'+ quantity +'","price":"'+ price +'"}]')
 JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+username+'"}')
-String paymentMethod ='Credit Card Payment'
+String paymentMethod ='PayPal'
 //=======================================================================
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
 CustomKeywords.'beautytap.GeneralAction.login'("email", username, password)
 CustomKeywords.'beautytap.GeneralAction.selectProfileMenu'("My Rewards")
 'Get current multiplier, lifetime, pending, redeemable points, point value'
-JSONObject objRewoard = CustomKeywords.'beautytap.ShopAction.getRewardDetails'()
-float multiplier = Float.parseFloat(objRewoard.get("multiplier"))
-String currentlevel = objRewoard.get("currentlevel")
-float lifetime = Float.parseFloat(objRewoard.get("lifetime"))
-float pending = Float.parseFloat(objRewoard.get("pending"))
-float redeemable = Float.parseFloat(objRewoard.get("redeemable"))
-float pointvalue = Float.parseFloat(objRewoard.get("pointvalue"))
+JSONObject objReward = CustomKeywords.'beautytap.ShopAction.getRewardDetails'()
+float multiplier = Float.parseFloat(objReward.get("multiplier"))
+String currentlevel = objReward.get("currentlevel")
+float lifetime = Float.parseFloat(objReward.get("lifetime"))
+float pending = Float.parseFloat(objReward.get("pending"))
+float redeemable = Float.parseFloat(objReward.get("redeemable"))
+float pointvalue = Float.parseFloat(objReward.get("pointvalue"))
 float rewardEarned = Float.parseFloat(String.format("%.2f", multiplier*subtotal))
 String notificationMessage = "You received "+ rewardEarned +" redeemable points"
 'Buy a product'
@@ -60,7 +60,8 @@ CustomKeywords.'beautytap.ShopAction.fillCustomerInformation'(billingInformation
 CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, "free", shippingLabel, shippingPrice, total)
 'VP2: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier'
 CustomKeywords.'beautytap.ShopAction.VerifyRewardEarned'(currentlevel, subtotal, multiplier, rewardEarned)
-CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
+CustomKeywords.'beautytap.ShopAction.checkoutViaPaypal'(GlobalVariable.PAYPAL_EMAIL, GlobalVariable.PAYPAL_PASSWORD)
+//CustomKeywords.'beautytap.ShopAction.checkoutViaCreditCard'(GlobalVariable.CREDITCARD_NUMBER, GlobalVariable.CARD_TYPE, GlobalVariable.CARD_EXPIRATION_MONTH, GlobalVariable.CARD_EXPIRATION_YEAR, GlobalVariable.CARD_CVV)
 'VP3: Verify order details on Order Recieved'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
 'VP4: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier'
@@ -108,4 +109,4 @@ float newPointValue = CustomKeywords.'beautytap.ShopAction.calculateLoyaltyPoint
 CustomKeywords.'beautytap.ShopAction.VerifyRewardPointsDetails'(newLifetime, pending, newRedeemable, newPointValue)
 'VP10: Verify reward history: 1 row with sataut complete'
 CustomKeywords.'beautytap.ShopAction.VerifyRewardHistory'(orderNumber, '', "completed", 0, subtotal, multiplier, rewardEarned, newRedeemable)
-CustomKeywords.'beautytap.GeneralAction.logout'()
+CustomKeywords.'beautytap.GeneralAction.logout'("CloseBrowser")

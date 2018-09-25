@@ -1,0 +1,268 @@
+1
+00:00:00,329 --> 00:00:00,330
+1. Statement - username = USER_EMAIL
+
+2
+00:00:00,336 --> 00:00:00,337
+5. Statement - password = USER_PASSWORD
+
+3
+00:00:00,342 --> 00:00:00,343
+9. Statement - productName = SIMPLE_PRODUCT
+
+4
+00:00:00,358 --> 00:00:00,360
+13. Statement - price = SIMPLE_PRODUCT_PRICE
+
+5
+00:00:00,370 --> 00:00:00,371
+17. Statement - quantity = 3
+
+6
+00:00:00,377 --> 00:00:00,378
+21. Statement - shippingLabel = FREE_SHIPPING_LABEL
+
+7
+00:00:00,387 --> 00:00:00,388
+25. Statement - shippingPrice = 0
+
+8
+00:00:00,393 --> 00:00:00,394
+29. Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)
+
+9
+00:00:00,460 --> 00:00:00,461
+33. Statement - total = subtotal + shippingPrice
+
+10
+00:00:00,471 --> 00:00:00,471
+37. Statement - products = new org.json.JSONArray((((((([{"productname":" + productName) + ","variation":"","quantity":") + quantity) + ","price":") + price) + "}]))
+
+11
+00:00:00,485 --> 00:00:00,486
+41. Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + username) + "}))
+
+12
+00:00:00,502 --> 00:00:00,504
+45. Statement - paymentMethod = "Paypal"
+
+13
+00:00:00,514 --> 00:00:00,516
+49. beautytap.GeneralAction.openBeautytap
+
+14
+00:00:18,366 --> 00:00:18,367
+53. beautytap.GeneralAction.clickNavigationMenu
+
+15
+00:00:20,780 --> 00:00:20,781
+57. beautytap.GeneralAction.login
+
+16
+00:00:21,953 --> 00:00:21,954
+61. beautytap.GeneralAction.selectProfileMenu
+
+17
+00:00:35,825 --> 00:00:35,826
+67. Get current multiplier, lifetime, pending, redeemable points, point value
+
+18
+00:00:36,332 --> 00:00:36,333
+71. Statement - multiplier = java.lang.Float.parseFloat(objRewoard.get("multiplier"))
+
+19
+00:00:36,343 --> 00:00:36,343
+75. Statement - currentlevel = objRewoard.get("currentlevel")
+
+20
+00:00:36,357 --> 00:00:36,358
+79. Statement - lifetime = java.lang.Float.parseFloat(objRewoard.get("lifetime"))
+
+21
+00:00:36,365 --> 00:00:36,366
+83. Statement - pending = java.lang.Float.parseFloat(objRewoard.get("pending"))
+
+22
+00:00:36,372 --> 00:00:36,373
+87. Statement - redeemable = java.lang.Float.parseFloat(objRewoard.get("redeemable"))
+
+23
+00:00:36,378 --> 00:00:36,379
+91. Statement - pointvalue = java.lang.Float.parseFloat(objRewoard.get("pointvalue"))
+
+24
+00:00:36,389 --> 00:00:36,390
+95. Statement - rewardEarned = java.lang.Float.parseFloat(java.lang.String.format("%.2f", multiplier * subtotal))
+
+25
+00:00:36,401 --> 00:00:36,401
+99. Statement - notificationMessage = "You received " + rewardEarned + " redeemable points"
+
+26
+00:00:36,411 --> 00:00:36,412
+105. Buy a product
+
+27
+00:00:43,605 --> 00:00:43,605
+109. beautytap.ShopAction.selectProductOnSearchResult
+
+28
+00:00:49,687 --> 00:00:49,688
+113. beautytap.ShopAction.addProductToCart
+
+29
+00:00:55,539 --> 00:00:55,540
+117. beautytap.ShopAction.goToCart
+
+30
+00:01:00,695 --> 00:01:00,696
+123. Process to checkout
+
+31
+00:01:05,059 --> 00:01:05,060
+127. beautytap.ShopAction.fillCustomerInformation
+
+32
+00:01:18,524 --> 00:01:18,524
+133. VP1: Verify order details on checkout
+
+33
+00:01:50,128 --> 00:01:50,129
+139. VP2: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier
+
+34
+00:01:50,654 --> 00:01:50,655
+143. beautytap.ShopAction.checkoutViaPaypal
+
+35
+00:02:52,830 --> 00:02:52,830
+149. VP3: Verify order details on Order Recieved
+
+36
+00:03:29,769 --> 00:03:29,770
+155. VP4: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier
+
+37
+00:03:30,153 --> 00:03:30,153
+159. Statement - orderInfo = CustomKeywords.beautytap.ShopAction.getOrderInfoOnOrderReceived()
+
+38
+00:03:30,263 --> 00:03:30,263
+163. Statement - orderNumber = orderInfo.get("ordernumber")
+
+39
+00:03:30,271 --> 00:03:30,272
+167. Statement - orderDate = orderInfo.get("date")
+
+40
+00:03:30,279 --> 00:03:30,280
+171. Statement - completeOrderSubject = "Your " + SITE_TITLE + " order from " + orderDate + " is complete"
+
+41
+00:03:30,288 --> 00:03:30,288
+175. Statement - completeOrderSubject = completeOrderSubject.replace("[", "").replace("]", "")
+
+42
+00:03:30,297 --> 00:03:30,298
+181. Go to My Rewards page
+
+43
+00:03:36,779 --> 00:03:36,780
+187. VP5: Verify reward detail: lifetime=no change,pending=current pending+reward, redeemable=no change,point value: no change
+
+44
+00:03:36,792 --> 00:03:36,793
+191. beautytap.ShopAction.VerifyRewardPointsDetails
+
+45
+00:03:37,018 --> 00:03:37,019
+197. VP6: Verify reward history: 1 row with sataut pending,1 row with status processing
+
+46
+00:03:37,305 --> 00:03:37,305
+201. beautytap.ShopAction.VerifyRewardHistory
+
+47
+00:03:37,652 --> 00:03:37,652
+207. Logout
+
+48
+00:03:38,372 --> 00:03:38,373
+213. Login As Admin
+
+49
+00:03:49,169 --> 00:03:49,170
+217. beautytap.GeneralAction.login
+
+50
+00:03:49,884 --> 00:03:49,884
+223. Go to Woocommerce > Orders > Change order status to Completed
+
+51
+00:03:57,222 --> 00:03:57,223
+227. beautytap.AdminAction.changeOrderStatus
+
+52
+00:04:35,412 --> 00:04:35,413
+233. VP7: Verify user recieve notification email with redeemable point
+
+53
+00:04:44,671 --> 00:04:44,672
+237. beautytap.GeneralAction.verifyEmailExist
+
+54
+00:04:44,708 --> 00:04:44,708
+241. beautytap.GeneralAction.openEmail
+
+55
+00:04:44,881 --> 00:04:44,882
+245. beautytap.ShopAction.VerifyOrderCompleteEmail
+
+56
+00:04:51,466 --> 00:04:51,467
+251. Logout
+
+57
+00:04:52,468 --> 00:04:52,468
+257. Login again
+
+58
+00:05:10,605 --> 00:05:10,605
+261. beautytap.GeneralAction.clickNavigationMenu
+
+59
+00:05:13,158 --> 00:05:13,158
+265. beautytap.GeneralAction.login
+
+60
+00:05:14,037 --> 00:05:14,037
+271. VP8: Verify notification: You received [#] redeemable points
+
+61
+00:05:27,147 --> 00:05:27,148
+277. Go to My Rewards page
+
+62
+00:05:33,086 --> 00:05:33,087
+283. VP9: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward,point value: associate with reward
+
+63
+00:05:33,093 --> 00:05:33,094
+287. Statement - newRedeemable = java.lang.Float.parseFloat(java.lang.String.format("%.2f", redeemable + rewardEarned))
+
+64
+00:05:33,102 --> 00:05:33,103
+291. Statement - newPointValue = CustomKeywords.beautytap.ShopAction.calculateLoyaltyPointValue(newRedeemable)
+
+65
+00:05:33,115 --> 00:05:33,116
+295. beautytap.ShopAction.VerifyRewardPointsDetails
+
+66
+00:05:33,332 --> 00:05:33,333
+301. VP10: Verify reward history: 1 row with sataut complete
+
+67
+00:05:33,689 --> 00:05:33,689
+305. beautytap.GeneralAction.logout
+
