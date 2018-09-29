@@ -73,7 +73,7 @@ public class ShopAction {
 	def selectProductOnSearchResult(String productName) {
 		println "START KEYWORD selectProductOnSearchResult";
 		TestObject obj_product = new TestObject();
-		obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]");
+		obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]/ancestor::div[@class='des']/h4/a[text()='buy now']");
 		WebUI.click(obj_product);
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		println "END KEYWORD selectProductOnSearchResult";
@@ -262,9 +262,18 @@ public class ShopAction {
 		TestObject obj_total = new TestObject();
 		obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']");
 		obj_price.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[4]/span") ;
-		obj_quantity.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[5]/div/input||//a[text()='"+productName+ "']/ancestor::tr/td[5]") ;
+		obj_quantity.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[5]/div/input") ;
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[6]/span") ;
+		int quantityInCart = 0;
+		String quantityEditable = '';
+		if(WebUI.verifyElementPresent(obj_quantity, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==false){
+			obj_quantity.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+productName+ "']/ancestor::tr/td[5]") ;
+			quantityEditable = 'false';
 
+		}else{
+			quantityEditable = 'true';
+
+		}
 		if(WebUI.verifyElementPresent(obj_product, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
 			float priceInCart = Float.parseFloat(WebUI.getText(obj_price).trim().toString().replace('$', '')).round(2)  ;
 
@@ -273,7 +282,11 @@ public class ShopAction {
 			if(priceInCart!=price){
 				result="false";
 			}
-			int quantityInCart = Integer.parseInt(WebUI.getAttribute(obj_quantity, "value").trim());
+			if(quantityEditable=='true'){
+				quantityInCart = Integer.parseInt(WebUI.getAttribute(obj_quantity, "value").trim());
+			}else{
+				quantityInCart = Integer.parseInt(WebUI.getText(obj_quantity).replace("\r\n", "").trim());
+			}
 			println "Quantity in cart "+ quantityInCart;
 			println "Quantity input " + quantity;
 			if(quantityInCart!=quantity){
@@ -685,7 +698,7 @@ public class ShopAction {
 				println "Quantity texbox NOT display!"
 			}
 		}
-		
+
 		//Simple product
 		if(variation ==''){
 			//Simple not sale
@@ -805,7 +818,7 @@ public class ShopAction {
 		}
 		println "END KEYWORD VerifyProductDetails";
 	}
-	
+
 	//Verify Check Out Order Details
 	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
 	//free shipping price=0

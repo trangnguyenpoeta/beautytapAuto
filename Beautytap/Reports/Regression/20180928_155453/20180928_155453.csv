@@ -1,0 +1,383 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+Regression,Chrome 69.0.3497.100,,2018-09-28 15:54:56,2018-09-28 16:18:00,23m - 3.573s,PASSED
+,,,,,,
+Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email,Chrome 69.0.3497.100,,2018-09-28 15:54:57,2018-09-28 15:57:47,2m - 50.183s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.075s,PASSED
+"Statement - username = ""auto"" + r_string",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.020s,PASSED
+"Statement - email = username + ""@mailinator.com""",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.015s,PASSED
+"Statement - password = ""123456""",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.000s,PASSED
+"Statement - newpassword = ""test123""",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.069s,PASSED
+"Statement - name = ""Auto User "" + r_string",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.013s,PASSED
+"Statement - birthday = ""01/01/1990""",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.015s,PASSED
+"Statement - activation_subject = SITE_TITLE + "" Activate your account""",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.043s,PASSED
+"Statement - resetpass_subject = SITE_TITLE + "" Password Reset""",Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:54:58,0.028s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 15:54:58,2018-09-28 15:55:22,24.435s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 15:55:22,2018-09-28 15:55:26,3.164s,PASSED
+beautytap.GeneralAction.signup,Chrome 69.0.3497.100,,2018-09-28 15:55:26,2018-09-28 15:55:27,1.583s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP1: Verify message displays: Registration successful. A verification email has been sent to you. Please check your inbox.,2018-09-28 15:55:27,2018-09-28 15:55:32,5.255s,PASSED
+beautytap.GeneralAction.openMailBox,Chrome 69.0.3497.100,,2018-09-28 15:55:32,2018-09-28 15:55:42,10.022s,PASSED
+beautytap.GeneralAction.verifyEmailExist,Chrome 69.0.3497.100,VP2: Verify activation email exist,2018-09-28 15:55:42,2018-09-28 15:55:42,0.051s,PASSED
+beautytap.GeneralAction.openEmail,Chrome 69.0.3497.100,,2018-09-28 15:55:42,2018-09-28 15:55:43,0.177s,PASSED
+beautytap.GeneralAction.clickEmailLink,Chrome 69.0.3497.100,,2018-09-28 15:55:43,2018-09-28 15:55:57,14.116s,PASSED
+waitForPageLoad,Chrome 69.0.3497.100,,2018-09-28 15:55:57,2018-09-28 15:55:57,0.020s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP3: Verify message display: Your account is now active!,2018-09-28 15:55:57,2018-09-28 15:55:57,0.041s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 15:55:57,2018-09-28 15:56:00,2.813s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,Login with username and password,2018-09-28 15:56:00,2018-09-28 15:56:00,0.800s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP4: Verify avatar icon displays,2018-09-28 15:56:00,2018-09-28 15:56:10,9.276s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 15:56:10,2018-09-28 15:56:10,0.360s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 15:56:10,2018-09-28 15:56:16,6.246s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,Login with email and password,2018-09-28 15:56:16,2018-09-28 15:56:17,0.892s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP5: Verify avatar icon displays,2018-09-28 15:56:17,2018-09-28 15:56:25,8.134s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 15:56:25,2018-09-28 15:56:26,0.471s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,RESET PASSWORD,2018-09-28 15:56:26,2018-09-28 15:56:32,6.314s,PASSED
+click,Chrome 69.0.3497.100,,2018-09-28 15:56:32,2018-09-28 15:56:35,2.627s,PASSED
+sendKeys,Chrome 69.0.3497.100,,2018-09-28 15:56:35,2018-09-28 15:56:35,0.158s,PASSED
+click,Chrome 69.0.3497.100,,2018-09-28 15:56:35,2018-09-28 15:56:35,0.177s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP6:Verify message display: Your password has been reset! Please check your email for the confirmation link.,2018-09-28 15:56:35,2018-09-28 15:56:39,3.679s,PASSED
+beautytap.GeneralAction.openMailBox,Chrome 69.0.3497.100,,2018-09-28 15:56:39,2018-09-28 15:56:46,7.413s,PASSED
+beautytap.GeneralAction.verifyEmailExist,Chrome 69.0.3497.100,VP7: Verify reset password email exist,2018-09-28 15:56:46,2018-09-28 15:56:46,0.039s,PASSED
+beautytap.GeneralAction.openEmail,Chrome 69.0.3497.100,,2018-09-28 15:56:46,2018-09-28 15:56:46,0.151s,PASSED
+beautytap.GeneralAction.clickEmailLink,Chrome 69.0.3497.100,,2018-09-28 15:56:46,2018-09-28 15:56:50,3.880s,PASSED
+delay,Chrome 69.0.3497.100,,2018-09-28 15:56:50,2018-09-28 15:57:10,20.011s,PASSED
+clearText,Chrome 69.0.3497.100,,2018-09-28 15:57:10,2018-09-28 15:57:10,0.109s,PASSED
+sendKeys,Chrome 69.0.3497.100,,2018-09-28 15:57:10,2018-09-28 15:57:11,0.158s,PASSED
+click,Chrome 69.0.3497.100,,2018-09-28 15:57:11,2018-09-28 15:57:16,5.238s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP8: Verify message displays: Your password has been reset.,2018-09-28 15:57:16,2018-09-28 15:57:16,0.052s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 15:57:16,2018-09-28 15:57:18,2.551s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 15:57:18,2018-09-28 15:57:19,0.635s,PASSED
+verifyElementText,Chrome 69.0.3497.100,VP9: Verify message displays: Wrong Password when logging in with old password,2018-09-28 15:57:19,2018-09-28 15:57:20,0.622s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 15:57:20,2018-09-28 15:57:20,0.472s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP10: User can login successfully with username and new password,2018-09-28 15:57:20,2018-09-28 15:57:28,7.974s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 15:57:28,2018-09-28 15:57:28,0.362s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 15:57:28,2018-09-28 15:57:35,6.329s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 15:57:35,2018-09-28 15:57:36,0.767s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP11: Verify user can login with email and new password,2018-09-28 15:57:36,2018-09-28 15:57:43,7.858s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 15:57:43,2018-09-28 15:57:45,1.233s,PASSED
+,,,,,,
+Test Cases/SignUp_Login_ResetPass/TC02_SignUp_Login_ViaFacebookEmail_NewUser_OldUser,Chrome 69.0.3497.100,,2018-09-28 15:57:47,2018-09-28 16:01:31,3m - 44.696s,PASSED
+beautytap.AdminAction.deleteUser,Chrome 69.0.3497.100,,2018-09-28 15:57:47,2018-09-28 15:58:22,34.582s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 15:58:22,2018-09-28 15:58:41,19.043s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,SIGNUP VIA FACEBOOK NOT EXIST IN SYSTEM,2018-09-28 15:58:41,2018-09-28 15:58:43,2.302s,PASSED
+beautytap.GeneralAction.signupViaFacebook,Chrome 69.0.3497.100,,2018-09-28 15:58:43,2018-09-28 15:59:04,20.568s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP1: Verify user is logged in after Signup via Facebook,2018-09-28 15:59:04,2018-09-28 15:59:04,0.040s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 15:59:04,2018-09-28 15:59:05,1.243s,PASSED
+beautytap.AdminAction.deleteUser,Chrome 69.0.3497.100,LOGIN VIA FACEBOOK NOT EXIST IN SYSTEM,2018-09-28 15:59:05,2018-09-28 15:59:40,34.836s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 15:59:40,2018-09-28 16:00:00,20.063s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:00:00,2018-09-28 16:00:02,2.346s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:00:02,2018-09-28 16:00:06,3.599s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP2: Verify user is logged in via Facebook ,2018-09-28 16:00:06,2018-09-28 16:00:15,9.192s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 16:00:15,2018-09-28 16:00:16,1.181s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,SIGNUP VIA FACEBOOK ALREADY EXIST IN SYSTEM,2018-09-28 16:00:16,2018-09-28 16:00:32,15.908s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:00:32,2018-09-28 16:00:34,2.311s,PASSED
+beautytap.GeneralAction.signupViaFacebook,Chrome 69.0.3497.100,,2018-09-28 16:00:34,2018-09-28 16:00:55,20.603s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP3: Verify user is logged in after Signup via Facebook,2018-09-28 16:00:55,2018-09-28 16:00:55,0.040s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 16:00:55,2018-09-28 16:00:56,1.200s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,LOGIN VIA FACEBOOK ALREADY EXIST IN SYSTEM,2018-09-28 16:00:56,2018-09-28 16:01:12,16.083s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:01:12,2018-09-28 16:01:15,2.770s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:01:15,2018-09-28 16:01:19,3.651s,PASSED
+verifyElementPresent,Chrome 69.0.3497.100,VP4: Verify user is logged in via Facebook,2018-09-28 16:01:19,2018-09-28 16:01:28,9.268s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 16:01:28,2018-09-28 16:01:29,1.352s,PASSED
+,,,,,,
+Test Cases/Shop/TC07_BuyProduct_EarnPendingPoint_EarnRedeemablePoint,Chrome 69.0.3497.100,"1. Login as user
+2. Go to My Rewoard get current multiplier, lifetime, pending, redeemable points, point value
+3. By a product then process to checkout
+VP1: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier
+4. Checkout
+VP2: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier
+5. Go to Reward page
+VP3: Verify reward detail: lifetime:notchange,pending=current pending+reward, redeemable:notchange,point value: not change
+VP4: Verify reward history: 1 row with sataut pending,1 row with status processing
+6. Login as Admin
+7. Change order status to complete
+8. Login as user
+VP5: Verify notification order complete
+VP6: Verify email order complete with reward point
+9. Go to reward page
+VP7: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward,point value: associate with reward
+VP8: Verify reward history: 1 row with sataut complete
+",2018-09-28 16:01:31,2018-09-28 16:05:43,4m - 11.313s,PASSED
+Statement - username = USER_EMAIL,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.001s,PASSED
+Statement - password = USER_PASSWORD,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.017s,PASSED
+Statement - productName = SIMPLE_PRODUCT,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.008s,PASSED
+Statement - price = SIMPLE_PRODUCT_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.016s,PASSED
+Statement - quantity = 3,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.000s,PASSED
+Statement - shippingLabel = FREE_SHIPPING_LABEL,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.012s,PASSED
+Statement - shippingPrice = 0,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.011s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)",Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.052s,PASSED
+Statement - total = subtotal + shippingPrice,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.000s,PASSED
+"Statement - products = new org.json.JSONArray((((((([{""productname"":"" + productName) + "",""variation"":"""",""quantity"":"") + quantity) + "",""price"":"") + price) + ""}]))",Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.016s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + username) + ""}))",Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.020s,PASSED
+"Statement - paymentMethod = ""PayPal""",Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:32,0.000s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 16:01:32,2018-09-28 16:01:46,13.763s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:01:46,2018-09-28 16:01:48,2.124s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:01:48,2018-09-28 16:01:49,0.814s,PASSED
+beautytap.GeneralAction.selectProfileMenu,Chrome 69.0.3497.100,,2018-09-28 16:01:49,2018-09-28 16:02:02,13.644s,PASSED
+Statement - objReward = CustomKeywords.beautytap.ShopAction.getRewardDetails(),Chrome 69.0.3497.100,"Get current multiplier, lifetime, pending, redeemable points, point value",2018-09-28 16:02:02,2018-09-28 16:02:03,0.410s,PASSED
+"Statement - multiplier = java.lang.Float.parseFloat(objReward.get(""multiplier""))",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.026s,PASSED
+"Statement - currentlevel = objReward.get(""currentlevel"")",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.013s,PASSED
+"Statement - lifetime = java.lang.Float.parseFloat(objReward.get(""lifetime""))",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.009s,PASSED
+"Statement - pending = java.lang.Float.parseFloat(objReward.get(""pending""))",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.000s,PASSED
+"Statement - redeemable = java.lang.Float.parseFloat(objReward.get(""redeemable""))",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.016s,PASSED
+"Statement - pointvalue = java.lang.Float.parseFloat(objReward.get(""pointvalue""))",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.015s,PASSED
+"Statement - rewardEarned = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", multiplier * subtotal))",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.026s,PASSED
+"Statement - notificationMessage = ""You received "" + rewardEarned + "" redeemable points""",Chrome 69.0.3497.100,,2018-09-28 16:02:03,2018-09-28 16:02:03,0.000s,PASSED
+beautytap.ShopAction.globalSearch,Chrome 69.0.3497.100,Buy a product,2018-09-28 16:02:03,2018-09-28 16:02:10,7.245s,PASSED
+beautytap.ShopAction.selectProductOnSearchResult,Chrome 69.0.3497.100,,2018-09-28 16:02:10,2018-09-28 16:02:17,6.458s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 69.0.3497.100,,2018-09-28 16:02:17,2018-09-28 16:02:22,5.051s,PASSED
+beautytap.ShopAction.goToCart,Chrome 69.0.3497.100,,2018-09-28 16:02:22,2018-09-28 16:02:26,4.796s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 69.0.3497.100,Process to checkout,2018-09-28 16:02:26,2018-09-28 16:02:30,3.899s,PASSED
+beautytap.ShopAction.fillCustomerInformation,Chrome 69.0.3497.100,,2018-09-28 16:02:30,2018-09-28 16:02:43,13.016s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 69.0.3497.100,VP1: Verify order details on checkout,2018-09-28 16:02:43,2018-09-28 16:02:44,0.312s,PASSED
+beautytap.ShopAction.VerifyRewardEarned,Chrome 69.0.3497.100,VP2: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier,2018-09-28 16:02:44,2018-09-28 16:02:44,0.575s,PASSED
+beautytap.ShopAction.checkoutViaPaypal,Chrome 69.0.3497.100,,2018-09-28 16:02:44,2018-09-28 16:03:37,52.604s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 69.0.3497.100,VP3: Verify order details on Order Recieved,2018-09-28 16:03:37,2018-09-28 16:03:43,5.797s,PASSED
+beautytap.ShopAction.VerifyRewardEarned,Chrome 69.0.3497.100,VP4: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier,2018-09-28 16:03:43,2018-09-28 16:03:43,0.520s,PASSED
+Statement - orderInfo = CustomKeywords.beautytap.ShopAction.getOrderInfoOnOrderReceived(),Chrome 69.0.3497.100,,2018-09-28 16:03:43,2018-09-28 16:03:43,0.141s,PASSED
+"Statement - orderNumber = orderInfo.get(""ordernumber"")",Chrome 69.0.3497.100,,2018-09-28 16:03:43,2018-09-28 16:03:43,0.011s,PASSED
+"Statement - orderDate = orderInfo.get(""date"")",Chrome 69.0.3497.100,,2018-09-28 16:03:43,2018-09-28 16:03:43,0.009s,PASSED
+"Statement - completeOrderSubject = ""Your "" + SITE_TITLE + "" order from "" + orderDate + "" is complete""",Chrome 69.0.3497.100,,2018-09-28 16:03:43,2018-09-28 16:03:43,0.009s,PASSED
+"Statement - completeOrderSubject = completeOrderSubject.replace(""["", """").replace(""]"", """")",Chrome 69.0.3497.100,,2018-09-28 16:03:43,2018-09-28 16:03:43,0.009s,PASSED
+beautytap.GeneralAction.selectProfileMenu,Chrome 69.0.3497.100,Go to My Rewards page,2018-09-28 16:03:43,2018-09-28 16:03:49,5.254s,PASSED
+"Statement - newPending = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", pending + rewardEarned))",Chrome 69.0.3497.100,"VP5: Verify reward detail: lifetime=no change,pending=current pending+reward, redeemable=no change,point value: no change",2018-09-28 16:03:49,2018-09-28 16:03:49,0.007s,PASSED
+beautytap.ShopAction.VerifyRewardPointsDetails,Chrome 69.0.3497.100,,2018-09-28 16:03:49,2018-09-28 16:03:49,0.249s,PASSED
+beautytap.ShopAction.VerifyRewardHistory,Chrome 69.0.3497.100,"VP6: Verify reward history: 1 row with sataut pending,1 row with status processing",2018-09-28 16:03:49,2018-09-28 16:03:49,0.377s,PASSED
+beautytap.ShopAction.VerifyRewardHistory,Chrome 69.0.3497.100,,2018-09-28 16:03:49,2018-09-28 16:03:50,0.357s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,Logout,2018-09-28 16:03:50,2018-09-28 16:03:50,0.683s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,Login As Admin,2018-09-28 16:03:50,2018-09-28 16:03:58,7.526s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:03:58,2018-09-28 16:03:59,0.719s,PASSED
+navigateToUrl,Chrome 69.0.3497.100,Go to Woocommerce > Orders > Change order status to Completed,2018-09-28 16:03:59,2018-09-28 16:04:06,7.557s,PASSED
+beautytap.AdminAction.changeOrderStatus,Chrome 69.0.3497.100,,2018-09-28 16:04:06,2018-09-28 16:04:40,34.312s,PASSED
+beautytap.GeneralAction.openMailBox,Chrome 69.0.3497.100,VP7: Verify user recieve notification email with redeemable point,2018-09-28 16:04:40,2018-09-28 16:04:50,9.845s,PASSED
+beautytap.GeneralAction.verifyEmailExist,Chrome 69.0.3497.100,,2018-09-28 16:04:50,2018-09-28 16:04:50,0.047s,PASSED
+beautytap.GeneralAction.openEmail,Chrome 69.0.3497.100,,2018-09-28 16:04:50,2018-09-28 16:04:50,0.112s,PASSED
+beautytap.ShopAction.VerifyOrderCompleteEmail,Chrome 69.0.3497.100,,2018-09-28 16:04:50,2018-09-28 16:04:57,6.532s,PASSED
+closeBrowser,Chrome 69.0.3497.100,Logout,2018-09-28 16:04:57,2018-09-28 16:04:58,0.902s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,Login again,2018-09-28 16:04:58,2018-09-28 16:05:17,19.531s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:05:17,2018-09-28 16:05:20,2.120s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:05:20,2018-09-28 16:05:20,0.746s,PASSED
+beautytap.GeneralAction.VerifyNotificationText,Chrome 69.0.3497.100,VP8: Verify notification: You received [#] redeemable points,2018-09-28 16:05:20,2018-09-28 16:05:33,13.225s,PASSED
+beautytap.GeneralAction.selectProfileMenu,Chrome 69.0.3497.100,Go to My Rewards page,2018-09-28 16:05:33,2018-09-28 16:05:38,4.993s,PASSED
+"Statement - newLifetime = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", lifetime + rewardEarned))",Chrome 69.0.3497.100,"VP9: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward,point value: associate with reward",2018-09-28 16:05:38,2018-09-28 16:05:38,0.007s,PASSED
+"Statement - newRedeemable = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", redeemable + rewardEarned))",Chrome 69.0.3497.100,,2018-09-28 16:05:38,2018-09-28 16:05:38,0.009s,PASSED
+Statement - newPointValue = CustomKeywords.beautytap.ShopAction.calculateLoyaltyPointValue(newRedeemable),Chrome 69.0.3497.100,,2018-09-28 16:05:38,2018-09-28 16:05:39,0.012s,PASSED
+beautytap.ShopAction.VerifyRewardPointsDetails,Chrome 69.0.3497.100,,2018-09-28 16:05:39,2018-09-28 16:05:39,0.257s,PASSED
+beautytap.ShopAction.VerifyRewardHistory,Chrome 69.0.3497.100,VP10: Verify reward history: 1 row with sataut complete,2018-09-28 16:05:39,2018-09-28 16:05:39,0.282s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 16:05:39,2018-09-28 16:05:41,1.562s,PASSED
+,,,,,,
+Test Cases/Shop/TC08_BuyProduct_UsingRewardPoint,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:09:33,3m - 50.594s,PASSED
+Statement - username = USER_EMAIL,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.019s,PASSED
+Statement - password = USER_PASSWORD,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.009s,PASSED
+Statement - productName = SIMPLE_PRODUCT,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.038s,PASSED
+Statement - price = SIMPLE_PRODUCT_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.000s,PASSED
+Statement - quantity = 3,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.015s,PASSED
+Statement - shippingLabel = FREE_SHIPPING_LABEL,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.011s,PASSED
+Statement - shippingPrice = 0,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.011s,PASSED
+Statement - pointUsed = 60,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.000s,PASSED
+Statement - pointValueUsed = 2,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.010s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)",Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.019s,PASSED
+"Statement - subtotalApplyReward = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", subtotal - pointValueUsed))",Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.033s,PASSED
+"Statement - total = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", subtotal - pointValueUsed + shippingPrice))",Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.001s,PASSED
+"Statement - products = new org.json.JSONArray((((((([{""productname"":"" + productName) + "",""variation"":"""",""quantity"":"") + quantity) + "",""price"":"") + price) + ""}]))",Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.015s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + username) + ""}))",Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.010s,PASSED
+"Statement - paymentMethod = ""PayPal""",Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:43,0.000s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 16:05:43,2018-09-28 16:05:59,15.651s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:05:59,2018-09-28 16:06:01,2.381s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:06:01,2018-09-28 16:06:02,0.965s,PASSED
+beautytap.GeneralAction.selectProfileMenu,Chrome 69.0.3497.100,,2018-09-28 16:06:02,2018-09-28 16:06:16,13.814s,PASSED
+Statement - objReward = CustomKeywords.beautytap.ShopAction.getRewardDetails(),Chrome 69.0.3497.100,"Get current multiplier, lifetime, pending, redeemable points, point value",2018-09-28 16:06:16,2018-09-28 16:06:17,0.401s,PASSED
+"Statement - multiplier = java.lang.Float.parseFloat(objReward.get(""multiplier""))",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.007s,PASSED
+"Statement - currentlevel = objReward.get(""currentlevel"")",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.006s,PASSED
+"Statement - lifetime = java.lang.Float.parseFloat(objReward.get(""lifetime""))",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.006s,PASSED
+"Statement - pending = java.lang.Float.parseFloat(objReward.get(""pending""))",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.008s,PASSED
+"Statement - redeemable = java.lang.Float.parseFloat(objReward.get(""redeemable""))",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.008s,PASSED
+"Statement - pointvalue = java.lang.Float.parseFloat(objReward.get(""pointvalue""))",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.010s,PASSED
+"Statement - rewardEarned = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", multiplier * subtotal - pointValueUsed))",Chrome 69.0.3497.100,,2018-09-28 16:06:17,2018-09-28 16:06:17,0.005s,PASSED
+beautytap.ShopAction.globalSearch,Chrome 69.0.3497.100,Buy a nother product and use reward point,2018-09-28 16:06:17,2018-09-28 16:06:24,7.439s,PASSED
+beautytap.ShopAction.selectProductOnSearchResult,Chrome 69.0.3497.100,,2018-09-28 16:06:24,2018-09-28 16:06:31,6.455s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 69.0.3497.100,,2018-09-28 16:06:31,2018-09-28 16:06:35,4.613s,PASSED
+beautytap.ShopAction.goToCart,Chrome 69.0.3497.100,,2018-09-28 16:06:35,2018-09-28 16:06:40,4.810s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 69.0.3497.100,Process to checkout,2018-09-28 16:06:40,2018-09-28 16:06:44,3.904s,PASSED
+beautytap.ShopAction.applyLoyaltyRewardPoint,Chrome 69.0.3497.100,Apply Reward point,2018-09-28 16:06:44,2018-09-28 16:06:45,1.114s,PASSED
+beautytap.ShopAction.fillCustomerInformation,Chrome 69.0.3497.100,Fill customer information,2018-09-28 16:06:45,2018-09-28 16:06:58,12.920s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 69.0.3497.100,VP1: Verify Order details on checkout page with reward discount,2018-09-28 16:06:58,2018-09-28 16:06:58,0.369s,PASSED
+beautytap.ShopAction.VerifyRewardEarned,Chrome 69.0.3497.100,VP2: Verify reward on checkout page: Rewards earned = (subtotal-discount)*multiplier,2018-09-28 16:06:58,2018-09-28 16:06:59,0.499s,PASSED
+beautytap.ShopAction.checkoutViaPaypal,Chrome 69.0.3497.100,Checkout via creditcard,2018-09-28 16:06:59,2018-09-28 16:07:52,53.051s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 69.0.3497.100,VP3: Verify order details on Order Recieved,2018-09-28 16:07:52,2018-09-28 16:07:58,5.894s,PASSED
+Statement - orderInfo = CustomKeywords.beautytap.ShopAction.getOrderInfoOnOrderReceived(),Chrome 69.0.3497.100,,2018-09-28 16:07:58,2018-09-28 16:07:58,0.374s,PASSED
+"Statement - orderNumber = orderInfo.get(""ordernumber"")",Chrome 69.0.3497.100,,2018-09-28 16:07:58,2018-09-28 16:07:58,0.011s,PASSED
+beautytap.ShopAction.VerifyRewardEarned,Chrome 69.0.3497.100,VP4: Verify reward on Order received page: Rewards earned = (subtotal-discount)*multiplier,2018-09-28 16:07:58,2018-09-28 16:07:59,0.449s,PASSED
+beautytap.GeneralAction.selectProfileMenu,Chrome 69.0.3497.100,Go to My Rewards page,2018-09-28 16:07:59,2018-09-28 16:08:04,5.821s,PASSED
+"Statement - newPending = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", pending + rewardEarned))",Chrome 69.0.3497.100,"VP5:lifetime=lifetime,pending=pending+reward, redeemable=redeemable-point used,point value=calculate base on new redeemable",2018-09-28 16:08:04,2018-09-28 16:08:04,0.010s,PASSED
+"Statement - newRedeemable = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", redeemable - pointUsed))",Chrome 69.0.3497.100,,2018-09-28 16:08:04,2018-09-28 16:08:04,0.006s,PASSED
+Statement - newPointValue = CustomKeywords.beautytap.ShopAction.calculateLoyaltyPointValue(newRedeemable),Chrome 69.0.3497.100,,2018-09-28 16:08:04,2018-09-28 16:08:04,0.009s,PASSED
+beautytap.ShopAction.VerifyRewardPointsDetails,Chrome 69.0.3497.100,,2018-09-28 16:08:04,2018-09-28 16:08:05,0.271s,PASSED
+beautytap.ShopAction.VerifyRewardHistory,Chrome 69.0.3497.100,"VP6: Verify reward history: 1 row with status pending,1 row with status processing",2018-09-28 16:08:05,2018-09-28 16:08:05,0.385s,PASSED
+beautytap.ShopAction.VerifyRewardHistory,Chrome 69.0.3497.100,,2018-09-28 16:08:05,2018-09-28 16:08:05,0.403s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,Logout,2018-09-28 16:08:05,2018-09-28 16:08:06,0.764s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,Login As Admin,2018-09-28 16:08:06,2018-09-28 16:08:13,7.141s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:08:13,2018-09-28 16:08:14,0.580s,PASSED
+navigateToUrl,Chrome 69.0.3497.100,Go to Woocommerce > Orders > Change order status to Completed,2018-09-28 16:08:14,2018-09-28 16:08:21,7.123s,PASSED
+beautytap.AdminAction.changeOrderStatus,Chrome 69.0.3497.100,,2018-09-28 16:08:21,2018-09-28 16:08:55,33.483s,PASSED
+closeBrowser,Chrome 69.0.3497.100,Logout,2018-09-28 16:08:55,2018-09-28 16:08:55,0.847s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,Login again,2018-09-28 16:08:55,2018-09-28 16:09:13,17.165s,PASSED
+beautytap.GeneralAction.clickNavigationMenu,Chrome 69.0.3497.100,,2018-09-28 16:09:13,2018-09-28 16:09:15,2.174s,PASSED
+beautytap.GeneralAction.login,Chrome 69.0.3497.100,,2018-09-28 16:09:15,2018-09-28 16:09:15,0.723s,PASSED
+beautytap.GeneralAction.selectProfileMenu,Chrome 69.0.3497.100,Go to My Rewards page,2018-09-28 16:09:15,2018-09-28 16:09:29,13.432s,PASSED
+"Statement - newLifetime = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", lifetime + rewardEarned))",Chrome 69.0.3497.100,"VP9: Verify reward detail: lifetime=lifetime+reward,pending=pending-reward, redeemable=redeemable+reward-point used,point value: associate with reward",2018-09-28 16:09:29,2018-09-28 16:09:29,0.011s,PASSED
+"Statement - newRedeemable = java.lang.Float.parseFloat(java.lang.String.format(""%.2f"", newRedeemable + rewardEarned))",Chrome 69.0.3497.100,,2018-09-28 16:09:29,2018-09-28 16:09:29,0.008s,PASSED
+Statement - newPointValue = CustomKeywords.beautytap.ShopAction.calculateLoyaltyPointValue(newRedeemable),Chrome 69.0.3497.100,,2018-09-28 16:09:29,2018-09-28 16:09:29,0.003s,PASSED
+beautytap.ShopAction.VerifyRewardPointsDetails,Chrome 69.0.3497.100,,2018-09-28 16:09:29,2018-09-28 16:09:29,0.238s,PASSED
+beautytap.ShopAction.VerifyRewardHistory,Chrome 69.0.3497.100,VP10: Verify reward history: 1 row with sataut complete,2018-09-28 16:09:29,2018-09-28 16:09:30,0.422s,PASSED
+beautytap.GeneralAction.logout,Chrome 69.0.3497.100,,2018-09-28 16:09:30,2018-09-28 16:09:31,1.614s,PASSED
+,,,,,,
+Test Cases/Shop/TC03_Search_SimpleProduct_Sale_Creditcard_LessThan60_Normal,Chrome 69.0.3497.100,,2018-09-28 16:09:33,2018-09-28 16:11:37,2m - 3.577s,PASSED
+Statement - productName = SIMPLE_SALE_PRODUCT,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.026s,PASSED
+"Statement - searchName = productName.substring(0, productName.indexOf(""/""))",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.009s,PASSED
+Statement - saleprice = SIMPLE_SALE_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.015s,PASSED
+Statement - regularprice = SIMPLE_SALE_REGULAR_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.010s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.012s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.001s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.015s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.018s,PASSED
+Statement - quantity = 1,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.002s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice)",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.015s,PASSED
+Statement - total = subtotal + SHIPPING_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.008s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.002s,PASSED
+"Statement - products = new org.json.JSONArray((((((([{""productname"":"" + productName) + "",""variation"":"""",""quantity"":"") + quantity) + "",""price"":"") + saleprice) + ""}]))",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.011s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.000s,PASSED
+Statement - shippingLabel = SHIPPING_LABEL,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.016s,PASSED
+Statement - shippingPrice = SHIPPING_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.010s,PASSED
+"Statement - shippingType = ""normal""",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.004s,PASSED
+"Statement - paymentMethod = ""Credit Card Payment""",Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:34,0.010s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 16:09:34,2018-09-28 16:09:50,15.843s,PASSED
+beautytap.ShopAction.globalSearch,Chrome 69.0.3497.100,,2018-09-28 16:09:50,2018-09-28 16:09:57,7.588s,PASSED
+beautytap.ShopAction.VerifyProductOnSearchResult,Chrome 69.0.3497.100,VP1: Verify product display in search result panel with regular price,2018-09-28 16:09:57,2018-09-28 16:09:58,0.354s,PASSED
+beautytap.ShopAction.selectProductOnSearchResult,Chrome 69.0.3497.100,,2018-09-28 16:09:58,2018-09-28 16:10:02,4.878s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 69.0.3497.100,VP2: Verify product detail page display with regular price,2018-09-28 16:10:02,2018-09-28 16:10:03,0.285s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 69.0.3497.100,,2018-09-28 16:10:03,2018-09-28 16:10:08,5.471s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 69.0.3497.100,,2018-09-28 16:10:08,2018-09-28 16:10:14,5.386s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 69.0.3497.100,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-28 16:10:14,2018-09-28 16:10:14,0.090s,PASSED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 69.0.3497.100,,2018-09-28 16:10:14,2018-09-28 16:10:45,31.390s,PASSED
+beautytap.ShopAction.goToCart,Chrome 69.0.3497.100,,2018-09-28 16:10:45,2018-09-28 16:10:50,4.714s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 69.0.3497.100,VP4:Verify product is added to cart with correct price and quantity,2018-09-28 16:10:50,2018-09-28 16:10:50,0.211s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 69.0.3497.100,,2018-09-28 16:10:50,2018-09-28 16:10:53,3.240s,PASSED
+beautytap.ShopAction.fillCustomerInformation,Chrome 69.0.3497.100,,2018-09-28 16:10:53,2018-09-28 16:11:08,14.363s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 69.0.3497.100,VP5: Verify order details on checkout page,2018-09-28 16:11:08,2018-09-28 16:11:08,0.344s,PASSED
+beautytap.ShopAction.checkoutViaCreditCard,Chrome 69.0.3497.100,Checkout by credit card,2018-09-28 16:11:08,2018-09-28 16:11:34,25.778s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 69.0.3497.100,VP6: Verify order details on order received Page,2018-09-28 16:11:34,2018-09-28 16:11:34,0.317s,PASSED
+closeBrowser,Chrome 69.0.3497.100,,2018-09-28 16:11:34,2018-09-28 16:11:35,0.817s,PASSED
+,,,,,,
+Test Cases/Shop/TC04_Search_VariationProduct_NotSale_AmazonPay_GreaterThan200,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:13:25,1m - 47.908s,PASSED
+Statement - productName = VARIATION_PRODUCT,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.013s,PASSED
+Statement - price = VARIATION_PRICE1,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.008s,PASSED
+Statement - variation = VARIATION_NAME1,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.007s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.008s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.001s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.002s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.009s,PASSED
+Statement - quantity = 8,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.017s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.007s,PASSED
+Statement - total = subtotal,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.011s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.007s,PASSED
+"Statement - products = new org.json.JSONArray((((((((([{""productname"":"" + productName) + "",""variation"":"") + variation) + "",""quantity"":"") + quantity) + "",""price"":"") + price) + ""}]))",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.009s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.029s,PASSED
+Statement - shippingLabel = FREE_EMS_SHIPPING_LABEL,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.012s,PASSED
+Statement - shippingPrice = 0,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.024s,PASSED
+"Statement - shippingType = ""freeEMS""",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.017s,PASSED
+"Statement - paymentMethod = ""Amazon Pay""",Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:37,0.015s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 16:11:37,2018-09-28 16:11:54,16.242s,PASSED
+beautytap.ShopAction.globalSearch,Chrome 69.0.3497.100,,2018-09-28 16:11:54,2018-09-28 16:12:01,7.104s,PASSED
+beautytap.ShopAction.VerifyProductOnSearchResult,Chrome 69.0.3497.100,VP1: Verify product display in search result panel with regular price,2018-09-28 16:12:01,2018-09-28 16:12:01,0.147s,PASSED
+beautytap.ShopAction.selectProductOnSearchResult,Chrome 69.0.3497.100,,2018-09-28 16:12:01,2018-09-28 16:12:06,5.580s,PASSED
+beautytap.ShopAction.selectProductVariation,Chrome 69.0.3497.100,,2018-09-28 16:12:06,2018-09-28 16:12:08,1.592s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 69.0.3497.100,VP2: Verify product detail page display with regular price,2018-09-28 16:12:08,2018-09-28 16:12:09,0.917s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 69.0.3497.100,,2018-09-28 16:12:09,2018-09-28 16:12:14,5.513s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 69.0.3497.100,,2018-09-28 16:12:14,2018-09-28 16:12:19,4.622s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 69.0.3497.100,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-28 16:12:19,2018-09-28 16:12:19,0.066s,PASSED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 69.0.3497.100,,2018-09-28 16:12:19,2018-09-28 16:12:19,0.036s,PASSED
+beautytap.ShopAction.goToCart,Chrome 69.0.3497.100,,2018-09-28 16:12:19,2018-09-28 16:12:25,5.706s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 69.0.3497.100,VP4:Verify product is added to cart with correct price and quantity,2018-09-28 16:12:25,2018-09-28 16:12:25,0.265s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 69.0.3497.100,,2018-09-28 16:12:25,2018-09-28 16:12:28,3.116s,PASSED
+beautytap.ShopAction.loginAmazonPay,Chrome 69.0.3497.100,Login amazonPay,2018-09-28 16:12:28,2018-09-28 16:13:03,34.987s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 69.0.3497.100,VP5: Verify order details on checkout page,2018-09-28 16:13:03,2018-09-28 16:13:04,0.248s,PASSED
+beautytap.ShopAction.checkoutViaAmazonPay,Chrome 69.0.3497.100,Checkout via amazonPay,2018-09-28 16:13:04,2018-09-28 16:13:16,12.694s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 69.0.3497.100,VP6: Verify order details on order received Page,2018-09-28 16:13:16,2018-09-28 16:13:22,5.692s,PASSED
+closeBrowser,Chrome 69.0.3497.100,,2018-09-28 16:13:22,2018-09-28 16:13:23,0.829s,PASSED
+,,,,,,
+Test Cases/Shop/TC05_Browse_SimpleProduct_NotSale_PayPal_GreaterThan60LessThan200,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:15:53,2m - 28.548s,PASSED
+Statement - productName = SIMPLE_PRODUCT,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.001s,PASSED
+Statement - price = SIMPLE_PRODUCT_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.028s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.017s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.012s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.011s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.000s,PASSED
+Statement - quantity = 3,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.015s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.015s,PASSED
+Statement - total = subtotal,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.007s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.007s,PASSED
+"Statement - products = new org.json.JSONArray((((((([{""productname"":"" + productName) + "",""variation"":"""",""quantity"":"") + quantity) + "",""price"":"") + price) + ""}]))",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.007s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.006s,PASSED
+Statement - shippingLabel = FREE_SHIPPING_LABEL,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.000s,PASSED
+Statement - shippingPrice = 0,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.018s,PASSED
+"Statement - shippingType = ""free""",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.000s,PASSED
+"Statement - paymentMethod = ""PayPal""",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.015s,PASSED
+"Statement - category = ""What's New""",Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:25,0.000s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 16:13:25,2018-09-28 16:13:41,15.870s,PASSED
+beautytap.ShopAction.selectCategory,Chrome 69.0.3497.100,,2018-09-28 16:13:41,2018-09-28 16:13:49,7.597s,PASSED
+beautytap.ShopAction.findProductOnProductList,Chrome 69.0.3497.100,,2018-09-28 16:13:49,2018-09-28 16:14:16,27.260s,PASSED
+beautytap.ShopAction.VerifyProductOnProductList,Chrome 69.0.3497.100,VP1: Verify product display on product list,2018-09-28 16:14:16,2018-09-28 16:14:16,0.165s,PASSED
+beautytap.ShopAction.selectProductOnProductList,Chrome 69.0.3497.100,,2018-09-28 16:14:16,2018-09-28 16:14:22,5.421s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 69.0.3497.100,VP2: Verify product detail page display with regular price,2018-09-28 16:14:22,2018-09-28 16:14:22,0.175s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 69.0.3497.100,,2018-09-28 16:14:22,2018-09-28 16:14:27,5.460s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 69.0.3497.100,,2018-09-28 16:14:27,2018-09-28 16:14:32,4.996s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 69.0.3497.100,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-28 16:14:32,2018-09-28 16:14:32,0.087s,PASSED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 69.0.3497.100,,2018-09-28 16:14:32,2018-09-28 16:14:32,0.040s,PASSED
+beautytap.ShopAction.goToCart,Chrome 69.0.3497.100,,2018-09-28 16:14:32,2018-09-28 16:14:37,4.717s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 69.0.3497.100,VP4:Verify product is added to cart with correct price and quantity,2018-09-28 16:14:37,2018-09-28 16:14:37,0.236s,PASSED
+beautytap.ShopAction.processToCheckout,Chrome 69.0.3497.100,,2018-09-28 16:14:37,2018-09-28 16:14:40,3.086s,PASSED
+beautytap.ShopAction.fillCustomerInformation,Chrome 69.0.3497.100,,2018-09-28 16:14:40,2018-09-28 16:14:54,13.450s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 69.0.3497.100,VP5: Verify order details on checkout page,2018-09-28 16:14:54,2018-09-28 16:14:54,0.302s,PASSED
+beautytap.ShopAction.checkoutViaPaypal,Chrome 69.0.3497.100,Checkout by credit card,2018-09-28 16:14:54,2018-09-28 16:15:45,50.501s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 69.0.3497.100,VP6: Verify order details on order received Page,2018-09-28 16:15:45,2018-09-28 16:15:50,5.691s,PASSED
+closeBrowser,Chrome 69.0.3497.100,,2018-09-28 16:15:50,2018-09-28 16:15:51,0.938s,PASSED
+,,,,,,
+Test Cases/Shop/TC06_Browse_VariationProduct_Sale_AmazonPayAtCart_LessThan60_EMS,Chrome 69.0.3497.100,,2018-09-28 16:15:53,2018-09-28 16:18:00,2m - 6.187s,PASSED
+Statement - productName = VARIATION_SALE_PRODUCT,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.018s,PASSED
+Statement - saleprice = VARIATION_SALE_PRICE1,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.021s,PASSED
+Statement - redularprice = VARIATION_SALE_REGULAR_PRICE1,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.008s,PASSED
+Statement - variation = VARIATION_SALE_NAME1,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.009s,PASSED
+"Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.009s,PASSED
+"Statement - email = ""auto"" + r_string + ""@mailinator.com""",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.009s,PASSED
+"Statement - orderNote = ""auto"" + r_string + ""Order""",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.002s,PASSED
+Statement - currentNumberItemInCart = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.010s,PASSED
+Statement - quantity = 5,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.011s,PASSED
+Statement - shippingLabel = EMS_SHIPPING_LABEL,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.010s,PASSED
+Statement - shippingPrice = EMS_SHIPPING_PRICE,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.008s,PASSED
+"Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, saleprice)",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.012s,PASSED
+Statement - total = subtotal + shippingPrice,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.000s,PASSED
+"Statement - total = CustomKeywords.beautytap.ShopAction.calculateTotal(1, total)",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.017s,PASSED
+"Statement - products = new org.json.JSONArray((((((((([{""productname"":"" + productName) + "",""variation"":"") + variation) + "",""quantity"":"") + quantity) + "",""price"":"") + saleprice) + ""}]))",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.001s,PASSED
+"Statement - billingInformation = new org.json.JSONObject((({""firstname"":""Test"",""lastname"":""Automation"",""country"":""United States (US)"",""address"":""123 Testing"",""city"":""New York"",""state"":""New York"",""zip"":""90012"",""email"":"" + email) + ""}))",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.011s,PASSED
+"Statement - shippingType = ""EMS""",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.008s,PASSED
+"Statement - paymentMethod = ""Amazon Pay""",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.010s,PASSED
+"Statement - category = ""Brands""",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.007s,PASSED
+"Statement - subcategory = ""Innisfree""",Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:15:54,0.000s,PASSED
+beautytap.GeneralAction.openBeautytap,Chrome 69.0.3497.100,,2018-09-28 16:15:54,2018-09-28 16:16:12,17.984s,PASSED
+beautytap.ShopAction.selectCategory,Chrome 69.0.3497.100,,2018-09-28 16:16:12,2018-09-28 16:16:22,10.078s,PASSED
+beautytap.ShopAction.findProductOnProductList,Chrome 69.0.3497.100,,2018-09-28 16:16:22,2018-09-28 16:16:36,13.619s,PASSED
+beautytap.ShopAction.VerifyProductOnProductList,Chrome 69.0.3497.100,VP1: Verify product display in Product List,2018-09-28 16:16:36,2018-09-28 16:16:36,0.291s,PASSED
+beautytap.ShopAction.selectProductOnProductList,Chrome 69.0.3497.100,,2018-09-28 16:16:36,2018-09-28 16:16:43,7.298s,PASSED
+beautytap.ShopAction.selectProductVariation,Chrome 69.0.3497.100,,2018-09-28 16:16:43,2018-09-28 16:16:44,1.376s,PASSED
+beautytap.ShopAction.VerifyProductDetails,Chrome 69.0.3497.100,VP2: Verify product detail page display,2018-09-28 16:16:44,2018-09-28 16:16:46,1.055s,PASSED
+Statement - currentNumberItemInCart = CustomKeywords.beautytap.ShopAction.getNumberItemInCart(),Chrome 69.0.3497.100,,2018-09-28 16:16:46,2018-09-28 16:16:51,5.468s,PASSED
+beautytap.ShopAction.addProductToCart,Chrome 69.0.3497.100,,2018-09-28 16:16:51,2018-09-28 16:16:57,6.240s,PASSED
+beautytap.ShopAction.VerifyNumberItemInCart,Chrome 69.0.3497.100,VP3:Verify product is added to card: cart number increase and message display “PRODUCT_NAME” has been added to your cart.,2018-09-28 16:16:57,2018-09-28 16:16:57,0.079s,PASSED
+beautytap.ShopAction.VerifyProductIsAddedToCart,Chrome 69.0.3497.100,,2018-09-28 16:16:57,2018-09-28 16:16:57,0.044s,PASSED
+beautytap.ShopAction.goToCart,Chrome 69.0.3497.100,,2018-09-28 16:16:57,2018-09-28 16:17:02,4.458s,PASSED
+beautytap.ShopAction.VerifyProductInCart,Chrome 69.0.3497.100,VP4:Verify product is added to cart with correct price and quantity,2018-09-28 16:17:02,2018-09-28 16:17:02,0.193s,PASSED
+beautytap.ShopAction.loginAmazonPay,Chrome 69.0.3497.100,Login amazonPay,2018-09-28 16:17:02,2018-09-28 16:17:38,35.703s,PASSED
+beautytap.ShopAction.selectShipping,Chrome 69.0.3497.100,,2018-09-28 16:17:38,2018-09-28 16:17:43,5.159s,PASSED
+beautytap.ShopAction.VerifyOrderDetailsOnCheckout,Chrome 69.0.3497.100,VP5: Verify order details on checkout page,2018-09-28 16:17:43,2018-09-28 16:17:43,0.270s,PASSED
+beautytap.ShopAction.checkoutViaAmazonPay,Chrome 69.0.3497.100,Checkout via amazonPay,2018-09-28 16:17:43,2018-09-28 16:17:56,13.174s,PASSED
+beautytap.ShopAction.VerifyOrderReceivedDetails,Chrome 69.0.3497.100,VP6: Verify order details on order received Page,2018-09-28 16:17:56,2018-09-28 16:17:57,0.306s,PASSED
+closeBrowser,Chrome 69.0.3497.100,,2018-09-28 16:17:57,2018-09-28 16:17:57,0.871s,PASSED

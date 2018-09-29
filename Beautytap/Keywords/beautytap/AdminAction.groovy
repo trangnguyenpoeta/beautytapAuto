@@ -150,8 +150,8 @@ public class AdminAction {
 			if(limitStock=='yes'){
 				WebUI.check(findTestObject('Object Repository/Page_Admin/chk_soldIndividualScheduled'));
 			}else if (limitStock=='no'){
-					WebUI.uncheck(findTestObject('Object Repository/Page_Admin/chk_soldIndividualScheduled'));
-				}
+				WebUI.uncheck(findTestObject('Object Repository/Page_Admin/chk_soldIndividualScheduled'));
+			}
 			WebUI.focus(findTestObject('Object Repository/Page_Admin/txt_productName'));
 			WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		}else{

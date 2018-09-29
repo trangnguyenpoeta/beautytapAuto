@@ -4,13 +4,19 @@
    <name>Regression</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-25T11:48:16</lastRun>
+   <lastRun>2018-09-29T11:25:11</lastRun>
    <mailRecipient>trangnt@devblock.net;</mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <testSuiteGuid>d8b78ad3-abff-40f7-9ac9-2b2ff75b26cc</testSuiteGuid>
+   <testCaseLink>
+      <guid>8793dd67-8c70-41f3-a917-aff5036e978b</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Shop/TC09_ScheduleSale_LimitStock_SimpleProduct</testCaseId>
+   </testCaseLink>
    <testCaseLink>
       <guid>042952cb-c050-44f4-a472-99a4766d0f12</guid>
       <isReuseDriver>false</isReuseDriver>

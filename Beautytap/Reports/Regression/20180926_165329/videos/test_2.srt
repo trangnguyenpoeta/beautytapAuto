@@ -1,0 +1,44 @@
+1
+00:00:00,495 --> 00:00:00,496
+1. beautytap.AdminAction.deleteUser
+
+2
+00:00:41,862 --> 00:00:41,863
+5. beautytap.GeneralAction.openBeautytap
+
+3
+00:01:25,610 --> 00:01:25,611
+11. SIGNUP VIA FACEBOOK NOT EXIST IN SYSTEM
+
+4
+00:01:29,274 --> 00:01:29,275
+15. beautytap.GeneralAction.signupViaFacebook
+
+5
+00:01:50,136 --> 00:01:50,136
+21. VP1: Verify user is logged in after Signup via Facebook
+
+6
+00:01:50,204 --> 00:01:50,204
+25. beautytap.GeneralAction.logout
+
+7
+00:01:51,714 --> 00:01:51,715
+31. LOGIN VIA FACEBOOK NOT EXIST IN SYSTEM
+
+8
+00:02:33,602 --> 00:02:33,603
+35. beautytap.GeneralAction.openBeautytap
+
+9
+00:03:04,562 --> 00:03:04,564
+39. beautytap.GeneralAction.clickNavigationMenu
+
+10
+00:03:07,091 --> 00:03:07,091
+43. beautytap.GeneralAction.login
+
+11
+00:03:11,368 --> 00:03:11,369
+49. VP2: Verify user is logged in via Facebook 
+
