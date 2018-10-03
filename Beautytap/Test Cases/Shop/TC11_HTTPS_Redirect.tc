@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC11_HTTPS_Redirect</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>24d20ee9-63b6-483d-89f3-f919dd08d3d2</testCaseGuid>
+</TestCaseEntity>

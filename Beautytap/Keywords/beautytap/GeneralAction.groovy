@@ -133,8 +133,8 @@ public class GeneralAction {
 		println "START KEYWORD verifyEmailExist";
 		if(mailBoxType=='mailinator'){
 			TestObject email = new TestObject();
-			email.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'all_message-min_text') and text()='" + subject + "']");
-			WebUI.verifyElementPresent(email, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
+			email.addProperty("xpath",ConditionType.EQUALS,"//tr[starts-with(@id,'row_')]/td[starts-with(text(),'"+ subject +"')]");
+			WebUI.verifyElementPresent(email, GlobalVariable.TIMEOUT, FailureHandling.CONTINUE_ON_FAILURE);
 		}
 		println "END KEYWORD verifyEmailExist";
 	}
@@ -146,7 +146,7 @@ public class GeneralAction {
 		println "START KEYWORD openEmail";
 		if(mailBoxType=='mailinator'){
 			TestObject obj_email = new TestObject();
-			obj_email.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'all_message-min_text') and text()='" + subject + "']")
+			obj_email.addProperty("xpath",ConditionType.EQUALS,"//tr[starts-with(@id,'row_')]/td[starts-with(text(),'"+ subject +"')]")
 			WebUI.click(obj_email);
 		}
 		println "END KEYWORD openEmail";

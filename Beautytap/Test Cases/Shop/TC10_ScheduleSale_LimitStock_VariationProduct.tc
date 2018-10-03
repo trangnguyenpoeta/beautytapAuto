@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC10_ScheduleSale_LimitStock_VariationProduct</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b47c4c83-9fc2-4532-93ab-6bfdd7ce1b70</testCaseGuid>
+</TestCaseEntity>

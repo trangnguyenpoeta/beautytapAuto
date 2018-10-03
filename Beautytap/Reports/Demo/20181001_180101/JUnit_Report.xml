@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Demo" time="116" tests="0" failures="1" errors="0">
+   <testsuite name="Demo" tests="0" failures="1" errors="0" time="116" timestamp="2018-10-01 18:01:06" hostname="Trang Nguyen - DESKTOP-G1UHP65" id="Test Suites/Demo">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Demo\\20181001_180101"/>
+         <property name="logFiles" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Demo\\20181001_180101\\execution0.log"/>
+         <property name="attachments" value="E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Demo\\20181001_180101\\1538391747687.png, E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Demo\\20181001_180101\\1538391778934.png"/>
+         <property name="hostName" value="Trang Nguyen - DESKTOP-G1UHP65"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="5.5.0.1"/>
+         <property name="browser" value="Chrome 69.0.3497.100"/>
+         <property name="hostAddress" value="10.0.0.146"/>
+         <property name="sessionId" value="89aedee79066af2afd9acb205b5e30f6"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email" classname="Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email" status="FAILED">
+         <failure type="FAILED" message="Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)"/>
+         <system-out><![CDATA[2018-10-01 18:01:06 - [TEST_CASE][FAILED] - Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email: Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email FAILED because (of) Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)
+
+2018-10-01 18:01:07 - [TEST_STEP][PASSED] - Statement - r_string = new java.lang.Math().random().toString().substring(2, 8): null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - username = "auto" + r_string: null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - email = username + "@mailinator.com": null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - password = "123456": null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - newpassword = "test123": null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - name = "Auto User " + r_string: null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - birthday = "01/01/1990": null
+
+2018-10-01 18:01:08 - [TEST_STEP][PASSED] - Statement - activation_subject = SITE_TITLE + " Activate your account": null
+
+2018-10-01 18:01:09 - [TEST_STEP][PASSED] - Statement - resetpass_subject = SITE_TITLE + " Password Reset": null
+
+2018-10-01 18:01:09 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openBeautytap: beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-10-01 18:01:27 - [MESSAGE][PASSED] - Browser is opened with url: 'https://stage.beautytap.com'
+
+2018-10-01 18:01:28 - [MESSAGE][PASSED] - Current window maximized
+
+2018-10-01 18:01:33 - [MESSAGE][PASSED] - Refresh successfully
+
+2018-10-01 18:01:33 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-10-01 18:01:33 - [MESSAGE][PASSED] - beautytap.GeneralAction.openBeautytap is PASSED
+
+2018-10-01 18:01:33 - [TEST_STEP][PASSED] - beautytap.GeneralAction.clickNavigationMenu: beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-10-01 18:01:36 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_General/link_signup' is clicked on
+
+2018-10-01 18:01:36 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-10-01 18:01:36 - [MESSAGE][PASSED] - beautytap.GeneralAction.clickNavigationMenu is PASSED
+
+2018-10-01 18:01:36 - [TEST_STEP][PASSED] - beautytap.GeneralAction.signup: beautytap.GeneralAction.signup is PASSED
+
+2018-10-01 18:01:36 - [MESSAGE][PASSED] - Keys 'auto640059' sent to object: 'Object Repository/Page_Signup/txt_username'
+
+2018-10-01 18:01:37 - [MESSAGE][PASSED] - Keys 'auto640059@mailinator.com' sent to object: 'Object Repository/Page_Signup/txt_email'
+
+2018-10-01 18:01:37 - [MESSAGE][PASSED] - Keys '123456' sent to object: 'Object Repository/Page_Signup/txt_password'
+
+2018-10-01 18:01:37 - [MESSAGE][PASSED] - Keys 'Auto User 640059' sent to object: 'Object Repository/Page_Signup/txt_name'
+
+2018-10-01 18:01:38 - [MESSAGE][PASSED] - Keys '01/01/1990' sent to object: 'Object Repository/Page_Signup/txt_birthday'
+
+2018-10-01 18:01:38 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_Signup/btn_signup' is clicked on
+
+2018-10-01 18:01:38 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-10-01 18:01:38 - [MESSAGE][PASSED] - beautytap.GeneralAction.signup is PASSED
+
+2018-10-01 18:01:38 - [TEST_STEP][PASSED] - verifyElementPresent: Object 'Object Repository/Page_Signup/lbl_sucessMessage' is present
+
+2018-10-01 18:01:43 - [MESSAGE][PASSED] - Object 'Object Repository/Page_Signup/lbl_sucessMessage' is present
+
+2018-10-01 18:01:43 - [TEST_STEP][PASSED] - beautytap.GeneralAction.openMailBox: beautytap.GeneralAction.openMailBox is PASSED
+
+2018-10-01 18:01:45 - [MESSAGE][PASSED] - Navigate to 'https://www.mailinator.com' successfully
+
+2018-10-01 18:01:45 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-10-01 18:01:45 - [MESSAGE][PASSED] - Keys 'auto640059' sent to object: 'Object Repository/Page_mailinator/txt_email'
+
+2018-10-01 18:01:51 - [MESSAGE][PASSED] - Object: 'Object Repository/Page_mailinator/btn_go' is clicked on
+
+2018-10-01 18:01:51 - [MESSAGE][PASSED] - Wait for page load successfully
+
+2018-10-01 18:01:56 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-10-01 18:01:56 - [MESSAGE][PASSED] - beautytap.GeneralAction.openMailBox is PASSED
+
+2018-10-01 18:01:56 - [TEST_STEP][PASSED] - beautytap.GeneralAction.verifyEmailExist: beautytap.GeneralAction.verifyEmailExist is PASSED
+
+2018-10-01 18:02:27 - [MESSAGE][WARNING] - com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Demo\\20181001_180101\\1538391747687.png]]
+
+2018-10-01 18:02:27 - [MESSAGE][PASSED] - beautytap.GeneralAction.verifyEmailExist is PASSED
+
+2018-10-01 18:02:27 - [TEST_STEP][FAILED] - beautytap.GeneralAction.openEmail: Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)
+
+2018-10-01 18:02:59 - [MESSAGE][FAILED] - Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)
+[[ATTACHMENT|E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Demo\\20181001_180101\\1538391778934.png]]
+
+2018-10-01 18:02:59 - [MESSAGE][FAILED] - Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)]]></system-out>
+         <system-err><![CDATA[2018-10-01 18:01:06 - [TEST_CASE][FAILED] - Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email: Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email FAILED because (of) Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-10-01 18:01:06 - [TEST_SUITE][FAILED] - Demo: Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email FAILED because (of) Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)]]></system-out>
+      <system-err><![CDATA[2018-10-01 18:01:06 - [TEST_SUITE][FAILED] - Demo: Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email FAILED because (of) Unable to click on object '' (Root cause: com.kms.katalon.core.webui.exception.WebElementNotFoundException: Web element with id: '' located by 'By.xpath: //div[starts-with(@class,'all_message-min_text') and text()='[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics] Activate your account']' not found)]]></system-err>
+   </testsuite>
+</testsuites>

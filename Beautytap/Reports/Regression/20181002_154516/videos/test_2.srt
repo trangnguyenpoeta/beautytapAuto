@@ -1,0 +1,140 @@
+1
+00:00:00,453 --> 00:00:00,464
+1. Statement - username = USER_EMAIL
+
+2
+00:00:00,472 --> 00:00:00,473
+5. Statement - password = USER_PASSWORD
+
+3
+00:00:00,493 --> 00:00:00,493
+9. Statement - productName = SIMPLE_PRODUCT
+
+4
+00:00:00,506 --> 00:00:00,506
+13. Statement - price = SIMPLE_PRODUCT_PRICE
+
+5
+00:00:00,506 --> 00:00:00,506
+17. Statement - quantity = 3
+
+6
+00:00:00,522 --> 00:00:00,522
+21. Statement - shippingLabel = FREE_SHIPPING_LABEL
+
+7
+00:00:00,539 --> 00:00:00,540
+25. Statement - shippingPrice = 0
+
+8
+00:00:00,543 --> 00:00:00,543
+29. Statement - pointUsed = 60
+
+9
+00:00:00,559 --> 00:00:00,559
+33. Statement - pointValueUsed = 2
+
+10
+00:00:00,574 --> 00:00:00,574
+37. Statement - subtotal = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, price)
+
+11
+00:00:00,621 --> 00:00:00,621
+41. Statement - subtotalApplyReward = java.lang.Float.parseFloat(java.lang.String.format("%.2f", subtotal - pointValueUsed))
+
+12
+00:00:00,636 --> 00:00:00,636
+45. Statement - total = java.lang.Float.parseFloat(java.lang.String.format("%.2f", subtotal - pointValueUsed + shippingPrice))
+
+13
+00:00:00,636 --> 00:00:00,652
+49. Statement - products = new org.json.JSONArray((((((([{"productname":" + productName) + ","variation":"","quantity":") + quantity) + ","price":") + price) + "}]))
+
+14
+00:00:00,652 --> 00:00:00,652
+53. Statement - billingInformation = new org.json.JSONObject((({"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":" + username) + "}))
+
+15
+00:00:00,669 --> 00:00:00,670
+57. Statement - paymentMethod = "PayPal"
+
+16
+00:00:00,676 --> 00:00:00,676
+61. beautytap.GeneralAction.openBeautytap
+
+17
+00:00:18,531 --> 00:00:18,532
+65. beautytap.GeneralAction.clickNavigationMenu
+
+18
+00:00:21,584 --> 00:00:21,585
+69. beautytap.GeneralAction.login
+
+19
+00:00:22,537 --> 00:00:22,538
+73. beautytap.GeneralAction.selectProfileMenu
+
+20
+00:00:36,806 --> 00:00:36,807
+79. Get current multiplier, lifetime, pending, redeemable points, point value
+
+21
+00:00:37,337 --> 00:00:37,337
+83. Statement - multiplier = java.lang.Float.parseFloat(objReward.get("multiplier"))
+
+22
+00:00:37,353 --> 00:00:37,353
+87. Statement - currentlevel = objReward.get("currentlevel")
+
+23
+00:00:37,353 --> 00:00:37,353
+91. Statement - lifetime = java.lang.Float.parseFloat(objReward.get("lifetime"))
+
+24
+00:00:37,368 --> 00:00:37,368
+95. Statement - pending = java.lang.Float.parseFloat(objReward.get("pending"))
+
+25
+00:00:37,368 --> 00:00:37,368
+99. Statement - redeemable = java.lang.Float.parseFloat(objReward.get("redeemable"))
+
+26
+00:00:37,385 --> 00:00:37,386
+103. Statement - pointvalue = java.lang.Float.parseFloat(objReward.get("pointvalue"))
+
+27
+00:00:37,391 --> 00:00:37,392
+107. Statement - rewardEarned = java.lang.Float.parseFloat(java.lang.String.format("%.2f", multiplier * subtotal - pointValueUsed))
+
+28
+00:00:37,399 --> 00:00:37,399
+113. Buy a nother product and use reward point
+
+29
+00:00:44,483 --> 00:00:44,483
+117. beautytap.ShopAction.selectProductOnSearchResult
+
+30
+00:00:51,089 --> 00:00:51,090
+121. beautytap.ShopAction.addProductToCart
+
+31
+00:00:56,603 --> 00:00:56,603
+125. beautytap.ShopAction.goToCart
+
+32
+00:01:01,439 --> 00:01:01,440
+131. Process to checkout
+
+33
+00:01:07,185 --> 00:01:07,186
+137. Apply Reward point
+
+34
+00:01:08,235 --> 00:01:08,236
+143. Fill customer information
+
+35
+00:01:22,484 --> 00:01:22,485
+149. VP1: Verify Order details on checkout page with reward discount
+
