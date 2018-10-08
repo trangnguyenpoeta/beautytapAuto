@@ -128,6 +128,12 @@ def static "beautytap.ShopAction.selectProductOnSearchResult"(
         	productName)
 }
 
+def static "beautytap.ShopAction.selectSearchResult"(
+    	String resuleName	) {
+    (new beautytap.ShopAction()).selectSearchResult(
+        	resuleName)
+}
+
 def static "beautytap.ShopAction.selectProductVariation"(
     	String variation	) {
     (new beautytap.ShopAction()).selectProductVariation(

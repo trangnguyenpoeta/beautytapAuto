@@ -35,54 +35,28 @@ import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang3.time.DateUtils
 
 
-//JSONArray products = new JSONArray('[{"productname":"107 Oneoseven Core Flex Cream Essence 50ml","variation":"","quantity":"1","price":"73"},{"productname":"The Face Shop Coca Cola Oil Control Moisture Cushion 2 Choices","variation":"","quantity":"1","price":"35"},{"productname":"The Face Shop Coca Cola Lip Tint 5 Choices","variation":"01 Enjoy Sunshine","quantity":"1","price":"10"}]')//float subtotal=118
-//float discount=5
-//float shippingPrice
-//String shippingLabel='Free shipping for orders over $60'
-//String paymentMethod='Amazon Pay'
-//float total =113
-//float redeemablePoint= 124.3
-
-//Date date = new Date();
-//DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-
-// Use Madrid's time zone to format the date in
-//df.setTimeZone(TimeZone.getTimeZone("UTC"))
-//String currentdate =df.format(date)
-//Date d=df.parse(currentdate)
-
-//println currentdate
-//print d
-//date = DateUtils.addMinutes(d, 5) 
-//currentdate =df.format(date)
-//rintln currentdate 
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'("https://stage.beautytap.com/login")
-//CustomKeywords.'beautytap.GeneralAction.login'("email", "mrwhite", 'kgySM$Im')
-//WebUI.navigateToUrl("https://stage.beautytap.com/admin")
-//JSONArray variation =new JSONArray('[{"variation":"#001","price":"8.9"},{"variation":"#002","price":"9.99"}]')
-
-//CustomKeywords.'beautytap.AdminAction.selectAdminMenu'('Products', '')
-//CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'("test schedule product 2 variation", 0,variation, "2018-09-11 02:17:28", "2018-09-11 02:22:28")
-//Set variable
-String productName = GlobalVariable.SCHEDULE_SIMPLE_PRODUCT
-float regularPrice = GlobalVariable.SCHEDULE_REGULAR_PRICE
-float salePrice = GlobalVariable.SCHEDULE_SALE_PRICE
-int quantity = 5
-float subtotalRegular = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, regularPrice)
-float subtotalSale = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, salePrice)
-String shippingType = 'free'
-String shippingLabel = GlobalVariable.FREE_SHIPPING_LABEL
-int schedulTimeout = 300
-String limitStockSchedule = 'yes'
-JSONArray variation = new JSONArray()
-//Start Test
-'Login as Admin'
-//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL+'/wp-admin')
-//CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
-//CustomKeywords.'beautytap.GeneralAction.login'("email", GlobalVariable.ADMIN_USERNAME, GlobalVariable.ADMIN_PASSWORD)
-//CustomKeywords.'beautytap.AdminAction.selectAdminMenu'("Products", "")
-//JSONObject datetime = CustomKeywords.'beautytap.ShopAction.generateScheduleDateTime'(GlobalVariable.TIMEZONE, 8, 5)
-//String startDate = datetime.get("startdate")
-//String endDate = datetime.get("enddate")
-//CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'(productName, salePrice, variation , startDate, endDate,limitStockSchedule)
-CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, "", salePrice, quantity, subtotalSale)
+/*//Set variable
+String productName = GlobalVariable.VARIATION_PRODUCT
+float price = GlobalVariable.VARIATION_PRICE1
+String variation = GlobalVariable.VARIATION_NAME1
+String r_string = new Math().random().toString().substring(2, 8)
+String email = 'auto' + r_string + '@mailinator.com'
+String orderNote = 'auto' + r_string + 'Order'
+int currentNumberItemInCart
+int quantity = 8
+float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, price)
+float total=subtotal
+total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
+JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"'+variation+'","quantity":"'+ quantity +'","price":"'+ price +'"}]')
+JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
+String shippingLabel = GlobalVariable.FREE_EMS_SHIPPING_LABEL
+float shippingPrice = 0
+String shippingType = 'freeEMS'
+String paymentMethod ='Amazon Pay'
+//---------------------------------------------------------
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)*/
+//TestObject obj_product = new TestObject()
+//obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(text(),'Results from Variation')]/following::h3/a[@class='asp_res_url']")
+//println WebUI.getText(obj_product)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'('MeloMELI Unicorn Heart Lake Cushion — 2 Choices')

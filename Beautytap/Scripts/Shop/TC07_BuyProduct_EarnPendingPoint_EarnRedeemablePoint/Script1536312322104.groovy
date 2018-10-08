@@ -50,7 +50,7 @@ float rewardEarned = Float.parseFloat(String.format("%.2f", multiplier*subtotal)
 String notificationMessage = "You received "+ rewardEarned +" redeemable points"
 'Buy a product'
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
 CustomKeywords.'beautytap.ShopAction.goToCart'()
 'Process to checkout'

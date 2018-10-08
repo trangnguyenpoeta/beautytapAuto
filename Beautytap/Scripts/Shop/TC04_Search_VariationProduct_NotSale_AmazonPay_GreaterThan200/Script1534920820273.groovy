@@ -44,7 +44,7 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 'VP1: Verify product display in search result panel with regular price'
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, price, "pink", 0, null)
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variation)
 'VP2: Verify product detail page display with regular price'
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, variation, price, "pink", 0, null)

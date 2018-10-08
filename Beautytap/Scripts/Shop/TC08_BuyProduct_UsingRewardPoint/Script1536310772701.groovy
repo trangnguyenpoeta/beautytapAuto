@@ -52,7 +52,7 @@ float pointvalue = Float.parseFloat(objReward.get("pointvalue"))
 float rewardEarned = Float.parseFloat(String.format("%.2f", multiplier*(subtotal-pointValueUsed)))
 'Buy a nother product and use reward point'
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
 CustomKeywords.'beautytap.ShopAction.goToCart'()
 'Process to checkout'

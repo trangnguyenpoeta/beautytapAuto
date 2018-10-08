@@ -41,8 +41,8 @@ float totalSale = Float.parseFloat(String.format("%.2f",subtotalSale + shippingP
 int schedulTimeout = 300
 String limitStockSchedule = 'yes'
 JSONArray variation = new JSONArray()
-int scheduleDelay = 3
-int scheduleDuration = 3
+int scheduleDelay = 4
+int scheduleDuration = 4
 String paymentMethod = 'Amazon Pay'
 //Start Test
 'Login as Admin'
@@ -61,7 +61,7 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularPrice, "pink", 0, null)
 'VP2: Verify before schedule, regular price display on Product Detail'
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "pink", 0, null)
 'VP3: Verify before schedule, regular price display on Product List'
 CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", "")
@@ -90,7 +90,7 @@ CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONE, s
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularPrice, "grey", salePrice, "pink")
 'VP8: Verify during schedule, SALE price display on Product Detail'
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "grey", salePrice , "pink")
 'VP9: Verify during schedule, SALE price display on Product List'
 CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", "")
@@ -123,7 +123,7 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularPrice, "pink", 0, null)
 'VP15: Verify AFTER schedule, regular price display on Product Detail'
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "pink", 0, null)
 'VP16: Verify AFTER schedule, regular price display on Product List'
 CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", "")

@@ -23,7 +23,6 @@ import internal.GlobalVariable as GlobalVariable
 
 //Set variable
 String productName = GlobalVariable.SIMPLE_SALE_PRODUCT
-String searchName = productName.substring(0, productName.indexOf('/'))
 float saleprice = GlobalVariable.SIMPLE_SALE_PRICE
 float regularprice = GlobalVariable.SIMPLE_SALE_REGULAR_PRICE
 String r_string = new Math().random().toString().substring(2, 8)
@@ -42,10 +41,10 @@ String shippingType = 'normal'
 String paymentMethod ='Credit Card Payment'
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.globalSearch'(searchName)
+CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 'VP1: Verify product display in search result panel with regular price'
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularprice, "grey",saleprice, "pink")
-CustomKeywords.'beautytap.ShopAction.selectProductOnSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 'VP2: Verify product detail page display with regular price'
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularprice, "grey", saleprice, "pink")
 currentNumberItemInCart = CustomKeywords.'beautytap.ShopAction.getNumberItemInCart'()

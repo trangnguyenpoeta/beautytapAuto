@@ -64,7 +64,8 @@ public class ShopAction {
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.clearText(findTestObject('Object Repository/Page_General/txt_search'));
 		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), Keys.chord(Keys.CONTROL, 'v'));
-		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/div_searchResult'), GlobalVariable.LONG_TIMEOUT);
+		//WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/div_searchResult'), GlobalVariable.SHORT_TIMEOUT*3);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD globalSearch";
 	}
 
@@ -73,12 +74,35 @@ public class ShopAction {
 	def selectProductOnSearchResult(String productName) {
 		println "START KEYWORD selectProductOnSearchResult";
 		TestObject obj_product = new TestObject();
-		obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]/ancestor::div[@class='des']/h4/a[text()='buy now']");
+		obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(text(),'Results from Products')]/following::h3/a[@class='asp_res_url']");
+		//obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]/ancestor::div[@class='des']/h4/a[text()='buy now']");
 		WebUI.click(obj_product);
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		println "END KEYWORD selectProductOnSearchResult";
 	}
 
+	//Select search result
+	@Keyword
+	def selectSearchResult(String resuleName){
+		println "START KEYWORD selectSearchResult";
+		TestObject obj_result = new TestObject();
+		int i=1;
+		String xpath = "//div[@class='resdrg']/div[starts-with(@class,'item')]["+ i +"]/div/h3/a";
+		obj_result.addProperty("xpath",ConditionType.EQUALS,xpath);
+		String linkText = WebUI.getText(obj_result);
+		while(WebUI.verifyElementPresent(obj_result, GlobalVariable.SHORT_TIMEOUT, FailureHandling.CONTINUE_ON_FAILURE)==true){
+			if(linkText==resuleName){
+				WebUI.click(obj_result);
+				WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+				break;
+			}
+			i= i+1;
+			xpath = "//div[@class='resdrg']/div[starts-with(@class,'item')]["+ i +"]/div/h3/a";
+			obj_result.addProperty("xpath",ConditionType.EQUALS,xpath);
+		}
+		println "END KEYWORD selectSearchResult";
+	}
+	
 	//Select product variation
 	@Keyword
 	def selectProductVariation(String variation) {
@@ -96,80 +120,76 @@ public class ShopAction {
 	@Keyword
 	def VerifyProductOnSearchResult(String productName,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor) {
 		println "START KEYWORD VerifyProductOnSearchResult";
-		if(regularPrice==null){
-			regularPrice= 0;
-		}
-		if(salePrice==null){
-			salePrice = 0;
-		}
-
-		if(regularPriceColor!=null && regularPriceColor=="pink"){
-			regularPriceColor = "rgba(255, 35, 134, 1)";
-		}
-		if(regularPriceColor!=null && regularPriceColor=="grey"){
-			regularPriceColor = "rgba(195, 195, 195, 1)";
-		}
-		if(salePriceColor!=null && salePriceColor=="pink"){
-			salePriceColor = "rgba(255, 35, 134, 1)";
-		}
-		if(salePriceColor!=null && salePriceColor=="grey"){
-			salePriceColor = "rgba(195, 195, 195, 1)";
-		}
-		String result = "true";
-		TestObject obj_product =new TestObject();
-		obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]");
-		try {
-			if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
-				//Check Regular Price
-				if(regularPrice!= 0){
-					TestObject obj_regularPrice = new TestObject();
-					obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][1]");
-					float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
-					println "Regular price "+ currentRegularPrice;
-					println regularPrice;
-					if(currentRegularPrice!=regularPrice){
-						result = "false" ;
-					}
-					if(regularPriceColor!=null){
-						println "regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
-						println regularPriceColor;
-						if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
-							result = "false" ;
-						}
-					}
-				}
-				//Check Sale Price
-				if(salePrice!=0){
-					TestObject obj_salePrice = new TestObject();
-					obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][2]");
-					float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
-					println "Sale price "+ currentSalePrice;
-					println salePrice;
-					if(currentSalePrice!=salePrice){
-						result = "false";
-					}
-					if(salePriceColor!=null){
-						println "regular color " + WebUI.getCSSValue(obj_salePrice, "color");
-						println salePriceColor;
-						if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
-							result = "false";
-						}
-					}
-				}
-
-			} else{
-				result = "false";
-			}
-
-			if(result=="true"){
-				KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
-			}else{
-				KeywordUtil.markFailed("Keyword VerifyProductOnSearchResult is Failed");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace()
-		}
+		/*if(regularPrice==null){
+		 regularPrice= 0;
+		 }
+		 if(salePrice==null){
+		 salePrice = 0;
+		 }
+		 if(regularPriceColor!=null && regularPriceColor=="pink"){
+		 regularPriceColor = "rgba(255, 35, 134, 1)";
+		 }
+		 if(regularPriceColor!=null && regularPriceColor=="grey"){
+		 regularPriceColor = "rgba(195, 195, 195, 1)";
+		 }
+		 if(salePriceColor!=null && salePriceColor=="pink"){
+		 salePriceColor = "rgba(255, 35, 134, 1)";
+		 }
+		 if(salePriceColor!=null && salePriceColor=="grey"){
+		 salePriceColor = "rgba(195, 195, 195, 1)";
+		 }
+		 String result = "true";
+		 TestObject obj_product =new TestObject();
+		 obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]");
+		 try {
+		 if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
+		 //Check Regular Price
+		 if(regularPrice!= 0){
+		 TestObject obj_regularPrice = new TestObject();
+		 obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][1]");
+		 float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
+		 println "Regular price "+ currentRegularPrice;
+		 println regularPrice;
+		 if(currentRegularPrice!=regularPrice){
+		 result = "false" ;
+		 }
+		 if(regularPriceColor!=null){
+		 println "regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
+		 println regularPriceColor;
+		 if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
+		 result = "false" ;
+		 }
+		 }
+		 }
+		 //Check Sale Price
+		 if(salePrice!=0){
+		 TestObject obj_salePrice = new TestObject();
+		 obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][2]");
+		 float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
+		 println "Sale price "+ currentSalePrice;
+		 println salePrice;
+		 if(currentSalePrice!=salePrice){
+		 result = "false";
+		 }
+		 if(salePriceColor!=null){
+		 println "regular color " + WebUI.getCSSValue(obj_salePrice, "color");
+		 println salePriceColor;
+		 if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
+		 result = "false";
+		 }
+		 }
+		 }
+		 } else{
+		 result = "false";
+		 }
+		 if(result=="true"){
+		 KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
+		 }else{
+		 KeywordUtil.markFailed("Keyword VerifyProductOnSearchResult is Failed");
+		 }
+		 } catch (Exception e) {
+		 e.printStackTrace()
+		 }*/
 		println "END KEYWORD VerifyProductOnSearchResult";
 	}
 
@@ -1772,7 +1792,7 @@ public class ShopAction {
 		obj_applyRewardMessage.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-message' and text()='Reward applied successfully.']");
 		WebUI.click(findTestObject('Object Repository/Page_Checkout/link_clickToRedeem'));
 		WebUI.check(obj_pointRadio);
-		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_applyReward'));
+		//WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_applyReward'));
 		WebUI.waitForElementPresent(obj_applyRewardMessage, GlobalVariable.SHORT_TIMEOUT*2);
 		println "END KEYWORD applyLoyaltyRewardPoint";
 	}
