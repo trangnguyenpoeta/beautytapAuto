@@ -209,4 +209,29 @@
       <initValue>'UTC'</initValue>
       <name>TIMEZONE</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'PURITO Defence Barrier pH Cleanser 150ml'</initValue>
+      <name>SCHEDULE_SIMPLE_PRODUCT</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>10.8</initValue>
+      <name>SCHEDULE_SALE_PRICE</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>12.8</initValue>
+      <name>SCHEDULE_REGULAR_PRICE</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'[{&quot;variation&quot;:&quot;1 Box (30ml)&quot;,&quot;saleprice&quot;:&quot;99.5&quot;,&quot;regularprice&quot;:&quot;109.5&quot;},{&quot;variation&quot;:&quot;1 ea (10ml)&quot;,&quot;saleprice&quot;:&quot;30.5&quot;,&quot;regularprice&quot;:&quot;36.5&quot;}]'</initValue>
+      <name>SCHEDULE_VARIATION_PRICE</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'CALABS Asta Ros Ampoule 2 Choices'</initValue>
+      <name>SCHEDULE_VARIATION_PRODUCT</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

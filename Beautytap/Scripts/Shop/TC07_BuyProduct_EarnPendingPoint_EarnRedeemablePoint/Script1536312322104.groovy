@@ -20,6 +20,7 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import java.text.DecimalFormat
 
 String username = GlobalVariable.USER_EMAIL
 String password = GlobalVariable.USER_PASSWORD
@@ -46,7 +47,8 @@ float lifetime = Float.parseFloat(objReward.get("lifetime"))
 float pending = Float.parseFloat(objReward.get("pending"))
 float redeemable = Float.parseFloat(objReward.get("redeemable"))
 float pointvalue = Float.parseFloat(objReward.get("pointvalue"))
-float rewardEarned = Float.parseFloat(String.format("%.2f", multiplier*subtotal))
+DecimalFormat format = new DecimalFormat("0.##");
+float rewardEarned = Float.parseFloat(format.format( multiplier*subtotal))
 String notificationMessage = "You received "+ rewardEarned +" redeemable points"
 'Buy a product'
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)

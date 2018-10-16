@@ -28,7 +28,7 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.m
 
 
 
-RunConfiguration.setExecutionSettingFile("E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Regression\\20181008_133113\\execution.properties")
+RunConfiguration.setExecutionSettingFile("E:\\BeautytapAutomation\\beautytapAuto\\Beautytap\\Reports\\Regression\\20181016_114922\\execution.properties")
 
 TestCaseMain.beforeStart()
 

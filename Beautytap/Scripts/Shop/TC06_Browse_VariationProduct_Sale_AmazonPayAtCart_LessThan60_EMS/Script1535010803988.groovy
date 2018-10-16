@@ -31,14 +31,14 @@ String email = 'auto' + r_string + '@mailinator.com'
 String orderNote = 'auto' + r_string + 'Order'
 int currentNumberItemInCart
 int quantity = 5
-String shippingLabel = GlobalVariable.EMS_SHIPPING_LABEL
-float shippingPrice = GlobalVariable.EMS_SHIPPING_PRICE
+String shippingLabel = GlobalVariable.SHIPPING_LABEL
+float shippingPrice = GlobalVariable.SHIPPING_PRICE
 float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, saleprice)
 float total=subtotal+shippingPrice
 total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
 JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"'+variation+'","quantity":"'+ quantity +'","price":"'+ saleprice +'"}]')
 JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
-String shippingType = 'EMS'
+String shippingType = 'normal'
 String paymentMethod ='Amazon Pay'
 String category = "Brands"
 String subcategory = "Innisfree"
@@ -62,7 +62,7 @@ CustomKeywords.'beautytap.ShopAction.goToCart'()
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, saleprice, quantity, subtotal)
 'Login amazonPay'
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-CustomKeywords.'beautytap.ShopAction.selectShipping'(shippingType)
+//CustomKeywords.'beautytap.ShopAction.selectShipping'(shippingType)
 'VP5: Verify order details on checkout page'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
 'Checkout via amazonPay'

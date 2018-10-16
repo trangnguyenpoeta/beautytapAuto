@@ -161,17 +161,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'($12.50) Pantos (est. 14-25 working days including processing)'</initValue>
+      <initValue>'($25) - DHL flat rate shipping'</initValue>
       <name>SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>12.50</initValue>
+      <initValue>25.00</initValue>
       <name>SHIPPING_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Free shipping for orders over $60'</initValue>
+      <initValue>'Free shipping for orders over $70'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -226,12 +226,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>[{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;},{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;}]</description>
-      <initValue>''</initValue>
+      <initValue>'[{&quot;variation&quot;:&quot;1 Box (30ml)&quot;,&quot;saleprice&quot;:&quot;99.5&quot;,&quot;regularprice&quot;:&quot;109.5&quot;},{&quot;variation&quot;:&quot;1 ea (10ml)&quot;,&quot;saleprice&quot;:&quot;30.5&quot;,&quot;regularprice&quot;:&quot;36.5&quot;}]'</initValue>
       <name>SCHEDULE_VARIATION_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
+      <initValue>'CALABS Asta Ros Ampoule 2 Choices'</initValue>
       <name>SCHEDULE_VARIATION_PRODUCT</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

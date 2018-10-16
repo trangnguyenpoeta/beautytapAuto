@@ -33,7 +33,7 @@ import org.junit.After
 import com.kms.katalon.core.testobject.ConditionType
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang3.time.DateUtils
-
+import org.openqa.selenium.Keys as Keys;
 
 /*//Set variable
 String productName = GlobalVariable.VARIATION_PRODUCT
@@ -53,10 +53,14 @@ String shippingLabel = GlobalVariable.FREE_EMS_SHIPPING_LABEL
 float shippingPrice = 0
 String shippingType = 'freeEMS'
 String paymentMethod ='Amazon Pay'
-//---------------------------------------------------------
-CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)*/
-//TestObject obj_product = new TestObject()
-//obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(text(),'Results from Variation')]/following::h3/a[@class='asp_res_url']")
-//println WebUI.getText(obj_product)
-CustomKeywords.'beautytap.ShopAction.selectSearchResult'('MeloMELI Unicorn Heart Lake Cushion — 2 Choices')
+//---------------------------------------------------------*/
+//CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+//CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
+//WebUI.delay(20)
+TestObject iframe = new TestObject()
+iframe.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='OffAmazonPaymentsWidgets0IFrame']")
+WebUI.switchToFrame(iframe, 10)
+
+TestObject obj_product = new TestObject()
+obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'address-list-container')]/descendant::li[2]/a")
+println WebUI.getText(obj_product)
