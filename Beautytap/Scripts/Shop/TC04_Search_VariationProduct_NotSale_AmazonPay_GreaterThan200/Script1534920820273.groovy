@@ -34,11 +34,11 @@ float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, 
 float total=subtotal
 total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
 JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"'+variation+'","quantity":"'+ quantity +'","price":"'+ price +'"}]')
-JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
 String shippingLabel = GlobalVariable.FREE_EMS_SHIPPING_LABEL
 float shippingPrice = 0
 String shippingType = 'freeEMS'
 String paymentMethod ='Amazon Pay'
+String amazonAddress = "Trang N. CMT8 Floor 9th, Hochiminh, 3, 700000, Vietnam"
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
@@ -59,6 +59,7 @@ CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation,
 CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 'Login amazonPay'
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'('checkout', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
+CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'(amazonAddress)
 'VP5: Verify order details on checkout page'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
 'Checkout via amazonPay'

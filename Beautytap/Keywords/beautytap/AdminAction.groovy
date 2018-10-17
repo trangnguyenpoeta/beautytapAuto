@@ -178,7 +178,6 @@ public class AdminAction {
 				startDateTextbox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@name,'variable_sale_price_dates_from')]");
 				endDateTextbox.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@name,'variable_sale_price_dates_to')]");
 				soldIndividual.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'woocommerce_variation wc-metabox open')]/descendant::option[@selected='selected' and text()='"+ variationName +"']/ancestor::h3/parent::div/descendant::input[starts-with(@id,'_sold_individually_scheduled')]");
-				WebUI.focus(variationHeader);
 				WebUI.click(variationHeader);
 				GeneralAction.enterText(regularPriceTextBox, variationRegularPrice.toString());
 				GeneralAction.enterText(salePriceTextBox, variationPrice.toString());
@@ -192,7 +191,7 @@ public class AdminAction {
 				}else if (limitStock=='no'){
 					WebUI.uncheck(soldIndividual);
 				}
-				WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+				
 			}
 			WebUI.click(findTestObject('Object Repository/Page_Admin/btn_saveChanges'));
 			WebUI.focus(findTestObject('Object Repository/Page_Admin/txt_productName'));

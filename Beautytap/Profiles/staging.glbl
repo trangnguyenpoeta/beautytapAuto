@@ -161,17 +161,17 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'($12.50) Pantos (est. 14-25 working days including processing)'</initValue>
+      <initValue>'($25) - DHL flat rate shipping'</initValue>
       <name>SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>12.50</initValue>
+      <initValue>25</initValue>
       <name>SHIPPING_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Free shipping for orders over $60'</initValue>
+      <initValue>'Free shipping for orders over $70'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

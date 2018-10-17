@@ -362,6 +362,31 @@ public class ShopAction {
 		println "END KEYWORD loginAmazonPay";
 	}
 
+	//Select amazon address
+	@Keyword
+	def selectAmazonPayAddress(String amazonAddress){
+		TestObject obj_iframe = new TestObject();
+		obj_iframe.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='OffAmazonPaymentsWidgets0IFrame']");
+		WebUI.switchToFrame(obj_iframe, GlobalVariable.SHORT_TIMEOUT);
+		int i = 1;
+		TestObject obj_address = new TestObject();
+		String xpath = "//div[starts-with(@class,'address-list-container')]/descendant::li["+ i +"]/a";
+		obj_address.addProperty("xpath",ConditionType.EQUALS,xpath);
+		while(WebUI.verifyElementPresent(obj_address, GlobalVariable.SHORT_TIMEOUT, FailureHandling.CONTINUE_ON_FAILURE)){
+			String currentAddress = WebUI.getText(obj_address).trim();
+			println "Current address: " + currentAddress;
+			if(amazonAddress == currentAddress){
+				WebUI.click(obj_address);
+				WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+				break;
+			}
+			i = i +1;
+			xpath = "//div[starts-with(@class,'address-list-container')]/descendant::li["+ i +"]/a";
+			obj_address.addProperty("xpath",ConditionType.EQUALS,xpath);
+		}
+		WebUI.switchToWindowIndex(0, FailureHandling.CONTINUE_ON_FAILURE);
+	}
+
 	//Checkout via amazonPay
 	@Keyword
 	def checkoutViaAmazonPay(){

@@ -1,0 +1,84 @@
+1
+00:00:00,884 --> 00:00:00,895
+1. Statement - productName = SCHEDULE_SIMPLE_PRODUCT
+
+2
+00:00:00,993 --> 00:00:01,000
+5. Statement - regularPrice = SCHEDULE_REGULAR_PRICE
+
+3
+00:00:01,041 --> 00:00:01,049
+9. Statement - salePrice = SCHEDULE_SALE_PRICE
+
+4
+00:00:01,059 --> 00:00:01,061
+13. Statement - quantity = 6
+
+5
+00:00:01,101 --> 00:00:01,150
+17. Statement - subtotalRegular = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, regularPrice)
+
+6
+00:00:01,268 --> 00:00:01,280
+21. Statement - subtotalSale = CustomKeywords.beautytap.ShopAction.calculateTotal(1, salePrice)
+
+7
+00:00:01,301 --> 00:00:01,304
+25. Statement - shippingType = "free"
+
+8
+00:00:01,312 --> 00:00:01,317
+29. Statement - shippingLabel = FREE_SHIPPING_LABEL
+
+9
+00:00:01,339 --> 00:00:01,341
+33. Statement - shippingTypeSale = "normal"
+
+10
+00:00:01,353 --> 00:00:01,356
+37. Statement - shippingLabelSale = SHIPPING_LABEL
+
+11
+00:00:01,376 --> 00:00:01,383
+41. Statement - shippingPriceSale = SHIPPING_PRICE
+
+12
+00:00:01,538 --> 00:00:01,540
+45. Statement - totalSale = java.lang.Float.parseFloat(java.lang.String.format("%.2f", subtotalSale + shippingPriceSale))
+
+13
+00:00:01,557 --> 00:00:01,563
+49. Statement - schedulTimeout = 300
+
+14
+00:00:01,574 --> 00:00:01,578
+53. Statement - limitStockSchedule = "yes"
+
+15
+00:00:01,600 --> 00:00:01,631
+57. Statement - variation = new org.json.JSONArray()
+
+16
+00:00:01,661 --> 00:00:01,664
+61. Statement - scheduleDelay = 4
+
+17
+00:00:01,674 --> 00:00:01,676
+65. Statement - scheduleDuration = 4
+
+18
+00:00:01,688 --> 00:00:01,693
+69. Statement - paymentMethod = "Amazon Pay"
+
+19
+00:00:01,779 --> 00:00:01,782
+75. Login as Admin
+
+20
+00:00:21,975 --> 00:00:21,977
+79. beautytap.GeneralAction.login
+
+21
+00:00:32,022 --> 00:00:32,023
+83. beautytap.AdminAction.selectAdminMenu
+

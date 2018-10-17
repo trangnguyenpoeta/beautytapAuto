@@ -57,10 +57,4 @@ String paymentMethod ='Amazon Pay'
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 //CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 //WebUI.delay(20)
-TestObject iframe = new TestObject()
-iframe.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='OffAmazonPaymentsWidgets0IFrame']")
-WebUI.switchToFrame(iframe, 10)
-
-TestObject obj_product = new TestObject()
-obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'address-list-container')]/descendant::li[2]/a")
-println WebUI.getText(obj_product)
+CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'("Trang N. CMT8 Floor 9th, Hochiminh, 3, 700000, Vietnam")

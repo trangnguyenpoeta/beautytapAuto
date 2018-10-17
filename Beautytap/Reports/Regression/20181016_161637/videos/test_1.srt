@@ -1,0 +1,108 @@
+1
+00:00:01,200 --> 00:00:01,212
+1. Statement - productName = SCHEDULE_SIMPLE_PRODUCT
+
+2
+00:00:01,279 --> 00:00:01,285
+5. Statement - regularPrice = SCHEDULE_REGULAR_PRICE
+
+3
+00:00:01,296 --> 00:00:01,298
+9. Statement - salePrice = SCHEDULE_SALE_PRICE
+
+4
+00:00:01,310 --> 00:00:01,316
+13. Statement - quantity = 6
+
+5
+00:00:01,331 --> 00:00:01,338
+17. Statement - subtotalRegular = CustomKeywords.beautytap.ShopAction.calculateTotal(quantity, regularPrice)
+
+6
+00:00:01,448 --> 00:00:01,459
+21. Statement - subtotalSale = CustomKeywords.beautytap.ShopAction.calculateTotal(1, salePrice)
+
+7
+00:00:01,609 --> 00:00:01,614
+25. Statement - shippingType = "free"
+
+8
+00:00:01,626 --> 00:00:01,633
+29. Statement - shippingLabel = FREE_SHIPPING_LABEL
+
+9
+00:00:01,760 --> 00:00:01,762
+33. Statement - shippingTypeSale = "normal"
+
+10
+00:00:01,871 --> 00:00:01,875
+37. Statement - shippingLabelSale = SHIPPING_LABEL
+
+11
+00:00:01,932 --> 00:00:01,938
+41. Statement - shippingPriceSale = SHIPPING_PRICE
+
+12
+00:00:02,001 --> 00:00:02,010
+45. Statement - totalSale = java.lang.Float.parseFloat(java.lang.String.format("%.2f", subtotalSale + shippingPriceSale))
+
+13
+00:00:02,018 --> 00:00:02,021
+49. Statement - schedulTimeout = 300
+
+14
+00:00:02,087 --> 00:00:02,095
+53. Statement - limitStockSchedule = "yes"
+
+15
+00:00:02,108 --> 00:00:02,125
+57. Statement - variation = new org.json.JSONArray()
+
+16
+00:00:02,229 --> 00:00:02,232
+61. Statement - scheduleDelay = 4
+
+17
+00:00:02,292 --> 00:00:02,295
+65. Statement - scheduleDuration = 4
+
+18
+00:00:02,311 --> 00:00:02,316
+69. Statement - paymentMethod = "Amazon Pay"
+
+19
+00:00:02,383 --> 00:00:02,398
+75. Login as Admin
+
+20
+00:00:22,063 --> 00:00:22,065
+79. beautytap.GeneralAction.login
+
+21
+00:00:32,474 --> 00:00:32,476
+83. beautytap.AdminAction.selectAdminMenu
+
+22
+00:00:45,107 --> 00:00:45,108
+87. Statement - datetime = CustomKeywords.beautytap.ShopAction.generateScheduleDateTime(TIMEZONE, scheduleDelay, scheduleDuration)
+
+23
+00:00:45,179 --> 00:00:45,181
+91. Statement - startDate = datetime.get("startdate")
+
+24
+00:00:45,189 --> 00:00:45,190
+95. Statement - endDate = datetime.get("enddate")
+
+25
+00:00:45,197 --> 00:00:45,199
+99. beautytap.AdminAction.scheduleSaleProduct
+
+26
+00:02:01,462 --> 00:02:01,464
+103. closeBrowser
+
+27
+00:02:02,544 --> 00:02:02,551
+109. VP1: Verify before schedule, regular price display on Search result
+

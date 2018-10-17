@@ -1,0 +1,40 @@
+1
+00:00:00,508 --> 00:00:00,509
+1. Statement - r_string = new java.lang.Math().random().toString().substring(2, 8)
+
+2
+00:00:00,575 --> 00:00:00,577
+5. Statement - username = "auto" + r_string
+
+3
+00:00:00,589 --> 00:00:00,590
+9. Statement - email = username + "@mailinator.com"
+
+4
+00:00:00,617 --> 00:00:00,640
+13. Statement - password = "123456"
+
+5
+00:00:00,649 --> 00:00:00,660
+17. Statement - newpassword = "test123"
+
+6
+00:00:00,670 --> 00:00:00,672
+21. Statement - name = "Auto User " + r_string
+
+7
+00:00:00,686 --> 00:00:00,688
+25. Statement - birthday = "01/01/1990"
+
+8
+00:00:00,725 --> 00:00:00,726
+29. Statement - activation_subject = SITE_TITLE + " Activate your account"
+
+9
+00:00:00,734 --> 00:00:00,735
+33. Statement - resetpass_subject = SITE_TITLE + " Password Reset"
+
+10
+00:00:00,750 --> 00:00:00,751
+37. beautytap.GeneralAction.openBeautytap
+

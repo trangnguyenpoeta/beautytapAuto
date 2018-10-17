@@ -34,6 +34,8 @@ JSONArray variation = new JSONArray(jsonArrayVariation)
 int quantity =2
 JSONObject obj_variation1 = variation.get(0)
 JSONObject obj_variation2 = variation.get(1)
+println obj_variation1
+println obj_variation2
 String variationName1 = obj_variation1.get("variation")
 float regularPrice1 = Float.parseFloat(obj_variation1.get("regularprice"))
 float salePrice1 = Float.parseFloat(obj_variation1.get("saleprice"))
@@ -46,9 +48,10 @@ float subtotalRegular2 = CustomKeywords.'beautytap.ShopAction.calculateTotal'(qu
 float subtotalSale2 = CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, salePrice2)
 float sumRegularSubTotal =Float.parseFloat(String.format("%.2f", subtotalRegular1+subtotalRegular2))
 float sumSaleSubTotal =Float.parseFloat(String.format("%.2f", subtotalSale1+subtotalSale2))
-int scheduleDelay = 4
-int scheduleDuration = 4
+int scheduleDelay = 6
+int scheduleDuration = 6
 String paymentMethod = 'Amazon Pay'
+String amazonAddress = "Trang N. CMT8 Floor 9th, Hochiminh, 3, 700000, Vietnam"
 //Start Test
 'Login as Admin'
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL+'/wp-admin')
@@ -89,6 +92,7 @@ CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variation
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variationName2, regularPrice2, quantity, subtotalRegular2)
 'Checkout via amazon pay'
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'("cart", GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
+CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'(amazonAddress)
 'VP5: Verify before schedule, regular price display in Checkout'
 String productArray = '[{"productname":"'+ productName +'","variation":"'+ variationName1 +'","quantity":"'+ quantity +'","price":"'+ regularPrice1 +'"},{"productname":"'+ productName +'","variation":"'+ variationName2 +'","quantity":"'+ quantity +'","price":"'+ regularPrice2 +'"}]'
 JSONArray products = new JSONArray(productArray)
@@ -104,13 +108,15 @@ CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 
 'VP8: Verify during schedule, SALE price display on Product Detail'
 CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variationName1)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, variationName1, regularPrice1, "grey", salePrice1 , "pink")
+CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variationName2)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, variationName2, regularPrice2, "grey", salePrice2 , "pink")
 'VP9: Verify during schedule, SALE price display on Product List'
 WebUI.navigateToUrl(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.selectCategory'("Skincare", "Sensitive Skin")
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, salePrice2, "pink", regularPrice1, "pink")
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, salePrice2, "pink", regularPrice2, "pink")
 'VP10: Verify during schedule,Quantity textbox is not displayed due to limit stock affect'
 WebUI.verifyElementNotPresent(findTestObject('Object Repository/Page_Shop/txt_quantity'), GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)
 'Add product to cart'
@@ -123,8 +129,8 @@ CustomKeywords.'beautytap.ShopAction.VerifyProductIsAddedToCart'(productName)
 'Go to cart'
 CustomKeywords.'beautytap.ShopAction.goToCart'()
 'VP11: Verify during schedule, SALE price display in cart'
-CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variationName1, salePrice1, quantity, subtotalSale1)
-CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variationName2, salePrice2, quantity, subtotalSale2)
+CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variationName1, salePrice1, 1, subtotalSale1)
+CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variationName2, salePrice2, 1, subtotalSale2)
 'Checkout via amazon pay'
 CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'("checkout", GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
@@ -143,13 +149,15 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
 'VP15: Verify AFTER schedule, regular price display on Product Detail'
 CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
+CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variationName1)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, variationName1, regularPrice1, "pink", 0, null)
+CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variationName2)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, variationName2, regularPrice2, "pink", 0, null)
 'VP16: Verify AFTER schedule, regular price display on Product List'
 WebUI.navigateToUrl(GlobalVariable.SITE_URL)
 CustomKeywords.'beautytap.ShopAction.selectCategory'("Skincare", "Sensitive Skin")
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, regularPrice1, "pink", 0, null)
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, regularPrice2, "pink", 0, null)
 'Add product to cart'
 CustomKeywords.'beautytap.ShopAction.selectProductOnProductList'(productName)
 CustomKeywords.'beautytap.ShopAction.selectProductVariation'(variationName1)
@@ -164,6 +172,7 @@ CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variation
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, variationName2, regularPrice2, quantity, subtotalRegular2)
 'Checkout via amazon pay'
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'("cart", GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
+CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'(amazonAddress)
 'VP18: Verify AFTER schedule, regular price display in Checkout'
 String productArrayAfter = '[{"productname":"'+ productName +'","variation":"'+ variationName1 +'","quantity":"'+ quantity +'","price":"'+ regularPrice1 +'"},{"productname":"'+ productName +'","variation":"'+ variationName2 +'","quantity":"'+ quantity +'","price":"'+ regularPrice2 +'"}]'
 JSONArray productsAfter = new JSONArray(productArrayAfter)

@@ -208,6 +208,12 @@ def static "beautytap.ShopAction.loginAmazonPay"(
          , 	amazonPassword)
 }
 
+def static "beautytap.ShopAction.selectAmazonPayAddress"(
+    	String amazonAddress	) {
+    (new beautytap.ShopAction()).selectAmazonPayAddress(
+        	amazonAddress)
+}
+
 def static "beautytap.ShopAction.checkoutViaAmazonPay"() {
     (new beautytap.ShopAction()).checkoutViaAmazonPay()
 }
