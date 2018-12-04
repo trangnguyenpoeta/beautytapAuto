@@ -77,7 +77,7 @@ public class GeneralAction {
 		WebUI.sendKeys(findTestObject("Page_Signup/txt_email"), email);
 		WebUI.sendKeys(findTestObject("Page_Signup/txt_password"), password);
 		WebUI.sendKeys(findTestObject("Page_Signup/txt_name"), name);
-		WebUI.sendKeys(findTestObject("Page_Signup/txt_birthday"), birthday);
+		//WebUI.sendKeys(findTestObject("Page_Signup/txt_birthday"), birthday);
 		WebUI.click(findTestObject("Page_Signup/btn_signup"));
 		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD signup";
