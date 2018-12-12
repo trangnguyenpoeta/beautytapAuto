@@ -41,8 +41,8 @@ float totalSale = Float.parseFloat(String.format("%.2f",subtotalSale + shippingP
 int schedulTimeout = 300
 String limitStockSchedule = 'yes'
 JSONArray variation = new JSONArray()
-int scheduleDelay = 4
-int scheduleDuration = 4
+int scheduleDelay = 5
+int scheduleDuration = 5
 String paymentMethod = 'Amazon Pay'
 //Start Test
 'Login as Admin'
@@ -56,81 +56,72 @@ String endDate = datetime.get("enddate")
 CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'(productName, salePrice, variation , startDate, endDate,limitStockSchedule)
 WebUI.closeBrowser()
 //Verify product BEFORE schedule
-'VP1: Verify before schedule, regular price display on Search result'
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+'VP1: Verify before schedule, regular price display on Product List'
+CustomKeywords.'beautytap.ShopAction.selectCategory'("Skincare", "Skin Concerns")
+CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
+CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, regularPrice, "pink", 0, null)
+'Search product'
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularPrice, "pink", 0, null)
 'VP2: Verify before schedule, regular price display on Product Detail'
 CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "pink", 0, null)
-'VP3: Verify before schedule, regular price display on Product List'
-CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", "")
-CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, regularPrice, "pink", 0, null)
 'Add product to cart'
-CustomKeywords.'beautytap.ShopAction.selectProductOnProductList'(productName)
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
 'Go to cart'
 CustomKeywords.'beautytap.ShopAction.goToCart'()
-'VP4: Verify before schedule, regular price display in cart'
+'VP3: Verify before schedule, regular price display in cart'
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, "", regularPrice, quantity, subtotalRegular)
 'Checkout via amazon pay'
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'("cart", GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-'VP5: Verify before schedule, regular price display in Checkout'
+'VP4: Verify before schedule, regular price display in Checkout'
 String productArray = '[{"productname":"'+ productName +'","variation":"","quantity":"'+ quantity +'","price":"'+ regularPrice +'"}]'
 JSONArray products = new JSONArray(productArray)
 CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotalRegular, shippingType, shippingLabel, 0, subtotalRegular)
 CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
-'VP6: Verify before schedule, regular price display in Order Received'
+'VP5: Verify before schedule, regular price display in Order Received'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotalRegular, 0, shippingLabel, paymentMethod, subtotalRegular)
 'Wait for schedule'
 CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONE, startDate, schedulTimeout)
 //Verify product DURING schedule
-'VP7: Verify during schedule, SALE price display on Search result'
-CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularPrice, "grey", salePrice, "pink")
-'VP8: Verify during schedule, SALE price display on Product Detail'
-CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "grey", salePrice , "pink")
-'VP9: Verify during schedule, SALE price display on Product List'
-CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", "")
+CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
+'VP7: Verify during schedule, SALE price display on Product List'
+CustomKeywords.'beautytap.ShopAction.selectCategory'("Skincare", "Skin Concerns")
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, regularPrice, "grey", salePrice, "pink")
-'VP10: Verify during schedule,Quantity textbox is not displayed due to limit stock affect'
+CustomKeywords.'beautytap.ShopAction.selectProductOnProductList'(productName)
+'VP8: Verify during schedule, SALE price display on Product Detail'
+CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "grey", salePrice , "pink")
+'VP9: Verify during schedule,Quantity textbox is not displayed due to limit stock affect'
 WebUI.verifyElementNotPresent(findTestObject('Object Repository/Page_Shop/txt_quantity'), GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)
 'Add product to cart'
-CustomKeywords.'beautytap.ShopAction.selectProductOnProductList'(productName)
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(0)
 'Go to cart'
 CustomKeywords.'beautytap.ShopAction.goToCart'()
-'VP11: Verify during schedule, SALE price display in cart'
+'VP9: Verify during schedule, SALE price display in cart'
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName, "", salePrice, 1, subtotalSale)
 'Checkout via amazon pay'
 CustomKeywords.'beautytap.ShopAction.processToCheckout'()
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'("checkout", GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-'VP12: Verify during schedule, SALE price display in Checkout'
+'VP10: Verify during schedule, SALE price display in Checkout'
 String productArraySale = '[{"productname":"'+ productName +'","variation":"","quantity":"1","price":"'+ salePrice +'"}]'
 JSONArray productSale = new JSONArray(productArraySale)
 CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(productSale, subtotalSale, shippingTypeSale, shippingLabelSale, shippingPriceSale, totalSale)
 CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
-'VP13: Verify during schedule, SALE price display in Order Received'
+'VP11: Verify during schedule, SALE price display in Order Received'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(productSale, subtotalSale, shippingPriceSale, shippingLabelSale, paymentMethod, totalSale)
 'Wait for schedule'
 CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONE, endDate, schedulTimeout)
 //Verify product AFTER schedule
-'VP14: Verify AFTER schedule, regular price display on Search result'
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductOnSearchResult'(productName, regularPrice, "pink", 0, null)
-'VP15: Verify AFTER schedule, regular price display on Product Detail'
-CustomKeywords.'beautytap.ShopAction.selectSearchResult'(productName)
-CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "pink", 0, null)
-'VP16: Verify AFTER schedule, regular price display on Product List'
-CustomKeywords.'beautytap.ShopAction.selectCategory'("What's New", "")
+'VP12: Verify AFTER schedule, regular price display on Product List'
+CustomKeywords.'beautytap.ShopAction.selectCategory'("Skincare", "Skin Concerns")
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, regularPrice, "pink", 0, null)
-'Add product to cart'
+'VP13: Verify AFTER schedule, regular price display on Product Detail'
 CustomKeywords.'beautytap.ShopAction.selectProductOnProductList'(productName)
+CustomKeywords.'beautytap.ShopAction.VerifyProductDetails'(productName, "", regularPrice, "pink", 0, null)
+'Add product to cart'
 CustomKeywords.'beautytap.ShopAction.addProductToCart'(quantity)
 'Go to cart'
 CustomKeywords.'beautytap.ShopAction.goToCart'()
