@@ -37,13 +37,14 @@ public class AdminAction {
 	@Keyword
 	def deleteUser(String email) {
 		println "START KEYWORD deleteUser";
-		WebUI.openBrowser(GlobalVariable.SITE_URL+"/login");
+		WebUI.openBrowser(GlobalVariable.SITE_URL+"/admin");
 		WebUI.maximizeWindow();
 		WebUI.clearText(findTestObject("Page_login/txt_username"));
 		WebUI.sendKeys(findTestObject("Page_login/txt_username"), GlobalVariable.ADMIN_USERNAME) ;
 		WebUI.clearText(findTestObject("Page_login/txt_password"));
 		WebUI.sendKeys(findTestObject("Page_login/txt_password"), GlobalVariable.ADMIN_PASSWORD) ;
 		WebUI.click(findTestObject("Page_login/btn_login"));
+		//CustomKeywords.'beautytap.GeneralAction.login'(email, GlobalVariable.ADMIN_USERNAME, GlobalVariable.ADMIN_PASSWORD);
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		WebUI.navigateToUrl(GlobalVariable.SITE_URL+"/admin");
@@ -69,7 +70,7 @@ public class AdminAction {
 				WebUI.acceptAlert();
 				WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 				WebUI.click(findTestObject('Object Repository/Page_Admin/btn_confirmDeleteUser'));
-				WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+				WebUI.delay(GlobalVariable.LONG_TIMEOUT);
 			}
 		} catch (Exception e) {
 			e.printStackTrace()
@@ -191,7 +192,7 @@ public class AdminAction {
 				}else if (limitStock=='no'){
 					WebUI.uncheck(soldIndividual);
 				}
-				
+
 			}
 			WebUI.click(findTestObject('Object Repository/Page_Admin/btn_saveChanges'));
 			WebUI.focus(findTestObject('Object Repository/Page_Admin/txt_productName'));

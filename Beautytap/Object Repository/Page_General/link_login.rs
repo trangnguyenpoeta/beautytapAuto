@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@class='group-guest']/a[text()='Login']</value>
+         <value>//a[@class='box-1' and text()='Log In']</value>
       </entry>
       <entry>
          <key>BASIC</key>

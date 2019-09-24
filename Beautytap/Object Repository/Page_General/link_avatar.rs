@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@class='header-right-top pull-right']/a[@class='user']</value>
+         <value>//div[@class='dropdownContainer box profile-box']/a[contains(@class,'user-profile-icon')]</value>
       </entry>
       <entry>
          <key>BASIC</key>

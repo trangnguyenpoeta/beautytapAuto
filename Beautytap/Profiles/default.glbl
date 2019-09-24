@@ -6,7 +6,7 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://stage.beautytap.com'</initValue>
+      <initValue>'https://staging.beautytap.com'</initValue>
       <name>SITE_URL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -46,7 +46,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'[Korean Beauty Products: Shop Korean Skin Care, Makeup + Cosmetics]'</initValue>
+      <initValue>'[Korean Beauty Products]'</initValue>
       <name>SITE_TITLE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -206,7 +206,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>PST: America/Los_Angeles; UTC</description>
-      <initValue>'UTC'</initValue>
+      <initValue>'America/Los_Angeles'</initValue>
       <name>TIMEZONE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

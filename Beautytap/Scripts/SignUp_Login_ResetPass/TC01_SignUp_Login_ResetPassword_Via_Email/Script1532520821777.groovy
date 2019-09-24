@@ -23,17 +23,15 @@ import java.util.Random as Random
 //SET VARIABLE
 String r_string = new Math().random().toString().substring(2, 8)
 
-String username = 'auto' + r_string
+String username = 'beauty' + r_string
 
 String email = username + '@mailinator.com'
 
 String password = '123456'
 
-String newpassword = 'test123'
+String newpassword = '9O8B2HT%@'
 
-String name = 'Auto User ' + r_string
-
-String birthday = '01/01/1990'
+String name = 'Beauty Tap ' + r_string
 
 String activation_subject = GlobalVariable.SITE_TITLE + ' Activate your account'
 
@@ -44,7 +42,7 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 
 CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'('signup')
 
-CustomKeywords.'beautytap.GeneralAction.signup'(username, email, password, name, birthday)
+CustomKeywords.'beautytap.GeneralAction.signup'(username, email, password, password)
 
 'VP1: Verify message displays: Registration successful. A verification email has been sent to you. Please check your inbox.'
 WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Signup/lbl_sucessMessage'), GlobalVariable.TIMEOUT)
@@ -68,6 +66,8 @@ CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'('login')
 
 'Login with username and password'
 CustomKeywords.'beautytap.GeneralAction.login'('email', username, password)
+
+
 
 'VP4: Verify avatar icon displays'
 WebUI.verifyElementPresent(findTestObject('Object Repository/Page_General/link_avatar'), GlobalVariable.TIMEOUT)

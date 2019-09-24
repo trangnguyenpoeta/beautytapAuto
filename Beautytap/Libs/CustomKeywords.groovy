@@ -32,14 +32,12 @@ def static "beautytap.GeneralAction.signup"(
     	String username	
      , 	String email	
      , 	String password	
-     , 	String name	
-     , 	String birthday	) {
+     , 	String repassword	) {
     (new beautytap.GeneralAction()).signup(
         	username
          , 	email
          , 	password
-         , 	name
-         , 	birthday)
+         , 	repassword)
 }
 
 def static "beautytap.GeneralAction.signupViaFacebook"(

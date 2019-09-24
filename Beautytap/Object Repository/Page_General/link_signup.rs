@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//a[@class='sign-up' and text()='sign up']</value>
+         <value>//a[@class='box-2' and text()='Sign Up']</value>
       </entry>
       <entry>
          <key>BASIC</key>

@@ -61,6 +61,7 @@ public class GeneralAction {
 		println "START KEYWORD logout";
 		WebUI.click(findTestObject("Page_General/link_avatar"));
 		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/menu_logout'), GlobalVariable.TIMEOUT);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.click(findTestObject("Page_General/menu_logout"));
 		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 		if(closeBrowser!=null){
@@ -71,12 +72,12 @@ public class GeneralAction {
 
 	//Signup Beautytap
 	@Keyword
-	def signup(String username,String email,String password,String name,String birthday ) {
+	def signup(String username,String email,String password,String repassword ) {
 		println "START KEYWORD signup";
 		WebUI.sendKeys(findTestObject("Page_Signup/txt_username"), username);
 		WebUI.sendKeys(findTestObject("Page_Signup/txt_email"), email);
 		WebUI.sendKeys(findTestObject("Page_Signup/txt_password"), password);
-		WebUI.sendKeys(findTestObject("Page_Signup/txt_name"), name);
+		WebUI.sendKeys(findTestObject("Page_Signup/txt_repassword"), password);
 		//WebUI.sendKeys(findTestObject("Page_Signup/txt_birthday"), birthday);
 		WebUI.click(findTestObject("Page_Signup/btn_signup"));
 		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
@@ -133,7 +134,7 @@ public class GeneralAction {
 		println "START KEYWORD verifyEmailExist";
 		if(mailBoxType=='mailinator'){
 			TestObject email = new TestObject();
-			email.addProperty("xpath",ConditionType.EQUALS,"//tr[starts-with(@id,'row_')]/td[starts-with(text(),'"+ subject +"')]");
+			email.addProperty("xpath",ConditionType.EQUALS,"//tr[starts-with(@id,'row_')]/td/a[contains(text(),'"+ subject +"')]");
 			WebUI.verifyElementPresent(email, GlobalVariable.TIMEOUT, FailureHandling.CONTINUE_ON_FAILURE);
 		}
 		println "END KEYWORD verifyEmailExist";
@@ -146,7 +147,7 @@ public class GeneralAction {
 		println "START KEYWORD openEmail";
 		if(mailBoxType=='mailinator'){
 			TestObject obj_email = new TestObject();
-			obj_email.addProperty("xpath",ConditionType.EQUALS,"//tr[starts-with(@id,'row_')]/td[starts-with(text(),'"+ subject +"')]")
+			obj_email.addProperty("xpath",ConditionType.EQUALS,"//tr[starts-with(@id,'row_')]/td/a[contains(text(),'"+ subject +"')]")
 			WebUI.click(obj_email);
 		}
 		println "END KEYWORD openEmail";

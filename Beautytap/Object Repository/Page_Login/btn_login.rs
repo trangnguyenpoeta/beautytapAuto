@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@class='form-custom']/descendant::button[text()='Login']|//input[@value='Log In']</value>
+         <value>//div[@class='block-bottom-r']/descendant::button[text()='Sign In']|//input[@value='Log In']</value>
       </entry>
       <entry>
          <key>BASIC</key>

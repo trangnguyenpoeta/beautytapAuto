@@ -4,7 +4,6 @@
    <name>Regression</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-10-17T14:42:27</lastRun>
    <mailRecipient>trangnt@devblock.net;thu.truong@vinasource.com;</mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -14,13 +13,13 @@
    <testCaseLink>
       <guid>8793dd67-8c70-41f3-a917-aff5036e978b</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/Shop/TC09_ScheduleSale_LimitStock_SimpleProduct</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>042952cb-c050-44f4-a472-99a4766d0f12</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/SignUp_Login_ResetPass/TC01_SignUp_Login_ResetPassword_Via_Email</testCaseId>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -44,7 +43,7 @@
    <testCaseLink>
       <guid>90006ad5-d43c-430a-80e1-2b812f3feed8</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/Shop/TC08_BuyProduct_UsingRewardPoint</testCaseId>
    </testCaseLink>
    <testCaseLink>
