@@ -7,6 +7,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import javax.xml.xpath.XPath
 
+import com.gargoylesoftware.htmlunit.javascript.host.speech.webkitSpeechGrammar
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -45,6 +46,12 @@ public class GeneralAction {
 		else if(type=='facebook') {
 			WebUI.click(findTestObject("Page_Login/btn_loginFB"));
 			WebUI.switchToWindowIndex(1);
+			if(WebUI.verifyElementPresent(findTestObject("Popup_FacebookLogin/txt_email"), GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==false){
+				WebUI.closeWindowIndex(1);
+				WebUI.switchToDefaultContent(FailureHandling.OPTIONAL);
+				WebUI.click(findTestObject("Page_Login/btn_loginFB"));
+				WebUI.switchToWindowIndex(1);
+			}
 			WebUI.waitForElementVisible(findTestObject("Popup_FacebookLogin/txt_email"), GlobalVariable.TIMEOUT);
 			WebUI.sendKeys(findTestObject("Popup_FacebookLogin/txt_email"), email) ;
 			WebUI.sendKeys(findTestObject("Popup_FacebookLogin/txt_password"), password) ;
@@ -90,6 +97,12 @@ public class GeneralAction {
 		println "START KEYWORD signupViaFacebook";
 		WebUI.click(findTestObject("Page_Signup/btn_signupFB"));
 		WebUI.switchToWindowIndex(1);
+		if(WebUI.verifyElementPresent(findTestObject("Popup_FacebookLogin/txt_email"), GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==false){
+			WebUI.closeWindowIndex(1);
+			WebUI.switchToDefaultContent(FailureHandling.OPTIONAL);
+			WebUI.click(findTestObject("Page_Signup/btn_signupFB"));
+			WebUI.switchToWindowIndex(1);
+		}
 		WebUI.sendKeys(findTestObject("Popup_FacebookLogin/txt_email"), email);
 		WebUI.sendKeys(findTestObject("Popup_FacebookLogin/txt_password"), password);
 		WebUI.click(findTestObject("Popup_FacebookLogin/btn_login"));
