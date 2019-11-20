@@ -47,6 +47,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.apache.commons.lang.StringUtils
 import java.text.SimpleDateFormat
+import java.time.Clock.SystemClock
+
 import org.apache.commons.lang3.time.DateUtils
 
 public class ShopAction {
@@ -64,7 +66,7 @@ public class ShopAction {
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.clearText(findTestObject('Object Repository/Page_General/txt_search'));
 		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), Keys.chord(Keys.CONTROL, 'v'));
-		//WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/div_searchResult'), GlobalVariable.SHORT_TIMEOUT*3);
+		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), Keys.chord(Keys.ENTER));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD globalSearch";
 	}
@@ -87,7 +89,7 @@ public class ShopAction {
 		println "START KEYWORD selectSearchResult";
 		TestObject obj_result = new TestObject();
 		int i=1;
-		String xpath = "//div[@class='resdrg']/div[starts-with(@class,'item')]["+ i +"]/div/h3/a";
+		String xpath = "//div[@class='col col-md-4 col-sm-4 col-6 content-post-thumbnail']["+ i +"]/div/div/div[@class='des']/a";
 		obj_result.addProperty("xpath",ConditionType.EQUALS,xpath);
 		String linkText = WebUI.getText(obj_result);
 		while(WebUI.verifyElementPresent(obj_result, GlobalVariable.SHORT_TIMEOUT, FailureHandling.CONTINUE_ON_FAILURE)==true){
@@ -97,7 +99,7 @@ public class ShopAction {
 				break;
 			}
 			i= i+1;
-			xpath = "//div[@class='resdrg']/div[starts-with(@class,'item')]["+ i +"]/div/h3/a";
+			xpath = "//div[@class='col col-md-4 col-sm-4 col-6 content-post-thumbnail']["+ i +"]/following::div[@class='des']/a";
 			obj_result.addProperty("xpath",ConditionType.EQUALS,xpath);
 		}
 		println "END KEYWORD selectSearchResult";
@@ -112,6 +114,7 @@ public class ShopAction {
 		WebUI.click(findTestObject('Object Repository/Page_Shop/drop_chooseOption'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT/5);
 		WebUI.click(obj_variation);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT/5);
 		println "END KEYWORD selectProductVariation";
 	}
 
@@ -120,76 +123,76 @@ public class ShopAction {
 	@Keyword
 	def VerifyProductOnSearchResult(String productName,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor) {
 		println "START KEYWORD VerifyProductOnSearchResult";
-		/*if(regularPrice==null){
+		if(regularPrice==null||regularPrice==''){
 		 regularPrice= 0;
 		 }
-		 if(salePrice==null){
+		 if(salePrice==null||salePrice==''){
 		 salePrice = 0;
 		 }
 		 if(regularPriceColor!=null && regularPriceColor=="pink"){
-		 regularPriceColor = "rgba(255, 35, 134, 1)";
-		 }
-		 if(regularPriceColor!=null && regularPriceColor=="grey"){
-		 regularPriceColor = "rgba(195, 195, 195, 1)";
-		 }
-		 if(salePriceColor!=null && salePriceColor=="pink"){
-		 salePriceColor = "rgba(255, 35, 134, 1)";
-		 }
-		 if(salePriceColor!=null && salePriceColor=="grey"){
-		 salePriceColor = "rgba(195, 195, 195, 1)";
-		 }
+			regularPriceColor = "rgba(239, 94, 146, 1)";
+		}
+		if(regularPriceColor!=null && regularPriceColor=="grey"){
+			regularPriceColor = "rgba(195, 195, 195, 1)";
+		}
+		if(salePriceColor!=null && salePriceColor=="pink"){
+			salePriceColor = "rgba(239, 94, 146, 1)";
+		}
+		if(salePriceColor!=null && salePriceColor=="grey"){
+			salePriceColor = "rgba(195, 195, 195, 1)";
+		}
 		 String result = "true";
 		 TestObject obj_product =new TestObject();
-		 obj_product.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]");
+		 obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]");
 		 try {
-		 if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
-		 //Check Regular Price
-		 if(regularPrice!= 0){
-		 TestObject obj_regularPrice = new TestObject();
-		 obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][1]");
-		 float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
-		 println "Regular price "+ currentRegularPrice;
-		 println regularPrice;
-		 if(currentRegularPrice!=regularPrice){
-		 result = "false" ;
-		 }
-		 if(regularPriceColor!=null){
-		 println "regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
-		 println regularPriceColor;
-		 if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
-		 result = "false" ;
-		 }
-		 }
-		 }
-		 //Check Sale Price
-		 if(salePrice!=0){
-		 TestObject obj_salePrice = new TestObject();
-		 obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//div[@id='searchNav' and @style='height: 100%;']/descendant::div[contains(@class,'row search-content scrollbar-macosx scroll-content')]/descendant::a[contains(text(),'"+ productName +"')][1]//ancestor::div[@class='row item-content']/descendant::span[@class='woocommerce-Price-amount amount'][2]");
-		 float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
-		 println "Sale price "+ currentSalePrice;
-		 println salePrice;
-		 if(currentSalePrice!=salePrice){
-		 result = "false";
-		 }
-		 if(salePriceColor!=null){
-		 println "regular color " + WebUI.getCSSValue(obj_salePrice, "color");
-		 println salePriceColor;
-		 if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
-		 result = "false";
-		 }
-		 }
-		 }
-		 } else{
-		 result = "false";
-		 }
-		 if(result=="true"){
-		 KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
-		 }else{
-		 KeywordUtil.markFailed("Keyword VerifyProductOnSearchResult is Failed");
-		 }
+				 if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
+				 //Check Regular Price
+				 if(regularPrice!= 0){
+					 TestObject obj_regularPrice = new TestObject();
+					 obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]/div[@class='price-section']/span[1]/span");
+					 float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
+					 println "Current Regular price "+ currentRegularPrice;
+					 println "Expected Regular price " + regularPrice;
+					 if(currentRegularPrice!=regularPrice){
+					 result = "false" ;
+					 }
+					 if(regularPriceColor!=null){
+						 println "Current regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
+						 println "Expected regular color" +regularPriceColor;
+						 if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
+						 result = "false" ;
+						 }
+					 }
+				 }
+				 //Check Sale Price
+				 if(salePrice!=0){
+					 TestObject obj_salePrice = new TestObject();
+					 obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]/div[@class='price-section']/span[2]/span");
+					 float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
+					 println "Sale price "+ currentSalePrice;
+					 println salePrice;
+					 if(currentSalePrice!=salePrice){
+					 result = "false";
+					 }
+					 if(salePriceColor!=null){
+						 println "Current regular color" + WebUI.getCSSValue(obj_salePrice, "color");
+						 println "Expected regular color" +salePriceColor;
+						 if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
+						 result = "false";
+						 }
+					 }
+				 }
+			 } else{
+			 result = "false";
+			 }
+			 if(result=="true"){
+				 KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
+			 }else{
+				KeywordUtil.markFailed("Keyword VerifyProductOnSearchResult is Failed");
+			 }																														
 		 } catch (Exception e) {
 		 e.printStackTrace()
-		 }*/
+		 }
 		println "END KEYWORD VerifyProductOnSearchResult";
 	}
 
@@ -222,9 +225,9 @@ public class ShopAction {
 	@Keyword
 	def goToCart() {
 		println "START KEYWORD goToCart";
-		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_General/icon_cart'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
-		WebUI.click(findTestObject('Object Repository/Page_General/icon_cart'));
-		WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		WebUI.waitForElementPresent(findTestObject('Object Repository/Page_Shop/btn_viewCart'), GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
+		WebUI.click(findTestObject('Object Repository/Page_Shop/btn_viewCart'));
+		WebUI.delay(GlobalVariable.TIMEOUT/2);
 		println "END KEYWORD goToCart";
 	}
 
@@ -249,7 +252,7 @@ public class ShopAction {
 	def VerifyNumberItemInCart(int numberItem) {
 		println "START KEYWORD VerifyNumberItemInCart";
 		TestObject obj_cartnumber = new TestObject();
-		obj_cartnumber.addProperty("xpath",ConditionType.EQUALS,"//div[@class='header-right-top pull-right']/a[@class='shop-cart']/span[@class='number-cart']");
+		obj_cartnumber.addProperty("xpath",ConditionType.EQUALS,"//span[@class='cart-items-count count']");
 		if(WebUI.verifyElementPresent(obj_cartnumber, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)==true){
 			int currentNumber = Integer.parseInt(WebUI.getText(obj_cartnumber));
 			println "Current item in cart: " + currentNumber;
@@ -273,7 +276,7 @@ public class ShopAction {
 	def VerifyProductInCart(String productName, String variation, float price, int quantity, float total ) {
 		println "START KEYWORD VerifyProductInCart";
 		if(variation!=""){
-			productName = productName + " – " + variation;
+			productName = productName + " - " + variation;
 		}
 		println productName;
 		String result = "true";
@@ -365,6 +368,8 @@ public class ShopAction {
 	//Select amazon address
 	@Keyword
 	def selectAmazonPayAddress(String amazonAddress){
+		WebUI.click(findTestObject('Page_Checkout/btn_next1'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		TestObject obj_iframe = new TestObject();
 		obj_iframe.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='OffAmazonPaymentsWidgets0IFrame']");
 		WebUI.switchToFrame(obj_iframe, GlobalVariable.SHORT_TIMEOUT);
@@ -385,6 +390,8 @@ public class ShopAction {
 			obj_address.addProperty("xpath",ConditionType.EQUALS,xpath);
 		}
 		WebUI.switchToWindowIndex(0, FailureHandling.CONTINUE_ON_FAILURE);
+		WebUI.click(findTestObject('Page_Checkout/btn_next2'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 	}
 
 	//Checkout via amazonPay
@@ -402,7 +409,7 @@ public class ShopAction {
 	@Keyword
 	def checkoutViaCreditCard(String cardNumber,String cardType,String expirationMonth,String expirationYear, String cvv){
 		println "START KEYWORD checkoutViaCreditCard";
-		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
+		WebUI.click(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_cardNumber'), cardNumber);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_cardType'), cardType, false);
@@ -419,7 +426,8 @@ public class ShopAction {
 	@Keyword
 	def checkoutViaPaypal(String paypalEmail,String paypalPassword){
 		println "START KEYWORD checkoutViaPaypal";
-		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_paypal'));
+		WebUI.focus(findTestObject('Object Repository/Page_Checkout/radio_paypal'));
+		WebUI.click(findTestObject('Object Repository/Page_Checkout/radio_paypal'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_terms'));
 		WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_placeOrder'));
@@ -450,8 +458,13 @@ public class ShopAction {
 		String billingState = billingInformation.get("state");
 		String billingZip = billingInformation.get("zip");
 		String billingEmail = billingInformation.get("email");
+		String userphone = billingInformation.get("phone");
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.click(findTestObject('Page_Checkout/btn_next1'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
@@ -459,7 +472,7 @@ public class ShopAction {
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingZip'), billingZip);
-		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingPhone'), userphone);
 		if(createAccount=='yes'){
 			WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_createAccount'));
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountUserName'), accountUsername);
@@ -484,9 +497,12 @@ public class ShopAction {
 			WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_shippingZip'), shippingZip);
 		}
-		if(orderNote!=''){
+		if(orderNote!='' ||orderNote!=null){
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
 		}
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.click(findTestObject('Page_Checkout/btn_next2'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "START KEYWORD fillCustomerInformation";
 	}
 
@@ -494,7 +510,7 @@ public class ShopAction {
 	//billingInformation: {"firstname":"FIRSTNAME","lastname":"LASTNAME","country":"COUNTRY","address":"ADDRESS","city":"CITY","state":"STATE","zip":"ZIP","email":"EMAIL"}
 
 	@Keyword
-	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String accountUsername,String accountPassword,String orderNote){
+	def fillCustomerInformation(JSONObject billingInformation,String createAccount,String accountUsername,String accountPassword){
 		println "START KEYWORD fillCustomerInformation";
 		String billingFirstName = billingInformation.get("firstname");
 		String billingLastName = billingInformation.get("lastname");
@@ -504,26 +520,28 @@ public class ShopAction {
 		String billingState = billingInformation.get("state");
 		String billingZip = billingInformation.get("zip");
 		String billingEmail = billingInformation.get("email");
+		String userphone = billingInformation.get("phone");
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingFirstName'), billingFirstName);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingLastName'), billingLastName);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.click(findTestObject('Page_Checkout/btn_next1'));
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingCountry'), billingCountry,false);
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingAddress'), billingAddress);
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingCity'), billingCity);
-		WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
+		if(billingState !=''){
+			WebUI.selectOptionByLabel(findTestObject('Object Repository/Page_Checkout/drop_billingState'), billingState,false);
+		}
 		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingZip'), billingZip);
-		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingEmail'), billingEmail);
+		GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_billingPhone'), userphone);
 		if(createAccount=='yes'){
 			WebUI.check(findTestObject('Object Repository/Page_Checkout/chk_createAccount'));
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountUserName'), accountUsername);
 			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_accountPassword'), accountPassword);
 		}
-		WebUI.uncheck(findTestObject('Object Repository/Page_Checkout/chk_shipToDifferentAddress'));
-		if(orderNote!=''){
-			GeneralAction.enterText(findTestObject('Object Repository/Page_Checkout/txt_orderNote'), orderNote);
-		}
-		//Check credit card radio button to trigger calculate shipping
-		WebUI.check(findTestObject('Object Repository/Page_Checkout/radio_creditCard'));
+		WebUI.click(findTestObject('Page_Checkout/btn_next2'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD fillCustomerInformation";
 	}
@@ -550,16 +568,16 @@ public class ShopAction {
 		}
 		String result='true';
 		if(regularPriceColor!=null && regularPriceColor=="pink"){
-			regularPriceColor = "rgba(255, 35, 134, 1)";
+			regularPriceColor = "rgba(255, 136, 193, 1)";
 		}
 		if(regularPriceColor!=null && regularPriceColor=="grey"){
-			regularPriceColor = "rgba(195, 195, 195, 1)";
+			regularPriceColor = "rgba(207, 212, 213, 1)";
 		}
 		if(salePriceColor!=null && salePriceColor=="pink"){
-			salePriceColor = "rgba(255, 35, 134, 1)";
+			salePriceColor = "rgba(255, 136, 193, 1)";
 		}
 		if(salePriceColor!=null && salePriceColor=="grey"){
-			salePriceColor = "rgba(195, 195, 195, 1)";
+			salePriceColor = "rgbargba(207, 212, 213, 1)";
 		}
 		TestObject obj_productname =new TestObject();
 		obj_productname.addProperty("xpath",ConditionType.EQUALS,"//h1");
@@ -631,7 +649,7 @@ public class ShopAction {
 			//Variation not sale
 			if(salePrice==0){
 				TestObject obj_regularPrice=new TestObject();
-				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-variation-price']/div/span[1]/span/span");
 				float currentResularPrice= Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price: " + currentResularPrice;
 				println regularPrice;
@@ -649,7 +667,7 @@ public class ShopAction {
 			}else{
 				//Regular price
 				TestObject obj_regularPrice=new TestObject();
-				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='old-price']/span");
+				obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-variation-price']/div/span[1]/span/span");
 				float currentResularPrice= Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
 				println "Current regular price: " + currentResularPrice;
 				println regularPrice;
@@ -664,7 +682,7 @@ public class ShopAction {
 				}
 				//Sale price
 				TestObject obj_salePrice=new TestObject();
-				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//span[@class='price']/span");
+				obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-variation-price']/div/span[2]/span/span");
 				float currentSalePrice= Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$', ''));
 				println "Current salse price: " + currentSalePrice;
 				println salePrice;
@@ -868,15 +886,16 @@ public class ShopAction {
 	//Verify Check Out Order Details
 	//products: [{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"},{"productname":"PRODUCTNAME","variation":"VARIATION","quantity":"QUANTITY","price":"PRICE"}]
 	//free shipping price=0
-	//shippingType:normal,free,freeEMS
+	//shippingType:normal,free
+	//shippingArray: [{"shippingType":"SHIPPINGTYPE(free/normal)","shippingMethod":"SHIPPINGMETHOD(3 - 5 Day USA Shipping/Shipping from Korea)","shippingPrice":"SHIPPINGPRICE","shippingLabel":"SHIPPINGLABEL"}]
 	@Keyword
-	def VerifyOrderDetailsOnCheckout(JSONArray products,float subtotal,String shippingType,String shippingLable,float shippingPrice,float total){
+	def VerifyOrderDetailsOnCheckout(JSONArray productsArray,float subtotal,JSONArray shippingArray,float total){
 		println "START KEYWORD VerifyOrderDetailsOnCheckout";
 		String result = 'true';
 		float orderSubtotal = 0;
 		//Check product line
-		for(int i;i<products.length();i++){
-			JSONObject obj_product = (JSONObject) products.get(i);
+		for(int i;i<productsArray.length();i++){
+			JSONObject obj_product = (JSONObject) productsArray.get(i);
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
 			if(variation!=''){
@@ -910,83 +929,60 @@ public class ShopAction {
 			println "Subtotal sum line: "+ currentSubtotal;
 			println "Subtotal input: "+ subtotal;
 		}
-		//Check shipping
-		//Free shipping/Free EMS shipping
-		if(shippingType=='free' || shippingType=='freeEMS'){
-			TestObject obj_shippingLable = new TestObject();
-			obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='Shipping']");
-			String getShippingText = WebUI.getText(obj_shippingLable);
-			if(StringUtils.containsIgnoreCase(getShippingText, shippingLable)==true){
-				println "Shipping label is: "+shippingLable;
-			}else{
-				result = 'false';
-				println "Shipping label does not contains: "+shippingLable;
-			}
-			//Normal shipping
-		}else {
 
-			if(shippingType=='normal'){
-				//TestObject obj_shippingSelection=new TestObject();
+		//Check shipping
+		for(int j;j<shippingArray.length();j++){
+			JSONObject obj_shipping = (JSONObject) shippingArray.get(j);
+			String shippingtype = obj_shipping.get('shippingType');
+			String shippingmethod = obj_shipping.get('shippingMethod');
+			float shippingprice = Float.parseFloat(obj_shipping.get('shippingPrice'));
+			String shippinglabel = obj_shipping.get('shippingLabel');
+			//Shippingtype=free
+			if(shippingtype=='free'){
+				TestObject obj_shippingLable = new TestObject();
+				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='"+ shippingmethod +"']");
+				String getShippingText = WebUI.getText(obj_shippingLable);
+				if(StringUtils.containsIgnoreCase(getShippingText, shippinglabel)==true){
+					println "Shipping label "+ j +" is: "+shippinglabel;
+				}else{
+					result = 'false';
+					println "Shipping label "+ j +" does not contains: "+shippinglabel;
+				}
+
+				//Shippingtype = normal
+			}else{
 				TestObject obj_shippingLable=new TestObject();
 				TestObject  obj_shippingPrice =new TestObject();
-				//obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[1]/input");
-				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='Shipping']");
-				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='Shipping']/span[@class='woocommerce-Price-amount amount']");
-				//boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
-				String currentLabel =WebUI.getText(obj_shippingLable).replace("Why does shipping take this long?", "").replaceAll('Spend.*more & get FREE SHIPPING!', '').replaceAll("\\n|\\r", "").trim();
+				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='"+ shippingmethod +"']");
+				obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='"+ shippingmethod +"']/span[@class='woocommerce-Price-amount amount']");
+				String currentLabel =WebUI.getText(obj_shippingLable).replaceAll("\\n|\\r", "").trim();
 				println "Current ship label:"+currentLabel;
+				println "Expected ship label:" +shippinglabel;
 				float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
-				shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
-				println "Expected ship label:" +shippingLable;
-				if(currentLabel==shippingLable && currentShipPrice==shippingPrice){
+				if(StringUtils.containsIgnoreCase(currentLabel, shippinglabel)==true && currentShipPrice==shippingprice){
 					println "Current label: " +currentLabel;
 					println "Expected shipping price: " +currentShipPrice;
 				}else{
 					println "Current lable: " +currentLabel;
-					println "Expected lable: " +shippingLable;
+					println "Expected lable: " +shippinglabel;
 					println "Current shipping price: " +currentShipPrice;
-					println "Expected shipping price: " + shippingPrice;
+					println "Expected shipping price: " + shippingprice;
 					result = 'false';
 				}
 
-			}/*else if(shippingType=='EMS'){
-			 TestObject obj_shippingSelection=new TestObject();
-			 TestObject obj_shippingLable=new TestObject();
-			 TestObject  obj_shippingPrice =new TestObject();
-			 obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/input");
-			 obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label");
-			 obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label/span");
-			 boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
-			 String currentLabel =WebUI.getText(obj_shippingLable).trim();
-			 float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
-			 shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
-			 if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
-			 println "Expected status: " +radioIsChecked;
-			 println "Expected lable: " +currentLabel;
-			 println "Expected shipping price: " +currentShipPrice;
-			 }else{
-			 println "Current status: " +radioIsChecked;
-			 println "Expected status: true" ;
-			 println "Current lable: " +currentLabel;
-			 println "Expected lable: " +shippingLable;
-			 println "Current shipping price: " +currentShipPrice;
-			 println "Expected shipping price: " + shippingPrice;
-			 result = 'false';
-			 }
-			 }*/
+			}
 
 		}
 		//Check total
-		float currentTotal = currentSubtotal + shippingPrice;
-		currentTotal = Float.parseFloat(String.format("%.2f", currentTotal));
 		TestObject obj_total=new TestObject();
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='order-total']/td/span");
-		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
-		if(currentTotal!=expectedTotal){
+		float currentTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
+		if(currentTotal!=total){
 			result = 'false';
 			println "Current total: " +currentTotal;
-			println "Expected total:" +expectedTotal ;
+			println "Expected total:" +total ;
 		}
+
 		//Check result
 		if(result=='true'){
 			KeywordUtil.markPassed("Keyword VerifyOrderDetailsOnCheckout is Passed");
@@ -1104,31 +1100,7 @@ public class ShopAction {
 					result = 'false';
 				}
 
-			}/*else if(shippingType=='EMS'){
-			 TestObject obj_shippingSelection=new TestObject();
-			 TestObject obj_shippingLable=new TestObject();
-			 TestObject  obj_shippingPrice =new TestObject();
-			 obj_shippingSelection.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/input");
-			 obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label");
-			 obj_shippingPrice.addProperty("xpath",ConditionType.EQUALS,"//ul[@id='shipping_method']/li[2]/label/span");
-			 boolean radioIsChecked= WebUI.verifyElementHasAttribute(obj_shippingSelection,'checked' , GlobalVariable.TIMEOUT,FailureHandling.OPTIONAL);
-			 String currentLabel =WebUI.getText(obj_shippingLable).trim();
-			 float currentShipPrice = Float.parseFloat(WebUI.getText(obj_shippingPrice).trim().replace('$', ''));
-			 shippingLable = shippingLable + ': $' + String.format("%.2f", shippingPrice);
-			 if(radioIsChecked==true && currentLabel==shippingLable && currentShipPrice==shippingPrice){
-			 println "Expected status: " +radioIsChecked;
-			 println "Expected lable: " +currentLabel;
-			 println "Expected shipping price: " +currentShipPrice;
-			 }else{
-			 println "Current status: " +radioIsChecked;
-			 println "Expected status: true" ;
-			 println "Current lable: " +currentLabel;
-			 println "Expected lable: " +shippingLable;
-			 println "Current shipping price: " +currentShipPrice;
-			 println "Expected shipping price: " + shippingPrice;
-			 result = 'false';
-			 }
-			 }*/
+			}
 
 		}
 		//Check total
@@ -1137,7 +1109,7 @@ public class ShopAction {
 		TestObject obj_total=new TestObject();
 		obj_total.addProperty("xpath",ConditionType.EQUALS,"//tr[@class='order-total']/td/span");
 		float expectedTotal = Float.parseFloat(WebUI.getText(obj_total).trim().replace('$', ''));
-		if(currentTotal!=expectedTotal){
+		if(currentTotal!=total){
 			result = 'false';
 			println "Current total: " +currentTotal;
 			println "Expected total:" +expectedTotal ;
@@ -1392,12 +1364,12 @@ public class ShopAction {
 	@Keyword
 	def getOrderInfoOnOrderReceived(){
 		println "START KEYWORD getOrderNumberOnOrderReceived";
-		TestObject obj_orderNumber=new TestObject();
-		TestObject obj_orderDate=new TestObject();
-		obj_orderNumber.addProperty("xpath",ConditionType.EQUALS,"//li[contains(text(),'Order number:')]/strong");
-		obj_orderDate.addProperty("xpath",ConditionType.EQUALS,"//li[contains(text(),'Date')]/strong");
-		String ordernumber = WebUI.getText(obj_orderNumber).trim();
-		String orderdate = WebUI.getText(obj_orderDate).trim();
+		String url = WebUI.getUrl();
+		String ordernumber = url.substring(url.indexOf('order-received/')+15, url.indexOf('order-received/')+21);
+		SimpleDateFormat formatter = new SimpleDateFormat("MMMMM dd, yyyy");
+		formatter.setTimeZone(TimeZone.getTimeZone(GlobalVariable.TIMEZONE));
+		Date date = new Date();
+		String orderdate = formatter.format(date);
 		String json='{"ordernumber":"'+ ordernumber +'","date":"'+ orderdate +'"}';
 		JSONObject orderInfo =new JSONObject(json);
 		return orderInfo;
@@ -1578,12 +1550,12 @@ public class ShopAction {
 		TestObject obj_redeemable =new TestObject();
 		TestObject obj_pointvalue =new TestObject();
 		TestObject obj_currentlevel =new TestObject();
-		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//div[@class='rewards-title' and contains(text(),'Rewards Multiplier')]");
-		obj_lifetime.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Lifetime Loyalty Points']/parent::div/h3");
-		obj_pending.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Pending Loyalty Points']/parent::div/h3");
-		obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Loyalty Points Redeemable']/parent::div/h3");
-		obj_pointvalue.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Points Value']/parent::div/h3");
-		obj_currentlevel.addProperty("xpath",ConditionType.EQUALS,"//div[@class='current-level']/div[@class='level-title']");
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//div[@class='level-box']/span");
+		obj_lifetime.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Liftime Loyalty Points']/parent::div/p");
+		obj_pending.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Pending Loyalty Points']/parent::div/p");
+		obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Loyalty Points Redeemable']/parent::div/p");
+		obj_pointvalue.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Points Value']/parent::div/p");
+		obj_currentlevel.addProperty("xpath",ConditionType.EQUALS,"//div[@class='level-box']/p");
 		multiplier = Float.parseFloat(WebUI.getText(obj_multiplier).substring(0, WebUI.getText(obj_multiplier).indexOf("x")).trim());
 		lifetime = Float.parseFloat(WebUI.getText(obj_lifetime).trim());
 		pending = Float.parseFloat(WebUI.getText(obj_pending).trim());
@@ -1610,10 +1582,10 @@ public class ShopAction {
 		TestObject obj_redeemable =new TestObject();
 		TestObject obj_pointvalue =new TestObject();
 		String result = "true";
-		obj_lifetime.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Lifetime Loyalty Points']/parent::div/h3");
-		obj_pending.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Pending Loyalty Points']/parent::div/h3");
-		obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Loyalty Points Redeemable']/parent::div/h3");
-		obj_pointvalue.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Points Value']/parent::div/h3");
+		obj_lifetime.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Liftime Loyalty Points']/parent::div/p");
+		obj_pending.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Total Pending Loyalty Points']/parent::div/p");
+		obj_redeemable.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Loyalty Points Redeemable']/parent::div/p");
+		obj_pointvalue.addProperty("xpath",ConditionType.EQUALS,"//span[text()='Points Value']/parent::div/p");
 		float currentlifetime = Float.parseFloat(WebUI.getText(obj_lifetime).trim());
 		float currentpending = Float.parseFloat(WebUI.getText(obj_pending).trim());
 		float currentredeemable = Float.parseFloat(WebUI.getText(obj_redeemable).trim());
@@ -1650,12 +1622,12 @@ public class ShopAction {
 		TestObject obj_multiplier = new TestObject();
 		TestObject obj_loyaltyPoint = new TestObject();
 		TestObject obj_totalPoint = new TestObject();
-		obj_date.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[2]")
-		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
-		obj_total.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
-		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
-		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
-		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
+		obj_date.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[1]")
+		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[3]")
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
+		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
+		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
 		String currentDate =WebUI.getText(obj_date).trim();
 		String currentPointRedeemed=WebUI.getText(obj_pointRedeemed).trim();
 		String currentTotal=WebUI.getText(obj_total).trim().replace('$', '');
@@ -1687,13 +1659,13 @@ public class ShopAction {
 		TestObject obj_multiplier = new TestObject();
 		TestObject obj_loyaltyPoint = new TestObject();
 		TestObject obj_totalPoint = new TestObject();
-		obj_orderNumber.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[1]")
-		obj_date.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[2]")
-		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
-		obj_total.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
-		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
-		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
-		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//td/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[8]")
+		obj_orderNumber.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/th/a")
+		obj_date.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[1]")
+		obj_pointRedeemed.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[3]")
+		obj_total.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[4]")
+		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
+		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
+		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
 		if (WebUI.verifyElementPresent(obj_orderNumber, GlobalVariable.TIMEOUT)==true){
 			if(date!=''){
 				String currentDate = WebUI.getText(obj_date).trim();
@@ -1808,8 +1780,8 @@ public class ShopAction {
 		println "START KEYWORD applyLoyaltyRewardPoint";
 		TestObject obj_pointRadio =new TestObject();
 		TestObject obj_applyRewardMessage =new TestObject();
-		obj_pointRadio.addProperty("xpath",ConditionType.EQUALS,"//input[@id='rewards_"+ (int)pointUsed +"']");
-		obj_applyRewardMessage.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-message' and text()='Reward applied successfully.']");
+		obj_pointRadio.addProperty("xpath",ConditionType.EQUALS,"//label[@for='rewards_"+ (int)pointUsed +"']");
+		obj_applyRewardMessage.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce']/div[@class='woocommerce-message' and text()='Reward applied successfully.']");
 		WebUI.click(findTestObject('Object Repository/Page_Checkout/link_clickToRedeem'));
 		WebUI.check(obj_pointRadio);
 		//WebUI.click(findTestObject('Object Repository/Page_Checkout/btn_applyReward'));

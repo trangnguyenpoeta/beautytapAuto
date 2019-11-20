@@ -6,12 +6,11 @@
    <elementGuidId>8d8ad871-8d3c-42f3-9ac1-5fa99d118d78</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//a[@class='search-product']</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//img[contains(@src,'search-icon')]/parent::a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

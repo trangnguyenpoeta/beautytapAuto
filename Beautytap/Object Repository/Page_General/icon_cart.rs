@@ -6,12 +6,11 @@
    <elementGuidId>385df26a-db03-4dff-b340-9a98f5ff3365</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@class='header-right-top pull-right']/a[@class='shop-cart']</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[@class='box box-mini-cart']/a</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

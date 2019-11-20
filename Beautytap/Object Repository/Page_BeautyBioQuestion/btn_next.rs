@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_search</name>
+   <name>btn_next</name>
    <tag></tag>
-   <elementGuidId>b95a3c88-646e-4f2f-846b-2d0a09ccf9c4</elementGuidId>
+   <elementGuidId>910e4fba-57fd-4610-b9ae-fd47daef873c</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//button[text()='Next']</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@id='searchInput']</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

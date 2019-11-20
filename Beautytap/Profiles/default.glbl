@@ -61,7 +61,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'La Muse Correct Care Complete Cushion SPF50+'</initValue>
+      <initValue>'La Muse Correct Care Complete Cushion SPF50+/PA+++'</initValue>
       <name>SIMPLE_PRODUCT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -161,7 +161,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'($25) - DHL flat rate shipping'</initValue>
+      <initValue>'DHL flat rate shipping'</initValue>
       <name>SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

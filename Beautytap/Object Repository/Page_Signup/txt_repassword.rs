@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_search</name>
+   <name>txt_repassword</name>
    <tag></tag>
-   <elementGuidId>b95a3c88-646e-4f2f-846b-2d0a09ccf9c4</elementGuidId>
+   <elementGuidId>1b99f811-fba2-4c17-ad4f-a7a8a8fef56b</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//input[@name='re-password']</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@id='searchInput']</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

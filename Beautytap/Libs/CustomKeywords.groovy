@@ -108,6 +108,16 @@ def static "beautytap.GeneralAction.selectProfileMenu"(
         	menu)
 }
 
+def static "beautytap.GeneralAction.selectProfileSubMenu"(
+    	String submenu	) {
+    (new beautytap.GeneralAction()).selectProfileSubMenu(
+        	submenu)
+}
+
+def static "beautytap.GeneralAction.goToRewardHistory"() {
+    (new beautytap.GeneralAction()).goToRewardHistory()
+}
+
 def static "beautytap.GeneralAction.VerifyNotificationText"(
     	String notificationText	) {
     (new beautytap.GeneralAction()).VerifyNotificationText(
@@ -260,14 +270,12 @@ def static "beautytap.ShopAction.fillCustomerInformation"(
     	JSONObject billingInformation	
      , 	String createAccount	
      , 	String accountUsername	
-     , 	String accountPassword	
-     , 	String orderNote	) {
+     , 	String accountPassword	) {
     (new beautytap.ShopAction()).fillCustomerInformation(
         	billingInformation
          , 	createAccount
          , 	accountUsername
-         , 	accountPassword
-         , 	orderNote)
+         , 	accountPassword)
 }
 
 def static "beautytap.ShopAction.VerifyProductDetails"(
@@ -305,18 +313,14 @@ def static "beautytap.ShopAction.VerifyProductDetails"(
 }
 
 def static "beautytap.ShopAction.VerifyOrderDetailsOnCheckout"(
-    	JSONArray products	
+    	JSONArray productsArray	
      , 	float subtotal	
-     , 	String shippingType	
-     , 	String shippingLable	
-     , 	float shippingPrice	
+     , 	JSONArray shippingArray	
      , 	float total	) {
     (new beautytap.ShopAction()).VerifyOrderDetailsOnCheckout(
-        	products
+        	productsArray
          , 	subtotal
-         , 	shippingType
-         , 	shippingLable
-         , 	shippingPrice
+         , 	shippingArray
          , 	total)
 }
 

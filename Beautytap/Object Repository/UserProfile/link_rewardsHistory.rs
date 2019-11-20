@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_search</name>
+   <name>link_rewardsHistory</name>
    <tag></tag>
-   <elementGuidId>b95a3c88-646e-4f2f-846b-2d0a09ccf9c4</elementGuidId>
+   <elementGuidId>e688e52a-cb0e-4d71-b7d1-0c139db8d775</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='searchInput']</value>
+         <value>//a[text()='REWARDS HISTORY']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

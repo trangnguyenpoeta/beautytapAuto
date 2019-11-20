@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//h3[text()='Order received']</value>
+         <value>//span[text()='Order Complete!']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

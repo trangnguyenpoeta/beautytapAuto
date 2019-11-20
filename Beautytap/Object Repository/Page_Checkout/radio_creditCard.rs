@@ -7,11 +7,10 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='payment_method_paypalpro']</value>
+         <value>//label[@for='payment_method_paypalpro']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

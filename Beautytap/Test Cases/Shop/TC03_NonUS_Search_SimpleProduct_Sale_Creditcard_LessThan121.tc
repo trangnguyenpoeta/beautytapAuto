@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC08_BuyProduct_UsingRewardPoint</name>
+   <name>TC03_NonUS_Search_SimpleProduct_Sale_Creditcard_LessThan121</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>e84d36ff-f74c-4712-baa2-8a02e0bf669a</testCaseGuid>
+   <testCaseGuid>a233b773-f251-4038-8251-c5720124d7b5</testCaseGuid>
 </TestCaseEntity>

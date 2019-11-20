@@ -7,7 +7,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import javax.xml.xpath.XPath
 
-import com.gargoylesoftware.htmlunit.javascript.host.speech.webkitSpeechGrammar
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -28,6 +28,7 @@ import internal.GlobalVariable
 import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
+
 
 public class GeneralAction {
 
@@ -224,22 +225,46 @@ public class GeneralAction {
 	//Enter text to textbox
 	@Keyword
 	def public static enterText(TestObject control,String text){
+		WebUI.click(control);
 		WebUI.clearText(control);
 		WebUI.sendKeys(control, text);
 	}
 
 	//selectProfileMenu
-	//menu: view profile,Comments,Beauty Wall,Products I Like,My Orders,My Rewards,Account Settings,Notification Settings,Log Out
+	//menu: view profile,Comments,Beauty Wall,Products I Like,My Orders,Account Settings,Notification Settings,Log Out
 	@Keyword
 	def selectProfileMenu(String menu){
 		println "START KEYWORD selectProfileMenu";
 		TestObject obj_menu= new TestObject();
-		obj_menu.addProperty("xpath",ConditionType.EQUALS,"//ul[@class='dropdown-menu dropdown-menu-custom']/li/a[text()='"+ menu +"']");
+		obj_menu.addProperty("xpath",ConditionType.EQUALS,"//ul[@class='dropdown dropdown2 d-menu-content']/li/following::a[text()='"+ menu +"']");
 		WebUI.click(findTestObject('Object Repository/Page_General/link_avatar'));
 		WebUI.delay(2);
 		WebUI.click(obj_menu);
 		WebUI.waitForPageLoad(GlobalVariable.LONG_TIMEOUT);
 		println "END KEYWORD selectProfileMenu";
+	}
+
+	//selectProfileSubMenu
+	//menu: Comments,Beauty Wall,Products I Like,Following/Followers/Bio
+	@Keyword
+	def selectProfileSubMenu(String submenu){
+		println "START KEYWORD selectProfileSubMenu";
+		TestObject obj_submenu= new TestObject();
+		obj_submenu.addProperty("xpath",ConditionType.EQUALS,"//ul[contains(@class,'tabslider_profile')]/li/a[text()='"+ submenu+"']");
+		WebUI.click(obj_submenu);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		println "END KEYWORD selectProfileSubMenu";
+	}
+
+	//gotoRewardHistory
+	@Keyword
+	def goToRewardHistory(){
+		println "START KEYWORD gotoRewardHistory";
+		selectProfileMenu('Beauty Wall');
+		selectProfileSubMenu('Bio');
+		WebUI.click(findTestObject('Object Repository/UserProfile/link_rewardsHistory'));
+		WebUI.waitForPageLoad(GlobalVariable.SHORT_TIMEOUT);
+		println "END KEYWORD gotoRewardHistory";
 	}
 
 	//Verify notification
@@ -248,7 +273,7 @@ public class GeneralAction {
 		println "START KEYWORD VerifyNotificationText";
 		String result='true';
 		TestObject obj_notification= new TestObject();
-		obj_notification.addProperty("xpath",ConditionType.EQUALS,"//ul[@class='dropdown-menu dropdown-menu-notification']/descendant::div[@class='panel panel-default'][1]/descendant::a[3]");
+		obj_notification.addProperty("xpath",ConditionType.EQUALS,"//ul[@class='dropdown dropdown1 d-menu-content']/descendant::div[@class='panel panel-default'][1]/descendant::a[3]");
 		WebUI.click(findTestObject('Object Repository/Page_General/link_notificationIcon'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		String currentText=WebUI.getText(obj_notification).trim();
