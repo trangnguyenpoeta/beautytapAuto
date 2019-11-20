@@ -30,7 +30,7 @@ String variation = GlobalVariable.VARIATION_NAME1
 
 String r_string = new Math().random().toString().substring(2, 8)
 
-String email = ('beauty' + r_string) + '@mailinator.com'
+String email = 'beauty' + r_string + '@mailinator.com'
 
 int currentNumberItemInCart
 
@@ -42,14 +42,13 @@ float total = subtotal
 
 total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
 
-JSONArray products = new JSONArray(((((((('[{"productname":"' + productName) + '","variation":"') + variation) + '","quantity":"') + 
-quantity) + '","price":"') + price) + '"}]')
+JSONArray products = new JSONArray('[{"productname":"' + productName + '","variation":"' + variation + '","quantity":"' + quantity + '","price":"' + price + '"}]')
 
-JSONArray shippingArray = new JSONArray('[{"shippingType":"free","shippingMethod":"Shipping from Korea","shippingPrice":"0","shippingLabel":"Qualified for FREE international shipping from Korea."}]')
+JSONArray shippingArray = new JSONArray('[{"shippingType":"free","shippingMethod":"Shipping from Korea","shippingPrice":"0","shippingLabel":"Free EMS shipping"}]')
 
 String paymentMethod = 'Amazon Pay'
 
-String amazonAddress = 'Trang N. CMT8 Floor 9th, Hochiminh, 3, 700000, Vietnam'
+String amazonAddress = 'Trang N. 444 cmt8, HCM, 70000, Viet Nam'
 
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)

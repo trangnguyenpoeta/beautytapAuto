@@ -124,12 +124,12 @@ public class ShopAction {
 	def VerifyProductOnSearchResult(String productName,float regularPrice,String regularPriceColor,float salePrice,String salePriceColor) {
 		println "START KEYWORD VerifyProductOnSearchResult";
 		if(regularPrice==null||regularPrice==''){
-		 regularPrice= 0;
-		 }
-		 if(salePrice==null||salePrice==''){
-		 salePrice = 0;
-		 }
-		 if(regularPriceColor!=null && regularPriceColor=="pink"){
+			regularPrice= 0;
+		}
+		if(salePrice==null||salePrice==''){
+			salePrice = 0;
+		}
+		if(regularPriceColor!=null && regularPriceColor=="pink"){
 			regularPriceColor = "rgba(239, 94, 146, 1)";
 		}
 		if(regularPriceColor!=null && regularPriceColor=="grey"){
@@ -141,58 +141,58 @@ public class ShopAction {
 		if(salePriceColor!=null && salePriceColor=="grey"){
 			salePriceColor = "rgba(195, 195, 195, 1)";
 		}
-		 String result = "true";
-		 TestObject obj_product =new TestObject();
-		 obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]");
-		 try {
-				 if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
-				 //Check Regular Price
-				 if(regularPrice!= 0){
-					 TestObject obj_regularPrice = new TestObject();
-					 obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]/div[@class='price-section']/span[1]/span");
-					 float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
-					 println "Current Regular price "+ currentRegularPrice;
-					 println "Expected Regular price " + regularPrice;
-					 if(currentRegularPrice!=regularPrice){
-					 result = "false" ;
-					 }
-					 if(regularPriceColor!=null){
-						 println "Current regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
-						 println "Expected regular color" +regularPriceColor;
-						 if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
-						 result = "false" ;
-						 }
-					 }
-				 }
-				 //Check Sale Price
-				 if(salePrice!=0){
-					 TestObject obj_salePrice = new TestObject();
-					 obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]/div[@class='price-section']/span[2]/span");
-					 float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
-					 println "Sale price "+ currentSalePrice;
-					 println salePrice;
-					 if(currentSalePrice!=salePrice){
-					 result = "false";
-					 }
-					 if(salePriceColor!=null){
-						 println "Current regular color" + WebUI.getCSSValue(obj_salePrice, "color");
-						 println "Expected regular color" +salePriceColor;
-						 if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
-						 result = "false";
-						 }
-					 }
-				 }
-			 } else{
-			 result = "false";
-			 }
-			 if(result=="true"){
-				 KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
-			 }else{
+		String result = "true";
+		TestObject obj_product =new TestObject();
+		obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]");
+		try {
+			if(WebUI.verifyElementPresent(obj_product, GlobalVariable.LONG_TIMEOUT, FailureHandling.OPTIONAL)==true){
+				//Check Regular Price
+				if(regularPrice!= 0){
+					TestObject obj_regularPrice = new TestObject();
+					obj_regularPrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]/div[@class='price-section']/span[1]/span");
+					float currentRegularPrice = Float.parseFloat(WebUI.getText(obj_regularPrice).trim().replace('$', ''));
+					println "Current Regular price "+ currentRegularPrice;
+					println "Expected Regular price " + regularPrice;
+					if(currentRegularPrice!=regularPrice){
+						result = "false" ;
+					}
+					if(regularPriceColor!=null){
+						println "Current regular color" + WebUI.getCSSValue(obj_regularPrice, "color");
+						println "Expected regular color" +regularPriceColor;
+						if(WebUI.getCSSValue(obj_regularPrice, "color")!=regularPriceColor){
+							result = "false" ;
+						}
+					}
+				}
+				//Check Sale Price
+				if(salePrice!=0){
+					TestObject obj_salePrice = new TestObject();
+					obj_salePrice.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']/ancestor::div[starts-with(@class,'product-item')]/div[@class='price-section']/span[2]/span");
+					float currentSalePrice = Float.parseFloat(WebUI.getText(obj_salePrice).trim().replace('$',''));
+					println "Sale price "+ currentSalePrice;
+					println salePrice;
+					if(currentSalePrice!=salePrice){
+						result = "false";
+					}
+					if(salePriceColor!=null){
+						println "Current regular color" + WebUI.getCSSValue(obj_salePrice, "color");
+						println "Expected regular color" +salePriceColor;
+						if(WebUI.getCSSValue(obj_salePrice, "color")!=salePriceColor){
+							result = "false";
+						}
+					}
+				}
+			} else{
+				result = "false";
+			}
+			if(result=="true"){
+				KeywordUtil.markPassed("Keyword VerifyProductOnSearchResult is Passed");
+			}else{
 				KeywordUtil.markFailed("Keyword VerifyProductOnSearchResult is Failed");
-			 }																														
-		 } catch (Exception e) {
-		 e.printStackTrace()
-		 }
+			}
+		} catch (Exception e) {
+			e.printStackTrace()
+		}
 		println "END KEYWORD VerifyProductOnSearchResult";
 	}
 
@@ -899,7 +899,7 @@ public class ShopAction {
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
 			if(variation!=''){
-				productName = productName + ' – ' + variation;
+				productName = productName + ' - ' + variation;
 			}
 			int quantity = Integer.parseInt(obj_product.get('quantity'));
 			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
@@ -942,6 +942,7 @@ public class ShopAction {
 				TestObject obj_shippingLable = new TestObject();
 				obj_shippingLable.addProperty("xpath",ConditionType.EQUALS,"//td[@data-title='"+ shippingmethod +"']");
 				String getShippingText = WebUI.getText(obj_shippingLable);
+				println "Current Shipping text " + getShippingText;
 				if(StringUtils.containsIgnoreCase(getShippingText, shippinglabel)==true){
 					println "Shipping label "+ j +" is: "+shippinglabel;
 				}else{
