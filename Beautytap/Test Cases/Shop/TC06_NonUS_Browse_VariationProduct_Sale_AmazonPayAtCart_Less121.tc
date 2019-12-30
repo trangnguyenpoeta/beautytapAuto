@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC06_NonUS_Browse_VariationProduct_Sale_AmazonPayAtCart_Less121</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cf610542-9c5f-4b72-b676-eedc48760da6</testCaseGuid>
+</TestCaseEntity>

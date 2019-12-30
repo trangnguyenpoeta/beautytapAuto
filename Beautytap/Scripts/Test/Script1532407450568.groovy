@@ -2,11 +2,10 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
-import java.util.Date
-import java.util.Calendar
-import java.text.SimpleDateFormat
-import java.text.DateFormat
+import java.util.Date as Date
+import java.util.Calendar as Calendar
+import java.text.SimpleDateFormat as SimpleDateFormat
+import java.text.DateFormat as DateFormat
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -21,19 +20,16 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WSBuiltInKeywords
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
-import com.sun.corba.se.impl.presentation.rmi.InvocationHandlerFactoryImpl.CustomCompositeInvocationHandlerImpl
+import com.sun.corba.se.impl.presentation.rmi.InvocationHandlerFactoryImpl.CustomCompositeInvocationHandlerImpl as CustomCompositeInvocationHandlerImpl
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.testobject.TestObject
-
-import org.json.JSONArray
-import org.json.JSONObject
-import org.junit.After
-
-import com.kms.katalon.core.testobject.ConditionType
-import org.apache.commons.lang.StringUtils
-import org.apache.commons.lang3.time.DateUtils
-import org.openqa.selenium.Keys as Keys;
+import org.json.JSONArray as JSONArray
+import org.json.JSONObject as JSONObject
+import org.junit.After as After
+import com.kms.katalon.core.testobject.ConditionType as ConditionType
+import org.apache.commons.lang.StringUtils as StringUtils
+import org.apache.commons.lang3.time.DateUtils as DateUtils
+import org.openqa.selenium.Keys as Keys
 
 /*//Set variable
 String productName = GlobalVariable.VARIATION_PRODUCT
@@ -56,5 +52,10 @@ String paymentMethod ='Amazon Pay'
 //---------------------------------------------------------*/
 //CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
 //CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
-//WebUI.delay(20)
-CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'("Trang N. CMT8 Floor 9th, Hochiminh, 3, 700000, Vietnam")
+//WebUI.openBrowser("https://staging.beautytap.com/checkout/order-received/139958/?key=wc_order_fyFDwUyc0ej8d")
+//CustomKeywords.'beautytap.ShopAction.getOrderInfoOnOrderReceived'()
+//CustomKeywords.'beautytap.ShopAction.VerifyRewardPointsDetails'(4253.00, 1240.20, 3053.00, 165.00)
+//WebUI.openBrowser(GlobalVariable.SITE_URL+"/admin");
+String amazonAddress = 'Trang N. 444 cmt8, HCM, 70000, Vietnam'
+
+CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'(amazonAddress)

@@ -171,7 +171,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Free shipping for orders over $70'</initValue>
+      <initValue>'Qualified for FREE international shipping from Korea'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

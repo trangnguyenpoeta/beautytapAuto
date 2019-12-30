@@ -27,8 +27,7 @@ float saleprice = GlobalVariable.VARIATION_SALE_PRICE1
 float redularprice = GlobalVariable.VARIATION_SALE_REGULAR_PRICE1
 String variation = GlobalVariable.VARIATION_SALE_NAME1
 String r_string = new Math().random().toString().substring(2, 8)
-String email = 'auto' + r_string + '@mailinator.com'
-String orderNote = 'auto' + r_string + 'Order'
+String email = 'beauty' + r_string + '@mailinator.com'
 int currentNumberItemInCart
 int quantity = 5
 String shippingLabel = GlobalVariable.SHIPPING_LABEL
@@ -37,14 +36,15 @@ float subtotal = CustomKeywords.'beautytap.ShopAction.calculateTotal'(quantity, 
 float total=subtotal+shippingPrice
 total= CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
 JSONArray products = new JSONArray('[{"productname":"'+ productName +'","variation":"'+variation+'","quantity":"'+ quantity +'","price":"'+ saleprice +'"}]')
-JSONObject billingInformation =new JSONObject('{"firstname":"Test","lastname":"Automation","country":"United States (US)","address":"123 Testing","city":"New York","state":"New York","zip":"90012","email":"'+email+'"}')
+JSONArray shippingArray = new JSONArray('[{"shippingType":"normal","shippingMethod":"Shipping from Korea","shippingPrice":"'+ GlobalVariable.SHIPPING_PRICE +'","shippingLabel":"'+GlobalVariable.SHIPPING_LABEL+'"}]')
 String shippingType = 'normal'
 String paymentMethod ='Amazon Pay'
 String category = "Brands"
 String subcategory = "Innisfree"
+String amazonAddress = 'Trang N. 444 cmt8, HCM, 70000, Viet Nam'
 //---------------------------------------------------------
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)
-CustomKeywords.'beautytap.ShopAction.selectCategory'(category, subcategory)
+CustomKeywords.'beautytap.ShopAction.selectCategory'("Shop",category, subcategory)
 CustomKeywords.'beautytap.ShopAction.findProductOnProductList'(productName)
 'VP1: Verify product display in Product List'
 CustomKeywords.'beautytap.ShopAction.VerifyProductOnProductList'(productName, saleprice, "pink", redularprice, "pink")
@@ -62,11 +62,9 @@ CustomKeywords.'beautytap.ShopAction.goToCart'()
 CustomKeywords.'beautytap.ShopAction.VerifyProductInCart'(productName,variation, saleprice, quantity, subtotal)
 'Login amazonPay'
 CustomKeywords.'beautytap.ShopAction.loginAmazonPay'('cart', GlobalVariable.AMAZONPAY_EMAIL, GlobalVariable.AMAZONPAY_PASSWORD)
-//CustomKeywords.'beautytap.ShopAction.selectShipping'(shippingType)
+CustomKeywords.'beautytap.ShopAction.selectAmazonPayAddress'(amazonAddress)
 'VP5: Verify order details on checkout page'
-CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingType, shippingLabel, shippingPrice, total)
+CustomKeywords.'beautytap.ShopAction.VerifyOrderDetailsOnCheckout'(products, subtotal, shippingArray, total)
 'Checkout via amazonPay'
 CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
-'VP6: Verify order details on order received Page'
-CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, subtotal, shippingPrice, shippingLabel, paymentMethod, total)
 WebUI.closeBrowser()

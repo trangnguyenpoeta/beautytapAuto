@@ -44,7 +44,7 @@ total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
 
 JSONArray products = new JSONArray('[{"productname":"' + productName + '","variation":"' + variation + '","quantity":"' + quantity + '","price":"' + price + '"}]')
 
-JSONArray shippingArray = new JSONArray('[{"shippingType":"free","shippingMethod":"Shipping from Korea","shippingPrice":"0","shippingLabel":"Free EMS shipping"}]')
+JSONArray shippingArray = new JSONArray('[{"shippingType":"free","shippingMethod":"Shipping from Korea","shippingPrice":"0","shippingLabel":"'+ GlobalVariable.FREE_SHIPPING_LABEL +'"}]')
 
 String paymentMethod = 'Amazon Pay'
 

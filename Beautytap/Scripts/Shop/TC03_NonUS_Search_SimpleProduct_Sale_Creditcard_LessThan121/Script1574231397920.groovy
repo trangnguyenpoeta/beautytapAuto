@@ -42,11 +42,9 @@ float total = subtotal + GlobalVariable.SHIPPING_PRICE
 
 total = CustomKeywords.'beautytap.ShopAction.calculateTotal'(1, total)
 
-JSONArray products = new JSONArray(((((('[{"productname":"' + productName) + '","variation":"","quantity":"') + quantity) + 
-'","price":"') + saleprice) + '"}]')
+JSONArray products = new JSONArray('[{"productname":"' + productName + '","variation":"","quantity":"' + quantity + '","price":"' + saleprice + '"}]')
 
-JSONObject billingInformation = new JSONObject(('{"firstname":"Beauty","lastname":"Automation","country":"Vietnam","address":"123 Testing","city":"HCM","state":"","zip":"90012","email":"' + 
-email) + '","phone":"0123456789"}')
+JSONObject billingInformation = new JSONObject('{"firstname":"Beauty","lastname":"Automation","country":"Vietnam","address":"123 Testing","city":"HCM","state":"","zip":"90012","email":"' + email + '","phone":"0123456789"}')
 
 JSONArray shippingArray = new JSONArray('[{"shippingType":"normal","shippingMethod":"Shipping from Korea","shippingPrice":"'+ GlobalVariable.SHIPPING_PRICE +'","shippingLabel":"'+GlobalVariable.SHIPPING_LABEL+'"}]')
 

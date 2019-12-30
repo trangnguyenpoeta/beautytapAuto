@@ -393,10 +393,12 @@ def static "beautytap.ShopAction.getOrderInfoOnOrderReceived"() {
 }
 
 def static "beautytap.ShopAction.selectCategory"(
-    	String category	
+    	String menu	
+     , 	String category	
      , 	String subCategory	) {
     (new beautytap.ShopAction()).selectCategory(
-        	category
+        	menu
+         , 	category
          , 	subCategory)
 }
 

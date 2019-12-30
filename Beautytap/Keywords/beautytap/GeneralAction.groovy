@@ -262,8 +262,9 @@ public class GeneralAction {
 		println "START KEYWORD gotoRewardHistory";
 		selectProfileMenu('Beauty Wall');
 		selectProfileSubMenu('Bio');
+		WebUI.delay(GlobalVariable.LONG_TIMEOUT);
 		WebUI.click(findTestObject('Object Repository/UserProfile/link_rewardsHistory'));
-		WebUI.waitForPageLoad(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 		println "END KEYWORD gotoRewardHistory";
 	}
 

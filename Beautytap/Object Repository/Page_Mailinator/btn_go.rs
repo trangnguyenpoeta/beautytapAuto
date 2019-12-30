@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//button[contains(text(),'GO!')]</value>
+         <value>//button[contains(text(),'GO')]</value>
       </entry>
       <entry>
          <key>BASIC</key>

@@ -369,7 +369,7 @@ public class ShopAction {
 	@Keyword
 	def selectAmazonPayAddress(String amazonAddress){
 		WebUI.click(findTestObject('Page_Checkout/btn_next1'));
-		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*3);
 		TestObject obj_iframe = new TestObject();
 		obj_iframe.addProperty("xpath",ConditionType.EQUALS,"//iframe[@id='OffAmazonPaymentsWidgets0IFrame']");
 		WebUI.switchToFrame(obj_iframe, GlobalVariable.SHORT_TIMEOUT);
@@ -377,7 +377,7 @@ public class ShopAction {
 		TestObject obj_address = new TestObject();
 		String xpath = "//div[starts-with(@class,'address-list-container')]/descendant::li["+ i +"]/a";
 		obj_address.addProperty("xpath",ConditionType.EQUALS,xpath);
-		while(WebUI.verifyElementPresent(obj_address, GlobalVariable.SHORT_TIMEOUT, FailureHandling.CONTINUE_ON_FAILURE)){
+		while(WebUI.verifyElementPresent(obj_address, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)){
 			String currentAddress = WebUI.getText(obj_address).trim();
 			println "Current address: " + currentAddress;
 			if(amazonAddress == currentAddress){
@@ -390,6 +390,7 @@ public class ShopAction {
 			obj_address.addProperty("xpath",ConditionType.EQUALS,xpath);
 		}
 		WebUI.switchToWindowIndex(0, FailureHandling.CONTINUE_ON_FAILURE);
+		WebUI.focus(findTestObject('Page_Checkout/btn_next2'));
 		WebUI.click(findTestObject('Page_Checkout/btn_next2'));
 		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
 	}
@@ -1378,23 +1379,46 @@ public class ShopAction {
 	}
 
 	//Select category
+	//menu: Shop,Editorial,COMMUNITY,Special Deals
+	//category:Skincare, makeup,bath&body,brands
+	//subCategory
 	@Keyword
-	def selectCategory(String category,String subCategory ){
+	def selectCategory(String menu,String category,String subCategory ){
 		println "START KEYWORD selectCategory";
-		if(subCategory==null){
-			subCategory='';
+		TestObject obj_closepopup = new TestObject();
+		obj_closepopup.addProperty("xpath",ConditionType.EQUALS,"//div[@class='modal-body']/descendant::img[contains(@src,'close-icon.png')]");
+		if(WebUI.verifyElementPresent(obj_closepopup, GlobalVariable.SHORT_TIMEOUT, FailureHandling.OPTIONAL)){
+			WebUI.click(obj_closepopup);
 		}
+		TestObject obj_menu= new TestObject();
 		TestObject obj_category= new TestObject();
-		obj_category.addProperty("xpath",ConditionType.EQUALS,'//div[@class="tabs-inner border-none"]/ul/li/a[text()="'+ category +'"]');
-		WebUI.click(obj_category);
-		if(subCategory!=''){
-			WebUI.delay(2);
-			TestObject obj_subcategory= new TestObject();
-			obj_subcategory.addProperty("xpath",ConditionType.EQUALS,"//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/h4/a[text()='"+ subCategory +"']|//div[@id='category_prd_makeup']/descendant::div[@class='item-category']/following::a[text()='"+ subCategory +"']");
-			WebUI.click(obj_subcategory);
-			WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+		TestObject obj_subCategory= new TestObject();
+		TestObject obj_shopbycategory= new TestObject();
+		obj_menu.addProperty("xpath",ConditionType.EQUALS,"//span[text()='"+ menu +"']");
+		obj_category.addProperty("xpath",ConditionType.EQUALS,"//span[text()='"+ category +"']");
+		obj_subCategory.addProperty("xpath",ConditionType.EQUALS,"//div[starts-with(@class,'dropdown-menu-ct mega-menu-content shop-menu dropdown-menu-content') or starts-with(@class,'dropdown-menu-ct submenu-2 mega-menu-content shop-menu dropdown-menu-content')]/descendant::a[text()='"+ subCategory +"']");
+		obj_shopbycategory.addProperty("xpath",ConditionType.EQUALS,"//a[contains(text(),'SHOP BY CATEGORY')]");
+		if(menu=='COMMUNITY'||menu=='Special Deals' ||((category==null ||category=='') &&(subCategory==null||subCategory==''))){
+			WebUI.click(obj_menu);
+			WebUI.waitForPageLoad(GlobalVariable.SHORT_TIMEOUT*2);
 		}else{
-			WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
+			if((category!=null ||category!='') &&(subCategory==null||subCategory=='')){
+				WebUI.mouseOver(obj_menu);
+				WebUI.delay(GlobalVariable.SHORT_TIMEOUT/5);
+				WebUI.click(obj_category);
+				WebUI.waitForPageLoad(GlobalVariable.SHORT_TIMEOUT*2);
+			}else if ((category!=null ||category!='') &&(subCategory!=null||subCategory!='')){
+				WebUI.mouseOver(obj_menu);
+				WebUI.delay(GlobalVariable.SHORT_TIMEOUT/5);
+				WebUI.mouseOver(obj_category);
+				WebUI.delay(GlobalVariable.SHORT_TIMEOUT/5);
+				if(category!='Brands'){
+					WebUI.mouseOver(obj_shopbycategory);
+					WebUI.delay(GlobalVariable.SHORT_TIMEOUT/5);
+				}
+				WebUI.click(obj_subCategory);
+				WebUI.waitForPageLoad(GlobalVariable.SHORT_TIMEOUT*2);
+			}
 		}
 		println "END KEYWORD selectCategory";
 	}
@@ -1405,7 +1429,7 @@ public class ShopAction {
 		println "START KEYWORD findProductOnProductList";
 		TestObject obj_lastpage = new TestObject();
 		TestObject obj_product = new TestObject();
-		obj_lastpage.addProperty("xpath",ConditionType.EQUALS,"//a[@class='next page-numbers' and text()='Next']/preceding::a[1]");
+		obj_lastpage.addProperty("xpath",ConditionType.EQUALS,"//a[@class='next page-link']/preceding::a[1]");
 		obj_product.addProperty("xpath",ConditionType.EQUALS,"//a[text()='"+ productName +"']");
 		int totalPage = Integer.parseInt(WebUI.getText(obj_lastpage).trim());
 		println "Total page "+totalPage;
@@ -1414,7 +1438,7 @@ public class ShopAction {
 				println "Product not found on page "+i;
 				int nextpage = i+1;
 				TestObject obj_clickpage = new TestObject();
-				obj_clickpage.addProperty("xpath",ConditionType.EQUALS,"//a[@class='page-numbers' and text()='"+ nextpage+"']");
+				obj_clickpage.addProperty("xpath",ConditionType.EQUALS,"//a[@class='page-link' and text()='"+ nextpage+"']");
 				WebUI.click(obj_clickpage);
 				WebUI.waitForPageLoad(GlobalVariable.TIMEOUT);
 			}else{
@@ -1667,7 +1691,7 @@ public class ShopAction {
 		obj_multiplier.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[5]")
 		obj_loyaltyPoint.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[6]")
 		obj_totalPoint.addProperty("xpath",ConditionType.EQUALS,"//th/a[text()='#"+ orderNumber +"']/ancestor::tr/td[text()='"+ status +"']/parent::tr/td[7]")
-		if (WebUI.verifyElementPresent(obj_orderNumber, GlobalVariable.TIMEOUT)==true){
+		if (WebUI.verifyElementPresent(obj_orderNumber, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==true){
 			if(date!=''){
 				String currentDate = WebUI.getText(obj_date).trim();
 				SimpleDateFormat datetime = new SimpleDateFormat("MMMM dd, yyyy");
