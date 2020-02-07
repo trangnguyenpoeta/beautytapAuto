@@ -61,62 +61,62 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'La Muse Correct Care Complete Cushion SPF50+/PA+++'</initValue>
+      <initValue>'COSRX Propolis Light Cream 65ml'</initValue>
       <name>SIMPLE_PRODUCT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>31.80</initValue>
+      <initValue>32.00</initValue>
       <name>SIMPLE_PRODUCT_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'MeloMELI Unicorn Heart Lake Cushion — 2 Choices'</initValue>
+      <initValue>'Innisfree Simple Label Lip Color Balm 3 Choices'</initValue>
       <name>VARIATION_PRODUCT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Vanilla Beige'</initValue>
+      <initValue>'01 Rose'</initValue>
       <name>VARIATION_NAME1</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>26.70</initValue>
+      <initValue>11.00</initValue>
       <name>VARIATION_PRICE1</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Innisfree Perfect UV Protection Cream SPF50+/PA+++ (Long-Lasting For Oily Skin) 50ml'</initValue>
+      <initValue>'Innisfree 1 Month Mask 31ea'</initValue>
       <name>SIMPLE_SALE_PRODUCT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>12.50</initValue>
+      <initValue>38.75</initValue>
       <name>SIMPLE_SALE_REGULAR_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>11.99</initValue>
+      <initValue>28.00</initValue>
       <name>SIMPLE_SALE_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Innisfree Eye Contouring Stick Round Shape 0.7g'</initValue>
+      <initValue>'Romand Zero Velvet Tint 6 choices'</initValue>
       <name>VARIATION_SALE_PRODUCT</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'5'</initValue>
+      <initValue>'Burnt Heart'</initValue>
       <name>VARIATION_SALE_NAME1</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>4.95</initValue>
+      <initValue>9.10</initValue>
       <name>VARIATION_SALE_PRICE1</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>6.50</initValue>
+      <initValue>13.00</initValue>
       <name>VARIATION_SALE_REGULAR_PRICE1</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -166,12 +166,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>25.00</initValue>
+      <initValue>24.00</initValue>
       <name>SHIPPING_PRICE</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Qualified for FREE international shipping from Korea'</initValue>
+      <initValue>'Free EMS shipping (over $120)'</initValue>
       <name>FREE_SHIPPING_LABEL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

@@ -67,7 +67,7 @@ public class ShopAction {
 		WebUI.clearText(findTestObject('Object Repository/Page_General/txt_search'));
 		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), Keys.chord(Keys.CONTROL, 'v'));
 		WebUI.sendKeys(findTestObject('Object Repository/Page_General/txt_search'), Keys.chord(Keys.ENTER));
-		WebUI.delay(GlobalVariable.SHORT_TIMEOUT);
+		WebUI.delay(GlobalVariable.SHORT_TIMEOUT*2);
 		println "END KEYWORD globalSearch";
 	}
 
