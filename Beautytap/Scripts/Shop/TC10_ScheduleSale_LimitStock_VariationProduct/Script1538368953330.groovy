@@ -58,7 +58,7 @@ CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL+'
 //CustomKeywords.'beautytap.GeneralAction.clickNavigationMenu'("Login")
 CustomKeywords.'beautytap.GeneralAction.login'("email", GlobalVariable.ADMIN_USERNAME, GlobalVariable.ADMIN_PASSWORD)
 CustomKeywords.'beautytap.AdminAction.selectAdminMenu'("Products", "")
-JSONObject datetime = CustomKeywords.'beautytap.ShopAction.generateScheduleDateTime'(GlobalVariable.TIMEZONE, scheduleDelay, scheduleDuration)
+JSONObject datetime = CustomKeywords.'beautytap.ShopAction.generateScheduleDateTime'(GlobalVariable.TIMEZONEE, scheduleDelay, scheduleDuration)
 String startDate = datetime.get("startdate")
 String endDate = datetime.get("enddate")
 CustomKeywords.'beautytap.AdminAction.scheduleSaleProduct'(productName, 0, variation , startDate, endDate,limitStockSchedule)
@@ -101,7 +101,7 @@ CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
 'VP6: Verify before schedule, regular price display in Order Received'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(products, sumRegularSubTotal, 0, shippingLabel, paymentMethod, sumRegularSubTotal)
 'Wait for schedule'
-CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONE, startDate, schedulTimeout)
+CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONEE, startDate, schedulTimeout)
 //Verify product DURING schedule
 'VP7: Verify during schedule, SALE price display on Search result'
 CustomKeywords.'beautytap.ShopAction.globalSearch'(productName)
@@ -142,7 +142,7 @@ CustomKeywords.'beautytap.ShopAction.checkoutViaAmazonPay'()
 'VP13: Verify during schedule, SALE price display in Order Received'
 CustomKeywords.'beautytap.ShopAction.VerifyOrderReceivedDetails'(productSale, sumSaleSubTotal, 0, shippingLabelSale, paymentMethod, sumSaleSubTotal)
 'Wait for schedule'
-CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONE, endDate, schedulTimeout)
+CustomKeywords.'beautytap.ShopAction.waitForSchedule'(GlobalVariable.TIMEZONEE, endDate, schedulTimeout)
 //Verify product AFTER schedule
 'VP14: Verify AFTER schedule, regular price display on Search result'
 CustomKeywords.'beautytap.GeneralAction.openBeautytap'(GlobalVariable.SITE_URL)

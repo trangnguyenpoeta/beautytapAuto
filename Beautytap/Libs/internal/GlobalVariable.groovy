@@ -36,18 +36,21 @@ public class GlobalVariable {
      
     /**
      * <p>Profile default : 30s
+Profile production : 30s
 Profile staging : 30s</p>
      */
     public static Object TIMEOUT
      
     /**
      * <p>Profile default : 60s
+Profile production : 60s
 Profile staging : 60s</p>
      */
     public static Object LONG_TIMEOUT
      
     /**
      * <p>Profile default : 5s
+Profile production : 5s
 Profile staging : 5s</p>
      */
     public static Object SHORT_TIMEOUT
@@ -213,10 +216,24 @@ Profile staging : 5s</p>
     public static Object USER_PASSWORD
      
     /**
-     * <p>Profile default : PST: America&#47;Los_Angeles; UTC
-Profile staging : PST: America&#47;Los_Angeles; UTC</p>
+     * <p></p>
      */
-    public static Object TIMEZONE
+    public static Object USER_DISPLAY_NAME
+     
+    /**
+     * <p></p>
+     */
+    public static Object USER_EMAIL2
+     
+    /**
+     * <p></p>
+     */
+    public static Object USER_PASSWORD2
+     
+    /**
+     * <p></p>
+     */
+    public static Object USER_DISPLAY_NAME2
      
     /**
      * <p></p>
@@ -234,7 +251,8 @@ Profile staging : PST: America&#47;Los_Angeles; UTC</p>
     public static Object SCHEDULE_REGULAR_PRICE
      
     /**
-     * <p>Profile default : [{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;},{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;}]</p>
+     * <p>Profile default : [{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;},{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;}]
+Profile production : [{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;},{&quot;variation&quot;:&quot;VARIATION&quot;,&quot;saleprice&quot;:&quot;SALEPRICE&quot;,&quot;regularprice&quot;:&quot;REGULARPRICE&quot;}]</p>
      */
     public static Object SCHEDULE_VARIATION_PRICE
      
@@ -242,6 +260,13 @@ Profile staging : PST: America&#47;Los_Angeles; UTC</p>
      * <p></p>
      */
     public static Object SCHEDULE_VARIATION_PRODUCT
+     
+    /**
+     * <p>Profile default : PST: America&#47;Los_Angeles; UTC
+Profile production : PST: America&#47;Los_Angeles; UTC
+Profile staging : PST: America&#47;Los_Angeles; UTC</p>
+     */
+    public static Object TIMEZONE
      
 
     static {
@@ -290,12 +315,16 @@ Profile staging : PST: America&#47;Los_Angeles; UTC</p>
             EMS_SHIPPING_PRICE = selectedVariables['EMS_SHIPPING_PRICE']
             USER_EMAIL = selectedVariables['USER_EMAIL']
             USER_PASSWORD = selectedVariables['USER_PASSWORD']
-            TIMEZONE = selectedVariables['TIMEZONE']
+            USER_DISPLAY_NAME = selectedVariables['USER_DISPLAY_NAME']
+            USER_EMAIL2 = selectedVariables['USER_EMAIL2']
+            USER_PASSWORD2 = selectedVariables['USER_PASSWORD2']
+            USER_DISPLAY_NAME2 = selectedVariables['USER_DISPLAY_NAME2']
             SCHEDULE_SIMPLE_PRODUCT = selectedVariables['SCHEDULE_SIMPLE_PRODUCT']
             SCHEDULE_SALE_PRICE = selectedVariables['SCHEDULE_SALE_PRICE']
             SCHEDULE_REGULAR_PRICE = selectedVariables['SCHEDULE_REGULAR_PRICE']
             SCHEDULE_VARIATION_PRICE = selectedVariables['SCHEDULE_VARIATION_PRICE']
             SCHEDULE_VARIATION_PRODUCT = selectedVariables['SCHEDULE_VARIATION_PRODUCT']
+            TIMEZONE = selectedVariables['TIMEZONE']
             
         } catch (Exception e) {
             TestCaseMain.logGlobalVariableError(e)
