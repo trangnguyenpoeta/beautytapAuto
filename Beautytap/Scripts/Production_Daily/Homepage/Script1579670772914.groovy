@@ -26,4 +26,5 @@ WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Home/module_To
 WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Home/module_List'), GlobalVariable.SHORT_TIMEOUT)
 'Verify Community Module exist'
 WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Home/module_Community'), GlobalVariable.SHORT_TIMEOUT)
+'Close browser'
 WebUI.closeBrowser()

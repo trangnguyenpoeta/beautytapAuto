@@ -216,7 +216,7 @@ public class ShopAction {
 	def VerifyProductIsAddedToCart(String productName) {
 		println "START KEYWORD VerifyProductIsAddedToCart";
 		TestObject obj_successMessage = new TestObject();
-		obj_successMessage.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-message' and contains(text(),'"+ productName +"” have been added to your cart.')]");
+		obj_successMessage.addProperty("xpath",ConditionType.EQUALS,"//div[@class='woocommerce-message' and contains(text(),'"+ productName +"? have been added to your cart.')]");
 		WebUI.verifyElementPresent(obj_successMessage, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL);
 		println "END KEYWORD VerifyProductIsAddedToCart";
 	}
@@ -1009,13 +1009,13 @@ public class ShopAction {
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
 			if(variation!=''){
-				productName = productName + ' – ' + variation;
+				productName = productName + ' ? ' + variation;
 			}
 			int quantity = Integer.parseInt(obj_product.get('quantity'));
 			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
 			float productTotal = ShopAction.calculateTotal(quantity, price);
 			orderSubtotal = orderSubtotal + productTotal;
-			String xpath = "//td[@class='product-name' and contains(text(),'"+productName+"')]/strong[@class='product-quantity' and text()='× "+ quantity+ "']/ancestor::tr/td[@class='product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			String xpath = "//td[@class='product-name' and contains(text(),'"+productName+"')]/strong[@class='product-quantity' and text()='? "+ quantity+ "']/ancestor::tr/td[@class='product-total']/span[starts-with(text(),'"+ productTotal +"')]";
 			TestObject obj_productLine = new TestObject();
 			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
 			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
@@ -1146,13 +1146,13 @@ public class ShopAction {
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
 			if(variation!=''){
-				productName = productName + ' – ' + variation;
+				productName = productName + ' ? ' + variation;
 			}
 			int quantity = Integer.parseInt(obj_product.get('quantity'));
 			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
 			float productTotal = ShopAction.calculateTotal(quantity, price);
 			orderSubtotal = orderSubtotal + productTotal;
-			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='× "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='? "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
 			TestObject obj_productLine = new TestObject();
 			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
 			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
@@ -1248,13 +1248,13 @@ public class ShopAction {
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
 			if(variation!=''){
-				productName = productName + ' – ' + variation;
+				productName = productName + ' ? ' + variation;
 			}
 			int quantity = Integer.parseInt(obj_product.get('quantity'));
 			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
 			float productTotal = ShopAction.calculateTotal(quantity, price);
 			orderSubtotal = orderSubtotal + productTotal;
-			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='× "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
+			String xpath = "//td[@class='woocommerce-table__product-name product-name']/a[contains(text(),'"+productName+"')]/following-sibling::strong[text()='? "+ quantity +"']/parent::td/parent::tr/td[@class='woocommerce-table__product-total product-total']/span[starts-with(text(),'"+ productTotal +"')]";
 			TestObject obj_productLine = new TestObject();
 			obj_productLine.addProperty("xpath",ConditionType.EQUALS,xpath);
 			if(WebUI.verifyElementPresent(obj_productLine, GlobalVariable.TIMEOUT, FailureHandling.OPTIONAL)==false){
@@ -1830,7 +1830,7 @@ public class ShopAction {
 			String productName = obj_product.get('productname');
 			String variation = obj_product.get('variation');
 			if(variation!=''){
-				productName = productName + ' – ' + variation;
+				productName = productName + ' ? ' + variation;
 			}
 			int quantity = Integer.parseInt(obj_product.get('quantity'));
 			float price = ShopAction.calculateTotal(1, Float.parseFloat(obj_product.get('price')));
